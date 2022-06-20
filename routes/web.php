@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SirenController;
 use App\Http\Controllers\ShipController;
@@ -21,5 +22,7 @@ Route::get('/', function () {
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
 
-Route::get('/id', [ShipController::class, 'get'])->name('ship');
-Route::get('/tierlist', [ShipController::class, 'index'])->name('list');
+Route::get('/view', [ShipController::class, 'get'])->name('ships.view');
+Route::get('/tierlist', [ShipController::class, 'index'])->name('ships');
+
+Route::get('/blogs',[BlogController::class, 'index'])->name('blogs');

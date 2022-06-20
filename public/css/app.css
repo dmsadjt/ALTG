@@ -9,6 +9,15 @@
     src:url('../fonts/altona-sans-regular.ttf');
 }
 
+@keyframes fadeIn{
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+.fadeIn{
+    animation-name: fadeIn;
+}
+
 html {
     --nav_color: #141d26;
     --primary: #293849;
@@ -106,6 +115,19 @@ body{
     grid-template-columns: 1fr 2fr;
 }
 
+.columns-two__1-5{
+    display:grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 5fr;
+}
+
+.columns-two__5-1{
+    display:grid;
+    gap: 1rem;
+    grid-template-columns: 5fr 1fr;
+}
+
+
 .columns-six{
     display: grid;
     gap: 1rem;
@@ -118,8 +140,19 @@ body{
     grid-template-columns: repeat(5, 1fr);
 }
 
+.columns-eight{
+    display:grid;
+    gap:1rem;
+    grid-template-columns: repeat(8, 1fr);
+    height: fit-content;
+}
+
 .justify-right{
     margin-left:auto;
+}
+
+.rotate--90{
+    transform: rotate(-90deg);
 }
 
 .image-wrapper{
@@ -132,8 +165,8 @@ body{
 
 
 
-.character-card-common{
-    background-image: url('../img/web-assets/frame-bg/common.png');
+.character-card{
+    background-image: url(/resource/image/FRAME-DARK-BG/Common\ Frame.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     min-height: 20em;
@@ -149,12 +182,38 @@ body{
 }
 
 .skill-img{
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     height: 50px;
     width: 50px;
-    -webkit-clip-path: polygon(0 0, 0 90% , 10% 100%, 100% 100%, 100% 10%, 90% 0);
-            clip-path: polygon(0 0, 0 90% , 10% 100%, 100% 100%, 100% 10%, 90% 0);
+    clip-path: polygon(0 0, 0 90% , 10% 100%, 100% 100%, 100% 10%, 90% 0);
+}
+
+.chibi-img{
+    object-fit: none;
+    object-position: -3em -1em;
+    height: 5rem;
+    width: 6rem;
+}
+
+.position-row-img{
+
+    height: 3rem;
+}
+
+.medium-img{
+    object-fit: contain;
+    width: 8em;
+}
+
+.small-img{
+    object-fit: contain;
+    width: 1em;
+}
+
+.hull-type-img{
+    height: 100%;
+    width: 100%;
+    object-fit: none;
 }
 
 .align-end{
@@ -170,6 +229,11 @@ body{
 .swiss-font-12{
     font-family: swiss721;
     font-size: 1.2rem;
+}
+
+.swiss-font-18{
+    font-family: swiss721;
+    font-size: 1.8rem;
 }
 
 .swiss-font-36{
@@ -201,7 +265,7 @@ body{
     font-size:1.2rem;
 }
 
-h1, h2, p, a, td{
+h1, h2, h3, p, a, td{
     font-family: swiss721;
     font-size: 1.2rem;
     font-weight: 100;
@@ -244,6 +308,10 @@ h1, h2, p, a, td{
     max-height: 30em;
 }
 
+.opacity-1 {
+    opacity: 0.2;
+}
+
 .content {
     justify-content: end;
 }
@@ -274,6 +342,11 @@ h1, h2, p, a, td{
     background-color: var(--orange-light);
 }
 
+.button-square{
+    height: 8em;
+    width: 8em;
+}
+
 .carousel-item{
     height: 20em;
 }
@@ -287,8 +360,7 @@ h1, h2, p, a, td{
 
 .carousel-item img{
     max-height: 20em;
-    -o-object-fit:contain;
-       object-fit:contain;
+    object-fit:contain;
     margin:auto;
     transition: 0.2s;
 }
@@ -334,6 +406,10 @@ h1, h2, p, a, td{
     grid-column: span 3;
 }
 
+.grid-col-span-4{
+    grid-column: span 4;
+}
+
 .background-primary{
     background-color: var(--nav_color);
     padding: 2em;
@@ -364,6 +440,10 @@ td{
 
 .vertical-align-top{
     vertical-align: top;
+}
+
+.vertical-align-bottom{
+    vertical-align: bottom;
 }
 
 .ul-roles{
@@ -442,8 +522,6 @@ td{
 
 .tab__blue{
     background-color: var(--blue-button);
-    max-width: -webkit-fit-content;
-    max-width: -moz-fit-content;
     max-width: fit-content;
     border-radius: 7px;
 }
@@ -457,12 +535,16 @@ td{
     border-radius: 7px;
 }
 
+.tab-content__blue{
+    display: none;
+    animation-duration:1s;
+}
+
 
 .iron-blood{
     background-image: url('/resource/image/iron-blood-tr.png');
     background-size: 100% 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     background-repeat: no-repeat;
     height: 100%;
     display: grid;
@@ -473,11 +555,32 @@ td{
     margin: auto 0 0 auto;
 }
 
+.pill{
+    border-radius:10px;
+    border: none;
+}
+
+.hull-type{
+    cursor: pointer;
+    object-fit: cover;
+    height: 13.9em;
+    width: 10em;
+}
+
+.battleship{
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #252525), url('https://unsplash.it/150/200');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+
 .pill-dark{
     background-color: var(--gray1);
     color: var(--white);
     padding: 0.3em;
-    border-radius: 10px;
+    border-radius: 0.35em;
+    border:none;
 }
 
 .pill-dark--tag{
@@ -497,8 +600,47 @@ td{
     border-left: solid 2px rgba(255, 255, 255, 0.547);
 }
 
+.border-right-white{
+    border-right: solid 2px rgba(255, 255, 255, 0.547);
+}
+
 .gears{
     display: grid;
     gap: 4em;
+}
+
+.text-form{
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    font-family: AltonaSans;
+    font-size: 1.2rem;
+    color:white;
+    background-color: var(--gray1);
+    border-radius: 0.3rem;
+    border:none;
+}
+
+.score-type{
+    cursor: pointer;
+    border: none;
+}
+
+.score-type:hover {
+    border: 0.1em solid white;
+}
+
+.ship-row{
+    background-color: var(--gray1);
+    border: 0;
+    border-radius: 0.35rem;
+    height: 5em;
+}
+
+.sr-tag{
+    background-color: var(--orange-light);
+    color: white;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
 }
 

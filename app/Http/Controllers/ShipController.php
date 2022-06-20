@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 class ShipController extends Controller
 {
     public function index(){
-        return view('tierlist-section');
+        return view('ships.index');
     }
 
     public function get(){
-        return view('ship-section');
+        return view('ships.view');
     }
 }
