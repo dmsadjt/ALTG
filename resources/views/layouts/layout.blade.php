@@ -39,13 +39,13 @@
             <div class="collapse navbar-collapse content" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TIER LIST</a>
+                        <a class="nav-link" href="/ships">TIER LIST</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/siren">OS BOSS STATS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">POST</a>
+                        <a class="nav-link" href="/blogs">POST</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">SEARCH</a>

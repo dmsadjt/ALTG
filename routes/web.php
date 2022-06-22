@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
 
-Route::get('/view', [ShipController::class, 'get'])->name('ships.view');
-Route::get('/tierlist', [ShipController::class, 'index'])->name('ships');
+Route::get('/ships/view', [ShipController::class, 'get'])->name('ships.view');
+Route::get('/ships', [ShipController::class, 'index'])->name('ships');
 
 Route::get('/blogs',[BlogController::class, 'index'])->name('blogs');
