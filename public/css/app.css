@@ -637,10 +637,31 @@ td{
     height: 5em;
 }
 
-.sr-tag{
-    background-color: var(--orange-light);
+.rarity-tag{
+    display: grid;
     color: white;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 }
 
+.n-tag{
+
+}
+
+.e-tag{
+
+}
+
+.r-tag{
+
+}
+
+.ssr-tag{
+
+}
+
+.ur-tag{
+
+}
