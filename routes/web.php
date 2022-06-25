@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\LandingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SirenController;
 use App\Http\Controllers\ShipController;
@@ -16,9 +17,7 @@ use App\Http\Controllers\ShipController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing-page');
-});
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
 

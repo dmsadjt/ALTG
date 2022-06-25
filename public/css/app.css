@@ -166,11 +166,38 @@ body{
 
 
 .character-card{
-    background-image: url(/resource/image/FRAME-DARK-BG/Common\ Frame.png);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
     min-height: 20em;
     max-height: 40em;
+}
+
+.character-card-common{
+    background-image: url('../img/rarity/frame/common.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.character-card-elite{
+    background-image: url('../img/rarity/frame/elite.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.character-card-rare{
+    background-image: url('../img/rarity/frame/rare.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.character-card-sr{
+    background-image: url('../img/rarity/frame/sr.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.character-card-ur{
+    background-image: url('../img/rarity/frame/ur.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .image-out{
@@ -208,6 +235,10 @@ body{
 .small-img{
     object-fit: contain;
     width: 1em;
+}
+
+.img-4em{
+    width: 4em;
 }
 
 .hull-type-img{

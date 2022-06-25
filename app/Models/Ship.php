@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Position;
 use App\Models\Rarity;
+use App\Models\Faction;
+use App\Models\Hull;
 
 class Ship extends Model
 {
@@ -19,5 +21,13 @@ class Ship extends Model
 
     public function rarity(){
         return $this->belongsTo(Rarity::class);
+    }
+
+    public function faction(){
+        return $this->belongsTo(Faction::class);
+    }
+
+    public function hull(){
+        return $this->belongsTo(Hull::class);
     }
 }

@@ -15,10 +15,10 @@ class RaritySeeder extends Seeder
     public function run()
     {
         DB::table('rarities')->insert([
-            'rarity_name'=>'Normal',
+            'rarity_name'=>'Common',
             'rarity_tag'=>'N',
-            'rarity_slug'=>'normal',
-            'rarity_image'=>'normal.png',
+            'rarity_slug'=>'common',
+            'rarity_image'=>'common.png',
         ]);
 
         DB::table('rarities')->insert([

@@ -15,4 +15,38 @@ function openTab(evt, tabStatus, content, links) {
     evt.currentTarget.className += " active";
 }
 
+const cardId = [];
 
+function changeFrame(rarity){
+    const divToChange = document.getElementById(rarity).classList;
+
+    switch(rarity){
+        case 'common':
+            divToChange.add('character-card-common');
+            divToChange.remove('character-card');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+        case 'elite':
+            divToChange.add('character-card-elite');
+            divToChange.remove('character-card');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+        case 'rare':
+            divToChange.add('character-card-rare');
+            divToChange.remove('character-card');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+        case 'specially-super-rare':
+            divToChange.add('character-card-sr');
+            divToChange.remove('character-card');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+        case 'ultra-rare':
+            divToChange.add('character-card-ur');
+            divToChange.remove('character-card');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+    }
+
+
+}
