@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call(RaritySeeder::class);
         $this->call(HullSeeder::class);
         $this->call(FactionSeeder::class);
+        $this->call(mobSeeder::class);
+        $this->call(BossSeeder::class);
         $this->call(ShipsSeeder::class);
         $this->call(PostSeeder::class);
+        $this->call(SirenSeeder::class);
     }
 }

@@ -17,6 +17,7 @@ class CreateShipsTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('hull_id');
+            $table->string('archetype')->nullable();
             $table->string('roles')->nullable();
             $table->bigInteger('position_id')->nullable();
             $table->string('notes')->default('There are no notes yet');
@@ -25,13 +26,6 @@ class CreateShipsTable extends Migration
 
             $table->string('sprite')->nullable();
             $table->string('chibi_sprite')->nullable();
-
-            $table->integer('mob_911');
-            $table->integer('mob_1213');
-            $table->integer('mob_14');
-            $table->integer('boss_911');
-            $table->integer('boss_1213');
-            $table->integer('boss_14');
 
             $table->timestamps();
         });

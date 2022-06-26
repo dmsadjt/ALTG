@@ -4,10 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Position;
-use App\Models\Rarity;
-use App\Models\Faction;
-use App\Models\Hull;
 
 class Ship extends Model
 {
@@ -29,5 +25,13 @@ class Ship extends Model
 
     public function hull(){
         return $this->belongsTo(Hull::class);
+    }
+
+    public function mobScore(){
+        return $this->hasOne(MobScore::class);
+    }
+
+    public function bossScore(){
+        return $this->hasOne(BossScore::class);
     }
 }

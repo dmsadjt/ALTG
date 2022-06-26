@@ -19,7 +19,9 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="https://unsplash.it/400/400" class="d-block w-100" alt="...">
+
                             <div class="carousel-caption">
+                                <h5>{{$posts[0]->title}}</h5>
                                 <p>Lorem Ipsum</p>
                             </div>
                         </div>
@@ -58,23 +60,34 @@
                 <p class="altona-sans-12">See the recent news!</p>
 
                 <div class="post-row shadow">
-                    <div class="columns-two__5-1 pill-dark p-3">
-                        <div>
-                            <h3>Placeholder Text</h3>
-                            <span class="altona-sans-10">Datetime</span>
-                            <p class="altona-sans-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut aliquip ex ea commodo consequat... <a class="altona-sans-12" href="#">See more</a></p>
+                    @foreach ($posts as $p)
+                        <div class="columns-two__5-1 pill-dark p-3 mb-2">
+                            <div>
+                                <h3>{{$p->title}}</h3>
+                                <span class="altona-sans-10">{{$p->created_at}}</span>
+                                <p class="altona-sans-12 medium-text">
+                                    {{substr($p->body, 100)}} ...
+                                    <a class="altona-sans-12"
+                                href="#">See more</a>
+                                </p>
+
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <img src="{{ url('/img/web-assets/azur-logo.webp') }}" class="medium-img opacity-1"
+                                    alt="">
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <img src="{{url('/img/web-assets/azur-logo.webp')}}" class="medium-img opacity-1"  alt="">
-                        </div>
-                    </div>
+                    @endforeach
+
                 </div>
+
+                {{$posts->links()}}
             </div>
 
 
         </div>
+
+
     </section>
 
 @endsection

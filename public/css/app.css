@@ -164,7 +164,6 @@ body{
 }
 
 
-
 .character-card{
     min-height: 20em;
     max-height: 40em;
@@ -675,6 +674,30 @@ td{
     border-radius: 0.35rem 0 0 0.35rem;
     width: 1.5em;
     align-content: center;
+}
+
+.short-text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pagination{
+    justify-content: center !important;
+
+}
+
+.pagination .page-item {
+    --bs-pagination-active-bg: var(--nav_color);
+    --bs-pagination-active-border-color: var(--nav_color);
+}
+
+.medium-text{
+    display:inline-block;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80ch;
 }
 
 .n-tag{

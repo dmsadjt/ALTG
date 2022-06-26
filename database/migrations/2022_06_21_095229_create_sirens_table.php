@@ -15,12 +15,17 @@ class CreateSirensTable extends Migration
     {
         Schema::create('sirens', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
 
             $table->string('name');
+            $table->string('boss_type');
+            $table->string('adaptability')->nullable();
+            $table->string('difficulty')->nullable();
+            $table->string('img')->default('no-pictures.png');
             $table->string('hull');
             $table->integer('level');
             $table->string('armor');
-            $table->integer('hp');
+            $table->string('hp');
             $table->integer('fp')->nullable();
             $table->integer('trp')->nullable();
             $table->integer('aa');
@@ -29,9 +34,8 @@ class CreateSirensTable extends Migration
             $table->integer('eva');
             $table->integer('lck');
             $table->integer('spd');
-            $table->string('weakness')->nullable();
+            $table->string('weakness')->default('-');
 
-            $table->timestamps();
         });
     }
 

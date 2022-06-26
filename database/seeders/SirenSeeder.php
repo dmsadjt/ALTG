@@ -1,0 +1,371 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class SirenSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //stronghold
+        DB::table('sirens')->insert([
+            'name'=>'Stronghold-None-1',
+            'boss_type'=>'stronghold',
+            'adaptability'=>'none',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Stronghold-None-2',
+            'boss_type'=>'stronghold',
+            'adaptability'=>'none',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Stronghold-Full-1',
+            'boss_type'=>'stronghold',
+            'adaptability'=>'full',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Stronghold-Full-2',
+            'boss_type'=>'stronghold',
+            'adaptability'=>'full',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        //abyssal
+        DB::table('sirens')->insert([
+            'name'=>'Abyssal-None-1',
+            'boss_type'=>'abyssal',
+            'adaptability'=>'none',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Abyssal-None-2',
+            'boss_type'=>'abyssal',
+            'adaptability'=>'none',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Abyssal-Full-1',
+            'boss_type'=>'abyssal',
+            'adaptability'=>'full',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Abyssal-Full-2',
+            'boss_type'=>'abyssal',
+            'adaptability'=>'full',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        //Arbiter none
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-none-1',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'none',
+            'difficulty'=>'normal',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-none-2',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'none',
+            'difficulty'=>'normal',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-none-3',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'none',
+            'difficulty'=>'hard',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-none-4',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'none',
+            'difficulty'=>'hard',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        //Arbiter full
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-full-1',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'full',
+            'difficulty'=>'normal',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-full-2',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'full',
+            'difficulty'=>'normal',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-full-3',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'full',
+            'difficulty'=>'hard',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Arbiter-full-4',
+            'boss_type'=>'arbiter',
+            'adaptability'=>'full',
+            'difficulty'=>'hard',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        //Guild Boss
+        DB::table('sirens')->insert([
+            'name'=>'Guild Boss',
+            'boss_type'=>'guild',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+
+        //Meta Boss
+        DB::table('sirens')->insert([
+            'name'=>'Meta Boss 1',
+            'boss_type'=>'meta',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+
+        DB::table('sirens')->insert([
+            'name'=>'Meta Boss 2',
+            'boss_type'=>'meta',
+            'hull'=>'CV',
+            'level'=>'100',
+            'armor'=>'Medium',
+            'hp'=>'400k',
+            'fp'=>'100',
+            'trp'=>'100',
+            'aa'=>'100',
+            'avi'=>'100',
+            'acc'=>'100',
+            'eva'=>'100',
+            'lck'=>'100',
+            'spd'=>'100',
+        ]);
+    }
+}

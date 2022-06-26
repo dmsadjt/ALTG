@@ -33,7 +33,7 @@
                             <img src="/img/posts/{{ $posts[0]->img }}" class="d-block" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{ $posts[0]->title }}</h5>
-                                <p>Some representative placeholder content for the first slide.</p>
+                                <p class="short-text">{{ $posts[0]->body }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
@@ -41,7 +41,7 @@
                                 <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5>{{ $posts[$i]->title }}</h5>
-                                    <p>Some representative placeholder content for the first slide.</p>
+                                    <p class="short-text">{{ $posts[$i]->body }}</p>
                                 </div>
                             </div>
                         @endfor
@@ -132,7 +132,7 @@
                                     <td>
                                         <div class="score-box score-6">
                                             <span class=" score swiss-font-24">
-                                                8.3
+                                                {{number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14)/3, 1)}}
                                             </span>
                                         </div>
 
@@ -144,7 +144,7 @@
                                     <td>
                                         <div class="score-box score-7">
                                             <span class=" score swiss-font-24">
-                                                10
+                                                {{number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14)/3, 1)}}
                                             </span>
                                         </div>
                                     </td>
