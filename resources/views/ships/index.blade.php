@@ -164,41 +164,50 @@
                     </div>
 
                     @foreach ($ships as $s)
-                    <div class="ship-row columns-eight mb-3">
-                        <div class="d-flex grid-col-span-4">
-                            <div class="rarity-tag">
-                                <p class="rotate--90">{{$s->rarity->rarity_tag}}</p>
-                            </div>
-                            <img src="/resource/image/Ulrich_von_HuttenChibi.png" alt="" class="chibi-img">
-                            <span class="swiss-font-18 my-auto">{{$s->name}}</span>
-                        </div>
-                        <div class="border-left-white d-grid">
-                            <div class="m-auto altona-sans-10">{{$s->roles}}</div>
-                        </div>
-                        <div class="border-left-white d-grid">
-                            <div class="m-auto altona-sans-10">{{$s->position->position_name}}</div>
-                            <div class="mx-auto">
-                                <img class="position-row-img" src="/img/positions/{{$s->position->position_image}}" alt="position">
-                            </div>
-                        </div>
-                        <div class="border-left-white grid-col-span-2">
-
-                            <div class="d-flex h-100 justify-content-around align-items-center">
-                                <div class="score-box score-9">
-                                    <div class="score swiss-font-18"></div>
-                                </div>
-                                <div class="score-box score-9">
-                                    <div class="score swiss-font-18"></div>
-                                </div>
-                                <div class="score-box score-9">
-                                    <div class="score swiss-font-18"></div>
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
 
+
+
+                                <img src="" alt="" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">{{ $s->name }}</span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">{{ $s->roles }}</div>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">{{ $s->position->position_name }}</div>
+                                <div class="mx-auto">
+                                    <img class="position-row-img" src="/img/positions/{{ $s->position->position_image }}"
+                                        alt="position">
+                                </div>
+                            </div>
+                            <div class="border-left-white grid-col-span-2">
+
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box score-9">
+                                        <div class="score swiss-font-18"></div>
+                                    </div>
+                                    <div class="score-box score-9">
+                                        <div class="score swiss-font-18"></div>
+                                    </div>
+                                    <div class="score-box score-9">
+                                        <div class="score swiss-font-18"></div>
+                                    </div>
+
+                                </div>
+
                             </div>
 
-                        </div>
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
 
-                    </div>
+                        </div>
                     @endforeach
 
 

@@ -130,8 +130,8 @@
                                 <tr>
                                     <td>Mob</td>
                                     <td>
-                                        <div class="score-box score-6">
-                                            <span class=" score swiss-font-24">
+                                        <div class="score-box sac" id="{{number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14)/3, 1)}}">
+                                            <span class="score swiss-font-24">
                                                 {{number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14)/3, 1)}}
                                             </span>
                                         </div>
@@ -142,7 +142,7 @@
                                 <tr>
                                     <td>Boss</td>
                                     <td>
-                                        <div class="score-box score-7">
+                                        <div class="score-box sac" id="{{number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14)/3, 1)}}">
                                             <span class=" score swiss-font-24">
                                                 {{number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14)/3, 1)}}
                                             </span>
@@ -151,6 +151,12 @@
                                 </tr>
 
                             </table>
+                            <script>
+                                for (i = 0; i < 2;i++){
+                                    scoreId = document.getElementsByClassName('sac')[0].id;
+                                    changeScoreColor(scoreId);
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>

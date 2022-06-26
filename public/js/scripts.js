@@ -50,3 +50,87 @@ function changeFrame(rarity){
 
 
 }
+
+
+function changeLabel(rarity){
+    const divToChange = document.getElementById(rarity).classList;
+
+    switch(rarity){
+        case 'N':
+            divToChange.add('n-tag');
+            divToChange.remove('rarity-tag');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'E':
+            divToChange.add('e-tag');
+            divToChange.remove('rarity-tag');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'R':
+            divToChange.add('r-tag');
+            divToChange.remove('rarity-tag');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'SR':
+            divToChange.add('sr-tag');
+            divToChange.remove('rarity-tag');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'UR':
+            divToChange.add('ur-tag');
+            divToChange.remove('rarity-tag');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+    }
+
+}
+
+function changeScoreColor(score){
+    const divToChange = document.getElementById(score).classList;
+
+    console.log(score);
+
+    if (score == 11){
+        divToChange.add('score-9');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 10.5 ){
+        divToChange.add('score-8');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 10) {
+        divToChange.add('score-7');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 8) {
+        divToChange.add('score-6');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 6) {
+        divToChange.add('score-5');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 4) {
+        divToChange.add('score-4');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 2){
+        divToChange.add('score-3');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else if (score > 1){
+        divToChange.add('score-2');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    } else {
+        divToChange.add('score-1');
+        divToChange.remove('sac');
+        document.getElementById(score).id = score + ' ';
+    }
+
+}

@@ -669,7 +669,7 @@ td{
 
 .rarity-tag{
     display: grid;
-    color: white;
+    color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
     width: 1.5em;
@@ -701,21 +701,67 @@ td{
 }
 
 .n-tag{
+    display: grid;
+    color: black;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 
+    background-image: url('../img/rarity/background/normal.jpeg');
+    object-fit: cover;
+    background-size: 100% 100%;
 }
 
 .e-tag{
+    display: grid;
+    color: black;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 
+    background-image: url('../img/rarity/background/elite.jpg');
+    object-fit: cover;
+    background-size: 100% 100%;
 }
 
 .r-tag{
+    display: grid;
+    color: black;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 
+    background-image: url('../img/rarity/background/rare.jpeg');
+    object-fit: cover;
+    background-size: 100% 100%;
 }
 
-.ssr-tag{
+.sr-tag{
+    display: grid;
+    color: black;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 
+
+    background-image: url('../img/rarity/background/sr.jpg');
+    object-fit: cover;
+    background-size: 100% 100%;
 }
 
 .ur-tag{
+    display: grid;
+    color: black;
+    font-family: swiss721;
+    border-radius: 0.35rem 0 0 0.35rem;
+    width: 1.5em;
+    align-content: center;
 
+    background-image: url('../img/rarity/background/ur.jpg');
+    object-fit: cover;
+    background-size: 100% 100%;
 }
