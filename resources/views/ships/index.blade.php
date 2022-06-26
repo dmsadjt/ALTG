@@ -181,23 +181,34 @@
                             <div class="border-left-white d-grid">
                                 <div class="m-auto altona-sans-10">{{ $s->position->position_name }}</div>
                                 <div class="mx-auto">
-                                    <img class="position-row-img" src="/img/positions/{{ $s->position->position_image }}"
-                                        alt="position">
+                                    <img class="position-row-img"
+                                        src="/img/positions/{{ $s->position->position_image }}" alt="position">
                                 </div>
                             </div>
                             <div class="border-left-white grid-col-span-2">
 
                                 <div class="d-flex h-100 justify-content-around align-items-center">
-                                    <div class="score-box score-9">
-                                        <div class="score swiss-font-18"></div>
+                                    <div class="score-box sac" id="{{ number_format(($s->mobScore->mob_9_11 + $s->bossScore->boss_9_11) / 2, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format(($s->mobScore->mob_9_11 + $s->bossScore->boss_9_11) / 2, 1) }}
+                                        </div>
                                     </div>
-                                    <div class="score-box score-9">
-                                        <div class="score swiss-font-18"></div>
+                                    <div class="score-box sac" id="{{ number_format(($s->mobScore->mob_12_13 + $s->bossScore->boss_12_13) / 2, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format(($s->mobScore->mob_12_13 + $s->bossScore->boss_12_13) / 2, 1) }}
+                                        </div>
                                     </div>
-                                    <div class="score-box score-9">
-                                        <div class="score swiss-font-18"></div>
+                                    <div class="score-box sac" id="{{ number_format(($s->mobScore->mob_14 + $s->bossScore->boss_14) / 2, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format(($s->mobScore->mob_14 + $s->bossScore->boss_14) / 2, 1) }}
+                                        </div>
                                     </div>
-
+                                    <script>
+                                        for (i = 0; i < 3; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
                                 </div>
 
                             </div>

@@ -21,7 +21,7 @@ Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
 
-Route::get('/ships/view', [ShipController::class, 'get'])->name('ships.view');
+Route::get('/ships/{id}', [ShipController::class, 'get'])->name('ships.view');
 Route::get('/ships', [ShipController::class, 'index'])->name('ships');
 
 Route::get('/blogs',[BlogController::class, 'index'])->name('blogs');

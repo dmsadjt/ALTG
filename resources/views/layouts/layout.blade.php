@@ -52,7 +52,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img class="navbar-image"
-                                src="/resource/image/discord_logo1600.png" alt=""></a>
+                                src="{{url('/img/web-assets/discord-logo.png')}}" alt=""></a>
                     </li>
                 </ul>
             </div>

@@ -5,8 +5,11 @@
         <div class="container">
             <div class="d-grid mx-auto mt-4">
                 <button class="text-white orange-button">
-                    <h1 class="p-3">GO TO TIERLIST</h1>
+                    <a href="/ships" class="link-none">
+                        <h1 class="p-3">GO TO TIERLIST</h1>
+                    </a>
                 </button>
+
             </div>
             <div class="d-grid mx-auto">
                 <a class="text-white text-center" href="#"><b>Read our tiering guidelines here</b></a>
@@ -164,8 +167,11 @@
                 <div class="columns-four">
                     <div class="grid-col-span-2"></div>
                     <div>
-                        <button class="mt-5 orange-btn swiss-font-12 text-white" href="#">Read more details
-                            >></button>
+                        <button class="mt-5 orange-btn swiss-font-12 text-white">
+                            <a href="/ships/{{$ships[$i]->id}}" class="link-none">
+                                Read more details>>
+                            </a>
+                        </button>
                     </div>
                 </div>
 
