@@ -23,5 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ShipsSeeder::class);
         $this->call(PostSeeder::class);
         $this->call(SirenSeeder::class);
+        $this->call(TagSeeder::class);
+        $this->call(PostTagSeeder::class);
+        $this->call(ArchetypeSeeder::class);
+        $this->call(ShipArcSeeder::class);
     }
 }

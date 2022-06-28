@@ -25,6 +25,7 @@ html {
     --gray1: #252525;
     --gray2: #555555;
     --white: #FFFFFF;
+    --white2 : #f7fff7;
     --orange-light: #f39736;
     --orange-dark: #ff5a00;
     --blue1 : rgba(33, 47, 65, 1);
@@ -503,7 +504,7 @@ td{
 }
 
 .hero{
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #293849 90%), url('../img/web-assets/web-bg.png');
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #293849 90%), url('../img/web-assets/bg_gradient.png');
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -609,6 +610,13 @@ td{
     background-repeat: no-repeat;
 }
 
+.pill-white{
+    background-color: var(--white2);
+    color: var(--gray1);
+    padding: 0.3em;
+    border-radius: 0.5em;
+    border:none;
+}
 
 .pill-dark{
     background-color: var(--gray1);

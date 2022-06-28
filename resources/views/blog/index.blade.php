@@ -18,25 +18,23 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://unsplash.it/400/400" class="d-block w-100" alt="...">
-
+                            <img src="/img/posts/{{$posts[0]->img}}" class="d-block w-100" alt="post-img">
                             <div class="carousel-caption">
                                 <h5>{{$posts[0]->title}}</h5>
-                                <p>Lorem Ipsum</p>
+                                <p class="short-text altona-sans-10">{{$posts[0]->body}}</p>
                             </div>
                         </div>
+
+                        @for ($i = 1; $i < 3; $i++)
                         <div class="carousel-item">
-                            <img src="https://unsplash.it/500/500" class="d-block w-100" alt="...">
+                            <img src="/img/posts/{{$posts[$i]->img}}" class="d-block w-100" alt="post-img">
                             <div class="carousel-caption">
-                                <p>Lorem Ipsum</p>
+                                <h5>{{$posts[$i]->title}}</h5>
+                                <p class="short-text altona-sans-10">{{$posts[$i]->body}}</p>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <img src="https://unsplash.it/300/300" class="d-block w-100" alt="...">
-                            <div class="carousel-caption">
-                                <p>Lorem Ipsum</p>
-                            </div>
-                        </div>
+                        @endfor
+
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#blogsCarouselIndicators"
                         data-bs-slide="prev">
@@ -70,6 +68,19 @@
                                     <a class="altona-sans-12"
                                 href="#">See more</a>
                                 </p>
+
+                                <div class="d-flex">
+                                    <div>
+                                        Tags :
+                                    </div>
+                                    @foreach ($p->tags as $t)
+                                    <div class="pill-white mx-1 altona-sans-10">
+                                        {{$t->tag_label}}
+                                    </div>
+                                @endforeach
+                                </div>
+
+
 
                             </div>
                             <div class="d-flex justify-content-end">

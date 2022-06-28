@@ -15,6 +15,10 @@ class Ship extends Model
         return $this->belongsTo(Position::class);
     }
 
+    public function archetypes(){
+        return $this->belongsToMany(Archetype::class, 'ship_archetypes','ship_id','archetype_id');
+    }
+
     public function rarity(){
         return $this->belongsTo(Rarity::class);
     }

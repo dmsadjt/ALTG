@@ -19,7 +19,6 @@ class ShipsSeeder extends Seeder
         DB::table('ships')->insert([
             'name'=>'Alabama',
             'hull_id'=>'4',
-            'archetype'=>'Timed Barrager',
             'roles'=>'Timed Barrager',
             'position_id'=>'2',
             'notes'=>'Good timed barrager for mobbing, needs time to ramp up her buff',
@@ -31,7 +30,6 @@ class ShipsSeeder extends Seeder
         DB::table('ships')->insert([
             'name'=>'Akagi',
             'hull_id'=>'1',
-            'archetype'=>'Fast Launch',
             'roles'=>'Fast Launch',
             'position_id'=>'2',
             'notes'=>'Fast launch CV, very good for mobbing when paired with kaga',
@@ -44,7 +42,6 @@ class ShipsSeeder extends Seeder
         DB::table('ships')->insert([
             'name'=>'Abukuma',
             'hull_id'=>'10',
-            'archetype'=>'Buffer',
             'roles'=>'Buffer',
             'position_id'=>'9',
             'notes'=>'Torp CL that buff DD torp',

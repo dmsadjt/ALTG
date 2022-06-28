@@ -12,7 +12,6 @@ class LandingController extends Controller
     public function index(){
         $ships = Ship::orderBy('id', 'desc')->get();
         $posts = Post::orderBy('id','desc')->get();
-        $average_mob = array();
 
         return view('landing-page', compact('ships', 'posts'));
     }

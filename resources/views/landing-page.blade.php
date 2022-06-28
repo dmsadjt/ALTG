@@ -78,7 +78,7 @@
                     individual world score, gear guides and more</p>
             </div>
 
-            @for ($i = 0; $i < 2; $i++)
+            @for ($i = 0; $i < 3; $i++)
                 <div class="columns-four character-name">
                     <div class="justify-right grid-col-span-2">
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"
@@ -97,8 +97,15 @@
                         <table class="text-white">
                             <tbody>
                                 <tr>
-                                    <td>Archetype</td>
-                                    <td class="altona-sans-12">{{ $ships[$i]->roles }}</td>
+                                    <td class='vertical-align-top'>Archetype</td>
+                                    <td class="altona-sans-12">
+                                        <div class="ul-roles">
+                                            @foreach ($ships[$i]->archetypes as $s)
+                                                <li>{{ $s->archetype_name }}</li>
+                                            @endforeach
+                                        </div>
+                                    </td>
+
                                 </tr>
                                 <tr>
                                     <td class="vertical-align-top">Roles</td>
@@ -133,9 +140,10 @@
                                 <tr>
                                     <td>Mob</td>
                                     <td>
-                                        <div class="score-box sac" id="{{number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14)/3, 1)}}">
+                                        <div class="score-box sac"
+                                            id="{{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
                                             <span class="score swiss-font-24">
-                                                {{number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14)/3, 1)}}
+                                                {{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}
                                             </span>
                                         </div>
 
@@ -145,9 +153,10 @@
                                 <tr>
                                     <td>Boss</td>
                                     <td>
-                                        <div class="score-box sac" id="{{number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14)/3, 1)}}">
+                                        <div class="score-box sac"
+                                            id="{{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
                                             <span class=" score swiss-font-24">
-                                                {{number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14)/3, 1)}}
+                                                {{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}
                                             </span>
                                         </div>
                                     </td>
@@ -155,7 +164,7 @@
 
                             </table>
                             <script>
-                                for (i = 0; i < 2;i++){
+                                for (i = 0; i < 2; i++) {
                                     scoreId = document.getElementsByClassName('sac')[0].id;
                                     changeScoreColor(scoreId);
                                 }
@@ -168,7 +177,7 @@
                     <div class="grid-col-span-2"></div>
                     <div>
                         <button class="mt-5 orange-btn swiss-font-12 text-white">
-                            <a href="/ships/{{$ships[$i]->id}}" class="link-none">
+                            <a href="/ships/{{ $ships[$i]->id }}" class="link-none">
                                 Read more details>>
                             </a>
                         </button>

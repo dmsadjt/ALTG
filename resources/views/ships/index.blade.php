@@ -176,7 +176,13 @@
                                 <span class="swiss-font-18 my-auto">{{ $s->name }}</span>
                             </div>
                             <div class="border-left-white d-grid">
-                                <div class="m-auto altona-sans-10">{{ $s->roles }}</div>
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div>
+                                            {{$a->archetype_name}}
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                             <div class="border-left-white d-grid">
                                 <div class="m-auto altona-sans-10">{{ $s->position->position_name }}</div>
