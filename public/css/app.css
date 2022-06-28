@@ -578,7 +578,7 @@ td{
 
 
 .iron-blood{
-    background-image: url('/resource/image/iron-blood-tr.png');
+    background-image: url('../img/faction-logo/iron-blood.png');
     background-size: 100% 100%;
     object-fit: cover;
     background-repeat: no-repeat;
@@ -586,7 +586,83 @@ td{
     display: grid;
 }
 
-.iron-blood img{
+/* change img */
+.dragon-empery{
+    background-image: url('../img/faction-logo/dragon-empery.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+/* change img */
+.eagle-union{
+    background-image: url('../img/faction-logo/eagle-union.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+.iris-libre{
+    background-image: url('../img/faction-logo/iris-libre.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+.northern-parliament{
+    background-image: url('../img/faction-logo/northern-parliament.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+/* change image */
+.royal-navy{
+    background-image: url('../img/faction-logo/royal-navy.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+/* change image */
+.sakura-empire{
+    background-image: url('../img/faction-logo/sakura-empire.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+.sardegna-empire{
+    background-image: url('../img/faction-logo/sardegna-empire.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+.vichya-dominion{
+    background-image: url('../img/faction-logo/vichya-dominion.png');
+    background-size: 100% 100%;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: grid;
+}
+
+.faction img{
     transform: scaleX(-1);
     margin: auto 0 0 auto;
 }

@@ -99,31 +99,31 @@ function changeScoreColor(score){
         divToChange.add('score-9');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 10.5 ){
+    } else if (score >= 10.5 ){
         divToChange.add('score-8');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 10) {
+    } else if (score >= 10) {
         divToChange.add('score-7');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 8) {
+    } else if (score >= 8) {
         divToChange.add('score-6');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 6) {
+    } else if (score >= 6) {
         divToChange.add('score-5');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 4) {
+    } else if (score >= 4) {
         divToChange.add('score-4');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 2){
+    } else if (score >= 2){
         divToChange.add('score-3');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score > 1){
+    } else if (score >= 1){
         divToChange.add('score-2');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
@@ -133,4 +133,39 @@ function changeScoreColor(score){
         document.getElementById(score).id = score + ' ';
     }
 
+}
+
+
+function changeFaction(faction){
+    const divToChange = document.getElementById(faction).classList;
+
+    switch(faction){
+        case 'dragon':
+            divToChange.add('dragon-empire');
+            break;
+        case 'eagle':
+            divToChange.add('eagle-union');
+            break;
+        case 'iris':
+            divToChange.add('iris-libre');
+            break;
+        case 'iron':
+            divToChange.add('iron-blood');
+            break;
+        case 'parliament':
+            divToChange.add('northern-parliament');
+            break;
+        case 'royal':
+            divToChange.add('royal-navy');
+            break;
+        case 'sakura':
+            divToChange.add('sakura-empire');
+            break;
+        case 'sardegna':
+            divToChange.add('sardegna-empire');
+            break;
+        case 'vichya':
+            divToChange.add('vichya-dominion');
+            break;
+    }
 }

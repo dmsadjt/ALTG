@@ -11,7 +11,10 @@ class ShipController extends Controller
         return view('ships.index', compact('ships'));
     }
 
-    public function get(){
-        return view('ships.view');
+    public function get($id){
+
+        $ship = Ship::where('id','=', $id)->first();
+
+        return view('ships.view', compact('ship'));
     }
 }

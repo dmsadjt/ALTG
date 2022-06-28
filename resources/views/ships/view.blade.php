@@ -6,13 +6,13 @@
             <div class="bg-overlay">
                 <div class="columns-five">
                     <div class="grid-col-span-2"></div>
-                    <h1 class="text-white grid-col-span-3">Ulrich von Hutten</h1>
+                    <h1 class="text-white grid-col-span-3">{{$ship->name}}</h1>
                 </div>
-                <div class="columns-five character-card">
+                <div class="columns-five character-card" id="{{$ship->rarity->rarity_slug}}">
                     <div class="image-wrapper grid-col-span-2">
-                        <img src="/resource/image/Ulrich_von_Hutten.png" class="image-out" alt="">
+                        <img src="/img/ships/sprites/{{$ship->sprite}}" class="image-out" alt="">
                     </div>
-                    <div class="text-white mt-5 grid-col-span-2">
+                    <div class="text-white my-5 grid-col-span-2">
                         <table>
                             <tr>
                                 <td>Chapter</td>
@@ -23,23 +23,23 @@
                             <tr>
                                 <td>Mob</td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_9_11}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->mobScore->mob_9_11}}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_12_13}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->mobScore->mob_12_13}}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_14}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->mobScore->mob_14}}
                                         </span>
                                     </div>
                                 </td>
@@ -47,34 +47,48 @@
                             <tr>
                                 <td>Boss</td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_9_11}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->bossScore->boss_9_11}}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_12_13}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->bossScore->boss_12_13}}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto score-9">
+                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_14}}">
                                         <span class=" score swiss-font-24">
-                                            11
+                                            {{$ship->bossScore->boss_14}}
                                         </span>
                                     </div>
                                 </td>
                             </tr>
                         </table>
                     </div>
+
+                    <script>
+                        for (i = 0; i < 6; i++) {
+                            scoreId = document.getElementsByClassName('sac')[0].id;
+                            changeScoreColor(scoreId);
+                        }
+                    </script>
+
                     <div class="faction-content">
-                        <div class="iron-blood">
-                            <img src="/resource/image/Ulrich_von_HuttenChibi.png" alt="chibi">
+                        <div class="faction" id="{{$ship->faction->faction_slug}}">
+                            <img src="/img/ships/chibi/{{$ship->chibi_sprite}}" alt="chibi">
                         </div>
                     </div>
+
+                    <script>
+                        faction = document.getElementsByClassName('faction')[0].id;
+                        changeFaction(faction);
+                    </script>
+
                 </div>
 
                 <div class="columns-two__3-6">
@@ -93,15 +107,17 @@
                             <tr>
                                 <td>Archetype</td>
                                 <td class="altona-sans-12 ps-5">
-                                    <span class="pill-dark">On-fire Barrager</span>
-                                    <span class="pill-dark">Proximity Barrager</span>
-                                    <span class="pill-dark">Rapid Fire</span>
+                                    @foreach ($ship->archetypes as $a)
+                                        <span class="pill-dark">{{$a->archetype_name}}</span>
+                                    @endforeach
                                 </td>
                             </tr>
                             <tr>
                                 <td>Roles</td>
                                 <td class="altona-sans-12 ps-5">
-                                    <span class="pill-dark">Cross Fleet Barrager</span>
+                                    @foreach ($ship->roles as $r)
+                                        <span class="pill-dark">{{$r->role_name}}</span>
+                                    @endforeach
                                     <span class="pill-dark">Crit. Damage Buffer <small class="pill-tag--IB">WIP</small>
                                     </span>
                                 </td>
@@ -109,34 +125,22 @@
                             <tr>
                                 <td class="vertical-align-top">Position</td>
                                 <td class="ps-5">
-                                    <div class="pill-dark d-flex mb-1">
-                                        <div class="my-auto p-3">1</div>
-                                        <div class="border-left-white ms-1">
-                                            <div class="ms-3">
-                                                <h5 class="ms-3 mb-0 altona-sans-12">Flagship</h5>
-                                                <img src="/resource/image/Flagship.png" alt="">
+                                    @foreach ($ship->positions as $p)
+                                        <div class="pill-dark d-flex mb-1">
+                                            <div class="my-auto p-3">1</div>
+                                            <div class="border-left-white">
+                                                <div class="d-grid">
+                                                    <h5 class="mx-auto text-center altona-sans-12">{{$p->position_name}}</h5>
+                                                    <img src="/img/positions/{{$p->position_image}}" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="my-auto">
+                                                <p class="altona-sans-10">Lorem ipsum dolor sit amet, consectetur
+                                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                    dolore magna aliqua. </p>
                                             </div>
                                         </div>
-                                        <div class="my-auto">
-                                            <p class="altona-sans-10">Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                dolore magna aliqua. </p>
-                                        </div>
-                                    </div>
-                                    <div class="pill-dark d-flex">
-                                        <div class="my-auto p-3">2</div>
-                                        <div class="border-left-white ms-1">
-                                            <div class="ms-3">
-                                                <h5 class="ms-3 mb-0 altona-sans-12">Flagship</h5>
-                                                <img src="/resource/image/Flagship.png" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="my-auto">
-                                            <p class="altona-sans-10">Lorem ipsum dolor sit amet, consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                dolore magna aliqua. </p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </td>
                             </tr>
                             <tr>
@@ -415,6 +419,12 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            idCard = document.getElementsByClassName('character-card')[0].id;
+            changeFrame(idCard);
+        </script>
+
     </section>
 
 @endsection
