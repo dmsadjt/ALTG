@@ -185,11 +185,13 @@
                                 </div>
                             </div>
                             <div class="border-left-white d-grid">
-                                <div class="m-auto altona-sans-10">{{ $s->position->position_name }}</div>
-                                <div class="mx-auto">
-                                    <img class="position-row-img"
-                                        src="/img/positions/{{ $s->position->position_image }}" alt="position">
-                                </div>
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img"
+                                            src="/img/positions/{{ $p->position_image }}" alt="position">
+                                    </div>
+                                @endforeach
                             </div>
                             <div class="border-left-white grid-col-span-2">
 

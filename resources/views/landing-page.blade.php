@@ -111,9 +111,9 @@
                                     <td class="vertical-align-top">Roles</td>
                                     <td class="altona-sans-12">
                                         <ul class="ul-roles">
-                                            <li>Zombie</li>
-                                            <li>Preload Enabler</li>
-                                            <li>Damage Absorb</li>
+                                            @foreach ($ships[$i]->roles as $s)
+                                                <li>{{$s->role_name}}</li>
+                                            @endforeach
                                         </ul>
                                     </td>
                                 </tr>
@@ -121,9 +121,18 @@
                                     <td colspan="2">Preferred Position</td>
                                 </tr>
                                 <tr>
-                                    <td class="altona-font-18 align-end">{{ $ships[$i]->position->position_name }}</td>
-                                    <td><img src="/img/positions/{{ $ships[$i]->position->position_image }}"
-                                            alt="position"></td>
+                                    <td class="altona-font-18 align-end">
+                                        @foreach ($ships[$i]->positions as $p )
+                                            {{ $p->position_name }}
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($ships[$i]->positions as $p )
+                                            <img src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
+                                        @endforeach
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

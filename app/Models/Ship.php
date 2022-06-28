@@ -11,12 +11,16 @@ class Ship extends Model
 
     protected $table = 'ships';
 
-    public function position(){
-        return $this->belongsTo(Position::class);
+    public function positions(){
+        return $this->belongsToMany(Position::class, 'ship_positions','ship_id','position_id');
     }
 
     public function archetypes(){
         return $this->belongsToMany(Archetype::class, 'ship_archetypes','ship_id','archetype_id');
+    }
+
+    public function roles(){
+        return $this->belongsToMany(Roles::class, 'ship_roles','ship_id','role_id');
     }
 
     public function rarity(){

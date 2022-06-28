@@ -17,8 +17,6 @@ class CreateShipsTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('hull_id');
-            $table->string('roles')->nullable();
-            $table->bigInteger('position_id')->nullable();
             $table->string('notes')->default('There are no notes yet');
             $table->bigInteger('faction_id');
             $table->bigInteger('rarity_id');

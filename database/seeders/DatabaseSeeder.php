@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use ShipPositions;
+use ShipRoles;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,5 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PostTagSeeder::class);
         $this->call(ArchetypeSeeder::class);
         $this->call(ShipArcSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(ShipRoleSeeder::class);
+        $this->call(ShipPositionSeeder::class);
     }
 }
