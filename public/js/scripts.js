@@ -2,25 +2,25 @@ function openTab(evt, tabStatus, content, links) {
     var i, tab__content, tab__links;
 
     tab__content = document.getElementsByClassName(content);
-    for(i=0; i < tab__content.length; i++){
+    for (i = 0; i < tab__content.length; i++) {
         tab__content[i].style.display = "none";
     }
 
     tab__links = document.getElementsByClassName(links);
-    for(i = 0 ; i < tab__links.length; i++){
+    for (i = 0; i < tab__links.length; i++) {
         tab__links[i].className = tab__links[i].className.replace(" active", "");
     }
 
-    document.getElementById(tabStatus).style.display= "grid";
+    document.getElementById(tabStatus).style.display = "grid";
     evt.currentTarget.className += " active";
 }
 
 const cardId = [];
 
-function changeFrame(rarity){
+function changeFrame(rarity) {
     const divToChange = document.getElementById(rarity).classList;
 
-    switch(rarity){
+    switch (rarity) {
         case 'common':
             divToChange.add('character-card-common');
             divToChange.remove('character-card');
@@ -52,10 +52,10 @@ function changeFrame(rarity){
 }
 
 
-function changeLabel(rarity){
+function changeLabel(rarity) {
     const divToChange = document.getElementById(rarity).classList;
 
-    switch(rarity){
+    switch (rarity) {
         case 'N':
             divToChange.add('n-tag');
             divToChange.remove('rarity-tag');
@@ -90,16 +90,13 @@ function changeLabel(rarity){
 
 }
 
-function changeScoreColor(score){
+function changeScoreColor(score) {
     const divToChange = document.getElementById(score).classList;
-
-    console.log(score);
-
-    if (score == 11){
+    if (score == 11) {
         divToChange.add('score-9');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score >= 10.5 ){
+    } else if (score >= 10.5) {
         divToChange.add('score-8');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
@@ -119,11 +116,11 @@ function changeScoreColor(score){
         divToChange.add('score-4');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score >= 2){
+    } else if (score >= 2) {
         divToChange.add('score-3');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
-    } else if (score >= 1){
+    } else if (score >= 1) {
         divToChange.add('score-2');
         divToChange.remove('sac');
         document.getElementById(score).id = score + ' ';
@@ -136,10 +133,10 @@ function changeScoreColor(score){
 }
 
 
-function changeFaction(faction){
+function changeFaction(faction) {
     const divToChange = document.getElementById(faction).classList;
 
-    switch(faction){
+    switch (faction) {
         case 'dragon':
             divToChange.add('dragon-empire');
             break;
@@ -168,4 +165,19 @@ function changeFaction(faction){
             divToChange.add('vichya-dominion');
             break;
     }
+}
+
+
+function evaluateSkills(a, b, eval) {
+    evaluator = document.getElementById(eval);
+
+    if (a >= b) {
+        if (a > b) {
+            evaluator.innerHTML = '<';
+        }
+        else if (a == b){
+            evaluator.innerHTML = '=';
+        }
+    }
+
 }

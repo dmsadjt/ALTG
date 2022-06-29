@@ -94,14 +94,35 @@
                 <div class="columns-two__3-6">
                     <div class="d-grid my-auto">
                         <h2 class="text-white">Skill leveling prio</h2>
-                        <div class="d-flex gap-3 swiss-font-12 text-white">
-                            <div><img src="https://unsplash.it/200/200" alt="" class="skill-img"></div>
-                            <div class="my-auto">=</div>
-                            <div><img src="https://unsplash.it/50/50" alt="" class="skill-img"></div>
-                            <div class="my-auto">></div>
-                            <div><img src="https://unsplash.it/50/50" alt="" class="skill-img"></div>
+                        <div class="d-flex gap-4 text-white">
+                            <div class="d-grid one" id="{{$skill[2]->skill_priority}}">
+                                <img src="/img/skills/{{$skill[2]->skill_img}}" alt="" class="skill-img mx-auto">
+                            </div>
+                            <div class="d-grid ">
+                                <span class="my-auto evaluator-1" id="evaluator-1"></span>
+                                <span></span>
+                            </div>
+                            <div class="d-grid two" id="{{$skill[1]->skill_priority}}">
+                                <img src="/img/skills/{{$skill[1]->skill_img}}" alt="" class="skill-img mx-auto">
+                            </div>
+                            <div class="d-grid">
+                                <span class="my-auto evaluator-2" id="evaluator-2"></span>
+                                <span></span>
+                            </div>
+                            <div class="d-grid three" id="{{$skill[0]->skill_priority}}">
+                                <img src="/img/skills/{{$skill[0]->skill_img}}" alt="" class="skill-img mx-auto">
+                            </div>
                         </div>
                     </div>
+
+                    <script>
+                        one = document.getElementsByClassName('one')[0].id;
+                        two = document.getElementsByClassName('two')[0].id;
+                        three = document.getElementsByClassName('three')[0].id;
+                        evaluateSkills(one, two, 'evaluator-1');
+                        evaluateSkills(two, three, 'evaluator-2');
+                    </script>
+
                     <div>
                         <table class="text-white details-table altona-sans-12">
                             <tr>

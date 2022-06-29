@@ -42,4 +42,8 @@ class Ship extends Model
     public function bossScore(){
         return $this->hasOne(BossScore::class);
     }
+
+    public function skill(){
+        return $this->hasMany(Skill::class,'ship_id');
+    }
 }
