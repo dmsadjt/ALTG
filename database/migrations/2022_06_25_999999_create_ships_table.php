@@ -21,8 +21,8 @@ class CreateShipsTable extends Migration
             $table->bigInteger('faction_id');
             $table->bigInteger('rarity_id');
 
-            $table->string('sprite')->nullable();
-            $table->string('chibi_sprite')->nullable();
+            $table->string('sprite')->default('no-sprite.png');
+            $table->string('chibi_sprite')->default('no-sprite.png');
 
             $table->timestamps();
         });

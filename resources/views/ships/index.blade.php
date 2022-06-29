@@ -23,11 +23,11 @@
                                 <div class="columns-two__3-6">
                                     <div class="columns-two">
                                         <div class="pill-dark button-square d-grid score-type">
-                                            <img class="mx-auto mt-auto" src="https://unsplash.it/50/50" alt="">
+                                            <img class="mx-auto mt-auto img-small" src="{{url('/img/web-assets/mob.png')}}" alt="">
                                             <div class="mx-auto my-auto altona-sans-12">Mob</div>
                                         </div>
                                         <div class="pill-dark button-square d-grid score-type">
-                                            <img class="mx-auto mt-auto" src="https://unsplash.it/50/50" alt="">
+                                            <img class="mx-auto mt-auto img-small" src="{{url('/img/web-assets/boss.png')}}" alt="">
                                             <div class="mx-auto my-auto altona-sans-12">Boss</div>
                                         </div>
                                     </div>
@@ -172,13 +172,18 @@
 
 
 
-                                <img src="" alt="" class="chibi-img">
-                                <span class="swiss-font-18 my-auto">{{ $s->name }}</span>
+                                <img src="/img/ships/chibi/{{$s->chibi_sprite}}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{$s->id}}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+
+                                </span>
                             </div>
                             <div class="border-left-white d-grid">
                                 <div class="m-auto altona-sans-10">
                                     @foreach ($s->archetypes as $a)
-                                        <div>
+                                        <div class="text-center">
                                             {{$a->archetype_name}}
                                         </div>
                                     @endforeach

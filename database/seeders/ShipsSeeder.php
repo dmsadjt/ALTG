@@ -42,7 +42,7 @@ class ShipsSeeder extends Seeder
             'faction_id'=>'3',
             'rarity_id'=>'3',
             'sprite'=>'abukuma.png',
-
+            'chibi_sprite'=>'abukuma.png',
         ]);
 
     }

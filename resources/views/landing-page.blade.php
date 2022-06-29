@@ -33,18 +33,18 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/img/posts/{{ $posts[0]->img }}" class="d-block" alt="...">
+                            <img src="/img/posts/{{ $posts[0]->img }}" class="d-block" alt="post-img">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ $posts[0]->title }}</h5>
-                                <p class="short-text">{{ $posts[0]->body }}</p>
+                                <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
+                                <p class="short-text altona-sans-10">{{ $posts[0]->body }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="...">
+                                <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="post-img">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <h5>{{ $posts[$i]->title }}</h5>
-                                    <p class="short-text">{{ $posts[$i]->body }}</p>
+                                    <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
+                                    <p class="short-text altona-sans-10">{{ $posts[$i]->body }}</p>
                                 </div>
                             </div>
                         @endfor
@@ -78,7 +78,7 @@
                     individual world score, gear guides and more</p>
             </div>
 
-            @for ($i = 0; $i < 3; $i++)
+            @for ($i = 0; $i < 2; $i++)
                 <div class="columns-four character-name">
                     <div class="justify-right grid-col-span-2">
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"
@@ -112,7 +112,7 @@
                                     <td class="altona-sans-12">
                                         <ul class="ul-roles">
                                             @foreach ($ships[$i]->roles as $s)
-                                                <li>{{$s->role_name}}</li>
+                                                <li>{{ $s->role_name }}</li>
                                             @endforeach
                                         </ul>
                                     </td>
@@ -122,14 +122,13 @@
                                 </tr>
                                 <tr>
                                     <td class="altona-font-18 align-end">
-                                        @foreach ($ships[$i]->positions as $p )
+                                        @foreach ($ships[$i]->positions as $p)
                                             {{ $p->position_name }}
                                         @endforeach
                                     </td>
                                     <td>
-                                        @foreach ($ships[$i]->positions as $p )
-                                            <img src="/img/positions/{{ $p->position_image }}"
-                                            alt="position">
+                                        @foreach ($ships[$i]->positions as $p)
+                                            <img src="/img/positions/{{ $p->position_image }}" alt="position">
                                         @endforeach
 
                                     </td>
@@ -185,11 +184,13 @@
                 <div class="columns-four">
                     <div class="grid-col-span-2"></div>
                     <div>
-                        <button class="mt-5 orange-btn swiss-font-12 text-white">
-                            <a href="/ships/{{ $ships[$i]->id }}" class="link-none">
+
+                        <a href="/ships/{{ $ships[$i]->id }}" class="link-none">
+                            <button class="mt-5 orange-btn swiss-font-12 text-white">
                                 Read more details>>
-                            </a>
-                        </button>
+                            </button>
+                        </a>
+
                     </div>
                 </div>
 
