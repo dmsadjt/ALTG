@@ -6,11 +6,11 @@
             <div class="bg-overlay">
                 <div class="columns-five">
                     <div class="grid-col-span-2"></div>
-                    <h1 class="text-white grid-col-span-3">{{$ship->name}}</h1>
+                    <h1 class="text-white grid-col-span-3">{{ $ship->name }}</h1>
                 </div>
-                <div class="columns-five character-card" id="{{$ship->rarity->rarity_slug}}">
+                <div class="columns-five character-card" id="{{ $ship->rarity->rarity_slug }}">
                     <div class="image-wrapper grid-col-span-2">
-                        <img src="/img/ships/sprites/{{$ship->sprite}}" class="image-out" alt="">
+                        <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
                     </div>
                     <div class="text-white my-5 grid-col-span-2">
                         <table>
@@ -23,23 +23,23 @@
                             <tr>
                                 <td>Mob</td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_9_11}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_9_11 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->mobScore->mob_9_11}}
+                                            {{ $ship->mobScore->mob_9_11 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_12_13}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_12_13 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->mobScore->mob_12_13}}
+                                            {{ $ship->mobScore->mob_12_13 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->mobScore->mob_14}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_14 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->mobScore->mob_14}}
+                                            {{ $ship->mobScore->mob_14 }}
                                         </span>
                                     </div>
                                 </td>
@@ -47,23 +47,23 @@
                             <tr>
                                 <td>Boss</td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_9_11}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_9_11 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->bossScore->boss_9_11}}
+                                            {{ $ship->bossScore->boss_9_11 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_12_13}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_12_13 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->bossScore->boss_12_13}}
+                                            {{ $ship->bossScore->boss_12_13 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="score-box mx-auto sac" id="{{$ship->bossScore->boss_14}}">
+                                    <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_14 }}">
                                         <span class=" score swiss-font-24">
-                                            {{$ship->bossScore->boss_14}}
+                                            {{ $ship->bossScore->boss_14 }}
                                         </span>
                                     </div>
                                 </td>
@@ -79,8 +79,8 @@
                     </script>
 
                     <div class="faction-content">
-                        <div class="faction" id="{{$ship->faction->faction_slug}}">
-                            <img src="/img/ships/chibi/{{$ship->chibi_sprite}}" alt="chibi">
+                        <div class="faction" id="{{ $ship->faction->faction_slug }}">
+                            <img src="/img/ships/chibi/{{ $ship->chibi_sprite }}" alt="chibi">
                         </div>
                     </div>
 
@@ -95,22 +95,25 @@
                     <div class="d-grid my-auto">
                         <h2 class="text-white">Skill leveling prio</h2>
                         <div class="d-flex gap-4 text-white">
-                            <div class="d-grid one" id="{{$skill[2]->skill_priority}}">
-                                <img src="/img/skills/{{$skill[2]->skill_img}}" alt="" class="skill-img mx-auto">
+                            <div class="d-grid one" id="{{ $skill[2]->skill_priority }}">
+                                <img src="/img/skills/{{ $skill[2]->skill_img }}" alt=""
+                                    class="skill-img mx-auto">
                             </div>
                             <div class="d-grid ">
                                 <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
                                 <span></span>
                             </div>
-                            <div class="d-grid two" id="{{$skill[1]->skill_priority}}">
-                                <img src="/img/skills/{{$skill[1]->skill_img}}" alt="" class="skill-img mx-auto">
+                            <div class="d-grid two" id="{{ $skill[1]->skill_priority }}">
+                                <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
+                                    class="skill-img mx-auto">
                             </div>
                             <div class="d-grid">
                                 <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
                                 <span></span>
                             </div>
-                            <div class="d-grid three" id="{{$skill[0]->skill_priority}}">
-                                <img src="/img/skills/{{$skill[0]->skill_img}}" alt="" class="skill-img mx-auto">
+                            <div class="d-grid three" id="{{ $skill[0]->skill_priority }}">
+                                <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                    class="skill-img mx-auto">
                             </div>
                         </div>
                     </div>
@@ -129,7 +132,7 @@
                                 <td>Archetype</td>
                                 <td class="altona-sans-12 ps-5">
                                     @foreach ($ship->archetypes as $a)
-                                        <span class="pill-dark">{{$a->archetype_name}}</span>
+                                        <span class="pill-dark">{{ $a->archetype_name }}</span>
                                     @endforeach
                                 </td>
                             </tr>
@@ -137,7 +140,7 @@
                                 <td>Roles</td>
                                 <td class="altona-sans-12 ps-5">
                                     @foreach ($ship->roles as $r)
-                                        <span class="pill-dark">{{$r->role_name}}</span>
+                                        <span class="pill-dark">{{ $r->role_name }}</span>
                                     @endforeach
                                     <span class="pill-dark">Crit. Damage Buffer <small class="pill-tag--IB">WIP</small>
                                     </span>
@@ -151,8 +154,10 @@
                                             <div class="my-auto p-3">1</div>
                                             <div class="border-left-white">
                                                 <div class="d-grid">
-                                                    <h5 class="mx-auto text-center altona-sans-12">{{$p->position_name}}</h5>
-                                                    <img src="/img/positions/{{$p->position_image}}" alt="">
+                                                    <h5 class="mx-auto text-center altona-sans-12">
+                                                        {{ $p->position_name }}
+                                                    </h5>
+                                                    <img src="/img/positions/{{ $p->position_image }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="my-auto">
@@ -177,19 +182,19 @@
                     <div class="gears">
 
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
-
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">Main Gun</h3>
+                        {{-- Battleship Gun --}}
+                        <div class="columns-six battleship-gun" id="battleship-gun">
+                            <h3 class="altona-sans-12 mt-1">Battleship Gun</h3>
                             <div class="tab__blue grid-col-span-3">
-                                <button class="tab-links__blue"
-                                    onclick="openTab(event, 'mob-general', 'tab-content__blue', 'tab-links__blue')"
+                                <button class="tab-links__blue battleship-link"
+                                    onclick="openTab(event, 'mob-general', 'tab-content__battleship', 'battleship-link')"
                                     id="openByDefault">General</button>
-                                <button class="tab-links__blue"
-                                    onclick="openTab(event, 'boss-light', 'tab-content__blue', 'tab-links__blue')">Light</button>
-                                <button class="tab-links__blue"
-                                    onclick="openTab(event, 'boss-med', 'tab-content__blue', 'tab-links__blue')">Med</button>
-                                <button class="tab-links__blue"
-                                    onclick="openTab(event, 'boss-heavy', 'tab-content__blue', 'tab-links__blue')">Heavy</button>
+                                <button class="tab-links__blue battleship-link"
+                                    onclick="openTab(event, 'boss-light', 'tab-content__battleship', 'battleship-link')">Light</button>
+                                <button class="tab-links__blue battleship-link"
+                                    onclick="openTab(event, 'boss-med', 'tab-content__battleship', 'battleship-link')">Med</button>
+                                <button class="tab-links__blue battleship-link"
+                                    onclick="openTab(event, 'boss-heavy', 'tab-content__battleship', 'battleship-link')">Heavy</button>
                             </div>
                             <div class="grid-col-span-2"></div>
                             <div></div>
@@ -198,225 +203,1207 @@
                                     <div class="mx-auto">Mob</div>
                                     <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
                                 </div>
-                                <div class="tab-content__blue  fadeIn" id="mob-general">
+                                <div class="tab-content__battleship  fadeIn" id="mob-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Battleship Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__battleship fadeIn" id="boss-light">
                                     <div class="d-flex gap-3">
                                         <div class="text-center">
-                                            <img src="https://unsplash.it/200/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/200/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/200/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Battleship Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="tab-content__blue fadeIn" id="boss-light">
+                                <div class="tab-content__battleship fadeIn" id="boss-med">
                                     <div class="d-flex gap-3">
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/190/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/190/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/190/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Battleship Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
 
-                                <div class="tab-content__blue fadeIn" id="boss-med">
+                                <div class="tab-content__battleship fadeIn" id="boss-heavy">
                                     <div class="d-flex gap-3">
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/180/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/180/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/180/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Battleship Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
 
-                                <div class="tab-content__blue fadeIn" id="boss-heavy">
-                                    <div class="d-flex gap-3">
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/170/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/170/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
-                                        <div class="text-center">
-                                            <img src="https://unsplash.it/170/100" class="rounded-2" alt="img1">
-                                            <div>
-                                                Test
-                                            </div>
-                                        </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
 
                             </div>
                             <div></div>
                         </div>
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">Aux Gun</h3>
+
+                        {{-- Heavy Cruiser Gun --}}
+                        <div class="columns-six heavy-cruiser" id="heavy-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue heavy-link"
+                                    onclick="openTab(event, 'heavy-general', 'tab-content__heavy', 'heavy-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue heavy-link"
+                                    onclick="openTab(event, 'heavy-light', 'tab-content__heavy', 'heavy-link')">Light</button>
+                                <button class="tab-links__blue heavy-link"
+                                    onclick="openTab(event, 'heavy-med', 'tab-content__heavy', 'heavy-link')">Med</button>
+                                <button class="tab-links__blue heavy-link"
+                                    onclick="openTab(event, 'heavy-heavy', 'tab-content__heavy', 'heavy-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
                             <div class="grid-col-span-3">
-                                <div class="d-flex gap-3">
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__heavy  fadeIn" id="heavy-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Heavy Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
+                                </div>
+
+                                <div class="tab-content__heavy fadeIn" id="heavy-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Heavy Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-content__heavy fadeIn" id="heavy-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Heavy Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__heavy fadeIn" id="heavy-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Heavy Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
                             </div>
+                            <div></div>
                         </div>
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">AA Gun</h3>
+
+                        {{-- Light Cruiser Gun --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
                             <div class="grid-col-span-3">
-                                <div class="d-flex gap-3">
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
                             </div>
+                            <div></div>
                         </div>
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">Aux 1</h3>
+
+                        {{-- Destroyer Gun --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
                             <div class="grid-col-span-3">
-                                <div class="d-flex gap-3">
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
                             </div>
+                            <div></div>
                         </div>
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">Aux 2</h3>
+
+                        {{-- Surface Torpedo --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
                             <div class="grid-col-span-3">
-                                <div class="d-flex gap-3">
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
                             </div>
+                            <div></div>
                         </div>
-                        <div class="columns-six">
-                            <h3 class="altona-sans-12">Augment</h3>
+
+                        {{-- Submarine Torpedo --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
                             <div class="grid-col-span-3">
-                                <div class="d-flex gap-3">
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="https://unsplash.it/100/100" class="rounded-2" alt="img1">
-                                        <div>
-                                            Test
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
                             </div>
+                            <div></div>
+                        </div>
+
+                        {{-- Fighter --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
+                        </div>
+
+                        {{-- Dive Bomber --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
+                        </div>
+
+                        {{-- Seaplane --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
+                        </div>
+
+                        {{-- AA Gun --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
+                        </div>
+
+                        {{-- Auxiliary Equipment --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
+                        </div>
+
+                        {{-- Augment --}}
+                        <div class="columns-six light-cruiser" id="light-cruiser">
+                            <h3 class="altona-sans-12 mt-1">Heavy Cruiser Gun</h3>
+                            <div class="tab__blue grid-col-span-3">
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-general', 'tab-content__light', 'light-link')"
+                                    id="openByDefault">General</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-light', 'tab-content__light', 'light-link')">Light</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-med', 'tab-content__light', 'light-link')">Med</button>
+                                <button class="tab-links__blue light-link"
+                                    onclick="openTab(event, 'light-heavy', 'tab-content__light', 'light-link')">Heavy</button>
+                            </div>
+                            <div class="grid-col-span-2"></div>
+                            <div></div>
+                            <div class="grid-col-span-3">
+                                <div class="columns-eight mb-3 altona-sans-12">
+                                    <div class="mx-auto">Mob</div>
+                                    <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
+                                </div>
+                                <div class="tab-content__light  fadeIn" id="light-general">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'General')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-light">
+                                    <div class="d-flex gap-3">
+                                        <div class="text-center">
+                                            @foreach ($ship->gears as $g)
+                                                @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Light')
+                                                    <div class="text-center">
+                                                        <div class="pill-dark">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div>
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-med">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Medium')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                                <div class="tab-content__light fadeIn" id="light-heavy">
+                                    <div class="d-flex gap-3">
+                                        @foreach ($ship->gears as $g)
+                                            @if ($g->gear_type == 'Light Cruiser Gun' && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center">
+                                                    <div class="pill-dark">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div>
+                                                        {{ $g->gear_name }}
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div></div>
                         </div>
                     </div>
 
@@ -424,17 +1411,9 @@
 
                         <h2 class="altona-sans-18">Explanation</h2>
 
-                        <p class="altona-sans-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt
-                            ut labore et dolore magna aliqua. Fames ac turpis egestas sed tempus urna et. Neque
-                            egestas congue quisque egestas diam. Fringilla ut morbi tincidunt augue interdum velit
-                            euismod. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae. Gravida
-                            neque convallis a cras semper auctor neque. Cum sociis natoque penatibus et magnis.
-                            Sapien eget mi proin sed libero enim sed faucibus turpis. Ut tristique et egestas quis
-                            ipsum suspendisse ultrices. Vivamus at augue eget arcu dictum varius duis at. Ut aliquam
-                            purus sit amet luctus venenatis lectus. Nec ullamcorper sit amet risus nullam eget
-                            felis. Adipiscing vitae proin sagittis nisl rhoncus. Consectetur purus ut faucibus
-                            pulvinar elementum integer. Maecenas pharetra convallis posuere morbi.</p>
+                        <p class="altona-sans-12">
+                            {{ $ship->explanation }}
+                        </p>
                     </div>
 
                 </div>

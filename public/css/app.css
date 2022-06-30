@@ -209,7 +209,9 @@ body{
 }
 
 .img-small{
+    object-fit: cover;
     height: 5em;
+    width: 5em;
 }
 
 .skill-img{

@@ -33,5 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ShipRoleSeeder::class);
         $this->call(ShipPositionSeeder::class);
         $this->call(SkillSeeder::class);
+        $this->call(GearSeeder::class);
+        $this->call(ShipGear::class);
     }
 }
