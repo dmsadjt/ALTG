@@ -99,14 +99,14 @@
                                 <img src="/img/skills/{{$skill[2]->skill_img}}" alt="" class="skill-img mx-auto">
                             </div>
                             <div class="d-grid ">
-                                <span class="my-auto evaluator-1" id="evaluator-1"></span>
+                                <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
                                 <span></span>
                             </div>
                             <div class="d-grid two" id="{{$skill[1]->skill_priority}}">
                                 <img src="/img/skills/{{$skill[1]->skill_img}}" alt="" class="skill-img mx-auto">
                             </div>
                             <div class="d-grid">
-                                <span class="my-auto evaluator-2" id="evaluator-2"></span>
+                                <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
                                 <span></span>
                             </div>
                             <div class="d-grid three" id="{{$skill[0]->skill_priority}}">
