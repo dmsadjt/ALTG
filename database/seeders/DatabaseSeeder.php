@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillSeeder::class);
         $this->call(GearSeeder::class);
         $this->call(ShipGear::class);
+        $this->call(CategorySeeder::class);
     }
 }

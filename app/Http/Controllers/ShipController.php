@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Ship;
+use App\Models\Gear;
+use App\Models\GearCategory;
+
 class ShipController extends Controller
 {
     public function index(){
@@ -20,6 +23,8 @@ class ShipController extends Controller
             array_push($skill, $t);
         }
 
-        return view('ships.view', compact('ship','skill'));
+        $category = GearCategory::get();
+
+        return view('ships.view', compact('ship','skill','category'));
     }
 }

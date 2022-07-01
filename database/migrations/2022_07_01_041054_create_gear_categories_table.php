@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGearsTable extends Migration
+class CreateGearCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateGearsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gears', function (Blueprint $table) {
+        Schema::create('gear_categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->string('gear_name');
-            $table->string('gear_img')->default('no-pictures.png');
-            $table->unsignedBigInteger('gear_type');
+            $table->string('gear_category_name');
+            $table->string('gear_category_slug');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateGearsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gears');
+        Schema::dropIfExists('gear_categories');
     }
 }

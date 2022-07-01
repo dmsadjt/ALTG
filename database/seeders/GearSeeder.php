@@ -16,57 +16,57 @@ class GearSeeder extends Seeder
     {
         DB::table('gears')->insert([
             'gear_name'=>'Battleship Gun',
-            'gear_type'=>'Battleship Gun',
+            'gear_type'=>'1',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Heavy Cruiser Gun',
-            'gear_type'=>'Heavy Cruiser Gun',
+            'gear_type'=>'2',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Light Cruiser Gun',
-            'gear_type'=>'Light Cruiser Gun',
+            'gear_type'=>'3',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Destroyer Gun',
-            'gear_type'=>'Destroyer Gun',
+            'gear_type'=>'4',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Surface Torpedo',
-            'gear_type'=>'Surface Torpedo',
+            'gear_type'=>'5',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Submarine Torpedo',
-            'gear_type'=>'Submarine Torpedo',
+            'gear_type'=>'6',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Fighter',
-            'gear_type'=>'Fighter',
+            'gear_type'=>'7',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Dive Bomber',
-            'gear_type'=>'Dive Bomber',
+            'gear_type'=>'8',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Torpedo Bomber',
-            'gear_type'=>'Torpedo Bomber',
+            'gear_type'=>'9',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'Seaplane',
-            'gear_type'=>'Seaplane',
+            'gear_type'=>'10',
         ]);
         DB::table('gears')->insert([
             'gear_name'=>'AA Gun',
-            'gear_type'=>'AA Gun',
+            'gear_type'=>'11',
         ]);
 
         DB::table('gears')->insert([
             'gear_name'=>'Auxiliary Equipment',
-            'gear_type'=>'Auxiliary Equipment',
+            'gear_type'=>'12',
         ]);
 
         DB::table('gears')->insert([
             'gear_name'=>'Augment',
-            'gear_type'=>'Augment',
+            'gear_type'=>'13',
         ]);
 
     }

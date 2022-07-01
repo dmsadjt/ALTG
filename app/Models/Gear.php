@@ -12,4 +12,8 @@ class Gear extends Model
     public function ships(){
         return $this->belongsToMany(Ship::class,'ship_gears','gear_id','ship_id')->withPivot('gear_category');
     }
+
+    public function category(){
+        return $this->hasOne(GearCategory::class);
+    }
 }
