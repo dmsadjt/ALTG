@@ -140,9 +140,17 @@
                                 <td>Roles</td>
                                 <td class="altona-sans-12 ps-5">
                                     @foreach ($ship->roles as $r)
-                                        <span class="pill-dark">{{ $r->role_name }}</span>
+                                        <d-flex>
+                                            <span class="pill-dark">{{ $r->role_name }}</span>
+                                            @foreach ($r->factions as $f)
+                                                <span class="pl-hd" id="{{$f->faction_tag}}">{{$f->faction_tag}}</span>
+                                                <script>
+                                                    tag = document.getElementsByClassName('pl-hd')[0].id;
+                                                    changeFactionTag(tag);
+                                                </script>
+                                            @endforeach
+                                        </d-flex>
                                     @endforeach
-                                    <span class="pill-dark">Crit. Damage Buffer <small class="pill-tag--IB">WIP</small>
                                     </span>
                                 </td>
                             </tr>

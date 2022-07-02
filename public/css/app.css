@@ -40,6 +40,17 @@ html {
     --_1-19: #b93436;
     --_1: #464646;
 
+    --iron-blood : #bc3f3e;
+    --eagle-union : #2256a4;
+    --sakura-empire : #f8b4fd;
+    --royal-navy : #7242bc;
+    --sardegna-empire : #318a47;
+    --vichya-dominion : #58476d;
+    --iris-libre : #f8d88e;
+    --northern-parliament : #d6d6d7;
+    --dragon-empery : #f8ca21;
+    --other : #6f6f6f;
+
     --blue-button : #003663;
     --blue-button-active : #0072bc;
 
@@ -723,10 +734,63 @@ td{
 }
 
 .pill-tag--IB{
-    background-color: red;
+    background-color: var(--iron-blood);
     padding: 0.3em;
-    border-radius: 0px 10px 10px 0;
+    border-radius: 0px 0.35em 0.35em 0;
+}
 
+.pill-tag--RN{
+    background-color: var(--royal-navy);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--EU{
+    background-color: var(--eagle-union);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--SE{
+    background-color: var(--sakura-empire);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--RM{
+    background-color: var(--sardegna-empire);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--VD{
+    background-color: var(--vichya-dominion);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--NP{
+    background-color: var(--northern-parliament);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--DE{
+    background-color: var(--dragon-empery);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--IL{
+    background-color: var(--iris-libre);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
+}
+
+.pill-tag--O{
+    background-color: var(--other);
+    padding: 0.3em;
+    border-radius: 0px 0.35em 0.35em 0;
 }
 
 .border-left-white{

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use RoleFactions;
 use ShipPositions;
 use ShipRoles;
 
@@ -36,5 +37,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GearSeeder::class);
         $this->call(ShipGear::class);
         $this->call(CategorySeeder::class);
+        $this->call(RoleFactionSeeder::class);
     }
 }

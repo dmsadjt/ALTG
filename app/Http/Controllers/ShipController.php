@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Ship;
 use App\Models\Gear;
 use App\Models\GearCategory;
+use App\Models\Roles;
+use App\Models\Faction;
 
 class ShipController extends Controller
 {

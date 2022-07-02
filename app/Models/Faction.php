@@ -14,4 +14,8 @@ class Faction extends Model
     public function ship(){
         return $this->hasOne(Ship::class, 'faction_id');
     }
+
+    public function roles(){
+        return $this->hasMany(Roles::class,'roles_factions','faction_id','role_id');
+    }
 }

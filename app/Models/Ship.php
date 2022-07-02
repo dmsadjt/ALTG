@@ -51,7 +51,4 @@ class Ship extends Model
         return $this->belongsToMany(Gear::class,'ship_gears','ship_id','gear_id')->withPivot('gear_category');
     }
 
-    public function gearCategories(){
-        return $this->hasManyThrough(Gear::class, GearCategory::class);
-    }
 }

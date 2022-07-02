@@ -224,3 +224,38 @@ function changeGear(rarity) {
     }
 
 }
+
+function changeFactionTag(faction){
+    const divToChange = document.getElementById(faction).classList;
+
+    switch (faction) {
+        case 'DE':
+            divToChange.add('pill-tag--DE');
+            break;
+        case 'EU':
+            divToChange.add('pill-tag--EU');
+            break;
+        case 'IL':
+            divToChange.add('pill-tag--IL');
+            break;
+        case 'IB':
+            divToChange.add('pill-tag--IB');
+            break;
+        case 'NP':
+            divToChange.add('pill-tag--NP');
+            break;
+        case 'RN':
+            divToChange.add('pill-tag--RN');
+            break;
+        case 'SE':
+            divToChange.add('pill-tag--SE');
+            break;
+        case 'RM':
+            divToChange.add('pill-tag--RM');
+            break;
+        case 'VD':
+            divToChange.add('pill-tag--VD');
+            break;
+    }
+
+}
