@@ -181,3 +181,8 @@ function evaluateSkills(a, b, eval) {
     }
 
 }
+
+function displayItem(divId){
+    const divToChange = document.getElementById(divId).classList;
+    divToChange.remove('d-none');
+}

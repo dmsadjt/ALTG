@@ -184,8 +184,7 @@
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
 
                         @foreach ($category as $c)
-
-                            <div class="columns-six {{$c->gear_category_slug}}" id="{{$c->gear_category_slug}}">
+                            <div class="columns-six d-none {{$c->gear_category_slug}}" id="{{$c->gear_category_slug}}">
                                 <h3 class="altona-sans-12 mt-1">{{$c->gear_category_name}}</h3>
                                 <div class="tab__blue grid-col-span-3">
                                     <button class="tab-links__blue {{$c->gear_category_slug}}-link"
@@ -221,10 +220,16 @@
                                                             </span>
 
                                                         </div>
+                                                        <script>
+                                                            divId = document.getElementsByClassName('d-none')[0].id;
+                                                            displayItem(divId);
+                                                        </script>
                                                     </div>
                                                 @endif
                                             @endforeach
                                         </div>
+
+
                                     </div>
 
                                     <div class="tab-content__{{$c->gear_category_slug}} fadeIn" id="{{$c->gear_category_slug}}-light">
