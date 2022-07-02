@@ -10,6 +10,6 @@ class GearCategory extends Model
     use HasFactory;
 
     public function gears(){
-        return $this->belongsTo(Gear::class);
+        return $this->belongsTo(Gear::class,'gear_type','id');
     }
 }

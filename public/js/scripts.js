@@ -186,3 +186,41 @@ function displayItem(divId){
     const divToChange = document.getElementById(divId).classList;
     divToChange.remove('d-none');
 }
+
+function changeGear(rarity) {
+    const divToChange = document.getElementById(rarity).classList;
+
+    switch (rarity) {
+        case 'n':
+            divToChange.add('gear-n');
+            divToChange.remove('pl-hd');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'e':
+            divToChange.add('gear-e');
+            divToChange.remove('pl-hd');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'r':
+            divToChange.add('gear-r');
+            divToChange.remove('pl-hd');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'sr':
+            divToChange.add('gear-sr');
+            divToChange.remove('pl-hd');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+        case 'ur':
+            divToChange.add('gear-ur');
+            divToChange.remove('pl-hd');
+            document.getElementById(rarity).id = rarity + ' ';
+            break;
+
+    }
+
+}

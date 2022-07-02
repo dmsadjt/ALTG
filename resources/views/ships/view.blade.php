@@ -184,18 +184,19 @@
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
 
                         @foreach ($category as $c)
-                            <div class="columns-six d-none {{$c->gear_category_slug}}" id="{{$c->gear_category_slug}}">
-                                <h3 class="altona-sans-12 mt-1">{{$c->gear_category_name}}</h3>
+                            <div class="columns-six d-none {{ $c->gear_category_slug }}"
+                                id="{{ $c->gear_category_slug }}">
+                                <h3 class="altona-sans-12 mt-1">{{ $c->gear_category_name }}</h3>
                                 <div class="tab__blue grid-col-span-3">
-                                    <button class="tab-links__blue {{$c->gear_category_slug}}-link"
-                                        onclick="openTab(event, '{{$c->gear_category_slug}}-general', 'tab-content__{{$c->gear_category_slug}}', '{{$c->gear_category_slug}}-link')"
-                                        id="openByDefault">General</button>
-                                    <button class="tab-links__blue {{$c->gear_category_slug}}-link"
-                                        onclick="openTab(event, '{{$c->gear_category_slug}}-light', 'tab-content__{{$c->gear_category_slug}}', '{{$c->gear_category_slug}}-link')">Light</button>
-                                    <button class="tab-links__blue {{$c->gear_category_slug}}-link"
-                                        onclick="openTab(event, '{{$c->gear_category_slug}}-med', 'tab-content__{{$c->gear_category_slug}}', '{{$c->gear_category_slug}}-link')">Med</button>
-                                    <button class="tab-links__blue {{$c->gear_category_slug}}-link"
-                                        onclick="openTab(event, '{{$c->gear_category_slug}}-heavy', 'tab-content__{{$c->gear_category_slug}}', '{{$c->gear_category_slug}}-link')">Heavy</button>
+                                    <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-general', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')"
+                                        id="openByDefault-{{$c->id}}">General</button>
+                                    <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-light', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Light</button>
+                                    <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-med', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Med</button>
+                                    <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-heavy', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Heavy</button>
                                 </div>
                                 <div class="grid-col-span-2"></div>
                                 <div></div>
@@ -204,21 +205,19 @@
                                         <div class="mx-auto">Mob</div>
                                         <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
                                     </div>
-                                    <div class="tab-content__{{$c->gear_category_slug}}  fadeIn" id="{{$c->gear_category_slug}}-general">
+                                    <div class="tab-content__{{ $c->gear_category_slug }}  fadeIn"
+                                        id="{{ $c->gear_category_slug }}-general">
                                         <div class="d-flex gap-3">
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'General')
-                                                    <div class="text-center">
-                                                        <div class="pill-dark">
+                                                    <div class="text-center d-grid">
+                                                        <div class="pill-dark pl-hd mx-auto" id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
 
-                                                        <div>
-                                                            <span class="altona-sans-10">
+                                                        <div class="medium-label altona-sans-10">
                                                                 {{ $g->gear_name }}
-                                                            </span>
-
                                                         </div>
                                                         <script>
                                                             divId = document.getElementsByClassName('d-none')[0].id;
@@ -226,66 +225,89 @@
                                                         </script>
                                                     </div>
                                                 @endif
+
+                                                <script>
+                                                    gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                    changeGear(gearR);
+                                                </script>
                                             @endforeach
                                         </div>
 
 
                                     </div>
 
-                                    <div class="tab-content__{{$c->gear_category_slug}} fadeIn" id="{{$c->gear_category_slug}}-light">
+                                    <div class="tab-content__{{ $c->gear_category_slug }} fadeIn"
+                                        id="{{ $c->gear_category_slug }}-light">
                                         <div class="d-flex gap-3">
                                             <div class="text-center">
                                                 @foreach ($ship->gears as $g)
                                                     @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Light')
-                                                        <div class="text-center">
-                                                            <div class="pill-dark">
+                                                        <div class="text-center d-grid">
+                                                            <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
                                                                 <img src="/img/gears/{{ $g->gear_img }}"
                                                                     class="rounded-2 img-small m-1" alt="img1">
                                                             </div>
 
-                                                            <div>
+                                                            <div class="medium-label altona-sans-10">
                                                                 {{ $g->gear_name }}
                                                             </div>
                                                         </div>
                                                     @endif
+
+                                                    <script>
+                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                        changeGear(gearR);
+                                                    </script>
                                                 @endforeach
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="tab-content__{{$c->gear_category_slug}} fadeIn" id="{{$c->gear_category_slug}}-med">
+                                    <div class="tab-content__{{ $c->gear_category_slug }} fadeIn"
+                                        id="{{ $c->gear_category_slug }}-med">
                                         <div class="d-flex gap-3">
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Medium')
-                                                    <div class="text-center">
-                                                        <div class="pill-dark">
+                                                    <div class="text-center d-grid">
+                                                        <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
-                                                        <div>
+                                                        <div class="medium-label mx-auto altona-sans-10">
                                                             {{ $g->gear_name }}
                                                         </div>
                                                     </div>
                                                 @endif
+
+                                                <script>
+                                                    gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                    changeGear(gearR);
+                                                </script>
                                             @endforeach
                                         </div>
                                     </div>
 
-                                    <div class="tab-content__{{$c->gear_category_slug}} fadeIn" id="{{$c->gear_category_slug}}-heavy">
+                                    <div class="tab-content__{{ $c->gear_category_slug }} fadeIn"
+                                        id="{{ $c->gear_category_slug }}-heavy">
                                         <div class="d-flex gap-3">
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Heavy')
-                                                    <div class="text-center">
-                                                        <div class="pill-dark">
+                                                    <div class="text-center mx-auto d-grid">
+                                                        <div class="pill-dark pl-hd" id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
 
-                                                        <div>
+                                                        <div class="medium-label altona-sans-10">
                                                             {{ $g->gear_name }}
                                                         </div>
                                                     </div>
                                                 @endif
+
+                                                <script>
+                                                    gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                    changeGear(gearR);
+                                                </script>
                                             @endforeach
                                         </div>
                                     </div>
@@ -313,6 +335,20 @@
         <script>
             idCard = document.getElementsByClassName('character-card')[0].id;
             changeFrame(idCard);
+
+            document.getElementById('openByDefault-1').click();
+            document.getElementById('openByDefault-2').click();
+            document.getElementById('openByDefault-3').click();
+            document.getElementById('openByDefault-4').click();
+            document.getElementById('openByDefault-5').click();
+            document.getElementById('openByDefault-6').click();
+            document.getElementById('openByDefault-7').click();
+            document.getElementById('openByDefault-8').click();
+            document.getElementById('openByDefault-9').click();
+            document.getElementById('openByDefault-10').click();
+            document.getElementById('openByDefault-11').click();
+            document.getElementById('openByDefault-12').click();
+            document.getElementById('openByDefault-13').click();
         </script>
 
     </section>

@@ -25,8 +25,6 @@ class ShipController extends Controller
 
         $category = GearCategory::get();
 
-
-
         return view('ships.view', compact('ship','skill','category'));
     }
 }

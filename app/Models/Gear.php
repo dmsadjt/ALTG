@@ -14,6 +14,6 @@ class Gear extends Model
     }
 
     public function category(){
-        return $this->hasOne(GearCategory::class);
+        return $this->hasOne(GearCategory::class,'id','gear_type');
     }
 }

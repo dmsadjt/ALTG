@@ -19,6 +19,7 @@ class CreateGearsTable extends Migration
 
             $table->string('gear_name');
             $table->string('gear_img')->default('no-pictures.png');
+            $table->string('gear_rarity');
             $table->unsignedBigInteger('gear_type');
         });
     }
