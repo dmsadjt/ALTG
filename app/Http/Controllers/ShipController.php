@@ -8,6 +8,7 @@ use App\Models\Gear;
 use App\Models\GearCategory;
 use App\Models\Roles;
 use App\Models\Faction;
+use App\Models\Position;
 
 class ShipController extends Controller
 {
@@ -24,6 +25,8 @@ class ShipController extends Controller
         foreach ($temp as $t){
             array_push($skill, $t);
         }
+
+        $test = array();
 
         $category = GearCategory::get();
 

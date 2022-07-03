@@ -18,5 +18,25 @@ class RoleFactionSeeder extends Seeder
             'role_id'=>'1',
             'faction_id'=>'1',
         ]);
+
+        DB::table('roles_factions')->insert([
+            'role_id'=>'1',
+            'faction_id'=>'2',
+        ]);
+
+        DB::table('roles_factions')->insert([
+            'role_id'=>'1',
+            'faction_id'=>'3',
+        ]);
+
+        DB::table('roles_factions')->insert([
+            'role_id'=>'1',
+            'faction_id'=>'4',
+        ]);
+
+        DB::table('roles_factions')->insert([
+            'role_id'=>'1',
+            'faction_id'=>'5',
+        ]);
     }
 }

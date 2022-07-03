@@ -78,7 +78,7 @@
                     individual world score, gear guides and more</p>
             </div>
 
-            @for ($i = 0; $i < 2; $i++)
+            @for ($i = 0; $i < 3; $i++)
                 <div class="columns-four character-name">
                     <div class="justify-right grid-col-span-2">
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"

@@ -143,7 +143,8 @@
                                         <d-flex>
                                             <span class="pill-dark">{{ $r->role_name }}</span>
                                             @foreach ($r->factions as $f)
-                                                <span class="pl-hd" id="{{$f->faction_tag}}">{{$f->faction_tag}}</span>
+                                                <span class="pl-hd"
+                                                    id="{{ $f->faction_tag }}">{{ $f->faction_tag }}</span>
                                                 <script>
                                                     tag = document.getElementsByClassName('pl-hd')[0].id;
                                                     changeFactionTag(tag);
@@ -158,22 +159,41 @@
                                 <td class="vertical-align-top">Position</td>
                                 <td class="ps-5">
                                     @foreach ($ship->positions as $p)
-                                        <div class="pill-dark d-flex mb-1">
-                                            <div class="my-auto p-3">1</div>
-                                            <div class="border-left-white">
-                                                <div class="d-grid">
-                                                    <h5 class="mx-auto text-center altona-sans-12">
-                                                        {{ $p->position_name }}
-                                                    </h5>
-                                                    <img src="/img/positions/{{ $p->position_image }}" alt="">
+                                        @if ($p->position_type == 'single')
+                                            <div class="pill-dark d-flex mb-1">
+                                                <div class="my-auto p-3">1</div>
+                                                <div class="border-left-white">
+                                                    <div class="d-grid">
+                                                        <h5 class="mx-auto text-center altona-sans-12">
+                                                            {{ $p->position_name }}
+                                                        </h5>
+                                                        <img src="/img/positions/{{ $p->position_image }}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="my-auto">
+                                                    <p class="altona-sans-10">{{ $p->explanation }} </p>
                                                 </div>
                                             </div>
-                                            <div class="my-auto">
-                                                <p class="altona-sans-10">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                                    dolore magna aliqua. </p>
-                                            </div>
-                                        </div>
+                                        @else
+                                            @foreach ($p->children as $c)
+                                                <div class="pill-dark d-flex mb-1">
+                                                    <div class="my-auto p-3">1</div>
+                                                    <div class="border-left-white">
+                                                        <div class="d-grid">
+                                                            <h5 class="mx-auto text-center altona-sans-12">
+                                                                {{ $c->position_name }}
+                                                            </h5>
+                                                            <img src="/img/positions/{{ $c->position_image }}"
+                                                                alt="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-auto">
+                                                        <p class="altona-sans-10">{{ $c->explanation }} </p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
                                     @endforeach
                                 </td>
                             </tr>
@@ -198,7 +218,7 @@
                                 <div class="tab__blue grid-col-span-3">
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
                                         onclick="openTab(event, '{{ $c->gear_category_slug }}-general', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')"
-                                        id="openByDefault-{{$c->id}}">General</button>
+                                        id="openByDefault-{{ $c->id }}">General</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
                                         onclick="openTab(event, '{{ $c->gear_category_slug }}-light', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Light</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
@@ -219,13 +239,14 @@
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'General')
                                                     <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto" id="{{ $g->gear_rarity }}">
+                                                        <div class="pill-dark pl-hd mx-auto"
+                                                            id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
 
                                                         <div class="medium-label altona-sans-10">
-                                                                {{ $g->gear_name }}
+                                                            {{ $g->gear_name }}
                                                         </div>
                                                         <script>
                                                             divId = document.getElementsByClassName('d-none')[0].id;
@@ -251,7 +272,8 @@
                                                 @foreach ($ship->gears as $g)
                                                     @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Light')
                                                         <div class="text-center d-grid">
-                                                            <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
+                                                            <div class="pill-dark mx-auto pl-hd"
+                                                                id="{{ $g->gear_rarity }}">
                                                                 <img src="/img/gears/{{ $g->gear_img }}"
                                                                     class="rounded-2 img-small m-1" alt="img1">
                                                             </div>
@@ -277,7 +299,8 @@
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Medium')
                                                     <div class="text-center d-grid">
-                                                        <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
+                                                        <div class="pill-dark mx-auto pl-hd"
+                                                            id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>

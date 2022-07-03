@@ -231,30 +231,39 @@ function changeFactionTag(faction){
     switch (faction) {
         case 'DE':
             divToChange.add('pill-tag--DE');
+            divToChange.remove('pl-hd');
             break;
         case 'EU':
             divToChange.add('pill-tag--EU');
+            divToChange.remove('pl-hd');
             break;
         case 'IL':
             divToChange.add('pill-tag--IL');
+            divToChange.remove('pl-hd');
             break;
         case 'IB':
             divToChange.add('pill-tag--IB');
+            divToChange.remove('pl-hd');
             break;
         case 'NP':
             divToChange.add('pill-tag--NP');
+            divToChange.remove('pl-hd');
             break;
         case 'RN':
             divToChange.add('pill-tag--RN');
+            divToChange.remove('pl-hd');
             break;
         case 'SE':
             divToChange.add('pill-tag--SE');
+            divToChange.remove('pl-hd');
             break;
         case 'RM':
             divToChange.add('pill-tag--RM');
+            divToChange.remove('pl-hd');
             break;
         case 'VD':
             divToChange.add('pill-tag--VD');
+            divToChange.remove('pl-hd');
             break;
     }
 

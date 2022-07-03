@@ -16,17 +16,17 @@ class ShipPositionSeeder extends Seeder
     {
         DB::table('ship_positions')->insert([
             'ship_id'=>'1',
-            'position_id'=>'1',
+            'position_id'=>'12',
         ]);
 
         DB::table('ship_positions')->insert([
             'ship_id'=>'2',
-            'position_id'=>'5',
+            'position_id'=>'8',
         ]);
 
         DB::table('ship_positions')->insert([
             'ship_id'=>'3',
-            'position_id'=>'2',
+            'position_id'=>'11',
         ]);
     }
 }

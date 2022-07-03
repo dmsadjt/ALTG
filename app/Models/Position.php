@@ -15,4 +15,8 @@ class Position extends Model
     public function ships(){
         return $this->hasOne(Ship::class);
     }
+
+    public function children(){
+        return $this->belongsToMany(PositionChild::class,'position_position','position_id','children_id');
+    }
 }

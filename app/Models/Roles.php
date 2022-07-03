@@ -16,6 +16,6 @@ class Roles extends Model
     }
 
     public function factions(){
-        return $this->belongsToMany(Faction::class, 'roles_factions','role_id','faction_id');
+        return $this->hasMany(Faction::class, 'roles_factions','role_id','faction_id');
     }
 }
