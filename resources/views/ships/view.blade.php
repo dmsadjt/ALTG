@@ -181,11 +181,16 @@
                                                     <div class="my-auto p-3">1</div>
                                                     <div class="border-left-white">
                                                         <div class="d-grid">
-                                                            <h5 class="mx-auto text-center altona-sans-12">
+                                                            <h5 class="mx-auto mt-2 text-center altona-sans-12 cl-hd" id="{{$c->position_slug}}">
                                                                 {{ $c->position_name }}
                                                             </h5>
                                                             <img src="/img/positions/{{ $c->position_image }}"
                                                                 alt="">
+                                                            <script>
+                                                                textId = document.getElementsByClassName('cl-hd')[0].id;
+                                                                changeTextColor(textId);
+                                                            </script>
+
                                                         </div>
                                                     </div>
                                                     <div class="my-auto">
@@ -217,14 +222,14 @@
                                 <h3 class="altona-sans-12 mt-1">{{ $c->gear_category_name }}</h3>
                                 <div class="tab__blue grid-col-span-3">
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
-                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-general', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')"
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-general', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')"
                                         id="openByDefault-{{ $c->id }}">General</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
-                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-light', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Light</button>
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-light', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')">Light</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
-                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-med', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Med</button>
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-med', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')">Med</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
-                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-heavy', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link')">Heavy</button>
+                                        onclick="openTab(event, '{{ $c->gear_category_slug }}-heavy', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')">Heavy</button>
                                 </div>
                                 <div class="grid-col-span-2"></div>
                                 <div></div>

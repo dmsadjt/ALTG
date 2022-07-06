@@ -1,4 +1,4 @@
-function openTab(evt, tabStatus, content, links) {
+function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
     tab__content = document.getElementsByClassName(content);
@@ -11,7 +11,18 @@ function openTab(evt, tabStatus, content, links) {
         tab__links[i].className = tab__links[i].className.replace(" active", "");
     }
 
-    document.getElementById(tabStatus).style.display = "grid";
+    switch(style){
+        case 'grid':
+            document.getElementById(tabStatus).style.display = "grid";
+            break;
+        case 'flex':
+            document.getElementById(tabStatus).style.display = "flex";
+            break;
+        case 'block':
+            document.getElementById(tabStatus).style.display = "block";
+            break;
+    }
+
     evt.currentTarget.className += " active";
 }
 
@@ -265,6 +276,36 @@ function changeFactionTag(faction){
             divToChange.add('pill-tag--VD');
             divToChange.remove('pl-hd');
             break;
+    }
+
+}
+
+function changeTextColor(text){
+    const divToChange = document.getElementById(text).classList;
+
+    if(text == 'backline-any' || text == 'submarine-all' || text == 'vanguard-any'){
+        divToChange.add('text-color-any');
+        divToChange.remove('cl-hd');
+    }
+    else if(text == 'backline-flagship' || text == 'submarine-flagship'){
+        divToChange.add('text-color-flagship');
+        divToChange.remove('cl-hd');
+    }
+    else if(text == 'backline-off_flag' || text == 'submarine-off_flag'){
+        divToChange.add('text-color-offflag');
+        divToChange.remove('cl-hd');
+    }
+    else if(text == 'vanguard-mid' || text == 'vanguard-mid-offtank'){
+        divToChange.add('text-color-mid');
+        divToChange.remove('cl-hd');
+    }
+    else if(text == 'vanguard-tank' || text == 'vanguard-tank-off_tank' || text =='vanguard-tank-mid'){
+        divToChange.add('text-color-tank');
+        divToChange.remove('cl-hd');
+    }
+    else if(text == 'vanguard-offtank'){
+        divToChange.add('text-color-offtank');
+        divToChange.remove('cl-hd');
     }
 
 }

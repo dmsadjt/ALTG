@@ -121,10 +121,17 @@
                                     <td colspan="2">Preferred Position</td>
                                 </tr>
                                 <tr>
-                                    <td class="altona-font-18 align-end">
+                                    <td class="altona-font-18 align-end" >
                                         @foreach ($ships[$i]->positions as $p)
+                                        <span class="cl-hd" id="{{$p->position_slug}}">
                                             {{ $p->position_name }}
+                                        </span>
                                         @endforeach
+
+                                        <script>
+                                            textId = document.getElementsByClassName('cl-hd')[0].id;
+                                            changeTextColor(textId);
+                                        </script>
                                     </td>
                                     <td>
                                         @foreach ($ships[$i]->positions as $p)

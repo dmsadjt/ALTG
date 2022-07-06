@@ -18,10 +18,10 @@
                                 <span class="my-auto">Adaptability</span>
                                 <div class="tab my-auto">
                                     <button class="tab__links"
-                                        onclick="openTab(event, 'stronghold-none', 'tab__content', 'tab__links')"
+                                        onclick="openTab(event, 'stronghold-none', 'tab__content', 'tab__links','grid')"
                                         id="openByDefault">None</button>
                                     <button class="tab__links"
-                                        onclick="openTab(event, 'stronghold-full', 'tab__content', 'tab__links')">Full</button>
+                                        onclick="openTab(event, 'stronghold-full', 'tab__content', 'tab__links','grid')">Full</button>
                                 </div>
                             </div>
                         </div>
@@ -147,10 +147,10 @@
 
                                 <div class="tab my-auto">
                                     <button class="tab__links--2"
-                                        onclick="openTab(event, 'abyssal-none','tab__content--2','tab__links--2')"
+                                        onclick="openTab(event, 'abyssal-none','tab__content--2','tab__links--2','grid')"
                                         id="openByDefault2">None</button>
                                     <button class="tab__links--2"
-                                        onclick="openTab(event, 'abyssal-full','tab__content--2','tab__links--2')">Full</button>
+                                        onclick="openTab(event, 'abyssal-full','tab__content--2','tab__links--2','grid')">Full</button>
                                 </div>
                             </div>
 
@@ -278,10 +278,10 @@
                                 <span class="my-auto">Adaptability</span>
                                 <div class="tab my-auto">
                                     <button class="tab__links--3"
-                                        onclick="openTab(event, 'arbiter-none', 'tab__content--3','tab__links--3')"
+                                        onclick="openTab(event, 'arbiter-none', 'tab__content--3','tab__links--3','grid')"
                                         id="openByDefault3">None</button>
                                     <button class="tab__links--3"
-                                        onclick="openTab(event, 'arbiter-full', 'tab__content--3','tab__links--3')">Full</button>
+                                        onclick="openTab(event, 'arbiter-full', 'tab__content--3','tab__links--3','grid')">Full</button>
                                 </div>
                             </div>
 
@@ -295,10 +295,10 @@
 
                                 <div class="tab-inside my-auto ms-auto">
                                     <button class="tab-inside__links"
-                                        onclick="openTab(event,'arbiter-1-normal','tab-inside__content','tab-inside__links')"
+                                        onclick="openTab(event,'arbiter-1-normal','tab-inside__content','tab-inside__links','grid')"
                                         id="openDefault">Normal</button>
                                     <button class="tab-inside__links"
-                                        onclick="openTab(event,'arbiter-1-hard','tab-inside__content','tab-inside__links')">Hard</button>
+                                        onclick="openTab(event,'arbiter-1-hard','tab-inside__content','tab-inside__links','grid')">Hard</button>
                                 </div>
 
                                 <div>
@@ -395,10 +395,10 @@
 
                                 <div class="tab-inside my-auto ms-auto">
                                     <button class="tab-inside__links--2"
-                                        onclick="openTab(event,'arbiter-2-normal','tab-inside__content--2','tab-inside__links--2')"
+                                        onclick="openTab(event,'arbiter-2-normal','tab-inside__content--2','tab-inside__links--2','grid')"
                                         id="openDefault2">Normal</button>
                                     <button class="tab-inside__links--2"
-                                        onclick="openTab(event,'arbiter-2-hard','tab-inside__content--2','tab-inside__links--2')">Hard</button>
+                                        onclick="openTab(event,'arbiter-2-hard','tab-inside__content--2','tab-inside__links--2','grid')">Hard</button>
                                 </div>
 
                                 <div>
@@ -495,10 +495,10 @@
                                 </div>
                                 <div class="tab-inside my-auto ms-auto">
                                     <button class="tab-inside__links--3"
-                                        onclick="openTab(event,'arbiter-3-normal','tab-inside__content--3','tab-inside__links--3')"
+                                        onclick="openTab(event,'arbiter-3-normal','tab-inside__content--3','tab-inside__links--3','grid')"
                                         id="openDefault3">Normal</button>
                                     <button class="tab-inside__links--3"
-                                        onclick="openTab(event,'arbiter-3-hard','tab-inside__content--3','tab-inside__links--3')">Hard</button>
+                                        onclick="openTab(event,'arbiter-3-hard','tab-inside__content--3','tab-inside__links--3','grid')">Hard</button>
                                 </div>
 
                                 <div>
@@ -594,10 +594,10 @@
                                 </div>
                                 <div class="tab-inside my-auto ms-auto">
                                     <button class="tab-inside__links--4"
-                                        onclick="openTab(event,'arbiter-4-normal','tab-inside__content--4','tab-inside__links--4')"
+                                        onclick="openTab(event,'arbiter-4-normal','tab-inside__content--4','tab-inside__links--4','grid')"
                                         id="openDefault4">Normal</button>
                                     <button class="tab-inside__links--4"
-                                        onclick="openTab(event,'arbiter-4-hard','tab-inside__content--4','tab-inside__links--4')">Hard</button>
+                                        onclick="openTab(event,'arbiter-4-hard','tab-inside__content--4','tab-inside__links--4','grid')">Hard</button>
                                 </div>
 
                                 <div>
