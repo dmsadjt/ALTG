@@ -19,7 +19,7 @@ use App\Http\Controllers\SearchController;
 */
 
 
-Route::get('/dashboard', function () {
+Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 

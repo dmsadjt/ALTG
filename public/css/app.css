@@ -145,6 +145,22 @@ body {
     grid-template-columns: 1fr 5fr;
 }
 
+.columns-two__4-2 {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.columns-two__2-4 {
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+}
+
+.columns-two__2-6 {
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+}
+
+
 .columns-two__5-1 {
     display: grid;
     gap: 1rem;
@@ -366,6 +382,14 @@ td {
     color: var(--primary);
 }
 
+.nav-style-none{
+    list-style: none;
+}
+
+.ul-h-3{
+    line-height: 3em;
+}
+
 .brand-image {
     width: 5rem;
 }
@@ -406,6 +430,15 @@ td {
 .orange-btn:hover {
     box-shadow: inset 1px -1px 20px 3px var(--gray1);
     background-color: var(--orange-light);
+}
+
+.btn-none{
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.btn-none:hover, .btn-none:active{
+    border: 0.1em solid var(--white);
 }
 
 .button-square {
@@ -546,8 +579,23 @@ td {
     background-size: 100%;
 }
 
+.bg-enterprise{
+    background-image: url('../img/web-assets/web-bg.png');
+    background-repeat: no-repeat;
+    object-fit: fill;
+    background-size: auto 100%;
+}
+
+.bg-nav{
+    background-color: var(--nav_color);
+}
+
 ._100vh {
     height: calc(100vh - 80px);
+}
+
+._100vh-full {
+    height: 100vh;
 }
 
 .link-none,
