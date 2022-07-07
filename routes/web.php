@@ -1,8 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LandingController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SirenController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\SearchController;
@@ -18,6 +18,11 @@ use App\Http\Controllers\SearchController;
 |
 */
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
@@ -31,3 +36,5 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/results', [SearchController::class, 'search'])->name('search');
 
 Route::get('/blogs',[BlogController::class, 'index'])->name('blogs');
+
+require __DIR__.'/auth.php';

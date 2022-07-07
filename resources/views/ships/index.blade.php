@@ -83,7 +83,7 @@
                                                             @foreach ($factions as $f)
                                                                 <li>
                                                                     <input type="radio" class="filter-radio"
-                                                                        name="factions" id="{{ $f->faction_slug }}"
+                                                                        name="faction" id="{{ $f->faction_slug }}"
                                                                         value="{{ $f->faction_slug }}">
                                                                     <label for="{{ $f->faction_slug }}"
                                                                         class="filter-label rounded py-1 px-2"><img
