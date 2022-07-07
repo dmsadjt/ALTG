@@ -341,6 +341,7 @@ td {
     background-color: var(--nav_color);
     font-size: 24px;
     font-family: swiss721;
+    height: 80px;
 }
 
 .navbar-nav {
@@ -546,7 +547,7 @@ td {
 }
 
 ._100vh {
-    height: 50vh;
+    height: calc(100vh - 80px);
 }
 
 .link-none,
@@ -1100,4 +1101,5 @@ select {
     background-color: black;
     opacity: 1;
 }
+
 

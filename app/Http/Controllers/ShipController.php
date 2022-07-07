@@ -46,6 +46,7 @@ class ShipController extends Controller
 
     public function filter(Request $request, Ship $ship)
     {
+        // dd($request);
         $ship = $ship->newQuery();
 
         $roles = explode(',', $request->role);
@@ -68,18 +69,24 @@ class ShipController extends Controller
         }
 
         if($request->filled('rarity')){
-            $ship->where('rarity_slug', $request->rarity);
+            $ship->with(['rarity'])->whereHas('rarity', function ($q) use($request){
+            $q->where('rarity_slug', $request->rarity);
+            });
         }
 
         if($request->filled('faction')){
-            $ship->where('faction_slug', $request->faction);
+            $ship->with(['factions'])->whereHas('factions', function ($q) use($request){
+            $q->where('faction_slug', $request->faction);
+            });
         }
 
-        $ships = $ship->get();
+        $ships = $ship->paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+
+        // dd($ships);
 
         return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions'));
 

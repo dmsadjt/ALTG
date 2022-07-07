@@ -231,7 +231,7 @@
 
 
 
-
+                    {{$ships->links()}}
                 </div>
             </div>
         </div>

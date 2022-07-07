@@ -48,7 +48,7 @@
                         <a class="nav-link" href="/blogs">POST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SEARCH</a>
+                        <a class="nav-link" href="/search">SEARCH</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img class="navbar-image"
