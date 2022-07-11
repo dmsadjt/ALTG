@@ -21,6 +21,15 @@ use App\Http\Controllers\SearchController;
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/admin/ships', [AdminController::class, 'ships'])->middleware(['auth'])->name('ships');
+Route::get('/admin/sirens', [AdminController::class, 'sirens'])->middleware(['auth'])->name('sirens');
+Route::get('/admin/blogs', [AdminController::class, 'posts'])->middleware(['auth'])->name('posts');
+Route::get('/admin/factions', [AdminController::class, 'factions'])->middleware(['auth'])->name('factions');
+Route::get('/admin/archetypes', [AdminController::class, 'archetypes'])->middleware(['auth'])->name('archetypes');
+Route::get('/admin/roles', [AdminController::class, 'roles'])->middleware(['auth'])->name('roles');
+Route::get('/admin/positions', [AdminController::class, 'positions'])->middleware(['auth'])->name('positions');
+Route::get('/admin/gears', [AdminController::class, 'gears'])->middleware(['auth'])->name('gears');
+Route::get('/admin/hulls', [AdminController::class, 'hulls'])->middleware(['auth'])->name('hulls');
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
 

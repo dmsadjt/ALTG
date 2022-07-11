@@ -365,10 +365,14 @@ td {
     align-items: center;
 }
 
+
 .navbar-image {
     height: 3rem;
 }
 
+.overflow-x{
+    overflow-x: scroll;
+}
 
 .collapse {
     background-color: var(--nav_color);

@@ -360,7 +360,7 @@
                         <h2 class="altona-sans-18">Explanation</h2>
 
                         <p class="altona-sans-12">
-                            {{ $ship->explanation }}
+                            {{ $ship->notes }}
                         </p>
                     </div>
 

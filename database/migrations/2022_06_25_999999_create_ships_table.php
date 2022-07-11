@@ -19,13 +19,11 @@ class CreateShipsTable extends Migration
 
             $table->string('name');
             $table->bigInteger('hull_id');
-            $table->string('notes')->default('There are no notes yet');
+            $table->string('notes')->default('No explanations yet, stay tuned!');
             $table->bigInteger('faction_id');
             $table->bigInteger('rarity_id');
             $table->string('sprite')->default('no-sprite.png');
             $table->string('chibi_sprite')->default('no-sprite.png');
-            $table->string('explanation')->default('No explanations yet, stay tuned!');
-
 
         });
     }

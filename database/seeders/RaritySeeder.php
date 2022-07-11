@@ -36,10 +36,10 @@ class RaritySeeder extends Seeder
         ]);
 
         DB::table('rarities')->insert([
-            'rarity_name'=>'Specially Super Rare',
+            'rarity_name'=>'Super rare',
             'rarity_tag'=>'SR',
-            'rarity_slug'=>'specially-super-rare',
-            'rarity_image'=>'specially-super-rare.png',
+            'rarity_slug'=>'super-rare',
+            'rarity_image'=>'super-rare.png',
         ]);
 
         DB::table('rarities')->insert([

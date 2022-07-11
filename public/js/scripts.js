@@ -47,7 +47,7 @@ function changeFrame(rarity) {
             divToChange.remove('character-card');
             document.getElementById(rarity).id = rarity + ' ';
             break;
-        case 'specially-super-rare':
+        case 'super-rare':
             divToChange.add('character-card-sr');
             divToChange.remove('character-card');
             document.getElementById(rarity).id = rarity + ' ';

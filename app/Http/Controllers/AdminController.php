@@ -48,4 +48,60 @@ class AdminController extends Controller
             'totalHulls',
         ));
     }
+
+    public function ships(){
+        $ships = Ship::paginate(10);
+
+        return view('admin.ship.index', compact('ships'));
+
+    }
+
+    public function sirens(){
+        $siren = Siren::paginate(10);
+
+        return view('admin.siren.index', compact('siren'));
+
+    }
+
+    public function posts(){
+        $post = Post::paginate(10);
+
+        return view('admin.post.index', compact('post'));
+    }
+
+    public function factions(){
+        $factions = Faction::paginate(10);
+
+        return view('admin.faction.index', compact('factions'));
+    }
+
+    public function archetypes(){
+        $archetypes = Archetype::paginate(10);
+
+        return view('admin.archetype.index', compact('archetypes'));
+    }
+
+    public function roles(){
+        $roles = Roles::paginate(10);
+
+        return view('admin.role.index', compact('roles'));
+    }
+
+    public function positions(){
+        $positions = Position::paginate(10);
+
+        return view('admin.position.index', compact('positions'));
+    }
+
+    public function gears(){
+        $gears = Gear::paginate(10);
+
+        return view('admin.gear.index', compact('gears'));
+    }
+
+    public function hulls(){
+        $hulls = Hull::paginate(10);
+
+        return view('admin.hull.index', compact('hulls'));
+    }
 }
