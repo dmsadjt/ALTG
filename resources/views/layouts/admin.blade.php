@@ -24,13 +24,20 @@
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
     </script>
 
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand d-flex" href="/">
                 <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image align-text-middle"
                     alt="">
                 <span class="swiss-font-24 my-auto">ALTG</span>
             </a>
+
+            <div class="collapse navbar-collapse content" id="navbarSupportedContent">
+                <form action="/logout" method="POST">
+                    @csrf
+                    <input type="submit" value="Log-out">
+                </form>
+            </div>
         </div>
     </nav>
 
@@ -44,39 +51,40 @@
                 <div class="bg-nav d-grid">
                     <ul class="nav-style-none ul-h-3">
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/ships">Ships</a></button>
+                            <a class="link-none" href="/admin/ships"><button class="btn-none text-white w-100 text-start">Ships</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/sirens">Sirens</a></button>
+                            <a class="link-none" href="/admin/sirens"><button class="btn-none text-white w-100 text-start">Sirens</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/blogs">Posts</a></button>
+                            <a class="link-none" href="/admin/blogs"><button class="btn-none text-white w-100 text-start">Posts</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/factions">Factions</a></button>
+                            <a  class="link-none" href="/admin/factions"><button class="btn-none text-white w-100 text-start">Factions</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/archetypes">Archetypes</a></button>
+                            <a class="link-none" href="/admin/archetypes"><button class="btn-none text-white w-100 text-start">Archetypes</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/roles">Roles</a></button>
+                            <a class="link-none" href="/admin/roles"><button class="btn-none text-white w-100 text-start">Roles</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/positions">Positions</a></button>
+                            <a class="link-none" href="/admin/positions"><button class="btn-none text-white w-100 text-start">Positions</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/gears">Gears</a></button>
+                            <a class="link-none" href="/admin/gears"><button class="btn-none text-white w-100 text-start">Gears</button></a>
                         </li>
                         <li>
-                            <button class="btn-none text-white w-100 text-start"><a class="link-none" href="/admin/hulls">Hulls</a></button>
+                            <a class="link-none" href="/admin/hulls"><button class="btn-none text-white w-100 text-start">Hulls</button></a>
                         </li>
                     </ul>
 
                 </div>
+                <div class="text-white">
+                    @yield('contents')
+                </div>
             </div>
-            <div>
-                @yield('contents')
-            </div>
+
         </section>
     </main>
 

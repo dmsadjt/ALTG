@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LandingController;
@@ -19,9 +20,7 @@ use App\Http\Controllers\SearchController;
 */
 
 
-Route::get('/admin/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
