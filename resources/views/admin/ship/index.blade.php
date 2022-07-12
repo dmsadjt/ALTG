@@ -7,7 +7,7 @@
             <p class="altona-sans-12">Manage the ships</p>
         </div>
         <div class="ms-auto mt-auto">
-            <a href="/ships/add"><button class="btn btn-primary">Add ships</button></a>
+            <a href="ships/add"><button class="btn btn-primary">Add ships</button></a>
         </div>
     </div>
     <div class="m-3 overflow-x">

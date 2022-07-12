@@ -19,7 +19,7 @@ use App\Http\Controllers\SearchController;
 |
 */
 
-
+//get views
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/admin/ships', [AdminController::class, 'ships'])->middleware(['auth'])->name('ships');
 Route::get('/admin/sirens', [AdminController::class, 'sirens'])->middleware(['auth'])->name('sirens');
@@ -30,6 +30,13 @@ Route::get('/admin/roles', [AdminController::class, 'roles'])->middleware(['auth
 Route::get('/admin/positions', [AdminController::class, 'positions'])->middleware(['auth'])->name('positions');
 Route::get('/admin/gears', [AdminController::class, 'gears'])->middleware(['auth'])->name('gears');
 Route::get('/admin/hulls', [AdminController::class, 'hulls'])->middleware(['auth'])->name('hulls');
+
+//add views
+Route::get('/admin/ships/add', [AdminController::class, 'addShips'])->middleware(['auth'])->name('add');
+
+
+//post
+Route::post('/admin/ships/post', [AdminController::class, 'postShip'])->middleware(['auth'])->name('post');
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
 

@@ -9,10 +9,13 @@
 
 
     <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/scripts.js" type="text/javascript"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="/js/scripts.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -51,31 +54,40 @@
                 <div class="bg-nav d-grid">
                     <ul class="nav-style-none ul-h-3">
                         <li>
-                            <a class="link-none" href="/admin/ships"><button class="btn-none text-white w-100 text-start">Ships</button></a>
+                            <a class="link-none" href="/admin/ships"><button
+                                    class="btn-none text-white w-100 text-start">Ships</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/sirens"><button class="btn-none text-white w-100 text-start">Sirens</button></a>
+                            <a class="link-none" href="/admin/sirens"><button
+                                    class="btn-none text-white w-100 text-start">Sirens</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/blogs"><button class="btn-none text-white w-100 text-start">Posts</button></a>
+                            <a class="link-none" href="/admin/blogs"><button
+                                    class="btn-none text-white w-100 text-start">Posts</button></a>
                         </li>
                         <li>
-                            <a  class="link-none" href="/admin/factions"><button class="btn-none text-white w-100 text-start">Factions</button></a>
+                            <a class="link-none" href="/admin/factions"><button
+                                    class="btn-none text-white w-100 text-start">Factions</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/archetypes"><button class="btn-none text-white w-100 text-start">Archetypes</button></a>
+                            <a class="link-none" href="/admin/archetypes"><button
+                                    class="btn-none text-white w-100 text-start">Archetypes</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/roles"><button class="btn-none text-white w-100 text-start">Roles</button></a>
+                            <a class="link-none" href="/admin/roles"><button
+                                    class="btn-none text-white w-100 text-start">Roles</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/positions"><button class="btn-none text-white w-100 text-start">Positions</button></a>
+                            <a class="link-none" href="/admin/positions"><button
+                                    class="btn-none text-white w-100 text-start">Positions</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/gears"><button class="btn-none text-white w-100 text-start">Gears</button></a>
+                            <a class="link-none" href="/admin/gears"><button
+                                    class="btn-none text-white w-100 text-start">Gears</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/hulls"><button class="btn-none text-white w-100 text-start">Hulls</button></a>
+                            <a class="link-none" href="/admin/hulls"><button
+                                    class="btn-none text-white w-100 text-start">Hulls</button></a>
                         </li>
                     </ul>
 

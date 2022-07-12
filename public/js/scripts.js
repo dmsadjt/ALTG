@@ -1,3 +1,4 @@
+
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
@@ -27,6 +28,10 @@ function openTab(evt, tabStatus, content, links, style) {
 }
 
 const cardId = [];
+
+function test(){
+    $("#title").append("Hi");
+}
 
 function changeFrame(rarity) {
     const divToChange = document.getElementById(rarity).classList;
@@ -309,3 +314,10 @@ function changeTextColor(text){
     }
 
 }
+
+
+function displaySelect(select, counter){
+    $("#"+select+counter).show();
+}
+
+

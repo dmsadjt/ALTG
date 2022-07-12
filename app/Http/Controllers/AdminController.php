@@ -13,6 +13,7 @@ use App\Models\Roles;
 use App\Models\Position;
 use App\Models\Gear;
 use App\Models\Hull;
+use App\Models\Rarity;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -56,8 +57,30 @@ class AdminController extends Controller
 
     }
 
+    public function addShips(){
+        $hulls = Hull::all();
+        $rarities = Rarity::all();
+        $positions = Position::all();
+        $roles = Roles::all();
+        $archetypes = Archetype::all();
+
+        return view('admin.ship.add', compact(
+            'hulls',
+            'rarities',
+            'positions',
+            'roles',
+            'archetypes',
+        ));
+    }
+
+    public function postShip(Request $request){
+        dd($request);
+    }
+
+
     public function sirens(){
         $siren = Siren::paginate(10);
+
 
         return view('admin.siren.index', compact('siren'));
 
