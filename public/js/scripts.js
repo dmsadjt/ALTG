@@ -29,9 +29,6 @@ function openTab(evt, tabStatus, content, links, style) {
 
 const cardId = [];
 
-function test(){
-    $("#title").append("Hi");
-}
 
 function changeFrame(rarity) {
     const divToChange = document.getElementById(rarity).classList;

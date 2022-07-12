@@ -12,6 +12,7 @@ use App\Models\Archetype;
 use App\Models\Roles;
 use App\Models\Position;
 use App\Models\Gear;
+use App\Models\GearCategory;
 use App\Models\Hull;
 use App\Models\Rarity;
 use Illuminate\Support\Facades\Auth;
@@ -63,6 +64,9 @@ class AdminController extends Controller
         $positions = Position::all();
         $roles = Roles::all();
         $archetypes = Archetype::all();
+        $factions = Faction::all();
+        $gears = Gear::all();
+        $gear_category = GearCategory::all();
 
         return view('admin.ship.add', compact(
             'hulls',
@@ -70,11 +74,22 @@ class AdminController extends Controller
             'positions',
             'roles',
             'archetypes',
+            'factions',
+            'gears',
+            'gear_category',
         ));
     }
 
     public function postShip(Request $request){
-        dd($request);
+        $ship = new Ship;
+        $ship->name = $request->name;
+        $ship->hull_id = $request->hull;
+        $ship->faction_id = $request->faction;
+        $ship->rarity_id = $request->rarity;
+        $ship->save();
+
+        dd($ship);
+
     }
 
 

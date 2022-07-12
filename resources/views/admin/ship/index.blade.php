@@ -27,6 +27,7 @@
                             <th scope="col">Sprite</th>
                             <th scope="col">Chibi Sprite</th>
                             <th scope="col">Notes</th>
+                            <th scope="col">Scores</th>
                         </tr>
                     </thead>
                     <tbody >
@@ -81,6 +82,18 @@
                                 <td><a class="altona-sans-10" href="/img/ships/sprites/{{$s->sprite}}">{{ $s->sprite }}</a></td>
                                 <td><a class="altona-sans-10" href="/img/ships/chibi/{{$s->chibi_sprite}}">{{ $s->chibi_sprite }}</a></td>
                                 <td class="altona-sans-10">{{ $s->notes }}</td>
+                                <td class="altona-sans-10" style="width: 5em;">
+                                    <ul class="nav-style-none m-0 p-0">
+                                        <li>Mob</li>
+                                        <li>9-11 : {{$s->mobScore->mob_9_11}}</li>
+                                        <li>12-13 :{{$s->mobScore->mob_12_13}}</li>
+                                        <li>14 : {{$s->mobScore->mob_14}}</li>
+                                        <li>Boss</li>
+                                        <li>9-11 : {{$s->bossScore->boss_9_11}}</li>
+                                        <li>12-13 :{{$s->bossScore->boss_12_13}}</li>
+                                        <li>14 : {{$s->bossScore->boss_14}}</li>
+                                    </ul>
+                                </td>
                             </tr>
                         @endforeach
 
