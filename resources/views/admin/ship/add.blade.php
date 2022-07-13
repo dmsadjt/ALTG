@@ -20,17 +20,22 @@
                 roleCounter++;
             })
 
-
-            for (i=1; i<16;i++){
-                $("#sgear-"+i).hide();
-                $("#scategory-"+i).hide();
-            }
-
         })
     </script>
     <div class="d-grid pill-dark p-2 m-3">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <h1 class="mx-5">Add Ships</h1>
-        <form action="/admin/ships/post" class="mx-5 p-1" method="POST">
+        <form action="/admin/ships/post" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @csrf
             <h2>General data</h2>
             <div>
@@ -85,12 +90,35 @@
                 <textarea class="form-control" name="notes" id="" cols="30" rows="10"></textarea>
             </div>
 
+            {{-- Skills --}}
+            <h2 class="my-3">Skill</h2>
+            <div>
+                @for ($i = 0; $i < 3; $i++)
+                    <div class="columns-three">
+                        <div class="mb-2">
+                            <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{$i+1}} name</label>
+                            <input class="form-control" type="text" name="skillname-{{ $i + 1 }}" id="skillname-{{ $i + 1 }}">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill {{$i+1}}  priority</label>
+                            <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
+                                id="skillpriority-{{ $i + 1 }}">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{$i+1}}  image</label>
+                            <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}" id="skillimg-{{ $i + 1 }}">
+                        </div>
+                    </div>
+                @endfor
+            </div>
+
+
             {{-- archetypes --}}
             <h2 class="my-3">Archetype</h2>
             <div>
                 <label class="form-label" for="archetype">Archetype</label>
                 <div class="columns-two">
-                    <select class="form-select" name="archetype" id="archetype">
+                    <select class="form-select" name="archetype1" id="archetype">
                         <option value="" selected>Select Archetype</option>
                         @foreach ($archetypes as $r)
                             <option value="{{ $r->id }}">{{ $r->archetype_name }}</option>
@@ -152,7 +180,7 @@
             <div>
                 <label class="form-label" for="role">role</label>
                 <div class="columns-two">
-                    <select class="form-select" name="role" id="role">
+                    <select class="form-select" name="role1" id="role">
                         <option value="" selected>Select Roles</option>
                         @foreach ($roles as $r)
                             <option value="{{ $r->id }}">{{ $r->role_name }}</option>
@@ -243,41 +271,61 @@
 
 
             {{-- gears --}}
-            <h2>Gears</h2>
+            <h2 class="mt-3">Gears</h2>
             <div>
                 @foreach ($gear_category as $g)
-                    <h3>{{ $g->gear_category_name }}</h3>
+                    <div class="accordion text-black-50" id="accordionGear">
 
-                    <div class="columns-two">
-                        @for ($i = 0; $i < 15; $i++)
-                            <div id="sgear-{{$i}}">
-                                <select name="gear-{{$i}}" id="{{$g->gear_category_slug}}-gear-{{$i}}" class="form-select">
-                                        <option value="" selected>Select Gear</option>
-                                    @foreach ($gears as $s)
-                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="accordion-item altona-sans-10">
+                            <h3 class="accordion-header" id="heading-{{ $g->id }}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse-{{ $g->id }}" aria-expanded="true"
+                                    aria-controls="collapse-{{ $g->id }}">
+                                    {{ $g->gear_category_name }}
+                                </button>
+                            </h3>
+                            <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
+                                aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
+                                <div class="columns-two accordion-body bg-white">
+                                    @for ($i = 0; $i < 15; $i++)
+                                        <div>
+                                            <label class="form-label"
+                                                for="{{ $g->id }}-gear-{{ $i }}">Gear
+                                                {{ $i + 1 }}</label>
+                                            <select name="{{ $g->id }}-gear-{{ $i }}"
+                                                id="{{ $g->id }}-gear-{{ $i }}" class="form-select">
+                                                <option value="" selected>Select Gear</option>
+                                                @foreach ($gears as $s)
+                                                    <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="form-label"
+                                                for="{{ $g->id }}-category-{{ $i }}">Gear
+                                                Category {{ $i + 1 }}</label>
+                                            <select class="form-select"
+                                                name="{{ $g->id }}-category-{{ $i }}"
+                                                id="{{ $g->id }}-category-{{ $i }}">
+                                                <option value="" selected>Select Gear Category</option>
+                                                <option value="General">General</option>
+                                                <option value="Light">Light</option>
+                                                <option value="Med">Med</option>
+                                                <option value="Heavy">Heavy</option>
+                                            </select>
+                                        </div>
+                                    @endfor
+                                </div>
                             </div>
-                            <div id="scategory-{{$i}}">
-                                <select class="form-select" name="{{$g->gear_category_slug}}-category-{{$i}}" id="category-{{$i}}">
-                                    <option value="" selected>Select Gear Category</option>
-                                    <option value="General">General</option>
-                                    <option value="Light">Light</option>
-                                    <option value="Med">Med</option>
-                                    <option value="Heavy">Heavy</option>
-                                </select>
-                            </div>
-                        @endfor
+                        </div>
                     </div>
 
                 @endforeach
             </div>
 
-
-
-
-
-            <div><input type="submit" value="Add ship"></div>
+            <div class="d-grid">
+                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add ship">
+            </div>
         </form>
     </div>
 @endsection

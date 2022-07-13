@@ -19,7 +19,7 @@ class ShipGears extends Migration
 
             $table->integer('ship_id');
             $table->integer('gear_id');
-            $table->string('gear_category');
+            $table->string('gear_category')->default('General');
         });
     }
 

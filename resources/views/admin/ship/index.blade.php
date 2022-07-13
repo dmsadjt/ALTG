@@ -24,6 +24,7 @@
                             <th scope="col">Roles</th>
                             <th scope="col">Archetypes</th>
                             <th scope="col">Gears</th>
+                            <th scope="col">Skills</th>
                             <th scope="col">Sprite</th>
                             <th scope="col">Chibi Sprite</th>
                             <th scope="col">Notes</th>
@@ -77,6 +78,14 @@
                                         @endforeach
                                     </ul>
 
+                                </td>
+
+                                <td class="altona-sans-10" style="width: 10em;">
+                                    <ul class="nav-style-none  m-0 p-0">
+                                        @foreach ($s->skill as $g)
+                                            <li>{{ $g->skill_name }}</li>
+                                        @endforeach
+                                    </ul>
                                 </td>
 
                                 <td><a class="altona-sans-10" href="/img/ships/sprites/{{$s->sprite}}">{{ $s->sprite }}</a></td>

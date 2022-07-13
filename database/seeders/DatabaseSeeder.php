@@ -38,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ShipGear::class);
         $this->call(CategorySeeder::class);
         $this->call(RoleFactionSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
