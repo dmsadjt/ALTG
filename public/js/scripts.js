@@ -12,7 +12,7 @@ function openTab(evt, tabStatus, content, links, style) {
         tab__links[i].className = tab__links[i].className.replace(" active", "");
     }
 
-    switch(style){
+    switch (style) {
         case 'grid':
             document.getElementById(tabStatus).style.display = "grid";
             break;
@@ -188,57 +188,62 @@ function evaluateSkills(a, b, eval) {
         if (a > b) {
             evaluator.innerHTML = '<';
         }
-        else if (a == b){
+        else if (a == b) {
             evaluator.innerHTML = '=';
         }
     }
 
 }
 
-function displayItem(divId){
+function displayItem(divId) {
     const divToChange = document.getElementById(divId).classList;
-    divToChange.remove('d-none');
+    if (divToChange.contains('d-none')) {
+        divToChange.remove('d-none');
+    }
 }
 
 function changeGear(rarity) {
     const divToChange = document.getElementById(rarity).classList;
 
-    switch (rarity) {
-        case 'n':
-            divToChange.add('gear-n');
-            divToChange.remove('pl-hd');
-            document.getElementById(rarity).id = rarity + ' ';
-            break;
+    if (divToChange.contains('pl-hd')) {
+        switch (rarity) {
+            case 'n':
+                divToChange.add('gear-n');
+                divToChange.remove('pl-hd');
+                document.getElementById(rarity).id = rarity + ' ';
+                break;
 
-        case 'e':
-            divToChange.add('gear-e');
-            divToChange.remove('pl-hd');
-            document.getElementById(rarity).id = rarity + ' ';
-            break;
+            case 'e':
+                divToChange.add('gear-e');
+                divToChange.remove('pl-hd');
+                document.getElementById(rarity).id = rarity + ' ';
+                break;
 
-        case 'r':
-            divToChange.add('gear-r');
-            divToChange.remove('pl-hd');
-            document.getElementById(rarity).id = rarity + ' ';
-            break;
+            case 'r':
+                divToChange.add('gear-r');
+                divToChange.remove('pl-hd');
+                document.getElementById(rarity).id = rarity + ' ';
+                break;
 
-        case 'sr':
-            divToChange.add('gear-sr');
-            divToChange.remove('pl-hd');
-            document.getElementById(rarity).id = rarity + ' ';
-            break;
+            case 'sr':
+                divToChange.add('gear-sr');
+                divToChange.remove('pl-hd');
+                document.getElementById(rarity).id = rarity + ' ';
+                break;
 
-        case 'ur':
-            divToChange.add('gear-ur');
-            divToChange.remove('pl-hd');
-            document.getElementById(rarity).id = rarity + ' ';
-            break;
+            case 'ur':
+                divToChange.add('gear-ur');
+                divToChange.remove('pl-hd');
+                document.getElementById(rarity).id = rarity + ' ';
+                break;
 
+        }
     }
+
 
 }
 
-function changeFactionTag(faction){
+function changeFactionTag(faction) {
     const divToChange = document.getElementById(faction).classList;
 
     switch (faction) {
@@ -282,30 +287,30 @@ function changeFactionTag(faction){
 
 }
 
-function changeTextColor(text){
+function changeTextColor(text) {
     const divToChange = document.getElementById(text).classList;
 
-    if(text == 'backline-any' || text == 'submarine-all' || text == 'vanguard-any'){
+    if (text == 'backline-any' || text == 'submarine-all' || text == 'vanguard-any') {
         divToChange.add('text-color-any');
         divToChange.remove('cl-hd');
     }
-    else if(text == 'backline-flagship' || text == 'submarine-flagship'){
+    else if (text == 'backline-flagship' || text == 'submarine-flagship') {
         divToChange.add('text-color-flagship');
         divToChange.remove('cl-hd');
     }
-    else if(text == 'backline-off_flag' || text == 'submarine-off_flag'){
+    else if (text == 'backline-off_flag' || text == 'submarine-off_flag') {
         divToChange.add('text-color-offflag');
         divToChange.remove('cl-hd');
     }
-    else if(text == 'vanguard-mid' || text == 'vanguard-mid-offtank'){
+    else if (text == 'vanguard-mid' || text == 'vanguard-mid-offtank') {
         divToChange.add('text-color-mid');
         divToChange.remove('cl-hd');
     }
-    else if(text == 'vanguard-tank' || text == 'vanguard-tank-off_tank' || text =='vanguard-tank-mid'){
+    else if (text == 'vanguard-tank' || text == 'vanguard-tank-off_tank' || text == 'vanguard-tank-mid') {
         divToChange.add('text-color-tank');
         divToChange.remove('cl-hd');
     }
-    else if(text == 'vanguard-offtank'){
+    else if (text == 'vanguard-offtank') {
         divToChange.add('text-color-offtank');
         divToChange.remove('cl-hd');
     }
@@ -313,8 +318,8 @@ function changeTextColor(text){
 }
 
 
-function displaySelect(select, counter){
-    $("#"+select+counter).show();
+function displaySelect(select, counter) {
+    $("#" + select + counter).show();
 }
 
 

@@ -296,7 +296,9 @@
                                                 id="{{ $g->id }}-gear-{{ $i }}" class="form-select">
                                                 <option value="" selected>Select Gear</option>
                                                 @foreach ($gears as $s)
-                                                    <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
+                                                    @if ($s->gear_type == $g->id)
+                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -310,7 +312,7 @@
                                                 <option value="" selected>Select Gear Category</option>
                                                 <option value="General">General</option>
                                                 <option value="Light">Light</option>
-                                                <option value="Med">Med</option>
+                                                <option value="Medium">Med</option>
                                                 <option value="Heavy">Heavy</option>
                                             </select>
                                         </div>

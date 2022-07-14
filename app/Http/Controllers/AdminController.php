@@ -252,12 +252,10 @@ class AdminController extends Controller
 
         foreach ($cate as $c) {
             for ($j = 0; $j < 15; $j++) {
-                if (strval($c->id) . '-gear-' . strval($j) != null) {
-                    if (strval($c->id) . '-category-' . strval($j) != null) {
-                        $ship->gears()->attach($shipdata[strval($c->id) . '-gear-' . strval($j)], ['gear_category' => $shipdata[strval($c->id) . '-category-' . strval($j)]]);
-                    } else if (strval($c->id) . '-category-' . strval($j) == null) {
-                        $ship->gears()->attach($shipdata[strval($c->id) . '-gear-' . strval($j)], ['gear_category' => 'General']);
-                    }
+                if ($shipdata[strval($c->id) . '-gear-' . strval($j)] != null) {
+                    $info = $shipdata[strval($c->id) . '-gear-' . strval($j)];
+                    $data = $shipdata[strval($c->id) . '-category-' . strval($j)] != null ? $shipdata[strval($c->id) . '-category-' . strval($j)] : 'General';
+                    $ship->gears()->attach($info, ['gear_category' => $data]);
                 } else continue;
             }
         }
