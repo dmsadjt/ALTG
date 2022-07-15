@@ -34,9 +34,15 @@ Route::get('/admin/hulls', [AdminController::class, 'hulls'])->middleware(['auth
 //add views
 Route::get('/admin/ships/add', [AdminController::class, 'addShips'])->middleware(['auth'])->name('add');
 
+//edit views
+Route::get('/admin/ships/edit/{id}', [AdminController::class, 'editShip'])->middleware(['auth'])->name('edit');
 
 //post
 Route::post('/admin/ships/post', [AdminController::class, 'postShip'])->middleware(['auth'])->name('post');
+
+//delete
+Route::get('/admin/ships/delete/{id}', [AdminController::class, 'deleteShip'])->middleware(['auth'])->name('delete');
+
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
 

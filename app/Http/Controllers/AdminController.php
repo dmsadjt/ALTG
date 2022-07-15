@@ -260,12 +260,83 @@ class AdminController extends Controller
             }
         }
 
-
         $ship->save();
 
         return redirect('admin/ships');
     }
 
+    public function editShip($id)
+    {
+
+        $hulls = Hull::all();
+        $rarities = Rarity::all();
+        $positions = Position::all();
+        $roles = Roles::all();
+        $archetypes = Archetype::all();
+        $factions = Faction::all();
+        $gears = Gear::all();
+        $gear_category = GearCategory::all();
+
+        $ship = Ship::where('id', $id)->get();
+
+        foreach ($ship as $s) {
+            $selected['hull'] = $s->hull_id;
+            $selected['rarity'] = $s->rarity_id;
+            foreach ($s->positions as $p) {
+                $selected['position'] = $p->id;
+            }
+
+            for ($i = 0; $i < 5; $i++) {
+                $selected['archetype' . ($i + 1)] = '';
+                $selected['role' . ($i + 1)] = '';
+            }
+
+            foreach ($s->archetypes as $key => $a) {
+                $selected['archetype' . ($key + 1)] = $a->id;
+            }
+
+            foreach ($s->roles as $key => $r) {
+                $selected['role' . ($key + 1)] = $r->id;
+            }
+
+            $selected['faction'] = $s->faction_id;
+
+            foreach ($gear_category as $c) {
+                for ($j = 1; $j < 16; $j++) {
+                    $selected[$c->id.'-gear-'.$j] = '';
+                    $selected[$c->id.'-category-'.$j] = '';
+                }
+            }
+
+            foreach ($s->gears as $key=>$g){
+                $selected[$g->gear_type.'-gear-'.($key+1)] = $g->id;
+                $selected[$g->gear_type.'-category-'.($key+1)] = $g->pivot->gear_category;
+            }
+
+
+        }
+        dd($selected);
+
+        return view('admin.ship.edit', compact([
+            'ship',
+            'selected',
+            'hulls',
+            'rarities',
+            'positions',
+            'roles',
+            'archetypes',
+            'factions',
+            'gears',
+            'gear_category',
+        ]));
+    }
+
+    public function deleteShip($id)
+    {
+        Ship::where('id', '=', $id)->delete();
+
+        return redirect('admin/ships');
+    }
 
     public function sirens()
     {

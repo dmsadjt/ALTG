@@ -1022,7 +1022,7 @@ td {
     align-content: center;
 
     background-image: url('../img/rarity/background/ur.png');
-    object-fit: cover;
+    object-fit: contain;
     background-size: 100% 100%;
 }
 
