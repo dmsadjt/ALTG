@@ -9,6 +9,14 @@ class Ship extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'hull_id',
+        'notes',
+        'faction_id',
+        'rarity_id',
+    ];
+
     protected $table = 'ships';
 
     public function positions(){

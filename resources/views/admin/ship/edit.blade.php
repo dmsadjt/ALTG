@@ -1,27 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Add Ships')
 @section('contents')
-    <script>
-        $(document).ready(function() {
-            // let archetypeCounter = 2;
-            // let roleCounter = 2;
-            // // for (i = 2; i < 6; i++) {
-            // //     $("#archetype" + i).hide();
-            // //     $("#role" + i).hide();
-            // // }
-
-            // // $("#appendArc").click(function() {
-            // //     displaySelect('archetype', archetypeCounter);
-            // //     archetypeCounter++;
-            // // })
-
-            // // $("#appendRole").click(function() {
-            // //     displaySelect('role', roleCounter);
-            // //     roleCounter++;
-            // // })
-
-        })
-    </script>
     <div class="d-grid pill-dark p-2 m-3">
 
         @if ($errors->any())
@@ -35,18 +14,21 @@
         @endif
 
         <h1 class="mx-5">Add Ships</h1>
-        <form action="/admin/ships/post" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
+        <form action="/admin/ships/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @foreach ($ship as $s)
                 <h2>General data</h2>
+                <input type="hidden" name="id" value={{ $s->id }}>
                 <div>
                     <label class="form-label" for="name">Ship Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value={{$s->name}} required>
+                    <input class="form-control" type="text" name="name" id="name" value={{ $s->name }}
+                        required>
                 </div>
                 <div>
                     <label class="form-label" for="hull">Hull type</label>
                     <select class="form-select" name="hull" id="hull" selected="3">
                         @foreach ($hulls as $h)
-                            <option value="{{ $h->id }}" {{$h->id == $selected['hull'] ? 'selected':''}} >{{ $h->hull_name }}</option>
+                            <option value="{{ $h->id }}" {{ $h->id == $selected['hull'] ? 'selected' : '' }}>
+                                {{ $h->hull_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -54,7 +36,8 @@
                     <label class="form-label" for="rarity">Rarity</label>
                     <select class="form-select" class="form-select" name="rarity" id="rarity">
                         @foreach ($rarities as $r)
-                            <option value="{{ $r->id }}" {{$r->id == $selected['rarity'] ? 'selected':'' }} >{{ $r->rarity_name }}</option>
+                            <option value="{{ $r->id }}" {{ $r->id == $selected['rarity'] ? 'selected' : '' }}>
+                                {{ $r->rarity_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -62,7 +45,8 @@
                     <label class="form-label" for="position">Position</label>
                     <select class="form-select" name="position" id="position">
                         @foreach ($positions as $r)
-                            <option value="{{ $r->id }}" {{$r->id == $selected['position'] ? 'selected':'' }}>{{ $r->position_name }}</option>
+                            <option value="{{ $r->id }}" {{ $r->id == $selected['position'] ? 'selected' : '' }}>
+                                {{ $r->position_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -71,7 +55,8 @@
                     <label class="form-label" for="faction">Faction</label>
                     <select class="form-select" name="faction" id="faction">
                         @foreach ($factions as $r)
-                            <option value="{{ $r->id }}" {{$r->id == $selected['faction'] ? 'selected':'' }} >{{ $r->faction_name }}</option>
+                            <option value="{{ $r->id }}" {{ $r->id == $selected['faction'] ? 'selected' : '' }}>
+                                {{ $r->faction_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -87,7 +72,7 @@
 
                 <div>
                     <label class="form-label" for="notes">Notes</label>
-                    <textarea class="form-control" name="notes" id="" cols="30" rows="10" >{{$s->notes}}</textarea>
+                    <textarea class="form-control" name="notes" id="" cols="30" rows="10">{{ $s->notes }}</textarea>
                 </div>
 
                 {{-- Skills --}}
@@ -101,13 +86,13 @@
                                 <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{ $i + 1 }}
                                     name</label>
                                 <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
-                                    id="skillname-{{ $i + 1 }}" value="{{$s->skill[$i]->skill_name}}">
+                                    id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]->skill_name }}">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
                                     {{ $i + 1 }} priority</label>
                                 <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
-                                    id="skillpriority-{{ $i + 1 }}" value="{{$s->skill[$i]->skill_priority}}">
+                                    id="skillpriority-{{ $i + 1 }}" value="{{ $s->skill[$i]->skill_priority }}">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
@@ -128,7 +113,9 @@
                         <select class="form-select" name="archetype1" id="archetype">
                             <option value="" selected>Select Archetype</option>
                             @foreach ($archetypes as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['archetype1'] ? 'selected':''}} >{{ $r->archetype_name }}</option>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['archetype1'] ? 'selected' : '' }}>{{ $r->archetype_name }}
+                                </option>
                             @endforeach
                         </select>
                         <div class="btn btn-primary w-50" disabled id="appendArc">Add another Archetype</div>
@@ -142,7 +129,9 @@
                         <select class="form-select" name="archetype2" id="archetype2">
                             <option value="" selected>Select Archetype</option>
                             @foreach ($archetypes as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['archetype2'] ? 'selected':''}} >{{ $r->archetype_name }}</option>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['archetype2'] ? 'selected' : '' }}>{{ $r->archetype_name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -153,7 +142,9 @@
                         <select class="form-select" name="archetype3" id="archetype3">
                             <option value="" selected>Select Archetype</option>
                             @foreach ($archetypes as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['archetype3'] ? 'selected':''}} >{{ $r->archetype_name }}</option>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['archetype3'] ? 'selected' : '' }}>{{ $r->archetype_name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -164,7 +155,9 @@
                         <select class="form-select" name="archetype4" id="archetype4">
                             <option value="" selected>Select Archetype</option>
                             @foreach ($archetypes as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['archetype4'] ? 'selected':''}} >{{ $r->archetype_name }}</option>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['archetype4'] ? 'selected' : '' }}>{{ $r->archetype_name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -175,7 +168,9 @@
                         <select class="form-select" name="archetype5" id="archetype5">
                             <option value="" selected>Select Archetype</option>
                             @foreach ($archetypes as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['archetype5'] ? 'selected':''}} >{{ $r->archetype_name }}</option>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['archetype5'] ? 'selected' : '' }}>{{ $r->archetype_name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -190,7 +185,8 @@
                         <select class="form-select" name="role1" id="role">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['role1'] ? 'selected':''}} >{{ $r->role_name }}</option>
+                                <option value="{{ $r->id }}" {{ $r->id == $selected['role1'] ? 'selected' : '' }}>
+                                    {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                         <div class="btn btn-primary w-50" id="appendRole" disabled>Add another Role</div>
@@ -203,7 +199,8 @@
                         <select class="form-select" name="role2" id="role2">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['role2'] ? 'selected':''}} >{{ $r->role_name }}</option>
+                                <option value="{{ $r->id }}" {{ $r->id == $selected['role2'] ? 'selected' : '' }}>
+                                    {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -214,7 +211,8 @@
                         <select class="form-select" name="role3" id="role3">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['role3'] ? 'selected':''}} >{{ $r->role_name }}</option>
+                                <option value="{{ $r->id }}" {{ $r->id == $selected['role3'] ? 'selected' : '' }}>
+                                    {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -225,7 +223,8 @@
                         <select class="form-select" name="role4" id="role4">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['role4'] ? 'selected':''}} >{{ $r->role_name }}</option>
+                                <option value="{{ $r->id }}" {{ $r->id == $selected['role4'] ? 'selected' : '' }}>
+                                    {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -236,7 +235,8 @@
                         <select class="form-select" name="role5" id="role5">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{$r->id == $selected['role5'] ? 'selected':''}} >{{ $r->role_name }}</option>
+                                <option value="{{ $r->id }}" {{ $r->id == $selected['role5'] ? 'selected' : '' }}>
+                                    {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -248,15 +248,18 @@
                 <div class="columns-three">
                     <div>
                         <label class="form-label" for="mob1">9-11</label>
-                        <input class="form-control" type="number" name="mob1" id="mob1" value="{{$s->mobScore->mob_9_11}}">
+                        <input class="form-control" type="number" name="mob1" id="mob1"
+                            value="{{ $s->mobScore->mob_9_11 }}">
                     </div>
                     <div>
                         <label class="form-label" for="mob1">12-13</label>
-                        <input class="form-control" type="number" name="mob2" id="mob2" value="{{$s->mobScore->mob_12_13}}">
+                        <input class="form-control" type="number" name="mob2" id="mob2"
+                            value="{{ $s->mobScore->mob_12_13 }}">
                     </div>
                     <div>
                         <label class="form-label" for="mob1">14</label>
-                        <input class="form-control" type="number" name="mob3" id="mob3" value="{{$s->mobScore->mob_14}}">
+                        <input class="form-control" type="number" name="mob3" id="mob3"
+                            value="{{ $s->mobScore->mob_14 }}">
                     </div>
                 </div>
 
@@ -264,15 +267,18 @@
                 <div class="columns-three">
                     <div>
                         <label class="form-label" for="boss1">9-11</label>
-                        <input class="form-control" type="number" name="boss1" id="boss1" value="{{$s->bossScore->boss_9_11}}">
+                        <input class="form-control" type="number" name="boss1" id="boss1"
+                            value="{{ $s->bossScore->boss_9_11 }}">
                     </div>
                     <div>
                         <label class="form-label" for="boss2">12-13</label>
-                        <input class="form-control" type="number" name="boss2" id="boss2" value="{{$s->bossScore->boss_12_13}}">
+                        <input class="form-control" type="number" name="boss2" id="boss2"
+                            value="{{ $s->bossScore->boss_12_13 }}">
                     </div>
                     <div>
                         <label class="form-label" for="boss3">14</label>
-                        <input class="form-control" type="number" name="boss3" id="boss3" value="{{$s->bossScore->boss_14}}">
+                        <input class="form-control" type="number" name="boss3" id="boss3"
+                            value="{{ $s->bossScore->boss_14 }}">
                     </div>
                 </div>
 
@@ -294,18 +300,20 @@
                                 <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
                                     aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
                                     <div class="columns-two accordion-body bg-white">
-                                        @for ($i = 0; $i < 15; $i++)
+                                        @for ($i = 1; $i < 16; $i++)
                                             <div>
                                                 <label class="form-label"
                                                     for="{{ $g->id }}-gear-{{ $i }}">Gear
-                                                    {{ $i + 1 }}</label>
+                                                    {{ $i }}</label>
                                                 <select name="{{ $g->id }}-gear-{{ $i }}"
                                                     id="{{ $g->id }}-gear-{{ $i }}"
                                                     class="form-select">
                                                     <option value="" selected>Select Gear</option>
                                                     @foreach ($gears as $s)
                                                         @if ($s->gear_type == $g->id)
-                                                            <option value="{{ $s->id }}">{{ $s->gear_name }}
+                                                            <option value="{{ $s->id }}"
+                                                                {{ $selected[$g->id . '-gear-' . ($i)] == $s->id ? 'selected' : '' }}>
+                                                                {{ $s->gear_name }}
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -314,15 +322,25 @@
                                             <div>
                                                 <label class="form-label"
                                                     for="{{ $g->id }}-category-{{ $i }}">Gear
-                                                    Category {{ $i + 1 }}</label>
+                                                    Category {{ $i }}</label>
                                                 <select class="form-select"
                                                     name="{{ $g->id }}-category-{{ $i }}"
                                                     id="{{ $g->id }}-category-{{ $i }}">
-                                                    <option value="" selected>Select Gear Category</option>
-                                                    <option value="General">General</option>
-                                                    <option value="Light">Light</option>
-                                                    <option value="Medium">Med</option>
-                                                    <option value="Heavy">Heavy</option>
+                                                    <option value=""
+                                                        {{ $selected[$g->id . '-category-' . ($i)] == '' ? 'selected' : '' }}>
+                                                        Select Gear Category</option>
+                                                    <option value="General"
+                                                        {{ $selected[$g->id . '-category-' . ($i)] == 'General' ? 'selected' : '' }}>
+                                                        General</option>
+                                                    <option value="Light"
+                                                        {{ $selected[$g->id . '-category-' . ($i)] == 'Light' ? 'selected' : '' }}>
+                                                        Light</option>
+                                                    <option value="Medium"
+                                                        {{ $selected[$g->id . '-category-' . ($i)] == 'Medium' ? 'selected' : '' }}>
+                                                        Med</option>
+                                                    <option value="Heavy"
+                                                        {{ $selected[$g->id . '-category-' . ($i)] == 'Heavy' ? 'selected' : '' }}>
+                                                        Heavy</option>
                                                 </select>
                                             </div>
                                         @endfor

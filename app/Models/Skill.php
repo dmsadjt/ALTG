@@ -9,6 +9,11 @@ class Skill extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'skill_name',
+        'skill_priority',
+    ];
+
     public function ship(){
         return $this->belongsTo(Ship::class);
     }

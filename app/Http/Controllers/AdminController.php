@@ -133,6 +133,7 @@ class AdminController extends Controller
                 $gears[$s] = '';
             }
         }
+
         $rules = array_merge($general, $gears);
 
         $shipdata = $request->validate($rules);
@@ -251,7 +252,7 @@ class AdminController extends Controller
         $skill3->save();
 
         foreach ($cate as $c) {
-            for ($j = 0; $j < 15; $j++) {
+            for ($j = 1; $j < 16; $j++) {
                 if ($shipdata[strval($c->id) . '-gear-' . strval($j)] != null) {
                     $info = $shipdata[strval($c->id) . '-gear-' . strval($j)];
                     $data = $shipdata[strval($c->id) . '-category-' . strval($j)] != null ? $shipdata[strval($c->id) . '-category-' . strval($j)] : 'General';
@@ -265,9 +266,32 @@ class AdminController extends Controller
         return redirect('admin/ships');
     }
 
+
+    function fillGear($counter, $select, $type, $insert1, $insert2){
+        if($select[$type.'-gear-'.$counter] != ''){
+            $counter++;
+            $this->fillGear($counter, $select, $type, $insert1, $insert2);
+        }
+        else {
+            $select[$type.'-gear-'.$counter] = $insert1;
+            $select[$type.'-category-'.$counter] = $insert2;
+        }
+    }
+
+    function selectSlot($counter, $select ,$type, $arr){
+        if($select[$type.$arr.$counter] != ''){
+            $counter++;
+            return $this->selectSlot($counter, $select ,$type, $arr);
+        }
+        else{
+            $ret = $type.$arr.$counter;
+            return $ret;
+        }
+    }
+
     public function editShip($id)
     {
-
+        $cek = array();
         $hulls = Hull::all();
         $rarities = Rarity::all();
         $positions = Position::all();
@@ -309,13 +333,15 @@ class AdminController extends Controller
             }
 
             foreach ($s->gears as $key=>$g){
-                $selected[$g->gear_type.'-gear-'.($key+1)] = $g->id;
-                $selected[$g->gear_type.'-category-'.($key+1)] = $g->pivot->gear_category;
+                // $this->fillGear(1, $selected, $g->gear_type, $g->id, $g->pivot->gear_category);
+                $k = $this->selectSlot(1, $selected, $g->gear_type,'-gear-');
+                $c = $this->selectSlot(1, $selected, $g->gear_type,'-category-');
+
+                $selected[$k] = $g->id;
+                $selected[$c] = $g->pivot->gear_category;
             }
-
-
         }
-        dd($selected);
+
 
         return view('admin.ship.edit', compact([
             'ship',
@@ -331,9 +357,133 @@ class AdminController extends Controller
         ]));
     }
 
+    public function updateShip(Request $request){
+        $cate = GearCategory::all();
+
+        $general = ([
+            'id' => 'required',
+            'name' => 'required',
+            'hull' => 'required',
+            'rarity' => 'required',
+            'position' => 'required',
+            'faction' => 'required',
+            'sprite' => 'image',
+            'chibi_sprite' => 'image',
+            'notes' => '',
+            'skillname-1' => 'required',
+            'skillname-2' => 'required',
+            'skillname-3' => 'required',
+            'skillpriority-1' => 'required|integer|between:1,3',
+            'skillpriority-2' => 'required|integer|between:1,3',
+            'skillpriority-3' => 'required|integer|between:1,3',
+            'skillimg' => 'image',
+            'skillimg' => 'image',
+            'skillimg' => 'image',
+            'archetype1' => '',
+            'archetype2' => '',
+            'archetype3' => '',
+            'archetype4' => '',
+            'archetype5' => '',
+            'role1' => '',
+            'role2' => '',
+            'role3' => '',
+            'role4' => '',
+            'role5' => '',
+            'mob1' => 'integer|between:0,11',
+            'mob2' => 'integer|between:0,11',
+            'mob3' => 'integer|between:0,11',
+            'boss1' => 'integer|between:0,11',
+            'boss2' => 'integer|between:0,11',
+            'boss3' => 'integer|between:0,11',
+        ]);
+
+        foreach ($cate as $c) {
+            for ($j = 1; $j < 16; $j++) {
+                $g = strval($c->id) . '-gear-' . strval($j);
+                $s = strval($c->id) . '-category-' . strval($j);
+                $gears[$g] = '';
+                $gears[$s] = '';
+            }
+        }
+
+        $rules = array_merge($general, $gears);
+
+        $data = $request->validate($rules);
+
+
+        $ship = Ship::where('id',$data['id'])->first();
+        $ship->update([
+            'name' => $data['name'],
+            'hull_id' => $data['hull'],
+            'rarity_id'=>$data['rarity'],
+            'faction_id'=>$data['faction'],
+            'notes'=>$data['notes'],
+        ]);
+
+        foreach ($ship->skill as $key=>$s){
+            if($s->skill_name != $data['skillname-'.($key+1)]){
+                $s->update(['skill_name' => $data['skillname-'.($key+1)] ]);
+            }
+            if($s->skill_name != $data['skillpriority-'.($key+1)]){
+                $s->update(['skill_priority' => $data['skillpriority-'.($key+1)] ]);
+            }
+        }
+
+        $ship->positions()->sync([$data['position']]);
+
+        $temp = array();
+
+        for ($i = 1; $i < 6; $i++) {
+            if ($data['archetype' . $i] != null) {
+                array_push($temp, $data['archetype'.$i]);
+            }
+        }
+
+        $ship->archetypes()->sync($temp);
+        unset($temp);
+        $temp=array();
+
+        for ($i = 1; $i < 6; $i++) {
+            if ($data['role' . $i] != null) {
+                array_push($temp, $data['role'.$i]);
+            }
+        }
+
+        $ship->roles()->sync($temp);
+        unset($temp);
+        $temp=array();
+        $temp2=array();
+
+        foreach ($cate as $c) {
+            for ($j = 1; $j < 16; $j++) {
+                if ($data[$c->id.'-gear-'.$j] != null) {
+                    array_push($temp, [$data[$c->id.'-gear-'.$j] => ['gear_category' => $data[$c->id.'-category-'.$j]]]);
+                }
+            }
+        }
+
+        $array =
+
+        $ship->gears()->sync($temp);
+
+        dd($ship, $ship->positions, $ship->archetypes, $ship->roles, $data, $ship->skill, $ship->gears);
+
+
+    }
+
     public function deleteShip($id)
     {
+
+        $ship = Ship::where('id', '=', $id)->first();
+        $ship->archetypes()->detach();
+        $ship->positions()->detach();
+        $ship->roles()->detach();
+        $ship->gears()->detach();
+
         Ship::where('id', '=', $id)->delete();
+        Skill::where('ship_id', '=', $id)->delete();
+        MobScore::where('ship_id', '=', $id)->delete();
+        BossScore::where('ship_id', '=', $id)->delete();
 
         return redirect('admin/ships');
     }

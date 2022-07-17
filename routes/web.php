@@ -40,6 +40,9 @@ Route::get('/admin/ships/edit/{id}', [AdminController::class, 'editShip'])->midd
 //post
 Route::post('/admin/ships/post', [AdminController::class, 'postShip'])->middleware(['auth'])->name('post');
 
+//update
+Route::post('/admin/ships/update', [AdminController::class, 'updateShip'])->middleware(['auth'])->name('update');
+
 //delete
 Route::get('/admin/ships/delete/{id}', [AdminController::class, 'deleteShip'])->middleware(['auth'])->name('delete');
 
