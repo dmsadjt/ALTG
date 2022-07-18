@@ -55,6 +55,7 @@ class AdminController extends Controller
         ));
     }
 
+
     public function ships()
     {
         $ships = Ship::paginate(10);
@@ -85,6 +86,41 @@ class AdminController extends Controller
         ));
     }
 
+
+    //function for posting images
+    function postImage($req, $filename, $path, $input, $input_column)
+    {
+        if ($file = $req->file($filename)) {
+            $dest = public_path($path);
+
+            $name = $req->file($filename)->getClientOriginalName();
+            $extension = $req->file($filename)->getClientOriginalExtension();
+            $nameonly = pathinfo($name, PATHINFO_FILENAME);
+
+            $storename = $nameonly . '_' . time() . '.' . $extension;
+            $file->move($dest, $storename);
+            $input->$input_column = $storename;
+        }
+    }
+
+    //function for updating images
+    function updateImg($req, $filename, $path, $input, $input_column)
+    {
+        if ($file = $req->file($filename)) {
+            $dest = public_path($path);
+
+            $name = $req->file($filename)->getClientOriginalName();
+            $extension = $req->file($filename)->getClientOriginalExtension();
+            $nameonly = pathinfo($name, PATHINFO_FILENAME);
+
+            $storename = $nameonly . '_' . time() . '.' . $extension;
+            $file->move($dest, $storename);
+            return $storename;
+        } else {
+            return $input->$input_column;
+        }
+    }
+
     public function postShip(Request $request)
     {
         $cate = GearCategory::all();
@@ -104,9 +140,9 @@ class AdminController extends Controller
             'skillpriority-1' => 'required|integer|between:1,3',
             'skillpriority-2' => 'required|integer|between:1,3',
             'skillpriority-3' => 'required|integer|between:1,3',
-            'skillimg' => 'image',
-            'skillimg' => 'image',
-            'skillimg' => 'image',
+            'skillimg-1' => 'image',
+            'skillimg-2' => 'image',
+            'skillimg-3' => 'image',
             'archetype1' => '',
             'archetype2' => '',
             'archetype3' => '',
@@ -126,7 +162,7 @@ class AdminController extends Controller
         ]);
 
         foreach ($cate as $c) {
-            for ($j = 0; $j < 15; $j++) {
+            for ($j = 1; $j < 16; $j++) {
                 $g = strval($c->id) . '-gear-' . strval($j);
                 $s = strval($c->id) . '-category-' . strval($j);
                 $gears[$g] = '';
@@ -147,27 +183,9 @@ class AdminController extends Controller
             $ship->notes = $shipdata['notes'];
         }
 
-        if ($file = $request->file('sprite')) {
-            $dest = public_path('/img/ships/sprites/');
+        $this->postImage($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
 
-            $name = $request->file('sprite')->getClientOriginalName();
-            $extension = $request->file('sprite')->getClientOriginalExtension();
-            $nameonly = pathinfo($name, PATHINFO_FILENAME);
-            $storename = $nameonly . '_' . time() . '.' . $extension;
-            $file->move($dest, $storename);
-            $ship->sprite = $storename;
-        }
-
-        if ($file = $request->file('chibi_sprite')) {
-            $dest = public_path('/img/ships/chibi/');
-
-            $name = $request->file('chibi_sprite')->getClientOriginalName();
-            $extension = $request->file('chibi_sprite')->getClientOriginalExtension();
-            $nameonly = pathinfo($name, PATHINFO_FILENAME);
-            $storename = $nameonly . '_' . time() . '.' . $extension;
-            $file->move($dest, $storename);
-            $ship->chibi_sprite = $storename;
-        }
+        $this->postImage($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
 
         $ship->save();
 
@@ -192,7 +210,6 @@ class AdminController extends Controller
         $mob->mob_9_11 = $shipdata['mob1'];
         $mob->mob_12_13 = $shipdata['mob2'];
         $mob->mob_14 = $shipdata['mob3'];
-
         $mob->save();
 
         $boss = new BossScore;
@@ -200,55 +217,27 @@ class AdminController extends Controller
         $boss->boss_9_11 = $shipdata['boss1'];
         $boss->boss_12_13 = $shipdata['boss2'];
         $boss->boss_14 = $shipdata['boss3'];
-
         $boss->save();
 
         $skill = new Skill;
         $skill->ship_id = $ship->id;
         $skill->skill_name = $shipdata['skillname-1'];
         $skill->skill_priority = $shipdata['skillpriority-1'];
-        if ($file = $request->file('skillimg-1')) {
-            $dest = public_path('/img/skills/');
-
-            $name = $request->file('skillimg-1')->getClientOriginalName();
-            $extension = $request->file('skillimg-1')->getClientOriginalExtension();
-            $nameonly = pathinfo($name, PATHINFO_FILENAME);
-            $storename = $nameonly . '_' . time() . '.' . $extension;
-            $file->move($dest, $storename);
-            $skill->skill_img = $storename;
-        }
+        $this->postImage($request, 'skillimg-1', '/img/skills/', $skill, 'skill_img');
         $skill->save();
 
         $skill2 = new Skill;
         $skill2->ship_id = $ship->id;
         $skill2->skill_name = $shipdata['skillname-2'];
         $skill2->skill_priority = $shipdata['skillpriority-2'];
-        if ($file = $request->file('skillimg-2')) {
-            $dest = public_path('/img/skills/');
-
-            $name = $request->file('skillimg-2')->getClientOriginalName();
-            $extension = $request->file('skillimg-2')->getClientOriginalExtension();
-            $nameonly = pathinfo($name, PATHINFO_FILENAME);
-            $storename = $nameonly . '_' . time() . '.' . $extension;
-            $file->move($dest, $storename);
-            $skill2->skill_img = $storename;
-        }
+        $this->postImage($request, 'skillimg-2', '/img/skills/', $skill2, 'skill_img');
         $skill2->save();
 
         $skill3 = new Skill;
         $skill3->ship_id = $ship->id;
         $skill3->skill_name = $shipdata['skillname-3'];
         $skill3->skill_priority = $shipdata['skillpriority-3'];
-        if ($file = $request->file('skillimg-3')) {
-            $dest = public_path('/img/skills/');
-
-            $name = $request->file('skillimg-3')->getClientOriginalName();
-            $extension = $request->file('skillimg-3')->getClientOriginalExtension();
-            $nameonly = pathinfo($name, PATHINFO_FILENAME);
-            $storename = $nameonly . '_' . time() . '.' . $extension;
-            $file->move($dest, $storename);
-            $skill3->skill_img = $storename;
-        }
+        $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
         $skill3->save();
 
         foreach ($cate as $c) {
@@ -267,24 +256,24 @@ class AdminController extends Controller
     }
 
 
-    function fillGear($counter, $select, $type, $insert1, $insert2){
-        if($select[$type.'-gear-'.$counter] != ''){
+    function fillGear($counter, $select, $type, $insert1, $insert2)
+    {
+        if ($select[$type . '-gear-' . $counter] != '') {
             $counter++;
             $this->fillGear($counter, $select, $type, $insert1, $insert2);
-        }
-        else {
-            $select[$type.'-gear-'.$counter] = $insert1;
-            $select[$type.'-category-'.$counter] = $insert2;
+        } else {
+            $select[$type . '-gear-' . $counter] = $insert1;
+            $select[$type . '-category-' . $counter] = $insert2;
         }
     }
 
-    function selectSlot($counter, $select ,$type, $arr){
-        if($select[$type.$arr.$counter] != ''){
+    function selectSlot($counter, $select, $type, $arr)
+    {
+        if ($select[$type . $arr . $counter] != '') {
             $counter++;
-            return $this->selectSlot($counter, $select ,$type, $arr);
-        }
-        else{
-            $ret = $type.$arr.$counter;
+            return $this->selectSlot($counter, $select, $type, $arr);
+        } else {
+            $ret = $type . $arr . $counter;
             return $ret;
         }
     }
@@ -327,15 +316,15 @@ class AdminController extends Controller
 
             foreach ($gear_category as $c) {
                 for ($j = 1; $j < 16; $j++) {
-                    $selected[$c->id.'-gear-'.$j] = '';
-                    $selected[$c->id.'-category-'.$j] = '';
+                    $selected[$c->id . '-gear-' . $j] = '';
+                    $selected[$c->id . '-category-' . $j] = '';
                 }
             }
 
-            foreach ($s->gears as $key=>$g){
+            foreach ($s->gears as $key => $g) {
                 // $this->fillGear(1, $selected, $g->gear_type, $g->id, $g->pivot->gear_category);
-                $k = $this->selectSlot(1, $selected, $g->gear_type,'-gear-');
-                $c = $this->selectSlot(1, $selected, $g->gear_type,'-category-');
+                $k = $this->selectSlot(1, $selected, $g->gear_type, '-gear-');
+                $c = $this->selectSlot(1, $selected, $g->gear_type, '-category-');
 
                 $selected[$k] = $g->id;
                 $selected[$c] = $g->pivot->gear_category;
@@ -357,7 +346,8 @@ class AdminController extends Controller
         ]));
     }
 
-    public function updateShip(Request $request){
+    public function updateShip(Request $request)
+    {
         $cate = GearCategory::all();
 
         $general = ([
@@ -376,9 +366,9 @@ class AdminController extends Controller
             'skillpriority-1' => 'required|integer|between:1,3',
             'skillpriority-2' => 'required|integer|between:1,3',
             'skillpriority-3' => 'required|integer|between:1,3',
-            'skillimg' => 'image',
-            'skillimg' => 'image',
-            'skillimg' => 'image',
+            'skillimg-1' => 'image',
+            'skillimg-2' => 'image',
+            'skillimg-3' => 'image',
             'archetype1' => '',
             'archetype2' => '',
             'archetype3' => '',
@@ -409,25 +399,37 @@ class AdminController extends Controller
         $rules = array_merge($general, $gears);
 
         $data = $request->validate($rules);
-
-
-        $ship = Ship::where('id',$data['id'])->first();
+        $ship = Ship::where('id', $data['id'])->first();
         $ship->update([
             'name' => $data['name'],
             'hull_id' => $data['hull'],
-            'rarity_id'=>$data['rarity'],
-            'faction_id'=>$data['faction'],
-            'notes'=>$data['notes'],
+            'rarity_id' => $data['rarity'],
+            'faction_id' => $data['faction'],
+            'notes' => $data['notes'],
         ]);
 
-        foreach ($ship->skill as $key=>$s){
-            if($s->skill_name != $data['skillname-'.($key+1)]){
-                $s->update(['skill_name' => $data['skillname-'.($key+1)] ]);
-            }
-            if($s->skill_name != $data['skillpriority-'.($key+1)]){
-                $s->update(['skill_priority' => $data['skillpriority-'.($key+1)] ]);
-            }
+        $ship->mobScore->update([
+            'mob_9_11' => $data['mob1'],
+            'mob_12_13' => $data['mob2'],
+            'mob_14' => $data['mob3'],
+        ]);
+
+        $ship->bossScore->update([
+            'boss_9_11' => $data['boss1'],
+            'boss_12_13' => $data['boss2'],
+            'boss_14' => $data['boss3'],
+        ]);
+
+        foreach ($ship->skill as $key => $s) {
+
+            $img = $this->updateImg($request, 'skillimg-' . ($key + 1), '/img/skills/', $s, 'skill_img');
+            $s->update([
+                'skill_name' => $data['skillname-' . ($key + 1)],
+                'skill_priority' => $data['skillpriority-' . ($key + 1)],
+                'skill_img' => $img,
+            ]);
         }
+
 
         $ship->positions()->sync([$data['position']]);
 
@@ -435,40 +437,38 @@ class AdminController extends Controller
 
         for ($i = 1; $i < 6; $i++) {
             if ($data['archetype' . $i] != null) {
-                array_push($temp, $data['archetype'.$i]);
+                array_push($temp, $data['archetype' . $i]);
             }
         }
 
         $ship->archetypes()->sync($temp);
         unset($temp);
-        $temp=array();
+        $temp = array();
 
         for ($i = 1; $i < 6; $i++) {
             if ($data['role' . $i] != null) {
-                array_push($temp, $data['role'.$i]);
+                array_push($temp, $data['role' . $i]);
             }
         }
 
         $ship->roles()->sync($temp);
         unset($temp);
-        $temp=array();
-        $temp2=array();
+        $temp = array();
 
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
-                if ($data[$c->id.'-gear-'.$j] != null) {
-                    array_push($temp, [$data[$c->id.'-gear-'.$j] => ['gear_category' => $data[$c->id.'-category-'.$j]]]);
+                if ($data[$c->id . '-gear-' . $j] != null) {
+                    $id = $data[$c->id . '-gear-' . $j];
+                    $pivot = 'gear_category';
+                    $pivot_data = $data[$c->id . '-category-' . $j] != null ? $data[$c->id . '-category-' . $j] : 'General';
+                    $temp[$id] = [$pivot => $pivot_data];
                 }
             }
         }
 
-        $array =
-
         $ship->gears()->sync($temp);
 
-        dd($ship, $ship->positions, $ship->archetypes, $ship->roles, $data, $ship->skill, $ship->gears);
-
-
+        return redirect('admin/ships');
     }
 
     public function deleteShip($id)

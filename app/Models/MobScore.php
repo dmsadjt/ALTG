@@ -11,6 +11,12 @@ class MobScore extends Model
 
     protected $table = 'mob_scores';
 
+    protected $fillable = [
+        'mob_9_11',
+        'mob_12_13',
+        'mob_14',
+    ];
+
     public function ship(){
         return $this->belongsTo(Ship::class);
     }

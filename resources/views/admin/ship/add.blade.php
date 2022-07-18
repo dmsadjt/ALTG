@@ -287,11 +287,11 @@
                             <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
                                 aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
                                 <div class="columns-two accordion-body bg-white">
-                                    @for ($i = 0; $i < 15; $i++)
+                                    @for ($i = 1; $i < 16; $i++)
                                         <div>
                                             <label class="form-label"
                                                 for="{{ $g->id }}-gear-{{ $i }}">Gear
-                                                {{ $i + 1 }}</label>
+                                                {{ $i  }}</label>
                                             <select name="{{ $g->id }}-gear-{{ $i }}"
                                                 id="{{ $g->id }}-gear-{{ $i }}" class="form-select">
                                                 <option value="" selected>Select Gear</option>
@@ -305,7 +305,7 @@
                                         <div>
                                             <label class="form-label"
                                                 for="{{ $g->id }}-category-{{ $i }}">Gear
-                                                Category {{ $i + 1 }}</label>
+                                                Category {{ $i  }}</label>
                                             <select class="form-select"
                                                 name="{{ $g->id }}-category-{{ $i }}"
                                                 id="{{ $g->id }}-category-{{ $i }}">

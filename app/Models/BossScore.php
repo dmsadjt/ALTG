@@ -9,6 +9,12 @@ class BossScore extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'boss_9_11',
+        'boss_12_13',
+        'boss_14',
+    ];
+
     public function user(){
         return $this->belongsTo(Ship::class);
     }
