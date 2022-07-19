@@ -15,6 +15,13 @@ class FactionSeeder extends Seeder
     public function run()
     {
         DB::table('factions')->insert([
+            'faction_name'=>'Default',
+            'faction_tag'=>'De',
+            'faction_img'=>'no-pictures.png',
+            'faction_slug'=>'default',
+        ]);
+
+        DB::table('factions')->insert([
             'faction_name'=>'Iron Blood',
             'faction_tag'=>'IB',
             'faction_img'=>'iron-blood.png',
