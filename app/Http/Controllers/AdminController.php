@@ -24,11 +24,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-
         $user = Auth::user();
-
         $dateTime = Carbon::now();
-
         $totalShips = Ship::count();
         $totalSirens = Siren::count();
         $totalPosts = Post::count();
@@ -38,7 +35,6 @@ class AdminController extends Controller
         $totalPositions = Position::count();
         $totalGears = Gear::count();
         $totalHulls = Hull::count();
-
 
         return view('admin.dashboard', compact(
             'user',
@@ -55,7 +51,7 @@ class AdminController extends Controller
         ));
     }
 
-
+    //Ships
     public function ships()
     {
         $ships = Ship::paginate(10);
@@ -92,11 +88,9 @@ class AdminController extends Controller
     {
         if ($file = $req->file($filename)) {
             $dest = public_path($path);
-
             $name = $req->file($filename)->getClientOriginalName();
             $extension = $req->file($filename)->getClientOriginalExtension();
             $nameonly = pathinfo($name, PATHINFO_FILENAME);
-
             $storename = $nameonly . '_' . time() . '.' . $extension;
             $file->move($dest, $storename);
             $input->$input_column = $storename;
@@ -108,11 +102,9 @@ class AdminController extends Controller
     {
         if ($file = $req->file($filename)) {
             $dest = public_path($path);
-
             $name = $req->file($filename)->getClientOriginalName();
             $extension = $req->file($filename)->getClientOriginalExtension();
             $nameonly = pathinfo($name, PATHINFO_FILENAME);
-
             $storename = $nameonly . '_' . time() . '.' . $extension;
             $file->move($dest, $storename);
             return $storename;
@@ -124,7 +116,6 @@ class AdminController extends Controller
     public function postShip(Request $request)
     {
         $cate = GearCategory::all();
-
         $general = ([
             'name' => 'required',
             'hull' => 'required',
@@ -171,7 +162,6 @@ class AdminController extends Controller
         }
 
         $rules = array_merge($general, $gears);
-
         $shipdata = $request->validate($rules);
 
         $ship = new Ship;
@@ -184,9 +174,7 @@ class AdminController extends Controller
         }
 
         $this->postImage($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
-
         $this->postImage($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
-
         $ship->save();
 
         if ($shipdata['position'] != null) {
@@ -249,22 +237,9 @@ class AdminController extends Controller
                 } else continue;
             }
         }
-
         $ship->save();
 
         return redirect('admin/ships');
-    }
-
-
-    function fillGear($counter, $select, $type, $insert1, $insert2)
-    {
-        if ($select[$type . '-gear-' . $counter] != '') {
-            $counter++;
-            $this->fillGear($counter, $select, $type, $insert1, $insert2);
-        } else {
-            $select[$type . '-gear-' . $counter] = $insert1;
-            $select[$type . '-category-' . $counter] = $insert2;
-        }
     }
 
     function selectSlot($counter, $select, $type, $arr)
@@ -289,7 +264,6 @@ class AdminController extends Controller
         $factions = Faction::all();
         $gears = Gear::all();
         $gear_category = GearCategory::all();
-
         $ship = Ship::where('id', $id)->get();
 
         foreach ($ship as $s) {
@@ -349,7 +323,6 @@ class AdminController extends Controller
     public function updateShip(Request $request)
     {
         $cate = GearCategory::all();
-
         $general = ([
             'id' => 'required',
             'name' => 'required',
@@ -397,15 +370,18 @@ class AdminController extends Controller
         }
 
         $rules = array_merge($general, $gears);
-
         $data = $request->validate($rules);
         $ship = Ship::where('id', $data['id'])->first();
+        $sprite = $this->updateImg($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
+        $chibi = $this->updateImg($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
         $ship->update([
             'name' => $data['name'],
             'hull_id' => $data['hull'],
             'rarity_id' => $data['rarity'],
             'faction_id' => $data['faction'],
             'notes' => $data['notes'],
+            'sprite' => $sprite,
+            'chibi_sprite' => $chibi,
         ]);
 
         $ship->mobScore->update([
@@ -430,9 +406,7 @@ class AdminController extends Controller
             ]);
         }
 
-
         $ship->positions()->sync([$data['position']]);
-
         $temp = array();
 
         for ($i = 1; $i < 6; $i++) {
@@ -473,7 +447,6 @@ class AdminController extends Controller
 
     public function deleteShip($id)
     {
-
         $ship = Ship::where('id', '=', $id)->first();
         $ship->archetypes()->detach();
         $ship->positions()->detach();
@@ -487,11 +460,25 @@ class AdminController extends Controller
 
         return redirect('admin/ships');
     }
+    //Ships
+
+    //Factions
+    public function deleteFaction($id){
+
+        $faction = Faction::where('id',$id);
+        $faction->delete();
+
+        return redirect('admin/factions');
+
+    }
+
+    //Factions
+
+
 
     public function sirens()
     {
         $siren = Siren::paginate(10);
-
 
         return view('admin.siren.index', compact('siren'));
     }

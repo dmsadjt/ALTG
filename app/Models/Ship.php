@@ -15,6 +15,8 @@ class Ship extends Model
         'notes',
         'faction_id',
         'rarity_id',
+        'sprite',
+        'chibi_sprite',
     ];
 
     protected $table = 'ships';
