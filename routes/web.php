@@ -45,6 +45,12 @@ Route::post('/admin/ships/update', [AdminController::class, 'updateShip'])->midd
 
 //delete
 Route::get('/admin/ships/delete/{id}', [AdminController::class, 'deleteShip'])->middleware(['auth'])->name('delete');
+Route::get('/admin/factions/delete/{id}', [AdminController::class, 'deleteFaction'])->middleware(['auth'])->name('delete.faction');
+Route::get('/admin/archetypes/delete/{id}', [AdminController::class, 'deleteArchetype'])->middleware(['auth'])->name('delete.archetype');
+Route::get('/admin/roles/delete/{id}', [AdminController::class, 'deleteRole'])->middleware(['auth'])->name('delete.role');
+Route::get('/admin/positions/delete/{id}', [AdminController::class, 'deletePosition'])->middleware(['auth'])->name('delete.position');
+Route::get('/admin/gears/delete/{id}', [AdminController::class, 'deleteGear'])->middleware(['auth'])->name('delete.gear');
+Route::get('/admin/hulls/delete/{id}', [AdminController::class, 'deleteHull'])->middleware(['auth'])->name('delete.hull');
 
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
