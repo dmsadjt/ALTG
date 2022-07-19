@@ -30,7 +30,7 @@
                                         <a class="link-none altona-sans-10" href="/archetypes/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/archetypes/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10" href="/admin/archetypes/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
                                     </span>
                             </td>
                                 <td class="altona-sans-10">{{ $s->archetype_name }}</td>

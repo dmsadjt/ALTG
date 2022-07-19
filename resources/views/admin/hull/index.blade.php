@@ -23,27 +23,34 @@
                             <th scope="col">Image</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($hulls as $s)
                             <tr>
                                 <td class="altona-sans-10">
                                     <span>{{ $s->id }}</span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/hulls/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/hulls/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </span>
-                                    <span>
-                                        <a class="link-none altona-sans-10" href="/hulls/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
-                                    </span>
-                            </td>
+                                    @if ($s->id != 1)
+                                        <span>
+                                            <a class="link-none altona-sans-10"
+                                                href="/admin/hulls/delete/{{ $s->id }}"><button
+                                                    class="btn btn-outline-danger btn-sm">Delete</button></a>
+                                        </span>
+                                    @endif
+                                </td>
                                 <td class="altona-sans-10">{{ $s->hull_name }}</td>
                                 <td class="altona-sans-10">{{ $s->hull_tag }}</td>
                                 <td class="altona-sans-10">{{ $s->hull_slug }}</td>
-                                <td><a class="altona-sans-10" href="/img/hulls/{{$s->hull_img}}">{{ $s->hull_img }}</a></td>
+                                <td><a class="altona-sans-10" href="/img/hulls/{{ $s->hull_img }}">{{ $s->hull_img }}</a>
+                                </td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{$hulls->links()}}
+                    {{ $hulls->links() }}
                 </table>
             </div>
         </div>

@@ -12,6 +12,6 @@ class Hull extends Model
     protected $table = 'hulls';
 
     public function ship(){
-        return $this->hasOne(Ship::class, 'hull_type');
+        return $this->hasMany(Ship::class, 'hull_id');
     }
 }

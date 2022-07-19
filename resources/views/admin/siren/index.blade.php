@@ -44,9 +44,6 @@
                                     <div>
                                         <a class="link-none altona-sans-10" href="/sirens/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
-                                    <div>
-                                        <a class="link-none altona-sans-10" href="/sirens/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
-                                    </div>
                             </td>
                                 <td class="altona-sans-10">{{ $s->name }}</td>
                                 <td class="altona-sans-10">{{ $s->boss_type }}</td>

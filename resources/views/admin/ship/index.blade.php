@@ -19,6 +19,7 @@
                             <th scope="col">Ship ID</th>
                             <th scope="col">Ship Name</th>
                             <th scope="col">Hull type</th>
+                            <th scope="col">Faction</th>
                             <th scope="col">Rarity</th>
                             <th scope="col">Positions</th>
                             <th scope="col">Roles</th>
@@ -44,7 +45,8 @@
                                     </div>
                             </td>
                                 <td class="altona-sans-10">{{ $s->name }}</td>
-                                <td class="altona-sans-10">{{ $s->hull->hull_name }}</td>
+                                <td class="altona-sans-10" >{{ $s->hull->hull_name }}</td>
+                                <td class="altona-sans-10">{{ $s->faction->faction_name }}</td>
                                 <td class="altona-sans-10">{{ $s->rarity->rarity_name }}</td>
                                 <td class="altona-sans-10">
                                     <ul class="nav-style-none m-0 p-0">

@@ -465,16 +465,59 @@ class AdminController extends Controller
     //Factions
     public function deleteFaction($id){
 
-        $faction = Faction::where('id',$id);
+        $faction = Faction::where('id','=',$id)->first();
+        $temp = array();
+        foreach ($faction->ship as $s){
+            $s->update([
+                'faction_id'=>'1',
+            ]);
+        }
+
         $faction->delete();
 
         return redirect('admin/factions');
-
     }
 
     //Factions
 
+    //Hulls
+    public function deleteHull($id){
 
+        $hull = Hull::where('id','=',$id)->first();
+
+        foreach ($hull->ship as $s){
+            $s->update([
+                'hull_id'=>'1',
+            ]);
+        }
+
+        $hull->delete();
+
+        return redirect('admin/hulls');
+    }
+    //Hulls
+
+    //Roles
+    public function deleteRole($id){
+        $role = Roles::where('id','=',$id)->first();
+        $role->ships()->detach();
+        $role->delete();
+
+        return redirect('admin/roles');
+
+    }
+    //Roles
+
+    //Archetype
+    public function deleteArchetype($id){
+        $arche = Archetype::where('id','=',$id)->first();
+        $arche->ships()->detach();
+        $arche->delete();
+
+        return redirect('admin/archetypes');
+
+    }
+    //Archetype
 
     public function sirens()
     {

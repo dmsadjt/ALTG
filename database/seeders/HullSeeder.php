@@ -16,6 +16,13 @@ class HullSeeder extends Seeder
     public function run()
     {
         DB::table('hulls')->insert([
+            'hull_name'=>'Default',
+            'hull_tag'=>'De',
+            'hull_slug'=>'default',
+            'hull_img'=>'no-pictures.png',
+        ]);
+
+        DB::table('hulls')->insert([
             'hull_name'=>'Aircraft Carrier',
             'hull_tag'=>'CV',
             'hull_slug'=>'aircraft',

@@ -23,27 +23,35 @@
                             <th scope="col">Image</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($factions as $s)
                             <tr>
                                 <td class="altona-sans-10">
                                     <div>{{ $s->id }}</div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/factions/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/factions/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
-                                    <div>
-                                        <a class="link-none altona-sans-10" href="/admin/factions/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
-                                    </div>
-                            </td>
+                                    @if ($s->id != 1)
+                                        <div>
+                                            <a class="link-none altona-sans-10"
+                                                href="/admin/factions/delete/{{ $s->id }}"><button
+                                                    class="btn btn-outline-danger btn-sm">Delete</button></a>
+                                        </div>
+                                    @endif
+
+                                </td>
                                 <td class="altona-sans-10">{{ $s->faction_name }}</td>
                                 <td class="altona-sans-10">{{ $s->faction_tag }}</td>
                                 <td class="altona-sans-10">{{ $s->faction_slug }}</td>
-                                <td><a class="altona-sans-10" href="/img/faction-logo/{{$s->faction_img}}">{{ $s->faction_img }}</a></td>
+                                <td><a class="altona-sans-10"
+                                        href="/img/faction-logo/{{ $s->faction_img }}">{{ $s->faction_img }}</a></td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{$factions->links()}}
+                    {{ $factions->links() }}
                 </table>
             </div>
         </div>

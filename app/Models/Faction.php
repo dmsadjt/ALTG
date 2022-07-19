@@ -12,7 +12,7 @@ class Faction extends Model
     protected $table = 'factions';
 
     public function ship(){
-        return $this->hasOne(Ship::class, 'faction_id');
+        return $this->hasMany(Ship::class, 'faction_id');
     }
 
     public function roles(){
