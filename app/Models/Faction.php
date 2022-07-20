@@ -11,6 +11,13 @@ class Faction extends Model
 
     protected $table = 'factions';
 
+    protected $fillable = [
+        'faction_name',
+        'faction_tag',
+        'faction_slug',
+        'faction_img',
+    ];
+
     public function ship(){
         return $this->hasMany(Ship::class, 'faction_id');
     }

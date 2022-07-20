@@ -7,7 +7,7 @@
             <p class="altona-sans-12">Manage Archetypes</p>
         </div>
         <div class="ms-auto mt-auto">
-            <a href="/archetypes/add"><button class="btn btn-primary">Add archetypes</button></a>
+            <a href="/admin/archetypes/add"><button class="btn btn-primary">Add archetypes</button></a>
         </div>
     </div>
     <div class="m-3 overflow-x">
@@ -27,7 +27,7 @@
                                 <td class="altona-sans-10 w-25">
                                     <span>{{ $s->id }}</span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/archetypes/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10" href="/admin/archetypes/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </span>
                                     <span>
                                         <a class="link-none altona-sans-10" href="/admin/archetypes/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>

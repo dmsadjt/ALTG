@@ -7,7 +7,7 @@
             <p class="altona-sans-12">Manage Factions</p>
         </div>
         <div class="ms-auto mt-auto">
-            <a href="/factions/add"><button class="btn btn-primary">Add factions</button></a>
+            <a href="/admin/factions/add"><button class="btn btn-primary">Add factions</button></a>
         </div>
     </div>
     <div class="m-3 overflow-x">
