@@ -11,11 +11,16 @@ class Roles extends Model
 
     protected $table='roles';
 
+    protected $fillable = [
+        'role_name',
+        'role_slug',
+    ];
+
     public function ships(){
         return $this->belongsToMany(Ship::class, 'ship_roles','role_id','ship_id');
     }
 
     public function factions(){
-        return $this->hasMany(Faction::class, 'roles_factions','role_id','faction_id');
+        return $this->belongsToMany(Faction::class, 'roles_factions','role_id','faction_id');
     }
 }

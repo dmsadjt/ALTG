@@ -81,20 +81,6 @@ class AdminController extends Controller
     }
     //Hulls
 
-    //Roles
-    public function deleteRole($id){
-        $role = Roles::where('id','=',$id)->first();
-        $role->ships()->detach();
-        $role->delete();
-
-        return redirect('admin/roles');
-
-    }
-    //Roles
-
-    //Archetype
-
-    //Archetype
 
     public function sirens()
     {

@@ -43,11 +43,11 @@ class FactionController extends Controller
             'name'=>'required',
             'tag'=>'required',
             'slug'=>'',
-            'img'=>'required|image',
+            'img'=>'image',
         ]);
 
         $faction = Faction::where('id','=', $data['id'])->first();
-        $img = $faction->faction_image != $data['img'] ? $this->updateImg($request, 'img', '/img/faction-logo/',$faction, 'faction_img') : $faction->faction_img;
+        $img = array_key_exists('img', $data) ? $this->updateImg($request, 'img', '/img/faction-logo/',$faction, 'faction_img') : $faction->faction_img;
 
         $faction->update([
             'faction_name'=>$data['name'],
