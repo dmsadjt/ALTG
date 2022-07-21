@@ -90,8 +90,8 @@
                                     </ul>
                                 </td>
 
-                                <td><a class="altona-sans-10" href="/img/ships/sprites/{{$s->sprite}}">{{ $s->sprite }}</a></td>
-                                <td><a class="altona-sans-10" href="/img/ships/chibi/{{$s->chibi_sprite}}">{{ $s->chibi_sprite }}</a></td>
+                                <td><a class="altona-sans-10" href="/img/ships/sprites/{{$s->sprite}}">Sprite</a></td>
+                                <td><a class="altona-sans-10" href="/img/ships/chibi/{{$s->chibi_sprite}}">Chibi</a></td>
                                 <td class="altona-sans-10">{{ $s->notes }}</td>
                                 <td class="altona-sans-10" style="width: 5em;">
                                     <ul class="nav-style-none m-0 p-0">

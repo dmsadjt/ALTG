@@ -9,6 +9,8 @@ use App\Http\Controllers\SirenController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FactionController;
+use App\Http\Controllers\GearController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
 
 /*
@@ -39,32 +41,37 @@ Route::get('/admin/ships/add', [ShipController::class, 'addShips'])->middleware(
 Route::get('/admin/factions/add', [FactionController::class, 'addFaction'])->middleware(['auth'])->name('add.faction');
 Route::get('/admin/archetypes/add', [ArchetypeController::class, 'addArchetype'])->middleware(['auth'])->name('add.archetype');
 Route::get('/admin/roles/add', [RoleController::class, 'addRole'])->middleware(['auth'])->name('add.role');
+Route::get('/admin/gears/add', [GearController::class, 'addGear'])->middleware(['auth'])->name('add.gear');
 
 //edit views
 Route::get('/admin/ships/edit/{id}', [ShipController::class, 'editShip'])->middleware(['auth'])->name('edit');
 Route::get('/admin/factions/edit/{id}', [FactionController::class, 'editFaction'])->middleware(['auth'])->name('edit.faction');
 Route::get('/admin/archetypes/edit/{id}', [ArchetypeController::class, 'editArchetype'])->middleware(['auth'])->name('edit.archetype');
-Route::get('/admin/roles/edit/{id}', [RoleController::class, 'editRole'])->middleware(['auth'])->name('edit.rolle');
+Route::get('/admin/roles/edit/{id}', [RoleController::class, 'editRole'])->middleware(['auth'])->name('edit.roll');
+Route::get('/admin/positions/edit/{id}', [PositionController::class, 'editPosition'])->middleware(['auth'])->name('edit.position');
+Route::get('/admin/gears/edit/{id}', [GearController::class, 'editGear'])->middleware(['auth'])->name('edit.gear');
 
 //post
 Route::post('/admin/ships/post', [ShipController::class, 'postShip'])->middleware(['auth'])->name('post');
 Route::post('/admin/factions/post', [FactionController::class, 'postFaction'])->middleware(['auth'])->name('post.faction');
 Route::post('/admin/archetypes/post', [ArchetypeController::class, 'postArchetype'])->middleware(['auth'])->name('post.archetype');
 Route::post('/admin/roles/post', [RoleController::class, 'postRole'])->middleware(['auth'])->name('post.role');
+Route::post('/admin/gears/post', [GearController::class, 'postGear'])->middleware(['auth'])->name('post.gear');
 
 //update
 Route::post('/admin/ships/update', [ShipController::class, 'updateShip'])->middleware(['auth'])->name('update');
 Route::post('/admin/factions/update', [FactionController::class, 'updateFaction'])->middleware(['auth'])->name('update.faction');
 Route::post('/admin/archetypes/update', [ArchetypeController::class, 'updateArchetype'])->middleware(['auth'])->name('update.archetype');
 Route::post('/admin/roles/update', [RoleController::class, 'updateRole'])->middleware(['auth'])->name('update.role');
+Route::post('/admin/positions/update', [PositionController::class, 'updatePosition'])->middleware(['auth'])->name('update.position');
+Route::post('/admin/gears/update', [GearController::class, 'updateGear'])->middleware(['auth'])->name('update.gear');
 
 //delete
 Route::get('/admin/ships/delete/{id}', [ShipController::class, 'deleteShip'])->middleware(['auth'])->name('delete');
 Route::get('/admin/factions/delete/{id}', [FactionController::class, 'deleteFaction'])->middleware(['auth'])->name('delete.faction');
 Route::get('/admin/archetypes/delete/{id}', [ArchetypeController::class, 'deleteArchetype'])->middleware(['auth'])->name('delete.archetype');
 Route::get('/admin/roles/delete/{id}', [RoleController::class, 'deleteRole'])->middleware(['auth'])->name('delete.role');
-Route::get('/admin/positions/delete/{id}', [AdminController::class, 'deletePosition'])->middleware(['auth'])->name('delete.position');
-Route::get('/admin/gears/delete/{id}', [AdminController::class, 'deleteGear'])->middleware(['auth'])->name('delete.gear');
+Route::get('/admin/gears/delete/{id}', [GearController::class, 'deleteGear'])->middleware(['auth'])->name('delete.gear');
 Route::get('/admin/hulls/delete/{id}', [AdminController::class, 'deleteHull'])->middleware(['auth'])->name('delete.hull');
 
 

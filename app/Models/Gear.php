@@ -9,6 +9,13 @@ class Gear extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'gear_name',
+        'gear_img',
+        'gear_rarity',
+        'gear_type',
+    ];
+
     public function ships(){
         return $this->belongsToMany(Ship::class,'ship_gears','gear_id','ship_id')->withPivot('gear_category');
     }

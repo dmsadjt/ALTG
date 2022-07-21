@@ -60,9 +60,6 @@ class AdminController extends Controller
     }
     //Ships
 
-    //Factions
-
-    //Factions
 
     //Hulls
     public function deleteHull($id){

@@ -12,6 +12,10 @@ class Position extends Model
 
     protected $table = 'positions';
 
+    protected $fillable = [
+        'explanation',
+    ];
+
     public function ships(){
         return $this->hasOne(Ship::class);
     }
