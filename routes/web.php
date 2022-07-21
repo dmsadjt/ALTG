@@ -53,6 +53,7 @@ Route::get('/admin/roles/edit/{id}', [RoleController::class, 'editRole'])->middl
 Route::get('/admin/positions/edit/{id}', [PositionController::class, 'editPosition'])->middleware(['auth'])->name('edit.position');
 Route::get('/admin/gears/edit/{id}', [GearController::class, 'editGear'])->middleware(['auth'])->name('edit.gear');
 Route::get('/admin/hulls/edit/{id}', [HullController::class, 'edit'])->middleware(['auth'])->name('edit.hull');
+Route::get('/admin/sirens/edit/{id}', [SirenController::class, 'edit'])->middleware(['auth'])->name('edit.siren');
 
 //post
 Route::post('/admin/ships/post', [ShipController::class, 'postShip'])->middleware(['auth'])->name('post');

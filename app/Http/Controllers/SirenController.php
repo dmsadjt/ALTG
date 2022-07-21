@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siren;
+use App\Models\Hull;
 
 class SirenController extends Controller
 {
@@ -29,4 +30,18 @@ class SirenController extends Controller
             'stronghold_none', 'stronghold_full', 'abyssal_none', 'abyssal_full', 'arbiter_none_normal',
             'arbiter_none_hard', 'arbiter_full_normal', 'arbiter_full_hard', 'guild', 'meta'));
     }
+
+    public function edit($id){
+        $siren = Siren::where('id',$id)->get();
+        $hulls = Hull::all();
+        $selected['type'] = $siren[0]->boss_type;
+        $selected['difficulty'] = $siren[0]->difficulty;
+        $selected['adaptability'] = $siren[0]->adaptability;
+        $selected['hull'] = $siren[0]->hull;
+        $selected['armor'] = $siren[0]->armor;
+
+
+        return view('admin.siren.edit', compact('siren','hulls','selected'));
+    }
+
 }
