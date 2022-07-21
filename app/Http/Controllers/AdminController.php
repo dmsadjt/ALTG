@@ -51,32 +51,12 @@ class AdminController extends Controller
         ));
     }
 
-    //Ships
     public function ships()
     {
         $ships = Ship::paginate(10);
 
         return view('admin.ship.index', compact('ships'));
     }
-    //Ships
-
-
-    //Hulls
-    public function deleteHull($id){
-
-        $hull = Hull::where('id','=',$id)->first();
-
-        foreach ($hull->ship as $s){
-            $s->update([
-                'hull_id'=>'1',
-            ]);
-        }
-
-        $hull->delete();
-
-        return redirect('admin/hulls');
-    }
-    //Hulls
 
 
     public function sirens()

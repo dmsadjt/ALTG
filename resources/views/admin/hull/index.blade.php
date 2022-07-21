@@ -7,7 +7,7 @@
             <p class="altona-sans-12">Manage Hulls</p>
         </div>
         <div class="ms-auto mt-auto">
-            <a href="/hulls/add"><button class="btn btn-primary">Add hulls</button></a>
+            <a href="/admin/hulls/add"><button class="btn btn-primary">Add hulls</button></a>
         </div>
     </div>
     <div class="m-3 overflow-x">

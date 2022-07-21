@@ -11,6 +11,13 @@ class Hull extends Model
 
     protected $table = 'hulls';
 
+    protected $fillable = [
+        'hull_name',
+        'hull_tag',
+        'hull_slug',
+        'hull_img',
+    ];
+
     public function ship(){
         return $this->hasMany(Ship::class, 'hull_id');
     }

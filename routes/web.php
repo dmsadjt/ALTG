@@ -10,6 +10,7 @@ use App\Http\Controllers\ShipController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FactionController;
 use App\Http\Controllers\GearController;
+use App\Http\Controllers\HullController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
 
@@ -42,6 +43,7 @@ Route::get('/admin/factions/add', [FactionController::class, 'addFaction'])->mid
 Route::get('/admin/archetypes/add', [ArchetypeController::class, 'addArchetype'])->middleware(['auth'])->name('add.archetype');
 Route::get('/admin/roles/add', [RoleController::class, 'addRole'])->middleware(['auth'])->name('add.role');
 Route::get('/admin/gears/add', [GearController::class, 'addGear'])->middleware(['auth'])->name('add.gear');
+Route::get('/admin/hulls/add', [HullController::class, 'add'])->middleware(['auth'])->name('add.hull');
 
 //edit views
 Route::get('/admin/ships/edit/{id}', [ShipController::class, 'editShip'])->middleware(['auth'])->name('edit');
@@ -50,6 +52,7 @@ Route::get('/admin/archetypes/edit/{id}', [ArchetypeController::class, 'editArch
 Route::get('/admin/roles/edit/{id}', [RoleController::class, 'editRole'])->middleware(['auth'])->name('edit.roll');
 Route::get('/admin/positions/edit/{id}', [PositionController::class, 'editPosition'])->middleware(['auth'])->name('edit.position');
 Route::get('/admin/gears/edit/{id}', [GearController::class, 'editGear'])->middleware(['auth'])->name('edit.gear');
+Route::get('/admin/hulls/edit/{id}', [HullController::class, 'edit'])->middleware(['auth'])->name('edit.hull');
 
 //post
 Route::post('/admin/ships/post', [ShipController::class, 'postShip'])->middleware(['auth'])->name('post');
@@ -57,6 +60,7 @@ Route::post('/admin/factions/post', [FactionController::class, 'postFaction'])->
 Route::post('/admin/archetypes/post', [ArchetypeController::class, 'postArchetype'])->middleware(['auth'])->name('post.archetype');
 Route::post('/admin/roles/post', [RoleController::class, 'postRole'])->middleware(['auth'])->name('post.role');
 Route::post('/admin/gears/post', [GearController::class, 'postGear'])->middleware(['auth'])->name('post.gear');
+Route::post('/admin/hulls/post', [HullController::class, 'post'])->middleware(['auth'])->name('post.hull');
 
 //update
 Route::post('/admin/ships/update', [ShipController::class, 'updateShip'])->middleware(['auth'])->name('update');
@@ -65,6 +69,7 @@ Route::post('/admin/archetypes/update', [ArchetypeController::class, 'updateArch
 Route::post('/admin/roles/update', [RoleController::class, 'updateRole'])->middleware(['auth'])->name('update.role');
 Route::post('/admin/positions/update', [PositionController::class, 'updatePosition'])->middleware(['auth'])->name('update.position');
 Route::post('/admin/gears/update', [GearController::class, 'updateGear'])->middleware(['auth'])->name('update.gear');
+Route::post('/admin/hulls/update', [HullController::class, 'update'])->middleware(['auth'])->name('update.hull');
 
 //delete
 Route::get('/admin/ships/delete/{id}', [ShipController::class, 'deleteShip'])->middleware(['auth'])->name('delete');
@@ -72,7 +77,7 @@ Route::get('/admin/factions/delete/{id}', [FactionController::class, 'deleteFact
 Route::get('/admin/archetypes/delete/{id}', [ArchetypeController::class, 'deleteArchetype'])->middleware(['auth'])->name('delete.archetype');
 Route::get('/admin/roles/delete/{id}', [RoleController::class, 'deleteRole'])->middleware(['auth'])->name('delete.role');
 Route::get('/admin/gears/delete/{id}', [GearController::class, 'deleteGear'])->middleware(['auth'])->name('delete.gear');
-Route::get('/admin/hulls/delete/{id}', [AdminController::class, 'deleteHull'])->middleware(['auth'])->name('delete.hull');
+Route::get('/admin/hulls/delete/{id}', [HullController::class, 'hull'])->middleware(['auth'])->name('delete.hull');
 
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
