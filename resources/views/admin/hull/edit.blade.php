@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <h1 class="mx-5 my-2">Add Hull</h1>
+        <h1 class="mx-5 my-2">Edit Hull</h1>
         <form action="/admin/hulls/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
             @csrf
             @foreach ($hull as $item)

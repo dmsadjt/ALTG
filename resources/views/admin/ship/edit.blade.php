@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Add Ships')
+@section('title', 'Edit Ships')
 @section('contents')
     <div class="d-grid pill-dark p-2 m-3">
 
@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <h1 class="mx-5">Add Ships</h1>
+        <h1 class="mx-5">Edit Ships</h1>
         <form action="/admin/ships/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @foreach ($ship as $s)
                 <h2>General data</h2>
