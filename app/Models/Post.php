@@ -11,7 +11,17 @@ class Post extends Model
 
     protected $table = 'posts';
 
+    protected $fillable = [
+        'title',
+        'body',
+    ];
+
+
     public function tags(){
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id','tag_id');
+    }
+
+    public function images(){
+        return $this->hasMany(PostImage::class);
     }
 }

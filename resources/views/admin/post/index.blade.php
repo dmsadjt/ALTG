@@ -7,7 +7,7 @@
             <p class="altona-sans-12">Manage posts</p>
         </div>
         <div class="ms-auto mt-auto">
-            <a href="/posts/add"><button class="btn btn-primary">Add Posts</button></a>
+            <a href="/admin/blogs/add"><button class="btn btn-primary">Add Posts</button></a>
         </div>
     </div>
     <div class="m-3 overflow-x">
@@ -28,15 +28,29 @@
                                 <td class="altona-sans-10">
                                     <div>{{ $s->id }}</div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/posts/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10" href="/admin/blogs/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/posts/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10" href="/admin/blogs/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
                                     </div>
                             </td>
                                 <td class="altona-sans-10">{{ $s->title }}</td>
                                 <td class="altona-sans-10">{{ $s->body }}</td>
-                                <td><a class="altona-sans-10" href="/img/posts/{{$s->img}}">{{ $s->img }}</a></td>
+
+                                <td>
+                                    <ul style="list-style: none; padding:0">
+                                        @foreach ($s->tags as $t)
+                                            <li class="altona-sans-10">{{$t->tag_label}}</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul style="list-style: none; padding:0">
+                                        @foreach ($s->images as $i)
+                                            <li ><a class="altona-sans-10" href="/img/posts/{{$i->image}}">Image</a></li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                             </tr>
                         @endforeach
 
