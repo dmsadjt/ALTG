@@ -44,7 +44,7 @@
                                 <td class="altona-sans-10">{{ $s->hull_name }}</td>
                                 <td class="altona-sans-10">{{ $s->hull_tag }}</td>
                                 <td class="altona-sans-10">{{ $s->hull_slug }}</td>
-                                <td><a class="altona-sans-10" href="/img/hulls/{{ $s->hull_img }}">{{ $s->hull_img }}</a>
+                                <td><a class="altona-sans-10" href="/img/hulls/{{ $s->hull_img }}">Image</a>
                                 </td>
                             </tr>
                         @endforeach

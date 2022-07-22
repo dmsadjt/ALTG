@@ -44,4 +44,53 @@ class SirenController extends Controller
         return view('admin.siren.edit', compact('siren','hulls','selected'));
     }
 
+    public function update(Request $request){
+        $data = $request->validate([
+            'id'=>'required',
+            'name'=>'',
+            'hull'=>'',
+            'level'=>'integer',
+            'armor'=>'',
+            'hp'=>'integer',
+            'fp'=>'integer',
+            'trp'=>'integer',
+            'aa'=>'integer',
+            'avi'=>'integer',
+            'acc'=>'integer',
+            'eva'=>'integer',
+            'lck'=>'integer',
+            'spd'=>'integer',
+            'weakness'=>'',
+            'img'=>'image',
+        ]);
+
+        $siren = Siren::where('id', $data['id']);
+        $siren->update([
+            'name'=>$data['name'],
+            'hull'=>$data['hull'],
+            'level'=>$data['level'],
+            'armor'=>$data['armor'],
+            'hp'=>$data['hp'],
+            'fp'=>$data['fp'],
+            'trp'=>$data['trp'],
+            'aa'=>$data['aa'],
+            'avi'=>$data['avi'],
+            'acc'=>$data['acc'],
+            'eva'=>$data['eva'],
+            'lck'=>$data['lck'],
+            'spd'=>$data['spd'],
+            'weakness'=>$data['weakness'],
+        ]);
+
+        if(array_key_exists('img', $data)){
+            $img = $this->updateImg($request, 'img','/img/siren/',$siren,'img');
+            $siren->update([
+                'img'=>$img,
+            ]);
+        }
+
+        return redirect('admin/sirens');
+
+    }
+
 }

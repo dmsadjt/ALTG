@@ -71,6 +71,7 @@ Route::post('/admin/roles/update', [RoleController::class, 'updateRole'])->middl
 Route::post('/admin/positions/update', [PositionController::class, 'updatePosition'])->middleware(['auth'])->name('update.position');
 Route::post('/admin/gears/update', [GearController::class, 'updateGear'])->middleware(['auth'])->name('update.gear');
 Route::post('/admin/hulls/update', [HullController::class, 'update'])->middleware(['auth'])->name('update.hull');
+Route::post('/admin/sirens/update', [SirenController::class, 'update'])->middleware(['auth'])->name('update.siren');
 
 //delete
 Route::get('/admin/ships/delete/{id}', [ShipController::class, 'deleteShip'])->middleware(['auth'])->name('delete');

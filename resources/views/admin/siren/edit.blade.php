@@ -14,8 +14,9 @@
         @endif
 
         <h1 class="mx-5">Edit Boss</h1>
-        <form action="/admin/ships/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
+        <form action="/admin/sirens/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @foreach ($siren as $s)
+                <input type="hidden" name="id" id="id" value={{$s->id}}>
                 <div>
                     <label for="name">Boss Name</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ $s->name }}">
