@@ -66,6 +66,10 @@
                                     class="btn-none text-white w-100 text-start">Posts</button></a>
                         </li>
                         <li>
+                            <a class="link-none" href="/admin/tags"><button
+                                    class="btn-none text-white w-100 text-start">Post tags</button></a>
+                        </li>
+                        <li>
                             <a class="link-none" href="/admin/factions"><button
                                     class="btn-none text-white w-100 text-start">Factions</button></a>
                         </li>
