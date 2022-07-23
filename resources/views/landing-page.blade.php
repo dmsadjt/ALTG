@@ -33,7 +33,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/img/posts/{{ $posts[0]->img }}" class="d-block" alt="post-img">
+                            {{-- <img src="/img/posts/{{ $posts[0]->images->image ? $posts[0]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img"> --}}
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
                                 <p class="short-text altona-sans-10">{{ $posts[0]->body }}</p>
@@ -41,7 +41,7 @@
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="post-img">
+                                {{-- <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="post-img"> --}}
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
                                     <p class="short-text altona-sans-10">{{ $posts[$i]->body }}</p>
@@ -78,7 +78,7 @@
                     individual world score, gear guides and more</p>
             </div>
 
-            @for ($i = 0; $i < 3; $i++)
+            @for ($i = 0; $i < 2; $i++)
                 <div class="columns-four character-name">
                     <div class="justify-right grid-col-span-2">
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"
