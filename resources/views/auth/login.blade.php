@@ -21,7 +21,7 @@
         <section class="d-grid _100vh-full">
             <div class="columns-two__4-2">
                 <div class="bg-enterprise"></div>
-                <div class="bg-secondary d-grid">
+                <div class=" d-grid">
                     <div class="m-auto">
                         <h1 class="text-white text-center">ALTG Website</h1>
                         <div class="card shadow">
