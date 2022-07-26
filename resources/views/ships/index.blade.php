@@ -5,58 +5,86 @@
         <div class="container">
             <div class="bg-overlay">
                 <div>
+                    <div>
+                        <form action="/ships/filter" method="GET">
+                            @csrf
 
-                    <div class="tab-links pill-dark button-square d-grid score-type">
-                        <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}" alt="">
-                        <div class="mx-auto my-auto altona-sans-12">Mob</div>
-                    </div>
+                            <div class="columns-two__5-1">
+                                <div class="columns-two__1-5">
 
-                    <div class="tab-links pill-dark button-square d-grid score-type">
-                        <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}" alt="">
-                        <div class="mx-auto my-auto altona-sans-12">Boss</div>
-                    </div>
-
-                    <div class="columns-two__4-2">
-                        <div>
-                            <form action="/ships/filter" method="GET">
-                                @csrf
-                                <div class="columns-two__1-5 text-white filter">
+                                    <h2>Filter Ships</h2>
+                                    <div></div>
 
                                     <div>
-                                        <label for="hull"><span class="swiss-font-18">Hull Type</span></label>
+
+                                        <label for="hull">
+                                            <h3 class="swiss-font-18">Hull Type</h3>
+                                        </label>
+
+
                                         <select name="hull" id="hull"
                                             class="pill-dark hull-type d-grid text-center altona-sans-12">
-                                            <option value="" selected><span
-                                                    class="mx-auto mt-auto mb-2 altona-sans-12">Select
-                                                    Hull Type</span> </option>
+                                            <option value="" selected data-img_src="/img/posts/no-pictures.png">
+                                                Select Hull Type</option>
                                             @foreach ($hulls as $h)
                                                 <option class="mx-auto mt-auto mb-2 altona-sans-12"
-                                                    value="{{ $h->id }}">
-                                                    <span
-                                                        class="mx-auto mt-auto mb-2 altona-sans-12">{{ $h->hull_name }}</span>
+                                                    data-img_src="/img/posts/no-pictures.png" value="{{ $h->id }}">
+                                                    {{ $h->hull_name }}
                                                 </option>
                                             @endforeach
                                         </select>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+                                        <script script type="text/javascript">
+                                            function custom_template(obj) {
+                                                var data = $(obj.element).data();
+                                                var text = $(obj.element).text();
+                                                if (data && data['img_src']) {
+                                                    img_src = data['img_src'];
+                                                    template = $("<div><img src=\"" + img_src +
+                                                        "\"class=\"my-2\" style=\"width:100%;height:10em;\"/><p class=\"altona-sans-12 text-white text-center\">" +
+                                                        text + "</p></div>");
+
+                                                    return template;
+                                                }
+                                            }
+
+                                            var options = {
+                                                'templateSelection': custom_template,
+                                                'templateResult': custom_template,
+                                            }
+
+                                            $('#hull').select2(options);
+                                            $('.select2-container--default .select2-selection--single').css({
+                                                'height': '100%'
+                                            });
+                                        </script>
+
                                     </div>
 
                                     <div>
-                                        <div class="mb-2 d-grid">
+
+                                        <div>
+
                                             <div>
-                                                <label for="role"><span class="swiss-font-18">Role Tags</span></label>
+                                                <label for="role">
+                                                    <h3 class="swiss-font-18">Role Tags</h3>
+                                                </label>
                                                 <input type="text" name="role" id="role" class="text-form">
                                             </div>
+
                                         </div>
+                                        <div class="columns-two__4-2">
 
-                                        <div class="columns-two__4-2 gap-2">
-
-                                            <div class="d-grid">
+                                            <div>
 
                                                 <div class="columns-two__1-5">
+
                                                     <div class="swiss-font-12">
                                                         Rarity
                                                     </div>
                                                     <div class="d-flex flex-wrap">
-                                                        <ul class="filter-list pill-dark w-100 justify-content-center">
+                                                        <ul class="filter-list pill-dark justify-content-center">
                                                             @foreach ($rarity as $r)
                                                                 <li>
                                                                     <input type="radio" class="filter-radio"
@@ -69,9 +97,11 @@
                                                             @endforeach
                                                         </ul>
                                                     </div>
+
                                                 </div>
 
                                                 <div class="columns-two__1-5">
+
                                                     <div class="swiss-font-12">
                                                         Faction
                                                     </div>
@@ -91,18 +121,21 @@
                                                             @endforeach
                                                         </ul>
                                                     </div>
+
                                                 </div>
 
                                             </div>
 
                                             <div>
+
                                                 <span class="swiss-font-12">Select Position ></span>
                                                 <select name="position" id="position"
                                                     class="w-100 h-100 pill-dark altona-sans-12 text-center">
                                                     <option value="" selected>Select Position</option>
                                                     @foreach ($positions as $p)
                                                         @if ($p->position_category == 'backline')
-                                                            <option value="{{ $p->id }}">Backline :
+                                                            <option value="{{ $p->id }}">
+                                                                Backline :
                                                                 {{ $p->position_name }}</option>
                                                         @elseif ($p->position_category == 'submarine')
                                                             <option value="{{ $p->id }}">Submarine :
@@ -113,30 +146,92 @@
                                                         @endif
                                                     @endforeach
                                                 </select>
-                                            </div>
 
+                                            </div>
 
                                         </div>
 
                                     </div>
 
-
-
-                                </div>
-                                <div class="d-flex justify-content-end mt-2 gap-2">
-                                    <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
-                                    <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
+                                    <div class="d-flex justify-content-end mt-2 gap-2">
+                                        <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
+                                        <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
+                                    </div>
 
                                 </div>
-                        </div>
+
+                                <div>
+
+                                    <h2>View Score by</h2>
+
+                                    <div class="columns-two">
+                                        <button class="pill-dark button-square d-grid score-type ms-auto" id="mob-tab"
+                                            data-bs-toggle="tab" data-bs-target="#mob-tab-pane" type="button"
+                                            role="tab" aria-controls="mob-tab-pane" aria-selected="true">
+                                            <img class="mx-auto mt-auto img-small"
+                                                src="{{ url('/img/web-assets/mob.png') }}" alt="">
+                                            <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                                        </button>
+                                        <button class="tab-links pill-dark button-square d-grid score-type me-auto"
+                                            id="boss-tab" data-bs-toggle="tab" data-bs-target="#boss-tab-pane"
+                                            type="button" role="tab" aria-controls="boss-tab-pane"
+                                            aria-selected="false">
+                                            <img class="mx-auto mt-auto img-small"
+                                                src="{{ url('/img/web-assets/boss.png') }}" alt="">
+                                            <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                                        </button>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap">
+                                        <ul class="filter-list pill-dark altona-sans-10 justify-content-center"
+                                            id="myTab" role="tablist">
+                                            <li>
+                                                <button class="pill-dark button-square d-grid score-type ms-auto"
+                                                    id="mob-tab" data-bs-toggle="tab" data-bs-target="#mob-tab-pane"
+                                                    type="button" role="tab" aria-controls="mob-tab-pane"
+                                                    aria-selected="true">
+                                                    <img class="mx-auto mt-auto img-small"
+                                                        src="{{ url('/img/web-assets/mob.png') }}" alt="">
+                                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                                            </li>
+                                            <li>
+                                                <button class="tab-links pill-dark button-square d-grid score-type me-auto"
+                                                    id="boss-tab" data-bs-toggle="tab" data-bs-target="#boss-tab-pane"
+                                                    type="button" role="tab" aria-controls="boss-tab-pane"
+                                                    aria-selected="false">
+                                                    <img class="mx-auto mt-auto img-small"
+                                                        src="{{ url('/img/web-assets/boss.png') }}" alt="">
+                                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="pill-dark nav-link" id="tab-911" data-bs-toggle="tab"
+                                                    data-bs-target="#tab-911-pane" type="button" role="tab"
+                                                    aria-controls="tab-911-pane" aria-selected="false">W 9-11</button>
+                                            </li>
+                                            <li>
+                                                <button class="pill-dark nav-link" id="tab-1213" data-bs-toggle="tab"
+                                                    data-bs-target="#tab-1213-pane" type="button" role="tab"
+                                                    aria-controls="tab-1213-pane" aria-selected="false">W 12-13</button>
+                                            </li>
+                                            <li>
+                                                <button class="pill-dark nav-link" id="tab-14" data-bs-toggle="tab"
+                                                    data-bs-target="#tab-14-pane" type="button" role="tab"
+                                                    aria-controls="tab-14-pane" aria-selected="false">W 14</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
 
                         </form>
-                        <div>
-                            <p>aa</p>
-                        </div>
                     </div>
 
+
+
                 </div>
+
 
 
             </div>
@@ -201,32 +296,130 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="border-left-white grid-col-span-2">
+                        <div class="border-left-white grid-col-span-2 tab-content" id="myTabContent">
 
-                            <div class="d-flex h-100 justify-content-around align-items-center ">
-                                <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
-                                    <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_9_11, 1) }}
-                                    </div>
-                                </div>
-                                <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
-                                    <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_12_13, 1) }}
-                                    </div>
-                                </div>
-                                <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
-                                    <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_14, 1) }}
-                                    </div>
-                                </div>
-                                <script>
-                                    for (i = 0; i < 3; i++) {
-                                        scoreId = document.getElementsByClassName('sac')[0].id;
-                                        changeScoreColor(scoreId);
-                                    }
-                                </script>
 
+                            <div class="tab-pane show active" id="mob-tab-pane" role="tabpanel"
+                                aria-labelledby="mob-tab" tabindex="0">
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->boss_9_11, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->boss_9_11, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->mob_14, 1) }}
+                                        </div>
+                                    </div>
+                                    <script>
+                                        for (i = 0; i < 3; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
+
+                                </div>
                             </div>
+
+                            <div id="boss-tab-pane" role="tabpanel" aria-labelledby="boss-tab" tabindex="0">
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_14, 1) }}
+                                        </div>
+                                    </div>
+                                    <script>
+                                        for (i = 0; i < 3; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+
+                            <div id="tab-911-pane" role="tabpanel" aria-labelledby="tab-911" tabindex="0">
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        </div>
+                                    </div>
+                                    <script>
+                                        for (i = 0; i < 2; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+
+                            <div id="tab-1213-pane" role="tabpanel" aria-labelledby="tab-1213" tabindex="0">
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        </div>
+                                    </div>
+                                    <script>
+                                        for (i = 0; i < 2; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+
+                            <div id="tab-14-pane" role="tabpanel" aria-labelledby="tab-14" tabindex="0">
+                                <div class="d-flex h-100 justify-content-around align-items-center">
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->mobScore->mob_14, 1) }}
+                                        </div>
+                                    </div>
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                        <div class="score swiss-font-18">
+                                            {{ number_format($s->bossScore->boss_14, 1) }}
+                                        </div>
+                                    </div>
+                                    <script>
+                                        for (i = 0; i < 2; i++) {
+                                            scoreId = document.getElementsByClassName('sac')[0].id;
+                                            changeScoreColor(scoreId);
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+
 
                         </div>
 

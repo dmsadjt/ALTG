@@ -19,6 +19,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
                             <th scope="col">Body</th>
+                            <th scope="col">Tags</th>
                             <th scope="col">Images</th>
                         </tr>
                     </thead>
