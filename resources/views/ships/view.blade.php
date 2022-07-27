@@ -276,8 +276,6 @@
                                                         changeGear(gearR);
                                                     </script>
                                                 @endif
-
-
                                             @endforeach
                                         </div>
 
@@ -310,10 +308,7 @@
                                                             gearR = document.getElementsByClassName('pl-hd')[0].id;
                                                             changeGear(gearR);
                                                         </script>
-
                                                     @endif
-
-
                                                 @endforeach
                                             </div>
                                         </div>
@@ -345,8 +340,6 @@
                                                         changeGear(gearR);
                                                     </script>
                                                 @endif
-
-
                                             @endforeach
                                         </div>
                                     </div>
