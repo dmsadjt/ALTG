@@ -10,22 +10,20 @@
                 <div>
 
                     <div>
-                        <div class="columns-two__5-1">
+                        <div class="columns-two__5-1 text-white">
                             <form action="/ships/filter" method="GET">
                                 @csrf
-
-
                                 <div class="columns-two__1-5">
 
                                     <h2>Filter Ships</h2>
                                     <div></div>
 
+                                    {{-- Hull --}}
                                     <div>
 
                                         <label for="hull">
                                             <h3 class="swiss-font-18">Hull Type</h3>
                                         </label>
-
 
                                         <select name="hull" id="hull"
                                             class="pill-dark hull-type d-grid text-center altona-sans-12">
@@ -67,7 +65,7 @@
 
                                     </div>
 
-                                    <div>
+                                    <div class="d-grid ">
 
                                         <div>
 
@@ -79,6 +77,7 @@
                                             </div>
 
                                         </div>
+
                                         <div class="columns-two__4-2">
 
                                             <div>
@@ -166,18 +165,18 @@
 
                         </div>
 
-                        <div class="scores">
+                        <div class="scores my-auto">
 
                             <h2>View Score by</h2>
-
-                            <div class="columns-two">
-                                <button class="pill-dark button-square d-grid score-type ms-auto score-link"
+                            <h3 class="swiss-font-12">Mob/Boss</h3>
+                            <div class="columns-two mb-2">
+                                <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
                                     onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')" id="openDefault">
                                     <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
                                         alt="">
                                     <div class="mx-auto my-auto altona-sans-12">Mob</div>
                                 </button>
-                                <button class="pill-dark button-square d-grid score-type me-auto score-link"
+                                <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
                                     onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
                                     <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
                                         alt="">
@@ -185,13 +184,14 @@
                                 </button>
                             </div>
 
-                            <div class="d-flex text-white gap-2">
+                            <h3 class="swiss-font-12">View by Chapters</h3>
+                            <div class="d-flex text-white gap-2 justify-content-center mt-3">
 
-                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W 9-11</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W 9-11</button>
 
-                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W 12-13</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W 12-13</button>
 
-                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
 
                             </div>
 
