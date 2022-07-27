@@ -65,20 +65,17 @@
 
                                     </div>
 
-                                    <div class="d-grid ">
+                                    <div class="d-grid gap-3">
 
                                         <div>
-
-                                            <div>
-                                                <label for="role">
-                                                    <h3 class="swiss-font-18">Role Tags</h3>
-                                                </label>
-                                                <input type="text" name="role" id="role" class="text-form">
-                                            </div>
-
+                                            <label for="role">
+                                                <h3 class="swiss-font-18">Role Tags</h3>
+                                            </label>
+                                            <input type="text" name="role" id="role" class="text-form">
                                         </div>
 
-                                        <div class="columns-two__4-2">
+
+                                        <div class="columns-two__4-2 gap-5">
 
                                             <div>
 
@@ -109,21 +106,23 @@
                                                     <div class="swiss-font-12">
                                                         Faction
                                                     </div>
-                                                    <div class="d-flex flex-wrap">
-                                                        <ul class="filter-list pill-dark w-100">
-                                                            @foreach ($factions as $f)
-                                                                <li>
-                                                                    <input type="radio" class="filter-radio"
-                                                                        name="faction" id="{{ $f->faction_slug }}"
-                                                                        value="{{ $f->faction_slug }}">
-                                                                    <label for="{{ $f->faction_slug }}"
-                                                                        class="filter-label rounded py-1 px-2"><img
-                                                                            src="/img/faction-logo/{{ $f->faction_img }}"
-                                                                            class="small-img"
-                                                                            alt="{{ $f->faction_tag }}"></label>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
+
+                                                    <div class="columns-five pill-dark">
+                                                        @foreach ($factions as $key => $f)
+                                                            @if ($key == 0)
+                                                                @continue
+                                                            @endif
+                                                            <div class="mx-auto">
+                                                                <input type="radio" class="filter-radio" name="faction"
+                                                                    id="{{ $f->faction_slug }}"
+                                                                    value="{{ $f->faction_slug }}">
+                                                                <label for="{{ $f->faction_slug }}"
+                                                                    class="filter-label p-2 rounded"><img
+                                                                        src="/img/faction-logo/{{ $f->faction_img }}"
+                                                                        class="small-img"
+                                                                        alt="{{ $f->faction_tag }}"></label>
+                                                            </div>
+                                                        @endforeach
                                                     </div>
 
                                                 </div>
@@ -171,7 +170,8 @@
                             <h3 class="swiss-font-12">Mob/Boss</h3>
                             <div class="columns-two mb-2">
                                 <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
-                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')" id="openDefault">
+                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
+                                    id="openDefault">
                                     <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
                                         alt="">
                                     <div class="mx-auto my-auto altona-sans-12">Mob</div>
@@ -187,11 +187,16 @@
                             <h3 class="swiss-font-12">View by Chapters</h3>
                             <div class="d-flex text-white gap-2 justify-content-center mt-3">
 
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W 9-11</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                    onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W
+                                    9-11</button>
 
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W 12-13</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                    onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W
+                                    12-13</button>
 
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1" onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
+                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                    onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
 
                             </div>
 
@@ -205,7 +210,7 @@
             </div>
 
 
-            <div class="tierlist text-white">
+            <div class="tierlist text-white my-5">
 
                 <div class="columns-eight">
                     <h2 class="grid-col-span-4">Battleship Mob Score</h2>
@@ -239,7 +244,8 @@
                                 <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
                                     <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
+                                    class="chibi-img">
                                 <span class="swiss-font-18 my-auto">
                                     <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                         {{ $s->name }}
@@ -327,7 +333,8 @@
                                 <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
                                     <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
+                                    class="chibi-img">
                                 <span class="swiss-font-18 my-auto">
                                     <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                         {{ $s->name }}
@@ -415,7 +422,8 @@
                                 <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
                                     <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
+                                    class="chibi-img">
                                 <span class="swiss-font-18 my-auto">
                                     <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                         {{ $s->name }}
@@ -502,7 +510,8 @@
                                 <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
                                     <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
+                                    class="chibi-img">
                                 <span class="swiss-font-18 my-auto">
                                     <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                         {{ $s->name }}
@@ -589,7 +598,8 @@
                                 <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
                                     <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
                                 </div>
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
+                                    class="chibi-img">
                                 <span class="swiss-font-18 my-auto">
                                     <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                         {{ $s->name }}

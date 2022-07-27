@@ -1142,6 +1142,7 @@ select {
 }
 
 .filter-radio {
+    width: 0;
     visibility: hidden;
 }
 
@@ -1150,12 +1151,13 @@ select {
     opacity: 0.5;
 }
 
+
 .filter-radio:checked+label {
     background-color: black;
     opacity: 1;
 }
 
-.score-content{
+.score-content {
     display: none;
 }
 
