@@ -2,14 +2,19 @@
 @section('title', 'Tier List')
 @section('contents')
     <section class="hero">
-        <div class="container">
-            <div class="bg-overlay">
-                <div>
-                    <div>
-                        <form action="/ships/filter" method="GET">
-                            @csrf
 
-                            <div class="columns-two__5-1">
+        <div class="container">
+
+            <div class="bg-overlay rounded my-3">
+
+                <div>
+
+                    <div>
+                        <div class="columns-two__5-1">
+                            <form action="/ships/filter" method="GET">
+                                @csrf
+
+
                                 <div class="columns-two__1-5">
 
                                     <h2>Filter Ships</h2>
@@ -157,154 +162,114 @@
                                         <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
                                         <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
                                     </div>
+                            </form>
 
-                                </div>
+                        </div>
 
-                                <div>
+                        <div class="scores">
 
-                                    <h2>View Score by</h2>
+                            <h2>View Score by</h2>
 
-                                    <div class="columns-two">
-                                        <button class="pill-dark button-square d-grid score-type ms-auto" id="mob-tab"
-                                            data-bs-toggle="tab" data-bs-target="#mob-tab-pane" type="button"
-                                            role="tab" aria-controls="mob-tab-pane" aria-selected="true">
-                                            <img class="mx-auto mt-auto img-small"
-                                                src="{{ url('/img/web-assets/mob.png') }}" alt="">
-                                            <div class="mx-auto my-auto altona-sans-12">Mob</div>
-                                        </button>
-                                        <button class="tab-links pill-dark button-square d-grid score-type me-auto"
-                                            id="boss-tab" data-bs-toggle="tab" data-bs-target="#boss-tab-pane"
-                                            type="button" role="tab" aria-controls="boss-tab-pane"
-                                            aria-selected="false">
-                                            <img class="mx-auto mt-auto img-small"
-                                                src="{{ url('/img/web-assets/boss.png') }}" alt="">
-                                            <div class="mx-auto my-auto altona-sans-12">Boss</div>
-                                        </button>
-                                    </div>
-
-                                    <div class="d-flex flex-wrap">
-                                        <ul class="filter-list pill-dark altona-sans-10 justify-content-center"
-                                            id="myTab" role="tablist">
-                                            <li>
-                                                <button class="pill-dark button-square d-grid score-type ms-auto"
-                                                    id="mob-tab" data-bs-toggle="tab" data-bs-target="#mob-tab-pane"
-                                                    type="button" role="tab" aria-controls="mob-tab-pane"
-                                                    aria-selected="true">
-                                                    <img class="mx-auto mt-auto img-small"
-                                                        src="{{ url('/img/web-assets/mob.png') }}" alt="">
-                                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
-                                            </li>
-                                            <li>
-                                                <button class="tab-links pill-dark button-square d-grid score-type me-auto"
-                                                    id="boss-tab" data-bs-toggle="tab" data-bs-target="#boss-tab-pane"
-                                                    type="button" role="tab" aria-controls="boss-tab-pane"
-                                                    aria-selected="false">
-                                                    <img class="mx-auto mt-auto img-small"
-                                                        src="{{ url('/img/web-assets/boss.png') }}" alt="">
-                                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="pill-dark nav-link" id="tab-911" data-bs-toggle="tab"
-                                                    data-bs-target="#tab-911-pane" type="button" role="tab"
-                                                    aria-controls="tab-911-pane" aria-selected="false">W 9-11</button>
-                                            </li>
-                                            <li>
-                                                <button class="pill-dark nav-link" id="tab-1213" data-bs-toggle="tab"
-                                                    data-bs-target="#tab-1213-pane" type="button" role="tab"
-                                                    aria-controls="tab-1213-pane" aria-selected="false">W 12-13</button>
-                                            </li>
-                                            <li>
-                                                <button class="pill-dark nav-link" id="tab-14" data-bs-toggle="tab"
-                                                    data-bs-target="#tab-14-pane" type="button" role="tab"
-                                                    aria-controls="tab-14-pane" aria-selected="false">W 14</button>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                </div>
+                            <div class="columns-two">
+                                <button class="pill-dark button-square d-grid score-type ms-auto score-link"
+                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')" id="openDefault">
+                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
+                                        alt="">
+                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                                </button>
+                                <button class="pill-dark button-square d-grid score-type me-auto score-link"
+                                    onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
+                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
+                                        alt="">
+                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                                </button>
                             </div>
 
-                        </form>
+                            <div class="d-flex text-white gap-2">
+
+                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W 9-11</button>
+
+                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W 12-13</button>
+
+                                <button class="pill-dark nav-link score-link" onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
+
+                            </div>
+
+                        </div>
+
                     </div>
 
-
-
                 </div>
-
 
 
             </div>
 
 
             <div class="tierlist text-white">
+
                 <div class="columns-eight">
                     <h2 class="grid-col-span-4">Battleship Mob Score</h2>
                     <span class="grid-col-span-4"></span>
                 </div>
-                <div class="columns-eight altona-sans-12">
-                    <span class="grid-col-span-4 mx-auto">
-                        Name
-                    </span>
-                    <span class="mx-auto">
-                        Archetype
-                    </span>
-                    <span class="mx-auto">
-                        Position
-                    </span>
-                    <span class="grid-col-span-2">
-                        <div class="d-flex justify-content-around">
-                            <span>9-11</span>
-                            <span>12-13</span>
-                            <span>14</span>
-                        </div>
-                    </span>
-                </div>
+                {{-- Mob Score --}}
+                <div class="score-content" id="mob-score">
 
-                @foreach ($ships as $s)
-                    <div class="ship-row columns-eight mb-3">
-                        <div class="d-flex grid-col-span-4">
-                            <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                    <div class="columns-eight altona-sans-12">
+                        <span class="grid-col-span-4 mx-auto">
+                            Name
+                        </span>
+                        <span class="mx-auto">
+                            Archetype
+                        </span>
+                        <span class="mx-auto">
+                            Position
+                        </span>
+                        <span class="grid-col-span-2">
+                            <div class="d-flex justify-content-around">
+                                <span>9-11</span>
+                                <span>12-13</span>
+                                <span>14</span>
                             </div>
+                        </span>
 
-
-
-                            <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
-                            <span class="swiss-font-18 my-auto">
-                                <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                    {{ $s->name }}
-                                </a>
-
-                            </span>
-                        </div>
-                        <div class="border-left-white d-grid">
-                            <div class="m-auto altona-sans-10">
-                                @foreach ($s->archetypes as $a)
-                                    <div class="text-center">
-                                        {{ $a->archetype_name }}
+                    </div>
+                    @foreach ($ships as $s)
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                                </div>
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div class="text-center">
+                                            {{ $a->archetype_name }}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
                                     </div>
                                 @endforeach
                             </div>
-                        </div>
-                        <div class="border-left-white d-grid">
-                            @foreach ($s->positions as $p)
-                                <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                <div class="mx-auto">
-                                    <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                        alt="position">
-                                </div>
-                            @endforeach
-                        </div>
-                        <div class="border-left-white grid-col-span-2 tab-content" id="myTabContent">
+                            <div class="border-left-white grid-col-span-2">
 
-
-                            <div class="tab-pane show active" id="mob-tab-pane" role="tabpanel"
-                                aria-labelledby="mob-tab" tabindex="0">
                                 <div class="d-flex h-100 justify-content-around align-items-center">
-                                    <div class="score-box sac" id="{{ number_format($s->mobScore->boss_9_11, 1) }}">
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                         <div class="score swiss-font-18">
-                                            {{ number_format($s->mobScore->boss_9_11, 1) }}
+                                            {{ number_format($s->mobScore->mob_9_11, 1) }}
                                         </div>
                                     </div>
                                     <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
@@ -323,11 +288,72 @@
                                             changeScoreColor(scoreId);
                                         }
                                     </script>
+                                </div>
 
+                            </div>
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
+                        </div>
+                    @endforeach
+
+                </div>
+                {{-- Boss Score --}}
+                <div class="score-content" id="boss-score">
+
+                    <div class="columns-eight altona-sans-12">
+                        <span class="grid-col-span-4 mx-auto">
+                            Name
+                        </span>
+                        <span class="mx-auto">
+                            Archetype
+                        </span>
+                        <span class="mx-auto">
+                            Position
+                        </span>
+                        <span class="grid-col-span-2">
+                            <div class="d-flex justify-content-around">
+                                <span>9-11</span>
+                                <span>12-13</span>
+                                <span>14</span>
+                            </div>
+                        </span>
+
+                    </div>
+                    @foreach ($ships as $s)
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                                </div>
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div class="text-center">
+                                            {{ $a->archetype_name }}
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
+                            <div class="border-left-white d-grid">
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="border-left-white grid-col-span-2" id="myTabContent">
 
-                            <div id="boss-tab-pane" role="tabpanel" aria-labelledby="boss-tab" tabindex="0">
                                 <div class="d-flex h-100 justify-content-around align-items-center">
                                     <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                         <div class="score swiss-font-18">
@@ -350,93 +376,289 @@
                                             changeScoreColor(scoreId);
                                         }
                                     </script>
+                                </div>
 
+                            </div>
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                {{-- Score 9-11 --}}
+                <div class="score-content" id="score-911">
+
+                    <div class="columns-eight altona-sans-12">
+                        <span class="grid-col-span-4 mx-auto">
+                            Name
+                        </span>
+                        <span class="mx-auto">
+                            Archetype
+                        </span>
+                        <span class="mx-auto">
+                            Position
+                        </span>
+                        <span class="grid-col-span-2">
+                            <div class="d-flex justify-content-around">
+                                <span>Mob</span>
+                                <span>Boss</span>
+                            </div>
+                        </span>
+
+                    </div>
+                    @foreach ($ships as $s)
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                                </div>
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div class="text-center">
+                                            {{ $a->archetype_name }}
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
+                            <div class="border-left-white d-grid">
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="border-left-white grid-col-span-2">
 
-                            <div id="tab-911-pane" role="tabpanel" aria-labelledby="tab-911" tabindex="0">
                                 <div class="d-flex h-100 justify-content-around align-items-center">
-                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->mobScore->mob_9_11, 1) }}
                                         </div>
                                     </div>
-                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->bossScore->boss_9_11, 1) }}
                                         </div>
                                     </div>
+
                                     <script>
                                         for (i = 0; i < 2; i++) {
                                             scoreId = document.getElementsByClassName('sac')[0].id;
                                             changeScoreColor(scoreId);
                                         }
                                     </script>
-
                                 </div>
+
                             </div>
 
-                            <div id="tab-1213-pane" role="tabpanel" aria-labelledby="tab-1213" tabindex="0">
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                {{-- Score 12-13 --}}
+                <div class="score-content" id="score-1213">
+
+                    <div class="columns-eight altona-sans-12">
+                        <span class="grid-col-span-4 mx-auto">
+                            Name
+                        </span>
+                        <span class="mx-auto">
+                            Archetype
+                        </span>
+                        <span class="mx-auto">
+                            Position
+                        </span>
+                        <span class="grid-col-span-2">
+                            <div class="d-flex justify-content-around">
+                                <span>Mob</span>
+                                <span>Boss</span>
+                            </div>
+                        </span>
+
+                    </div>
+                    @foreach ($ships as $s)
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                                </div>
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div class="text-center">
+                                            {{ $a->archetype_name }}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="border-left-white grid-col-span-2">
+
                                 <div class="d-flex h-100 justify-content-around align-items-center">
-                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->mobScore->mob_12_13, 1) }}
                                         </div>
                                     </div>
+
                                     <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->bossScore->boss_12_13, 1) }}
                                         </div>
                                     </div>
+
                                     <script>
                                         for (i = 0; i < 2; i++) {
                                             scoreId = document.getElementsByClassName('sac')[0].id;
                                             changeScoreColor(scoreId);
                                         }
                                     </script>
-
                                 </div>
+
                             </div>
 
-                            <div id="tab-14-pane" role="tabpanel" aria-labelledby="tab-14" tabindex="0">
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
+                        </div>
+                    @endforeach
+
+                </div>
+
+                {{-- Score 14 --}}
+                <div class="score-content" id="score-14">
+
+                    <div class="columns-eight altona-sans-12">
+                        <span class="grid-col-span-4 mx-auto">
+                            Name
+                        </span>
+                        <span class="mx-auto">
+                            Archetype
+                        </span>
+                        <span class="mx-auto">
+                            Position
+                        </span>
+                        <span class="grid-col-span-2">
+                            <div class="d-flex justify-content-around">
+                                <span>Mob</span>
+                                <span>Boss</span>
+                            </div>
+                        </span>
+
+                    </div>
+                    @foreach ($ships as $s)
+                        <div class="ship-row columns-eight mb-3">
+                            <div class="d-flex grid-col-span-4">
+                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
+                                </div>
+                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
+                                <span class="swiss-font-18 my-auto">
+                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                        {{ $s->name }}
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                <div class="m-auto altona-sans-10">
+                                    @foreach ($s->archetypes as $a)
+                                        <div class="text-center">
+                                            {{ $a->archetype_name }}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="border-left-white d-grid">
+                                @foreach ($s->positions as $p)
+                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
+                                    <div class="mx-auto">
+                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                            alt="position">
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="border-left-white grid-col-span-2">
+
                                 <div class="d-flex h-100 justify-content-around align-items-center">
-                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+
+                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->mobScore->mob_14, 1) }}
                                         </div>
                                     </div>
-                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+
+                                    <div class="score-box sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
                                         <div class="score swiss-font-18">
                                             {{ number_format($s->bossScore->boss_14, 1) }}
                                         </div>
                                     </div>
+
                                     <script>
                                         for (i = 0; i < 2; i++) {
                                             scoreId = document.getElementsByClassName('sac')[0].id;
                                             changeScoreColor(scoreId);
                                         }
                                     </script>
-
                                 </div>
+
                             </div>
 
-
+                            <script>
+                                idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                changeLabel(idTag);
+                            </script>
                         </div>
+                    @endforeach
 
-                        <script>
-                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                            changeLabel(idTag);
-                        </script>
-
-                    </div>
-                @endforeach
-
-
+                </div>
 
 
                 {{ $ships->links() }}
+                <script>
+                    document.getElementById("openDefault").click();
+                </script>
             </div>
+
         </div>
+
         </div>
+
     </section>
 @endsection

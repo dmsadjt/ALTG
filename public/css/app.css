@@ -1155,6 +1155,12 @@ select {
     opacity: 1;
 }
 
+.score-content{
+    display: none;
+}
+
+
+
 /* Dropdown */
 
 .select2-container {
