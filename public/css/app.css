@@ -817,6 +817,7 @@ td {
     color: var(--white);
     padding: 0.3em;
     border-radius: 0.35em;
+    z-index: 99;
     border: none;
 }
 
@@ -874,6 +875,8 @@ td {
     padding: 0.3em;
     border-radius: 0px 0.35em 0.35em 0;
 }
+
+
 
 .pill-tag--IL {
     background-color: var(--iris-libre);

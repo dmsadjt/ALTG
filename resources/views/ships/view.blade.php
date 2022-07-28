@@ -138,19 +138,22 @@
                             </tr>
                             <tr>
                                 <td>Roles</td>
-                                <td class="altona-sans-12 ps-5">
-                                    @foreach ($ship->roles as $r)
-                                        <d-flex>
-                                            <span class="pill-dark">{{ $r->role_name }}</span>
-                                            @foreach ($r->factions as $f)
+                                <td class="altona-sans-12 ps-5 d-flex gap-1">
+                                    @foreach ($ship->roles as $key=>$r)
+                                        <div class>
+                                            <span class="pill-dark" style="position: relative;">{{ $r->role_name }}</span>
+                                            @foreach ($r->factions as $key=>$f)
                                                 <span class="pl-hd"
-                                                    id="{{ $f->faction_tag }}">{{ $f->faction_tag }}</span>
+                                                    id="{{ $f->faction_tag }}" style="position: relative;left: calc({{$key+1}}* -1 * .4em );">{{ $f->faction_tag }}</span>
+                                                    {{--  --}}
                                                 <script>
+                                                    var zin = (10 - {!! json_encode($key) !!});
+                                                    document.getElementById({!! json_encode($f->faction_tag) !!}).style.zIndex = zin;
                                                     tag = document.getElementsByClassName('pl-hd')[0].id;
                                                     changeFactionTag(tag);
                                                 </script>
                                             @endforeach
-                                        </d-flex>
+                                            </div>
                                     @endforeach
                                     </span>
                                 </td>
@@ -250,6 +253,8 @@
                                         <div class="grid-col-span-2 mx-auto">Boss (Armor)</div>
                                     </div>
 
+
+
                                     <div class="tab-content__{{ $c->gear_category_slug }}  fadeIn"
                                         id="{{ $c->gear_category_slug }}-general">
                                         <div class="d-flex gap-3">
@@ -266,9 +271,11 @@
                                                             {{ $g->gear_name }}
                                                         </div>
                                                         <script>
-                                                            divId = document.getElementsByClassName('d-none')[0].id;
-                                                            displayItem(divId);
+                                                            var cl = {!! json_encode($c->gear_category_slug) !!}
+                                                            divv = document.getElementById(cl).classList;
+                                                            divv.remove('d-none');
                                                         </script>
+
                                                     </div>
 
                                                     <script>
@@ -305,8 +312,9 @@
                                                             </script>
                                                         </div>
                                                         <script>
-                                                            gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                            changeGear(gearR);
+                                                            var cl = {!! json_encode($c->gear_category_slug) !!}
+                                                            divv = document.getElementById(cl).classList;
+                                                            divv.remove('d-none');
                                                         </script>
                                                     @endif
                                                 @endforeach
@@ -330,8 +338,10 @@
                                                         </div>
 
                                                         <script>
-                                                            divId = document.getElementsByClassName('d-none')[0].id;
-                                                            displayItem(divId);
+                                                            var cl = {!! json_encode($c->gear_category_slug) !!}
+                                                            divv = document.getElementById(cl).classList;
+                                                            divv.remove('d-none');
+
                                                         </script>
                                                     </div>
 
@@ -360,8 +370,9 @@
                                                         </div>
 
                                                         <script>
-                                                            divId = document.getElementsByClassName('d-none')[0].id;
-                                                            displayItem(divId);
+                                                            var cl = {!! json_encode($c->gear_category_slug) !!}
+                                                            divv = document.getElementById(cl).classList;
+                                                            divv.remove('d-none');
                                                         </script>
                                                     </div>
 

@@ -247,40 +247,50 @@ function changeFactionTag(faction) {
     const divToChange = document.getElementById(faction).classList;
 
     switch (faction) {
+        case 'De':
         case 'DE':
             divToChange.add('pill-tag--DE');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'EU':
             divToChange.add('pill-tag--EU');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'IL':
             divToChange.add('pill-tag--IL');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'IB':
             divToChange.add('pill-tag--IB');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'NP':
             divToChange.add('pill-tag--NP');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'RN':
             divToChange.add('pill-tag--RN');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'SE':
             divToChange.add('pill-tag--SE');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'RM':
             divToChange.add('pill-tag--RM');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
         case 'VD':
             divToChange.add('pill-tag--VD');
+            divToChange.add('text-black');
             divToChange.remove('pl-hd');
             break;
     }

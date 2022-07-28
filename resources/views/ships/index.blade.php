@@ -7,198 +7,194 @@
 
             <div class="bg-overlay rounded my-3">
 
-                <div>
-
+                <div class="columns-two__5-1 text-white">
+                    {{-- form --}}
                     <div>
-                        <div class="columns-two__5-1 text-white">
-                            <form action="/ships/filter" method="GET">
-                                @csrf
-                                <div class="columns-two__1-5">
+                        <form action="/ships/filter" method="GET">
+                            @csrf
+                            <div class="columns-two__1-5">
+                                <h2>Filter Ships</h2>
+                                <div></div>
+                                {{-- Hull --}}
+                                <div>
 
-                                    <h2>Filter Ships</h2>
-                                    <div></div>
+                                    <label for="hull">
+                                        <h3 class="swiss-font-18">Hull Type</h3>
+                                    </label>
 
-                                    {{-- Hull --}}
+                                    <select name="hull" id="hull"
+                                        class="pill-dark hull-type d-grid text-center altona-sans-12">
+                                        <option value="" selected data-img_src="/img/posts/no-pictures.png">
+                                            Select Hull Type</option>
+                                        @foreach ($hulls as $h)
+                                            <option class="mx-auto mt-auto mb-2 altona-sans-12"
+                                                data-img_src="/img/posts/no-pictures.png" value="{{ $h->id }}">
+                                                {{ $h->hull_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
+                                    <script script type="text/javascript">
+                                        function custom_template(obj) {
+                                            var data = $(obj.element).data();
+                                            var text = $(obj.element).text();
+                                            if (data && data['img_src']) {
+                                                img_src = data['img_src'];
+                                                template = $("<div><img src=\"" + img_src +
+                                                    "\"class=\"my-2\" style=\"width:100%;height:10em;\"/><p class=\"altona-sans-12 text-white text-center\">" +
+                                                    text + "</p></div>");
+
+                                                return template;
+                                            }
+                                        }
+
+                                        var options = {
+                                            'templateSelection': custom_template,
+                                            'templateResult': custom_template,
+                                        }
+
+                                        $('#hull').select2(options);
+                                        $('.select2-container--default .select2-selection--single').css({
+                                            'height': '100%'
+                                        });
+                                    </script>
+
+                                </div>
+
+                                <div class="d-grid gap-3">
+
                                     <div>
-
-                                        <label for="hull">
-                                            <h3 class="swiss-font-18">Hull Type</h3>
+                                        <label for="role">
+                                            <h3 class="swiss-font-18">Role Tags</h3>
                                         </label>
-
-                                        <select name="hull" id="hull"
-                                            class="pill-dark hull-type d-grid text-center altona-sans-12">
-                                            <option value="" selected data-img_src="/img/posts/no-pictures.png">
-                                                Select Hull Type</option>
-                                            @foreach ($hulls as $h)
-                                                <option class="mx-auto mt-auto mb-2 altona-sans-12"
-                                                    data-img_src="/img/posts/no-pictures.png" value="{{ $h->id }}">
-                                                    {{ $h->hull_name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.js"></script>
-                                        <script script type="text/javascript">
-                                            function custom_template(obj) {
-                                                var data = $(obj.element).data();
-                                                var text = $(obj.element).text();
-                                                if (data && data['img_src']) {
-                                                    img_src = data['img_src'];
-                                                    template = $("<div><img src=\"" + img_src +
-                                                        "\"class=\"my-2\" style=\"width:100%;height:10em;\"/><p class=\"altona-sans-12 text-white text-center\">" +
-                                                        text + "</p></div>");
-
-                                                    return template;
-                                                }
-                                            }
-
-                                            var options = {
-                                                'templateSelection': custom_template,
-                                                'templateResult': custom_template,
-                                            }
-
-                                            $('#hull').select2(options);
-                                            $('.select2-container--default .select2-selection--single').css({
-                                                'height': '100%'
-                                            });
-                                        </script>
-
+                                        <input type="text" name="role" id="role" class="text-form">
                                     </div>
 
-                                    <div class="d-grid gap-3">
+
+                                    <div class="columns-two__4-2 gap-2">
 
                                         <div>
-                                            <label for="role">
-                                                <h3 class="swiss-font-18">Role Tags</h3>
-                                            </label>
-                                            <input type="text" name="role" id="role" class="text-form">
-                                        </div>
 
+                                            <div class="columns-two__1-5">
 
-                                        <div class="columns-two__4-2 gap-5">
-
-                                            <div>
-
-                                                <div class="columns-two__1-5">
-
-                                                    <div class="swiss-font-12">
-                                                        Rarity
-                                                    </div>
-                                                    <div class="d-flex flex-wrap">
-                                                        <ul class="filter-list pill-dark justify-content-center">
-                                                            @foreach ($rarity as $r)
-                                                                <li>
-                                                                    <input type="radio" class="filter-radio"
-                                                                        name="rarity" id="{{ $r->rarity_slug }}"
-                                                                        value="{{ $r->rarity_slug }}">
-                                                                    <label
-                                                                        class="filter-label py-1 px-2 rounded altona-sans-10"
-                                                                        for="{{ $r->rarity_slug }}">{{ $r->rarity_tag }}</label>
-                                                                </li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div>
-
+                                                <div class="swiss-font-12">
+                                                    Rarity
                                                 </div>
-
-                                                <div class="columns-two__1-5">
-
-                                                    <div class="swiss-font-12">
-                                                        Faction
-                                                    </div>
-
-                                                    <div class="columns-five pill-dark">
-                                                        @foreach ($factions as $key => $f)
-                                                            @if ($key == 0)
-                                                                @continue
-                                                            @endif
-                                                            <div class="mx-auto">
-                                                                <input type="radio" class="filter-radio" name="faction"
-                                                                    id="{{ $f->faction_slug }}"
-                                                                    value="{{ $f->faction_slug }}">
-                                                                <label for="{{ $f->faction_slug }}"
-                                                                    class="filter-label p-2 rounded"><img
-                                                                        src="/img/faction-logo/{{ $f->faction_img }}"
-                                                                        class="small-img"
-                                                                        alt="{{ $f->faction_tag }}"></label>
-                                                            </div>
+                                                <div class="d-flex flex-wrap">
+                                                    <ul class="filter-list pill-dark justify-content-center">
+                                                        @foreach ($rarity as $r)
+                                                            <li>
+                                                                <input type="radio" class="filter-radio" name="rarity"
+                                                                    id="{{ $r->rarity_slug }}"
+                                                                    value="{{ $r->rarity_slug }}">
+                                                                <label class="filter-label py-1 px-2 rounded altona-sans-10"
+                                                                    for="{{ $r->rarity_slug }}">{{ $r->rarity_tag }}</label>
+                                                            </li>
                                                         @endforeach
-                                                    </div>
-
+                                                    </ul>
                                                 </div>
 
                                             </div>
 
-                                            <div>
+                                            <div class="columns-two__1-5">
 
-                                                <span class="swiss-font-12">Select Position ></span>
-                                                <select name="position" id="position"
-                                                    class="w-100 h-100 pill-dark altona-sans-12 text-center">
-                                                    <option value="" selected>Select Position</option>
-                                                    @foreach ($positions as $p)
-                                                        @if ($p->position_category == 'backline')
-                                                            <option value="{{ $p->id }}">
-                                                                Backline :
-                                                                {{ $p->position_name }}</option>
-                                                        @elseif ($p->position_category == 'submarine')
-                                                            <option value="{{ $p->id }}">Submarine :
-                                                                {{ $p->position_name }}</option>
-                                                        @elseif ($p->position_category == 'vanguard')
-                                                            <option value="{{ $p->id }}">Vanguard :
-                                                                {{ $p->position_name }}</option>
+                                                <div class="swiss-font-12">
+                                                    Faction
+                                                </div>
+
+                                                <div class="columns-five pill-dark">
+                                                    @foreach ($factions as $key => $f)
+                                                        @if ($key == 0)
+                                                            @continue
                                                         @endif
+                                                        <div class="mx-auto">
+                                                            <input type="radio" class="filter-radio" name="faction"
+                                                                id="{{ $f->faction_slug }}"
+                                                                value="{{ $f->faction_slug }}">
+                                                            <label for="{{ $f->faction_slug }}"
+                                                                class="filter-label rounded"><img
+                                                                    src="/img/faction-logo/{{ $f->faction_img }}"
+                                                                    class="small-img m-1"
+                                                                    alt="{{ $f->faction_tag }}"></label>
+                                                        </div>
                                                     @endforeach
-                                                </select>
+                                                </div>
 
                                             </div>
 
                                         </div>
 
+                                        <div>
+
+                                            <span class="swiss-font-12">Select Position ></span>
+                                            <select name="position" id="position"
+                                                class="w-100 h-100 pill-dark altona-sans-12 text-center">
+                                                <option value="" selected>Select Position</option>
+                                                @foreach ($positions as $p)
+                                                    @if ($p->position_category == 'backline')
+                                                        <option value="{{ $p->id }}">
+                                                            Backline :
+                                                            {{ $p->position_name }}</option>
+                                                    @elseif ($p->position_category == 'submarine')
+                                                        <option value="{{ $p->id }}">Submarine :
+                                                            {{ $p->position_name }}</option>
+                                                    @elseif ($p->position_category == 'vanguard')
+                                                        <option value="{{ $p->id }}">Vanguard :
+                                                            {{ $p->position_name }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+
                                     </div>
 
-                                    <div class="d-flex justify-content-end mt-2 gap-2">
-                                        <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
-                                        <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
-                                    </div>
-                            </form>
+                                </div>
 
+                                <div class="d-flex justify-content-end mt-2 gap-2">
+                                    <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
+                                    <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                    <div class="scores my-auto p-2">
+
+                        <h2>View Score by</h2>
+                        <h3 class="swiss-font-12">Mob/Boss</h3>
+                        <div class="columns-two mb-2">
+                            <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
+                                onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
+                                id="openDefault">
+                                <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
+                                    alt="">
+                                <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                            </button>
+                            <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
+                                onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
+                                <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
+                                    alt="">
+                                <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                            </button>
                         </div>
 
-                        <div class="scores my-auto">
+                        <h3 class="swiss-font-12">View by Chapters</h3>
+                        <div class="d-flex text-white gap-2 justify-content-center mt-3">
 
-                            <h2>View Score by</h2>
-                            <h3 class="swiss-font-12">Mob/Boss</h3>
-                            <div class="columns-two mb-2">
-                                <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
-                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
-                                    id="openDefault">
-                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
-                                        alt="">
-                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
-                                </button>
-                                <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
-                                    onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
-                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
-                                        alt="">
-                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
-                                </button>
-                            </div>
+                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W
+                                9-11</button>
 
-                            <h3 class="swiss-font-12">View by Chapters</h3>
-                            <div class="d-flex text-white gap-2 justify-content-center mt-3">
+                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W
+                                12-13</button>
 
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                    onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W
-                                    9-11</button>
-
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                    onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W
-                                    12-13</button>
-
-                                <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                    onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
-
-                            </div>
+                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
 
                         </div>
 
@@ -206,9 +202,7 @@
 
                 </div>
 
-
             </div>
-
 
             <div class="tierlist text-white my-5">
 
@@ -659,12 +653,17 @@
 
                 </div>
 
-
-                {{ $ships->links() }}
-                <script>
-                    document.getElementById("openDefault").click();
-                </script>
             </div>
+
+
+
+
+
+            {{ $ships->links() }}
+            <script>
+                document.getElementById("openDefault").click();
+            </script>
+        </div>
 
         </div>
 
