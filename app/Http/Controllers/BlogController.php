@@ -16,6 +16,12 @@ class BlogController extends Controller
         return view('blog.index', compact('posts'));
     }
 
+    public function view($id){
+        $post = Post::where('id',$id)->first();
+
+        return view('blog.view', compact('post'));
+    }
+
     public function add()
     {
         $tags = Tag::all();

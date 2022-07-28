@@ -12,11 +12,11 @@
                         <div class="columns-two__5-1 pill-dark p-3 mb-2">
                             <div>
                                 <h3>{{$p->title}}</h3>
-                                <span class="altona-sans-10">{{$p->created_at}}</span>
+                                <p class="altona-sans-10">{{$p->created_at}}</p>
                                 <p class="altona-sans-12 medium-text">
-                                    {{substr($p->body, 100)}} ...
+                                    {{Str::limit($p->body, 100)}}
                                     <a class="altona-sans-12"
-                                href="#">See more</a>
+                                href="/blogs/view/{{$p->id}}">See more</a>
                                 </p>
 
                                 <div class="d-flex">
