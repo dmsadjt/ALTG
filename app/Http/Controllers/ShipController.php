@@ -21,7 +21,7 @@ class ShipController extends Controller
 {
     public function index()
     {
-        $ships = Ship::paginate(2);
+        $ships = Ship::paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();
@@ -84,7 +84,7 @@ class ShipController extends Controller
         }
 
 
-        $ships = $ship->paginate(2);
+        $ships = $ship->paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();

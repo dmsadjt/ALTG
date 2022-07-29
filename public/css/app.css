@@ -63,6 +63,11 @@ html {
     --offtank: #55b678;
     --tank: #e01b1f;
 
+    --rare : rgba(190,228,246,255);
+    --normal : rgba(228,228,228,255);
+    --elite : rgba(203,187,238,255);
+    --sr : rgba(228,224,142,255);
+
     --blue-button: #003663;
     --blue-button-active: #0072bc;
 
@@ -972,9 +977,7 @@ td {
     width: 1.5em;
     align-content: center;
 
-    background-image: url('../img/rarity/background/normal.jpeg');
-    object-fit: cover;
-    background-size: 100% 100%;
+    background-color: var(----normal);
 }
 
 .e-tag {
@@ -985,9 +988,7 @@ td {
     width: 1.5em;
     align-content: center;
 
-    background-image: url('../img/rarity/background/elite.jpg');
-    object-fit: cover;
-    background-size: 100% 100%;
+    background-color: var(--elite));
 }
 
 .r-tag {
@@ -998,9 +999,7 @@ td {
     width: 1.5em;
     align-content: center;
 
-    background-image: url('../img/rarity/background/rare.jpeg');
-    object-fit: cover;
-    background-size: 100% 100%;
+    background-color: var(--rare);
 }
 
 .sr-tag {
@@ -1010,11 +1009,7 @@ td {
     border-radius: 0.35rem 0 0 0.35rem;
     width: 1.5em;
     align-content: center;
-
-
-    background-image: url('../img/rarity/background/sr.jpg');
-    object-fit: cover;
-    background-size: 100% 100%;
+    background-color: var(--sr);
 }
 
 .ur-tag {

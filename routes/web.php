@@ -107,6 +107,6 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/search/results', [SearchController::class, 'search'])->name('search');
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
-Route::get('/blogs/view/{id}', [BlogController::class, 'view'])->name('view.blogs');
+Route::get('/blogs/view/{id}', [BlogController::class, 'view'])->name('blogs.view');
 
 require __DIR__ . '/auth.php';

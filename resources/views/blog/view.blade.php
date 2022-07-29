@@ -75,31 +75,29 @@
 
 
 
-            {{-- footer  --}}
+            {{-- footer --}}
             <div class="mx-5 mt-3">
                 <h2>Post Tags</h2>
                 <div class="d-flex">
                     @foreach ($post->tags as $item)
                         <div class="pill-white mx-1 altona-sans-10">
-                            {{$item->tag_label}}
+                            {{ $item->tag_label }}
                         </div>
                     @endforeach
                 </div>
             </div>
 
             {{-- navigation --}}
-            <div class="columns-three">
+            <div class="columns-three mx-5 ">
                 <div>
-                    @if (isset($post->next))
-a
-                        <a href="/blogs/view/{{$post->next->id}}">Next</a>
+                    @if ($previous)
+                        <a class=" altona-sans-12 text-white" href="{{ route('blogs.view', $previous) }}">Previous Post</a>
                     @endif
                 </div>
                 <div></div>
-                <div>
-                    @if (isset($post->previous))
-                    a
-                        <a href="/blogs/view/{{$post->previous->id}}">previous</a>
+                <div class="ms-auto">
+                    @if ($next)
+                        <a class=" altona-sans-12 text-white" href="{{ route('blogs.view', $next) }}">Next Post</a>
                     @endif
                 </div>
             </div>

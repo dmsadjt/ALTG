@@ -14,7 +14,7 @@
                                 <h3>{{$p->title}}</h3>
                                 <p class="altona-sans-10">{{$p->created_at}}</p>
                                 <p class="altona-sans-12 medium-text">
-                                    {{Str::limit($p->body, 100)}}
+                                    {{Str::limit($p->body, 200)}}
                                     <a class="altona-sans-12"
                                 href="/blogs/view/{{$p->id}}">See more</a>
                                 </p>

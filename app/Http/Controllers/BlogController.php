@@ -19,7 +19,10 @@ class BlogController extends Controller
     public function view($id){
         $post = Post::where('id',$id)->first();
 
-        return view('blog.view', compact('post'));
+        $previous = Post::where('id','<',$post->id)->max('id');
+        $next = Post::where('id','>',$post->id)->min('id');
+
+        return view('blog.view', compact(['post','previous','next']));
     }
 
     public function add()
