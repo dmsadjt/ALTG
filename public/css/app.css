@@ -74,7 +74,9 @@ html {
     font-family: swiss721;
 }
 
+@media screen and (min-witdh: 992px) {
 
+}
 
 section {
     display: grid;
@@ -432,12 +434,16 @@ td {
     background-color: var(--orange-light);
     border: 0;
     border-radius: 10px;
-    box-shadow: inset 5px -5px 20px 3px var(--gray1);
+    box-shadow: 5px -6px 5px 0px rgba(0,0,0,0.34) inset;
+    -webkit-box-shadow: 5px -6px 5px 0px rgba(0,0,0,0.34) inset;
+    -moz-box-shadow: 5px -6px 5px 0px rgba(0,0,0,0.34) inset;
     transition: 0.4s;
 }
 
 .orange-btn:hover {
-    box-shadow: inset 1px -1px 20px 3px var(--gray1);
+    box-shadow: 4px -4px 5px 0px rgba(0,0,0,0.34) inset;
+    -webkit-box-shadow: 4px -4px 5px 0px rgba(0,0,0,0.34) inset;
+    -moz-box-shadow: 4px -4px 5px 0px rgba(0,0,0,0.34) inset;
     background-color: var(--orange-light);
 }
 

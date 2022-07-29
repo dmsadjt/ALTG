@@ -127,9 +127,9 @@
 
                                         <div>
 
-                                            <span class="swiss-font-12">Select Position ></span>
+                                            <span class="swiss-font-12">Select Position</span>
                                             <select name="position" id="position"
-                                                class="w-100 h-100 pill-dark altona-sans-12 text-center">
+                                                class="pill-dark altona-sans-12 text-center button-square">
                                                 <option value="" selected>Select Position</option>
                                                 @foreach ($positions as $p)
                                                     @if ($p->position_category == 'backline')
