@@ -212,11 +212,11 @@
                     <div class="score-content" id="mob-score">
 
                         <div class="columns-eight altona-sans-12">
-                            <span class="grid-col-span-4 mx-auto">
-                                Name
+                            <span class="grid-col-span-4 d-grid mx-auto">
+                                <button class="btn text-white">Name</button>
                             </span>
                             <span class="mx-auto">
-                                Archetype
+                                <button class="btn text-white">Archetype</button>
                             </span>
                             <span class="mx-auto">
                                 Position
