@@ -211,21 +211,21 @@
                     {{-- Mob Score --}}
                     <div class="score-content" id="mob-score">
 
-                        <div class="columns-eight altona-sans-12">
-                            <span class="grid-col-span-4 d-grid mx-auto">
-                                <button class="btn text-white">Name</button>
+                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
+                            <span class="grid-col-span-4 mx-auto">
+                                <button class="btn text-white rounded-0">Name</button>
                             </span>
                             <span class="mx-auto">
-                                <button class="btn text-white">Archetype</button>
+                                <button class="btn text-white rounded-0">Archetype</button>
                             </span>
                             <span class="mx-auto">
-                                Position
+                                <button class="btn text-white rounded-0">Position</button>
                             </span>
                             <span class="grid-col-span-2">
                                 <div class="d-flex justify-content-around">
-                                    <span>9-11</span>
-                                    <span>12-13</span>
-                                    <span>14</span>
+                                    <span><button class="btn text-white rounded-0">9-11</button></span>
+                                    <span><button class="btn text-white rounded-0">12-13</button></span>
+                                    <span><button class="btn text-white rounded-0">14</button></span>
                                 </div>
                             </span>
 
@@ -301,21 +301,21 @@
                     {{-- Boss Score --}}
                     <div class="score-content" id="boss-score">
 
-                        <div class="columns-eight altona-sans-12">
+                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
                             <span class="grid-col-span-4 mx-auto">
-                                Name
+                                <button class="btn text-white rounded-0">Name</button>
                             </span>
                             <span class="mx-auto">
-                                Archetype
+                                <button class="btn text-white rounded-0">Archetype</button>
                             </span>
                             <span class="mx-auto">
-                                Position
+                                <button class="btn text-white rounded-0">Position</button>
                             </span>
                             <span class="grid-col-span-2">
                                 <div class="d-flex justify-content-around">
-                                    <span>9-11</span>
-                                    <span>12-13</span>
-                                    <span>14</span>
+                                    <span><button class="btn text-white rounded-0">9-11</button></span>
+                                    <span><button class="btn text-white rounded-0">12-13</button></span>
+                                    <span><button class="btn text-white rounded-0">14</button></span>
                                 </div>
                             </span>
 
@@ -393,20 +393,20 @@
                     {{-- Score 9-11 --}}
                     <div class="score-content" id="score-911">
 
-                        <div class="columns-eight altona-sans-12">
+                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
                             <span class="grid-col-span-4 mx-auto">
-                                Name
+                                <button class="btn text-white rounded-0">Name</button>
                             </span>
                             <span class="mx-auto">
-                                Archetype
+                                <button class="btn text-white rounded-0">Archetype</button>
                             </span>
                             <span class="mx-auto">
-                                Position
+                                <button class="btn text-white rounded-0">Position</button>
                             </span>
                             <span class="grid-col-span-2">
                                 <div class="d-flex justify-content-around">
-                                    <span>Mob</span>
-                                    <span>Boss</span>
+                                    <span><button class="btn text-white rounded-0">Mob</button></span>
+                                    <span><button class="btn text-white rounded-0">Boss</button></span>
                                 </div>
                             </span>
 
@@ -482,20 +482,20 @@
                     {{-- Score 12-13 --}}
                     <div class="score-content" id="score-1213">
 
-                        <div class="columns-eight altona-sans-12">
+                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
                             <span class="grid-col-span-4 mx-auto">
-                                Name
+                                <button class="btn text-white rounded-0">Name</button>
                             </span>
                             <span class="mx-auto">
-                                Archetype
+                                <button class="btn text-white rounded-0">Archetype</button>
                             </span>
                             <span class="mx-auto">
-                                Position
+                                <button class="btn text-white rounded-0">Position</button>
                             </span>
                             <span class="grid-col-span-2">
                                 <div class="d-flex justify-content-around">
-                                    <span>Mob</span>
-                                    <span>Boss</span>
+                                    <span><button class="btn text-white rounded-0">Mob</button></span>
+                                    <span><button class="btn text-white rounded-0">Boss</button></span>
                                 </div>
                             </span>
 
@@ -572,20 +572,20 @@
                     {{-- Score 14 --}}
                     <div class="score-content" id="score-14">
 
-                        <div class="columns-eight altona-sans-12">
+                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
                             <span class="grid-col-span-4 mx-auto">
-                                Name
+                                <button class="btn text-white rounded-0">Name</button>
                             </span>
                             <span class="mx-auto">
-                                Archetype
+                                <button class="btn text-white rounded-0">Archetype</button>
                             </span>
                             <span class="mx-auto">
-                                Position
+                                <button class="btn text-white rounded-0">Position</button>
                             </span>
                             <span class="grid-col-span-2">
                                 <div class="d-flex justify-content-around">
-                                    <span>Mob</span>
-                                    <span>Boss</span>
+                                    <span><button class="btn text-white rounded-0">Mob</button></span>
+                                    <span><button class="btn text-white rounded-0">Boss</button></span>
                                 </div>
                             </span>
 

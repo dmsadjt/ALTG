@@ -608,6 +608,10 @@ td {
     background-color: var(--nav_color);
 }
 
+.bg-gray1 {
+    background-color: var(--gray1);
+}
+
 ._100vh {
     height: calc(100vh - 80px);
 }
@@ -996,7 +1000,7 @@ td {
     width: 1.5em;
     align-content: center;
 
-    background-color: var(--elite));
+    background-color: var(--elite);
 }
 
 .r-tag {
