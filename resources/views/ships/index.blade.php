@@ -110,8 +110,7 @@
                                                         @endif
                                                         <div class="mx-auto">
                                                             <input type="radio" class="filter-radio" name="faction"
-                                                                id="{{ $f->faction_slug }}"
-                                                                value="{{ $f->faction_slug }}">
+                                                                id="{{ $f->faction_slug }}" value="{{ $f->faction_slug }}">
                                                             <label for="{{ $f->faction_slug }}"
                                                                 class="filter-label rounded"><img
                                                                     src="/img/faction-logo/{{ $f->faction_img }}"
@@ -270,8 +269,7 @@
                                                 {{ number_format($s->mobScore->mob_9_11, 1) }}
                                             </div>
                                         </div>
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                             <div class="score swiss-font-18">
                                                 {{ number_format($s->mobScore->mob_12_13, 1) }}
                                             </div>
@@ -355,8 +353,7 @@
                                 <div class="border-left-white grid-col-span-2" id="myTabContent">
 
                                     <div class="d-flex h-100 justify-content-around align-items-center">
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                             <div class="score swiss-font-18">
                                                 {{ number_format($s->bossScore->boss_9_11, 1) }}
                                             </div>
@@ -453,8 +450,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                             <div class="score swiss-font-18">
                                                 {{ number_format($s->bossScore->boss_9_11, 1) }}
                                             </div>
@@ -536,8 +532,7 @@
 
                                     <div class="d-flex h-100 justify-content-around align-items-center">
 
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                             <div class="score swiss-font-18">
                                                 {{ number_format($s->mobScore->mob_12_13, 1) }}
                                             </div>
@@ -662,7 +657,71 @@
 
             </div>
 
+            <table class=" ship-table sortable">
+                <thead class="bg-gray1 text-white altona-sans-12">
+                    <th>&nbsp;</th>
+                    <th>Name</th>
+                    <th>Archetype</th>
+                    <th>Position</th>
+                    <th>9-11</th>
+                    <th>12-13</th>
+                    <th>14</th>
+                </thead>
+                <tbody>
+                    @foreach ($ships as $s)
+                    <tr class="text-white shadow">
+                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                            {{$s->rarity->rarity_tag}}
+                        </td>
+                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img" src="/img/ships/chibi/{{$s->chibi_sprite}}" alt=""> {{$s->name}}</td>
+                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">@foreach ($s->archetypes as $a)
+                            <div>{{$a->archetype_name}}</div>
+                        @endforeach</td>
+                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                            <div>
+                                @foreach ($s->positions as $p)
+                                    {{$p->position_name}}
+                                @endforeach
+                            </div>
+                            <div class="mx-auto">
+                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                alt="position">
+                            </div>
+                        </td>
+                        <td class="bg-gray1 border-left-white">
+                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                <div class="score swiss-font-18">
+                                    {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="bg-gray1 ">
+                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                <div class="score swiss-font-18">
+                                    {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="bg-gray1">
+                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                <div class="score swiss-font-18">
+                                    {{ number_format($s->mobScore->mob_14, 1) }}
+                                </div>
+                            </div>
+                        </td>
+                        <script>
+                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                            changeLabel(idTag);
+                            for (i = 0; i < 3; i++) {
+                                scoreId = document.getElementsByClassName('sac')[0].id;
+                                changeScoreColor(scoreId);
+                            }
+                        </script>
+                    </tr>
 
+                    @endforeach
+                </tbody>
+            </table>
 
 
 
