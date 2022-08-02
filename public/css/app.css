@@ -989,7 +989,7 @@ td {
     width: 1.5em;
     align-content: center;
 
-    background-color: var(----normal);
+    background-color: var(--normal);
 }
 
 .e-tag {

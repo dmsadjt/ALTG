@@ -19,9 +19,24 @@ use App\Models\BossScore;
 
 class ShipController extends Controller
 {
+
+    function urut($collection, $index, $orderBy){
+        if($orderBy == 'asc'){
+            $res = $collection->getCollection()->sortBy($index)->values();
+        }
+        elseif($orderBy == 'desc'){
+            $res = $collection->getCollection()->sortByDesc($index)->values();
+        }
+
+        return $res;
+    }
+
+
     public function index()
     {
         $ships = Ship::paginate(10);
+        $sortss = $this->urut($ships, 'id', 'desc');
+        $ships->setCollection($sortss);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();
