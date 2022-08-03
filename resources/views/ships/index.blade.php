@@ -2,7 +2,6 @@
 @section('title', 'Tier List')
 @section('contents')
     <section class="hero">
-
         <div class="container">
 
             <div class="bg-overlay rounded my-3">
@@ -210,445 +209,354 @@
                     {{-- Mob Score --}}
                     <div class="score-content" id="mob-score">
 
-                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
-                            <span class="grid-col-span-4 mx-auto">
-                                <button class="btn text-white rounded-0">Name</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Archetype</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Position</button>
-                            </span>
-                            <span class="grid-col-span-2">
-                                <div class="d-flex justify-content-around">
-                                    <span><button class="btn text-white rounded-0">9-11</button></span>
-                                    <span><button class="btn text-white rounded-0">12-13</button></span>
-                                    <span><button class="btn text-white rounded-0">14</button></span>
-                                </div>
-                            </span>
-
-                        </div>
-                        @foreach ($ships as $s)
-                            <div class="ship-row columns-eight mb-3 shadow-lg">
-                                <div class="d-flex grid-col-span-4">
-                                    <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                        <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                    </div>
-                                    <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
-                                        class="chibi-img">
-                                    <span class="swiss-font-18 my-auto">
-                                        <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                            {{ $s->name }}
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    <div class="m-auto altona-sans-10">
-                                        @foreach ($s->archetypes as $a)
-                                            <div class="text-center">
-                                                {{ $a->archetype_name }}
+                        <table class=" ship-table" style="width:100%;">
+                            <thead class="bg-gray1 text-white altona-sans-12">
+                                <th style="width:2%">&nbsp;</th>
+                                <th style="width:48%">@sortablelink('name')</th>
+                                <th>Archetype</th>
+                                <th>Position</th>
+                                <th>@sortablelink('mob_9_11')</th>
+                                <th>12-13</th>
+                                <th>14</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($ships as $s)
+                                    <tr class="text-white shadow">
+                                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                            <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                                        </td>
+                                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                                href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                                {{ $s->name }}
+                                            </a></td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            @foreach ($s->archetypes as $a)
+                                                <div>{{ $a->archetype_name }}</div>
+                                            @endforeach
+                                        </td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            <div>
+                                                @foreach ($s->positions as $p)
+                                                    {{ $p->position_name }}
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    @foreach ($s->positions as $p)
-                                        <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                        <div class="mx-auto">
-                                            <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="border-left-white grid-col-span-2">
-
-                                    <div class="d-flex h-100 justify-content-around align-items-center">
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                            <div class="mx-auto">
+                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                    alt="position">
                                             </div>
-                                        </div>
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 border-left-white">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_14, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 ">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td class="bg-gray1">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_14, 1) }}
+                                                </div>
+                                            </div>
+                                        </td>
                                         <script>
+                                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                            changeLabel(idTag);
                                             for (i = 0; i < 3; i++) {
                                                 scoreId = document.getElementsByClassName('sac')[0].id;
                                                 changeScoreColor(scoreId);
                                             }
                                         </script>
-                                    </div>
-
-                                </div>
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
-                            </div>
-                        @endforeach
-
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $ships->appends(\Request::except('page'))->render() }}
                     </div>
                     {{-- Boss Score --}}
                     <div class="score-content" id="boss-score">
 
-                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
-                            <span class="grid-col-span-4 mx-auto">
-                                <button class="btn text-white rounded-0">Name</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Archetype</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Position</button>
-                            </span>
-                            <span class="grid-col-span-2">
-                                <div class="d-flex justify-content-around">
-                                    <span><button class="btn text-white rounded-0">9-11</button></span>
-                                    <span><button class="btn text-white rounded-0">12-13</button></span>
-                                    <span><button class="btn text-white rounded-0">14</button></span>
-                                </div>
-                            </span>
-
-                        </div>
-                        @foreach ($ships as $s)
-                            <div class="ship-row columns-eight mb-3">
-                                <div class="d-flex grid-col-span-4">
-                                    <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                        <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                    </div>
-                                    <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
-                                        class="chibi-img">
-                                    <span class="swiss-font-18 my-auto">
-                                        <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                            {{ $s->name }}
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    <div class="m-auto altona-sans-10">
-                                        @foreach ($s->archetypes as $a)
-                                            <div class="text-center">
-                                                {{ $a->archetype_name }}
+                        <table class=" ship-table sortable" style="width:100%;">
+                            <thead class="bg-gray1 text-white altona-sans-12">
+                                <th style="width:2%">&nbsp;</th>
+                                <th style="width:48%">Name</th>
+                                <th>Archetype</th>
+                                <th>Position</th>
+                                <th>9-11</th>
+                                <th>12-13</th>
+                                <th>14</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($ships as $s)
+                                    <tr class="text-white shadow">
+                                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                            <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                                        </td>
+                                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                                href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                                {{ $s->name }}
+                                            </a></td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            @foreach ($s->archetypes as $a)
+                                                <div>{{ $a->archetype_name }}</div>
+                                            @endforeach
+                                        </td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            <div>
+                                                @foreach ($s->positions as $p)
+                                                    {{ $p->position_name }}
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    @foreach ($s->positions as $p)
-                                        <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                        <div class="mx-auto">
-                                            <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="border-left-white grid-col-span-2" id="myTabContent">
-
-                                    <div class="d-flex h-100 justify-content-around align-items-center">
-                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                            <div class="mx-auto">
+                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                    alt="position">
                                             </div>
-                                        </div>
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 border-left-white">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_14, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 ">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td class="bg-gray1">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_14, 1) }}
+                                                </div>
+                                            </div>
+                                        </td>
                                         <script>
+                                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                            changeLabel(idTag);
                                             for (i = 0; i < 3; i++) {
                                                 scoreId = document.getElementsByClassName('sac')[0].id;
                                                 changeScoreColor(scoreId);
                                             }
                                         </script>
-                                    </div>
-
-                                </div>
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
-                            </div>
-                        @endforeach
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
                     </div>
 
                     {{-- Score 9-11 --}}
                     <div class="score-content" id="score-911">
 
-                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
-                            <span class="grid-col-span-4 mx-auto">
-                                <button class="btn text-white rounded-0">Name</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Archetype</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Position</button>
-                            </span>
-                            <span class="grid-col-span-2">
-                                <div class="d-flex justify-content-around">
-                                    <span><button class="btn text-white rounded-0">Mob</button></span>
-                                    <span><button class="btn text-white rounded-0">Boss</button></span>
-                                </div>
-                            </span>
-
-                        </div>
-                        @foreach ($ships as $s)
-                            <div class="ship-row columns-eight mb-3">
-                                <div class="d-flex grid-col-span-4">
-                                    <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                        <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                    </div>
-                                    <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
-                                        class="chibi-img">
-                                    <span class="swiss-font-18 my-auto">
-                                        <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                            {{ $s->name }}
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    <div class="m-auto altona-sans-10">
-                                        @foreach ($s->archetypes as $a)
-                                            <div class="text-center">
-                                                {{ $a->archetype_name }}
+                        <table class=" ship-table sortable" style="width:100%;">
+                            <thead class="bg-gray1 text-white altona-sans-12">
+                                <th style="width:2%">&nbsp;</th>
+                                <th style="width:48%">Name</th>
+                                <th>Archetype</th>
+                                <th>Position</th>
+                                <th>Mob</th>
+                                <th>Boss</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($ships as $s)
+                                    <tr class="text-white shadow">
+                                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                            <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                                        </td>
+                                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                                href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                                {{ $s->name }}
+                                            </a></td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            @foreach ($s->archetypes as $a)
+                                                <div>{{ $a->archetype_name }}</div>
+                                            @endforeach
+                                        </td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            <div>
+                                                @foreach ($s->positions as $p)
+                                                    {{ $p->position_name }}
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    @foreach ($s->positions as $p)
-                                        <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                        <div class="mx-auto">
-                                            <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="border-left-white grid-col-span-2">
-
-                                    <div class="d-flex h-100 justify-content-around align-items-center">
-
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                            <div class="mx-auto">
+                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                    alt="position">
                                             </div>
-                                        </div>
-
-                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 border-left-white">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
-
+                                        </td>
+                                        <td class="bg-gray1 ">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                                </div>
+                                            </div>
+                                        </td>
                                         <script>
+                                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                            changeLabel(idTag);
                                             for (i = 0; i < 2; i++) {
                                                 scoreId = document.getElementsByClassName('sac')[0].id;
                                                 changeScoreColor(scoreId);
                                             }
                                         </script>
-                                    </div>
-
-                                </div>
-
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
-                            </div>
-                        @endforeach
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
                     </div>
 
                     {{-- Score 12-13 --}}
                     <div class="score-content" id="score-1213">
 
-                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
-                            <span class="grid-col-span-4 mx-auto">
-                                <button class="btn text-white rounded-0">Name</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Archetype</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Position</button>
-                            </span>
-                            <span class="grid-col-span-2">
-                                <div class="d-flex justify-content-around">
-                                    <span><button class="btn text-white rounded-0">Mob</button></span>
-                                    <span><button class="btn text-white rounded-0">Boss</button></span>
-                                </div>
-                            </span>
-
-                        </div>
-                        @foreach ($ships as $s)
-                            <div class="ship-row columns-eight mb-3">
-                                <div class="d-flex grid-col-span-4">
-                                    <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                        <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                    </div>
-                                    <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
-                                        class="chibi-img">
-                                    <span class="swiss-font-18 my-auto">
-                                        <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                            {{ $s->name }}
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    <div class="m-auto altona-sans-10">
-                                        @foreach ($s->archetypes as $a)
-                                            <div class="text-center">
-                                                {{ $a->archetype_name }}
+                        <table class=" ship-table sortable" style="width:100%;">
+                            <thead class="bg-gray1 text-white altona-sans-12">
+                                <th style="width:2%">&nbsp;</th>
+                                <th style="width:48%">Name</th>
+                                <th>Archetype</th>
+                                <th>Position</th>
+                                <th>Mob</th>
+                                <th>Boss</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($ships as $s)
+                                    <tr class="text-white shadow">
+                                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                            <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                                        </td>
+                                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                                href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                                {{ $s->name }}
+                                            </a></td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            @foreach ($s->archetypes as $a)
+                                                <div>{{ $a->archetype_name }}</div>
+                                            @endforeach
+                                        </td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            <div>
+                                                @foreach ($s->positions as $p)
+                                                    {{ $p->position_name }}
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    @foreach ($s->positions as $p)
-                                        <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                        <div class="mx-auto">
-                                            <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="border-left-white grid-col-span-2">
-
-                                    <div class="d-flex h-100 justify-content-around align-items-center">
-
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                            <div class="mx-auto">
+                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                    alt="position">
                                             </div>
-                                        </div>
-
-                                        <div class="score-box sac"
-                                            id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 border-left-white">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
-
+                                        </td>
+                                        <td class="bg-gray1 ">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                                </div>
+                                            </div>
+                                        </td>
                                         <script>
+                                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                            changeLabel(idTag);
                                             for (i = 0; i < 2; i++) {
                                                 scoreId = document.getElementsByClassName('sac')[0].id;
                                                 changeScoreColor(scoreId);
                                             }
                                         </script>
-                                    </div>
-
-                                </div>
-
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
-                            </div>
-                        @endforeach
-
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
 
                     {{-- Score 14 --}}
                     <div class="score-content" id="score-14">
 
-                        <div class="columns-eight altona-sans-12 bg-gray1 border my-2">
-                            <span class="grid-col-span-4 mx-auto">
-                                <button class="btn text-white rounded-0">Name</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Archetype</button>
-                            </span>
-                            <span class="mx-auto">
-                                <button class="btn text-white rounded-0">Position</button>
-                            </span>
-                            <span class="grid-col-span-2">
-                                <div class="d-flex justify-content-around">
-                                    <span><button class="btn text-white rounded-0">Mob</button></span>
-                                    <span><button class="btn text-white rounded-0">Boss</button></span>
-                                </div>
-                            </span>
-
-                        </div>
-                        @foreach ($ships as $s)
-                            <div class="ship-row columns-eight mb-3">
-                                <div class="d-flex grid-col-span-4">
-                                    <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                        <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                    </div>
-                                    <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite"
-                                        class="chibi-img">
-                                    <span class="swiss-font-18 my-auto">
-                                        <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                            {{ $s->name }}
-                                        </a>
-                                    </span>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    <div class="m-auto altona-sans-10">
-                                        @foreach ($s->archetypes as $a)
-                                            <div class="text-center">
-                                                {{ $a->archetype_name }}
+                        <table class=" ship-table sortable" style="width:100%;">
+                            <thead class="bg-gray1 text-white altona-sans-12">
+                                <th style="width:2%">&nbsp;</th>
+                                <th style="width:48%">Name</th>
+                                <th>Archetype</th>
+                                <th>Position</th>
+                                <th>Mob</th>
+                                <th>Boss</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($ships as $s)
+                                    <tr class="text-white shadow">
+                                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                            <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                                        </td>
+                                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                                href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                                {{ $s->name }}
+                                            </a></td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            @foreach ($s->archetypes as $a)
+                                                <div>{{ $a->archetype_name }}</div>
+                                            @endforeach
+                                        </td>
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                            <div>
+                                                @foreach ($s->positions as $p)
+                                                    {{ $p->position_name }}
+                                                @endforeach
                                             </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                <div class="border-left-white d-grid">
-                                    @foreach ($s->positions as $p)
-                                        <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                        <div class="mx-auto">
-                                            <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="border-left-white grid-col-span-2">
-
-                                    <div class="d-flex h-100 justify-content-around align-items-center">
-
-                                        <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->mobScore->mob_14, 1) }}
+                                            <div class="mx-auto">
+                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                    alt="position">
                                             </div>
-                                        </div>
-
-                                        <div class="score-box sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
-                                            <div class="score swiss-font-18">
-                                                {{ number_format($s->bossScore->boss_14, 1) }}
+                                        </td>
+                                        <td class="bg-gray1 border-left-white">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->mobScore->mob_14, 1) }}
+                                                </div>
                                             </div>
-                                        </div>
-
+                                        </td>
+                                        <td class="bg-gray1 ">
+                                            <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                                <div class="score swiss-font-18">
+                                                    {{ number_format($s->bossScore->boss_14, 1) }}
+                                                </div>
+                                            </div>
+                                        </td>
                                         <script>
+                                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
+                                            changeLabel(idTag);
                                             for (i = 0; i < 2; i++) {
                                                 scoreId = document.getElementsByClassName('sac')[0].id;
                                                 changeScoreColor(scoreId);
                                             }
                                         </script>
-                                    </div>
-
-                                </div>
-
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
-                            </div>
-                        @endforeach
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
 
                     </div>
 
@@ -657,71 +565,7 @@
 
             </div>
 
-            <table class=" ship-table sortable">
-                <thead class="bg-gray1 text-white altona-sans-12">
-                    <th>&nbsp;</th>
-                    <th>Name</th>
-                    <th>Archetype</th>
-                    <th>Position</th>
-                    <th>9-11</th>
-                    <th>12-13</th>
-                    <th>14</th>
-                </thead>
-                <tbody>
-                    @foreach ($ships as $s)
-                    <tr class="text-white shadow">
-                        <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                            {{$s->rarity->rarity_tag}}
-                        </td>
-                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img" src="/img/ships/chibi/{{$s->chibi_sprite}}" alt=""> {{$s->name}}</td>
-                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">@foreach ($s->archetypes as $a)
-                            <div>{{$a->archetype_name}}</div>
-                        @endforeach</td>
-                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
-                            <div>
-                                @foreach ($s->positions as $p)
-                                    {{$p->position_name}}
-                                @endforeach
-                            </div>
-                            <div class="mx-auto">
-                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                                alt="position">
-                            </div>
-                        </td>
-                        <td class="bg-gray1 border-left-white">
-                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
-                                <div class="score swiss-font-18">
-                                    {{ number_format($s->mobScore->mob_9_11, 1) }}
-                                </div>
-                            </div>
-                        </td>
-                        <td class="bg-gray1 ">
-                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
-                                <div class="score swiss-font-18">
-                                    {{ number_format($s->mobScore->mob_12_13, 1) }}
-                                </div>
-                            </div>
-                        </td>
-                        <td class="bg-gray1">
-                            <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
-                                <div class="score swiss-font-18">
-                                    {{ number_format($s->mobScore->mob_14, 1) }}
-                                </div>
-                            </div>
-                        </td>
-                        <script>
-                            idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                            changeLabel(idTag);
-                            for (i = 0; i < 3; i++) {
-                                scoreId = document.getElementsByClassName('sac')[0].id;
-                                changeScoreColor(scoreId);
-                            }
-                        </script>
-                    </tr>
 
-                    @endforeach
-                </tbody>
-            </table>
 
 
 

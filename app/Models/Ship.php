@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Faction;
+use Kyslik\ColumnSortable\Sortable;
 
 class Ship extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
+
+    protected $sortable = ['name'];
 
     protected $fillable = [
         'name',

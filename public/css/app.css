@@ -208,6 +208,7 @@ body {
 }
 
 .rotate--90 {
+    display: grid;
     transform: rotate(-90deg);
 }
 
@@ -1009,7 +1010,6 @@ td {
 }
 
 .n-tag {
-    display: grid;
     color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
@@ -1020,7 +1020,7 @@ td {
 }
 
 .e-tag {
-    display: grid;
+
     color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
@@ -1031,7 +1031,7 @@ td {
 }
 
 .r-tag {
-    display: grid;
+
     color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
@@ -1042,7 +1042,7 @@ td {
 }
 
 .sr-tag {
-    display: grid;
+
     color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
@@ -1052,7 +1052,7 @@ td {
 }
 
 .ur-tag {
-    display: grid;
+
     color: black;
     font-family: swiss721;
     border-radius: 0.35rem 0 0 0.35rem;
