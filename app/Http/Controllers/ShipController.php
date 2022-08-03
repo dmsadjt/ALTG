@@ -34,9 +34,7 @@ class ShipController extends Controller
 
     public function index()
     {
-        $ships = Ship::paginate(2);
-        // $sortss = $this->urut($ships, 'id', 'asc');
-        // $ships->setCollection($sortss);
+        $ships = Ship::sortable()->paginate(2);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();

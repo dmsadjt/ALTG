@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Archetype extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     protected $fillable = [
+        'archetype_name',
+        'archetype_slug',
+    ];
+
+    protected $sortable = [
         'archetype_name',
         'archetype_slug',
     ];

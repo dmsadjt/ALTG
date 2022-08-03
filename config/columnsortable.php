@@ -15,7 +15,7 @@ return [
             'class' => 'fa fa-sort-amount',
         ],
         'numeric' => [
-            'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number'],
+            'rows'  => ['created_at', 'updated_at', 'level', 'id', 'phone_number', 'mob_9_11', 'mob_12_13', 'mob_14'],
             'class' => 'fa fa-sort-numeric',
         ],
     ],
@@ -59,7 +59,7 @@ return [
     /*
     default anchor class, if value is null none is added
      */
-    'anchor_class'                  => null,
+    'anchor_class'                  => 'link-none text-white altona-sans-12',
 
     /*
     default active anchor class, if value is null none is added

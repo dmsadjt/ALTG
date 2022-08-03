@@ -213,11 +213,11 @@
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th>Archetype</th>
-                                <th>Position</th>
-                                <th>@sortablelink('mob_9_11')</th>
-                                <th>12-13</th>
-                                <th>14</th>
+                                <th><span class="altona-sans-12">Archetype</span></th>
+                                <th><span class="altona-sans-12">Position</span></th>
+                                <th>@sortablelink('mobScore.mob_9_11', '9-11')</th>
+                                <th>@sortablelink('mobScore.mob_12_13', '12-13')</th>
+                                <th>@sortablelink('mobScore.mob_14', '14')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -565,12 +565,6 @@
 
             </div>
 
-
-
-
-
-
-            {{ $ships->links() }}
             <script>
                 document.getElementById("openDefault").click();
             </script>
