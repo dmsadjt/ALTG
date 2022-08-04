@@ -22,6 +22,7 @@ class ShipsSeeder extends Seeder
             'notes'=>'Good timed barrager for mobbing, needs time to ramp up her buff',
             'faction_id'=>'2',
             'rarity_id'=>'4',
+            'position_id'=>'4',
             'sprite'=>'alabama.png',
         ]);
 
@@ -30,6 +31,7 @@ class ShipsSeeder extends Seeder
             'hull_id'=>'1',
             'notes'=>'Fast launch CV, very good for mobbing when paired with kaga',
             'faction_id'=>'3',
+            'position_id'=>'3',
             'rarity_id'=>'4',
             'sprite'=>'akagi.png',
 
@@ -41,6 +43,7 @@ class ShipsSeeder extends Seeder
             'notes'=>'Torp CL that buff DD torp',
             'faction_id'=>'3',
             'rarity_id'=>'3',
+            'position_id'=>'2',
             'sprite'=>'abukuma.png',
             'chibi_sprite'=>'abukuma.png',
         ]);

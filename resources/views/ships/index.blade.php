@@ -213,8 +213,8 @@
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><span class="altona-sans-12">Archetype</span></th>
-                                <th><span class="altona-sans-12">Position</span></th>
+                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
                                 <th>@sortablelink('mobScore.mob_9_11', '9-11')</th>
                                 <th>@sortablelink('mobScore.mob_12_13', '12-13')</th>
                                 <th>@sortablelink('mobScore.mob_14', '14')</th>
@@ -237,12 +237,12 @@
                                         </td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
                                             <div>
-                                                @foreach ($s->positions as $p)
-                                                    {{ $p->position_name }}
-                                                @endforeach
+
+                                                    {{ $s->positions->position_name }}
+
                                             </div>
                                             <div class="mx-auto">
-                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
                                                     alt="position">
                                             </div>
                                         </td>
@@ -279,20 +279,20 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $ships->appends(\Request::except('page'))->render() }}
+
                     </div>
                     {{-- Boss Score --}}
                     <div class="score-content" id="boss-score">
 
-                        <table class=" ship-table sortable" style="width:100%;">
+                        <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
-                                <th style="width:48%">Name</th>
-                                <th>Archetype</th>
-                                <th>Position</th>
-                                <th>9-11</th>
-                                <th>12-13</th>
-                                <th>14</th>
+                                <th style="width:48%">@sortablelink('name')</th>
+                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th>@sortablelink('positions.position_name','Position')</th>
+                                <th>@sortablelink('bossScore.boss_9_11','9-11')</th>
+                                <th>@sortablelink('bossScore.boss_12_13','12-13')</th>
+                                <th>@sortablelink('bossScore.boss_14', '14')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -312,12 +312,12 @@
                                         </td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
                                             <div>
-                                                @foreach ($s->positions as $p)
-                                                    {{ $p->position_name }}
-                                                @endforeach
+
+                                                    {{ $s->positions->position_name }}
+
                                             </div>
                                             <div class="mx-auto">
-                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
                                                     alt="position">
                                             </div>
                                         </td>
@@ -360,14 +360,14 @@
                     {{-- Score 9-11 --}}
                     <div class="score-content" id="score-911">
 
-                        <table class=" ship-table sortable" style="width:100%;">
+                        <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
-                                <th style="width:48%">Name</th>
-                                <th>Archetype</th>
-                                <th>Position</th>
-                                <th>Mob</th>
-                                <th>Boss</th>
+                                <th style="width:48%">@sortablelink('name')</th>
+                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th>@sortablelink('mobScore.mob_9_11', 'Mob')</th>
+                                <th>@sortablelink('bossScore.boss_9_11','Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -387,12 +387,12 @@
                                         </td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
                                             <div>
-                                                @foreach ($s->positions as $p)
-                                                    {{ $p->position_name }}
-                                                @endforeach
+
+                                                    {{ $s->positions->position_name }}
+
                                             </div>
                                             <div class="mx-auto">
-                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
                                                     alt="position">
                                             </div>
                                         </td>
@@ -428,14 +428,14 @@
                     {{-- Score 12-13 --}}
                     <div class="score-content" id="score-1213">
 
-                        <table class=" ship-table sortable" style="width:100%;">
+                        <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
-                                <th style="width:48%">Name</th>
-                                <th>Archetype</th>
-                                <th>Position</th>
-                                <th>Mob</th>
-                                <th>Boss</th>
+                                <th style="width:48%">@sortablelink('name')</th>
+                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th>@sortablelink('mobScore.mob_12_13', 'Mob')</th>
+                                <th>@sortablelink('bossScore.boss_12_13','Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -449,18 +449,18 @@
                                                 {{ $s->name }}
                                             </a></td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
-                                            @foreach ($s->archetypes as $a)
+                                           @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
                                             <div>
-                                                @foreach ($s->positions as $p)
-                                                    {{ $p->position_name }}
-                                                @endforeach
+
+                                                    {{ $s->positions->position_name }}
+
                                             </div>
                                             <div class="mx-auto">
-                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
                                                     alt="position">
                                             </div>
                                         </td>
@@ -495,14 +495,14 @@
                     {{-- Score 14 --}}
                     <div class="score-content" id="score-14">
 
-                        <table class=" ship-table sortable" style="width:100%;">
+                        <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
-                                <th style="width:48%">Name</th>
-                                <th>Archetype</th>
-                                <th>Position</th>
-                                <th>Mob</th>
-                                <th>Boss</th>
+                                <th style="width:48%">@sortablelink('name')</th>
+                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th>@sortablelink('mobScore.mob_14', 'Mob')</th>
+                                <th>@sortablelink('bossScore.boss_14', 'Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -522,12 +522,12 @@
                                         </td>
                                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
                                             <div>
-                                                @foreach ($s->positions as $p)
-                                                    {{ $p->position_name }}
-                                                @endforeach
+
+                                                    {{ $s->positions->position_name }}
+
                                             </div>
                                             <div class="mx-auto">
-                                                <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
+                                                <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
                                                     alt="position">
                                             </div>
                                         </td>
@@ -562,7 +562,7 @@
 
                 </div>
 
-
+                {{ $ships->appends(\Request::except('page'))->render() }}
             </div>
 
             <script>

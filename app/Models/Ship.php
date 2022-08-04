@@ -11,7 +11,7 @@ class Ship extends Model
 {
     use HasFactory, Sortable;
 
-    protected $sortable = ['name'];
+    protected $sortable = ['name', 'position_id'];
 
     protected $fillable = [
         'name',
@@ -21,12 +21,13 @@ class Ship extends Model
         'rarity_id',
         'sprite',
         'chibi_sprite',
+        'position_id',
     ];
 
     protected $table = 'ships';
 
     public function positions(){
-        return $this->belongsToMany(Position::class, 'ship_positions','ship_id','position_id');
+        return $this->belongsTo(Position::class,'position_id');
     }
 
     public function archetypes(){

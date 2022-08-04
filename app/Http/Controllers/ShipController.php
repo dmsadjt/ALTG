@@ -97,7 +97,7 @@ class ShipController extends Controller
         }
 
 
-        $ships = $ship->paginate(10);
+        $ships = $ship->sortable()->paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();

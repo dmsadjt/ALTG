@@ -122,11 +122,11 @@
                                 </tr>
                                 <tr>
                                     <td class="altona-font-18 align-end" >
-                                        @foreach ($ships[$i]->positions as $p)
-                                        <span class="cl-hd" id="{{$p->position_slug}}">
-                                            {{ $p->position_name }}
+
+                                        <span class="cl-hd" id="{{$ships[$i]->positions->position_slug}}">
+                                            {{ $ships[$i]->positions->position_name }}
                                         </span>
-                                        @endforeach
+
 
                                         <script>
                                             textId = document.getElementsByClassName('cl-hd')[0].id;
@@ -134,9 +134,9 @@
                                         </script>
                                     </td>
                                     <td>
-                                        @foreach ($ships[$i]->positions as $p)
-                                            <img src="/img/positions/{{ $p->position_image }}" alt="position">
-                                        @endforeach
+
+                                            <img src="/img/positions/{{ $ships[$i]->positions->position_image }}" alt="position">
+
 
                                     </td>
                                 </tr>

@@ -50,9 +50,9 @@
                                 <td class="altona-sans-10">{{ $s->rarity->rarity_name }}</td>
                                 <td class="altona-sans-10">
                                     <ul class="nav-style-none m-0 p-0">
-                                        @foreach ($s->positions as $p)
-                                            <li>{{ $p->position_name }}</li>
-                                        @endforeach
+
+                                            <li>{{ $s->positions->position_name }}</li>
+
                                     </ul>
 
                                 </td>
