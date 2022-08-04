@@ -161,25 +161,24 @@
                             <tr>
                                 <td class="vertical-align-top">Position</td>
                                 <td class="ps-5">
-                                    @foreach ($ship->positions as $p)
-                                        @if ($p->position_type == 'single')
+                                        @if ($ship->positions->position_type == 'single')
                                             <div class="pill-dark d-flex mb-1">
                                                 <div class="my-auto p-3">1</div>
                                                 <div class="border-left-white">
                                                     <div class="d-grid">
                                                         <h5 class="mx-auto text-center altona-sans-12">
-                                                            {{ $p->position_name }}
+                                                            {{ $ship->positions->position_name }}
                                                         </h5>
-                                                        <img src="/img/positions/{{ $p->position_image }}"
+                                                        <img src="/img/positions/{{ $ship->positions->position_image }}"
                                                             alt="">
                                                     </div>
                                                 </div>
                                                 <div class="my-auto">
-                                                    <p class="altona-sans-10">{{ $p->explanation }} </p>
+                                                    <p class="altona-sans-10">{{ $ship->positions->explanation }} </p>
                                                 </div>
                                             </div>
                                         @else
-                                            @foreach ($p->children as $c)
+                                            @foreach ($ship->positions->children as $c)
                                                 <div class="pill-dark d-flex mb-1">
                                                     <div class="my-auto p-3">1</div>
                                                     <div class="border-left-white">
@@ -203,7 +202,6 @@
                                                 </div>
                                             @endforeach
                                         @endif
-                                    @endforeach
                                 </td>
                             </tr>
                             <tr>

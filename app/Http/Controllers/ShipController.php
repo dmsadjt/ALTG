@@ -34,7 +34,7 @@ class ShipController extends Controller
 
     public function index()
     {
-        $ships = Ship::sortable()->paginate(2);
+        $ships = Ship::sortable()->paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();
@@ -188,6 +188,7 @@ class ShipController extends Controller
         $ship->hull_id = $shipdata['hull'];
         $ship->faction_id = $shipdata['faction'];
         $ship->rarity_id = $shipdata['rarity'];
+        $ship->position_id = $shipdata['position'];
         if ($shipdata['notes'] != null) {
             $ship->notes = $shipdata['notes'];
         }
@@ -195,10 +196,6 @@ class ShipController extends Controller
         $this->postImage($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
         $this->postImage($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
         $ship->save();
-
-        if ($shipdata['position'] != null) {
-            $ship->positions()->attach($shipdata['position']);
-        }
 
         for ($i = 1; $i < 6; $i++) {
             if ($shipdata['archetype' . $i] != null) {
@@ -399,6 +396,7 @@ class ShipController extends Controller
             'rarity_id' => $data['rarity'],
             'faction_id' => $data['faction'],
             'notes' => $data['notes'],
+            'position_id'=> $data['position'],
             'sprite' => $sprite,
             'chibi_sprite' => $chibi,
         ]);
