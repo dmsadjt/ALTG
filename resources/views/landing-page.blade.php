@@ -51,7 +51,7 @@
 
                     </div>
                 </div>
-                <div>
+                <div class="brand">
                     <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image-page" alt="">
                 </div>
             </div>

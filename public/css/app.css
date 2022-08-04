@@ -155,6 +155,102 @@ html {
         max-height: 38em;
     }
 
+    .character-card-common {
+        background-image: url('../img/rarity/frame/common.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .character-card-elite {
+        background-image: url('../img/rarity/frame/elite.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .character-card-rare {
+        background-image: url('../img/rarity/frame/rare.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .character-card-sr {
+        background-image: url('../img/rarity/frame/sr.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .character-card-ur {
+        background-image: url('../img/rarity/frame/ur.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+
+}
+
+@media screen and (max-width : 992px){
+    .image-out {
+        position: relative;
+        width: 10em;
+    }
+
+    .character-card-common {
+        background-color: var(--gray1);
+        border-radius: 0.35em;
+        border: 0.2em solid var(--normal);
+        padding: 2em;
+    }
+
+    .character-card-elite {
+        background-color: var(--gray1);
+        border-radius: 0.35em;
+        border: 0.2em solid var(--elite);
+        padding: 2em;
+
+    }
+
+    .character-card-rare {
+
+        background-color: var(--gray1);
+        border-radius: 0.35em;
+        border: 0.2em solid var(--rare);
+        padding: 2em;
+    }
+
+    .character-card-sr {
+
+        background-color: var(--gray1);
+        border-radius: 0.35em;
+        border: 0.2em solid var(--sr);
+        padding: 2em;
+    }
+
+    .character-card-ur {
+
+        background-color: var(--gray1);
+        border-radius: 0.35em;
+        border: 0.2em solid var(--_11);
+        padding: 2em;
+    }
+
+    .character-name {
+        display: flex;
+        justify-items: start;
+    }
+
+    .brand-image-page{
+        width: 30em;
+
+    }
+
+    .columns-two{
+        display: grid;
+    }
+
+    .columns-two > .brand{
+        grid-column-start: 1;
+        grid-row-start: 1;
+    }
 }
 
 section {
@@ -226,35 +322,7 @@ body {
     max-height: 40em;
 }
 
-.character-card-common {
-    background-image: url('../img/rarity/frame/common.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
 
-.character-card-elite {
-    background-image: url('../img/rarity/frame/elite.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.character-card-rare {
-    background-image: url('../img/rarity/frame/rare.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.character-card-sr {
-    background-image: url('../img/rarity/frame/sr.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
-
-.character-card-ur {
-    background-image: url('../img/rarity/frame/ur.png');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
 
 
 .img-small {
@@ -1294,7 +1362,6 @@ select {
 }
 
 .select2-results__option {
-    padding: 6px;
     user-select: none;
     -webkit-user-select: none;
 }
@@ -1544,7 +1611,9 @@ select {
 
 .select2-container--default .select2-results>.select2-results__options {
     max-height: 15em;
+    width: max-content;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .select2-container--default .select2-results__option[role=group] {
@@ -1560,7 +1629,7 @@ select {
 }
 
 .select2-container--default .select2-results__option .select2-results__option {
-    padding-left: 1em;
+    padding-left: 0;
 }
 
 .select2-container--default .select2-results__option .select2-results__option .select2-results__group {
