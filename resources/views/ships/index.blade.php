@@ -23,11 +23,14 @@
 
                                     <select name="hull" id="hull"
                                         class="pill-dark hull-type d-grid text-center altona-sans-12">
-                                        <option value="" selected data-img_src="/img/posts/no-pictures.png">
+                                        <option value="" selected data-img_src="/img/hulls/no-pictures.png">
                                             Select Hull Type</option>
-                                        @foreach ($hulls as $h)
+                                        @foreach ($hulls as $key=>$h)
+                                        @if ($key == 0)
+                                            @continue;
+                                        @endif
                                             <option class="mx-auto mt-auto mb-2 altona-sans-12"
-                                                data-img_src="/img/posts/no-pictures.png" value="{{ $h->id }}">
+                                                data-img_src="/img/hulls/{{$h->hull_img}}" value="{{ $h->id }}">
                                                 {{ $h->hull_name }}
                                             </option>
                                         @endforeach
@@ -41,7 +44,7 @@
                                             if (data && data['img_src']) {
                                                 img_src = data['img_src'];
                                                 template = $("<div><img src=\"" + img_src +
-                                                    "\"class=\"my-2\" style=\"width:100%;height:10em;\"/><p class=\"altona-sans-12 text-white text-center\">" +
+                                                    "\"class=\"my-2\" style=\"width:fit-content\;height:fit-content\;overlay:0.2;\"/><p class=\"altona-sans-12 text-white text-center\">" +
                                                     text + "</p></div>");
 
                                                 return template;
@@ -56,6 +59,11 @@
                                         $('#hull').select2(options);
                                         $('.select2-container--default .select2-selection--single').css({
                                             'height': '100%'
+
+                                        });
+                                        $('.select2-container--default .select2-selection--single').css({
+                                            'width': 'fit-content'
+
                                         });
                                     </script>
 
