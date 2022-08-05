@@ -190,6 +190,10 @@ html {
 
 @media screen and (max-width : 992px){
 
+    .carousel {
+        width: 100%;
+    }
+
     .grey-table{
         overflow-x: auto;
     }
@@ -257,7 +261,7 @@ html {
     }
 
     .brand-image-page{
-        width: 30em;
+        width: 20em;
 
     }
 
