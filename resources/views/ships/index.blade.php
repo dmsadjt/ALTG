@@ -6,19 +6,19 @@
 
             <div class="bg-overlay rounded my-3">
 
-                <div class="columns-two__5-1 text-white">
+                <div class="columns-two__5-1 text-white d-grid">
                     {{-- form --}}
                     <div>
                         <form action="/ships/filter" method="GET">
                             @csrf
-                            <div class="columns-two__1-5">
-                                <h2>Filter Ships</h2>
+                            <div class="columns-two__1-5 d-grid">
+                                <h2 class="swiss-font-24">Filter Ships</h2>
                                 <div></div>
                                 {{-- Hull --}}
-                                <div>
+                                <div class="d-grid mb-2">
 
                                     <label for="hull">
-                                        <h3 class="swiss-font-18">Hull Type</h3>
+                                        <h3 class=" swiss-font-12">Hull Type</h3>
                                     </label>
 
                                     <select name="hull" id="hull"
@@ -73,17 +73,17 @@
 
                                     <div>
                                         <label for="role">
-                                            <h3 class="swiss-font-18">Role Tags</h3>
+                                            <h3 class="swiss-font-12">Role Tags</h3>
                                         </label>
                                         <input type="text" name="role" id="role" class="text-form">
                                     </div>
 
 
-                                    <div class="columns-two__4-2 gap-2">
+                                    <div class="columns-two__4-2 gap-2 d-grid">
 
                                         <div>
 
-                                            <div class="columns-two__1-5">
+                                            <div class="columns-two__1-5 d-grid">
 
                                                 <div class="swiss-font-12">
                                                     Rarity
@@ -104,7 +104,7 @@
 
                                             </div>
 
-                                            <div class="columns-two__1-5">
+                                            <div class="columns-two__1-5 d-grid">
 
                                                 <div class="swiss-font-12">
                                                     Faction
@@ -115,7 +115,7 @@
                                                         @if ($key == 0)
                                                             @continue
                                                         @endif
-                                                        <div class="mx-auto">
+                                                        <span class="mx-auto">
                                                             <input type="radio" class="filter-radio" name="faction"
                                                                 id="{{ $f->faction_slug }}" value="{{ $f->faction_slug }}">
                                                             <label for="{{ $f->faction_slug }}"
@@ -123,7 +123,7 @@
                                                                     src="/img/faction-logo/{{ $f->faction_img }}"
                                                                     class="small-img m-1"
                                                                     alt="{{ $f->faction_tag }}"></label>
-                                                        </div>
+                                                        </span>
                                                     @endforeach
                                                 </div>
 
@@ -131,7 +131,7 @@
 
                                         </div>
 
-                                        <div>
+                                        <div class="d-grid">
 
                                             <span class="swiss-font-12">Select Position</span>
                                             <select name="position" id="position"
@@ -156,7 +156,7 @@
 
                                     </div>
 
-                                </div>
+                                <div></div></div>
 
                                 <div class="d-flex justify-content-end mt-2 gap-2">
                                     <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
@@ -169,23 +169,28 @@
                     </div>
 
                     <div class="scores my-auto p-2">
+                        <hr>
 
-                        <h2>View Score by</h2>
+                        <h2 class="swiss-font-28">View Score by</h2>
                         <h3 class="swiss-font-12">Mob/Boss</h3>
-                        <div class="columns-two mb-2">
-                            <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
-                                onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
-                                id="openDefault">
-                                <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
-                                    alt="">
-                                <div class="mx-auto my-auto altona-sans-12">Mob</div>
-                            </button>
-                            <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
-                                onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
-                                <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
-                                    alt="">
-                                <div class="mx-auto my-auto altona-sans-12">Boss</div>
-                            </button>
+                        <div class="columns-two mb-2 mob-boss">
+                            <div>
+                                <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
+                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
+                                    id="openDefault">
+                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
+                                        alt="">
+                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                                </button>
+                            </div>
+                            <div>
+                                <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
+                                    onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
+                                    <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
+                                        alt="">
+                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                                </button>
+                            </div>
                         </div>
 
                         <h3 class="swiss-font-12">View by Chapters</h3>
@@ -203,7 +208,7 @@
                                 onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
 
                         </div>
-
+                        <hr>
                     </div>
 
                 </div>
@@ -215,17 +220,17 @@
                         <span class="grid-col-span-4"></span>
                     </div>
                     {{-- Mob Score --}}
-                    <div class="score-content" id="mob-score">
+                    <div class="score-content overflow-x" id="mob-score">
 
                         <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
-                                <th>@sortablelink('mobScore.mob_9_11', '9-11')</th>
-                                <th>@sortablelink('mobScore.mob_12_13', '12-13')</th>
-                                <th>@sortablelink('mobScore.mob_14', '14')</th>
+                                <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_9_11', '9-11')</th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_12_13', '12-13')</th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_14', '14')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -238,12 +243,12 @@
                                                 href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                                 {{ $s->name }}
                                             </a></td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             <div>
 
                                                     {{ $s->positions->position_name }}
@@ -254,21 +259,21 @@
                                                     alt="position">
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 border-left-white">
+                                        <td class="bg-gray1 border-left-white r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_9_11, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 ">
+                                        <td class="bg-gray1  r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_12_13, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1">
+                                        <td class="bg-gray1 r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_14, 1) }}
@@ -290,17 +295,17 @@
 
                     </div>
                     {{-- Boss Score --}}
-                    <div class="score-content" id="boss-score">
+                    <div class="score-content overflow-x" id="boss-score">
 
                         <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                                <th>@sortablelink('positions.position_name','Position')</th>
-                                <th>@sortablelink('bossScore.boss_9_11','9-11')</th>
-                                <th>@sortablelink('bossScore.boss_12_13','12-13')</th>
-                                <th>@sortablelink('bossScore.boss_14', '14')</th>
+                                <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th class="r-hide">@sortablelink('positions.position_name','Position')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_9_11','9-11')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_12_13','12-13')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_14', '14')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -313,12 +318,12 @@
                                                 href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                                 {{ $s->name }}
                                             </a></td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             <div>
 
                                                     {{ $s->positions->position_name }}
@@ -329,21 +334,21 @@
                                                     alt="position">
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 border-left-white">
+                                        <td class="bg-gray1 border-left-white r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_9_11, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 ">
+                                        <td class="bg-gray1  r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_12_13, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1">
+                                        <td class="bg-gray1 r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_14, 1) }}
@@ -366,16 +371,16 @@
                     </div>
 
                     {{-- Score 9-11 --}}
-                    <div class="score-content" id="score-911">
+                    <div class="score-content overflow-x" id="score-911">
 
                         <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
-                                <th>@sortablelink('mobScore.mob_9_11', 'Mob')</th>
-                                <th>@sortablelink('bossScore.boss_9_11','Boss')</th>
+                                <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_9_11', 'Mob')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_9_11','Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -388,12 +393,12 @@
                                                 href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                                 {{ $s->name }}
                                             </a></td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             <div>
 
                                                     {{ $s->positions->position_name }}
@@ -404,14 +409,14 @@
                                                     alt="position">
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 border-left-white">
+                                        <td class="bg-gray1 border-left-white r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_9_11, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 ">
+                                        <td class="bg-gray1  r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_9_11, 1) }}
@@ -434,16 +439,16 @@
                     </div>
 
                     {{-- Score 12-13 --}}
-                    <div class="score-content" id="score-1213">
+                    <div class="score-content overflow-x" id="score-1213">
 
                         <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
-                                <th>@sortablelink('mobScore.mob_12_13', 'Mob')</th>
-                                <th>@sortablelink('bossScore.boss_12_13','Boss')</th>
+                                <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_12_13', 'Mob')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_12_13','Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -456,12 +461,12 @@
                                                 href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                                 {{ $s->name }}
                                             </a></td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                            @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             <div>
 
                                                     {{ $s->positions->position_name }}
@@ -472,14 +477,14 @@
                                                     alt="position">
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 border-left-white">
+                                        <td class="bg-gray1 border-left-white r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_12_13, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 ">
+                                        <td class="bg-gray1  r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_12_13, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_12_13, 1) }}
@@ -501,16 +506,16 @@
                     </div>
 
                     {{-- Score 14 --}}
-                    <div class="score-content" id="score-14">
+                    <div class="score-content overflow-x" id="score-14">
 
                         <table class=" ship-table" style="width:100%;">
                             <thead class="bg-gray1 text-white altona-sans-12">
                                 <th style="width:2%">&nbsp;</th>
                                 <th style="width:48%">@sortablelink('name')</th>
-                                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                                <th><span>@sortablelink('positions.position_name','Position')</span></th>
-                                <th>@sortablelink('mobScore.mob_14', 'Mob')</th>
-                                <th>@sortablelink('bossScore.boss_14', 'Boss')</th>
+                                <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
+                                <th class="r-hide">@sortablelink('mobScore.mob_14', 'Mob')</th>
+                                <th class="r-hide">@sortablelink('bossScore.boss_14', 'Boss')</th>
                             </thead>
                             <tbody>
                                 @foreach ($ships as $s)
@@ -523,12 +528,12 @@
                                                 href="/ships/{{ $s->id }}" class="link-none font-inherit">
                                                 {{ $s->name }}
                                             </a></td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             @foreach ($s->archetypes as $a)
                                                 <div>{{ $a->archetype_name }}</div>
                                             @endforeach
                                         </td>
-                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                             <div>
 
                                                     {{ $s->positions->position_name }}
@@ -539,14 +544,14 @@
                                                     alt="position">
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 border-left-white">
+                                        <td class="bg-gray1 border-left-white r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->mobScore->mob_14, 1) }}
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="bg-gray1 ">
+                                        <td class="bg-gray1  r-hide">
                                             <div class="score-box mx-auto sac" id="{{ number_format($s->bossScore->boss_14, 1) }}">
                                                 <div class="score swiss-font-18">
                                                     {{ number_format($s->bossScore->boss_14, 1) }}

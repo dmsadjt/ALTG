@@ -194,6 +194,19 @@ html {
         overflow-x: auto;
     }
 
+    .mob-boss{
+        display: flex !important;
+        justify-content: center;
+    }
+
+    .ship-table td:nth-child(2){
+        border-radius: 0 0.35em 0.35em 0;
+    }
+
+    .r-hide {
+        display: none;
+    }
+
     .image-out {
         position: relative;
         width: 10em;
@@ -451,11 +464,11 @@ td {
     text-align: center;
 }
 
-.ship-table tr td:first-child{
+.ship-table td:first-child{
     border-radius: 0.35em 0 0 0.35em;
 }
 
-.ship-table tr td:last-child{
+.ship-table td:nth-child(7){
     border-radius: 0 0.35em 0.35em 0;
 }
 
