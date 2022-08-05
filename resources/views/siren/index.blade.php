@@ -35,7 +35,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $s->img }}" alt="siren-img">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
@@ -90,7 +90,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $s->img }}" alt="siren-img">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
@@ -167,7 +167,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $s->img }}" alt="siren-img">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
@@ -222,7 +222,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $s->img }}" alt="siren-img">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
@@ -305,7 +305,7 @@
                                     <img src="/img/siren/{{ $arbiter_none_normal[0]->img }}" alt="siren-img">
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content" id="arbiter-1-normal">
+                                <div class="grid-col-span-2 my-auto tab-inside__content overflow-x" id="arbiter-1-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -342,7 +342,7 @@
                                     </table>
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content" id="arbiter-1-hard">
+                                <div class="grid-col-span-2 my-auto tab-inside__content overflow-x" id="arbiter-1-hard">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -405,7 +405,7 @@
                                     <img src="/img/siren/{{ $arbiter_none_normal[1]->img }}" alt="siren-img">
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--2" id="arbiter-2-normal">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--2 overflow-x" id="arbiter-2-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -442,7 +442,7 @@
                                     </table>
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--2" id="arbiter-2-hard">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--2 overflow-x" id="arbiter-2-hard">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -505,7 +505,7 @@
                                     <img src="/img/siren/{{ $arbiter_full_normal[0]->img }}" alt="siren-img">
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--3" id="arbiter-3-normal">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--3 overflow-x" id="arbiter-3-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -542,7 +542,7 @@
                                     </table>
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--3" id="arbiter-3-hard">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--3 overflow-x" id="arbiter-3-hard">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -604,7 +604,7 @@
                                     <img src="/img/siren/{{ $arbiter_full_normal[1]->img }}" alt="siren-img">
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--4" id="arbiter-4-normal">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--4 overflow-x" id="arbiter-4-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -641,7 +641,7 @@
                                     </table>
                                 </div>
 
-                                <div class="grid-col-span-2 my-auto tab-inside__content--4" id="arbiter-4-hard">
+                                <div class="grid-col-span-2 my-auto tab-inside__content--4 overflow-x" id="arbiter-4-hard">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
@@ -704,7 +704,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $g->img }}" alt="">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
@@ -762,7 +762,7 @@
                                     <div>
                                         <img src="/img/siren/{{ $g->img }}" alt="">
                                     </div>
-                                    <div class="grid-col-span-2 my-auto">
+                                    <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>

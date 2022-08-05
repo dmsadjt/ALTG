@@ -189,6 +189,11 @@ html {
 }
 
 @media screen and (max-width : 992px){
+
+    .grey-table{
+        overflow-x: auto;
+    }
+
     .image-out {
         position: relative;
         width: 10em;
