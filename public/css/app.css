@@ -188,11 +188,9 @@ html {
 
 }
 
-@media screen and (max-width : 992px){
 
-    .carousel {
-        width: 100%;
-    }
+
+@media screen and (max-width : 992px){
 
     .grey-table{
         overflow-x: auto;
@@ -273,6 +271,11 @@ html {
         grid-column-start: 1;
         grid-row-start: 1;
     }
+}
+
+.downarrow{
+    max-width: 50%;
+    height: 5em;
 }
 
 section {

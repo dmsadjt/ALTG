@@ -59,12 +59,13 @@
             <div class="row mt-5 text-center text-white">
                 <h1>CHECK OUT THE LATEST SHIPS</h1>
                 <div class="text-center mt-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="418.315px"
+                    {{-- <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="418.315px" viewBox="0 0 418 35" preserveAspectRatio="xMinYMin meet"
                         height="35px">
                         <path fill-rule="evenodd" stroke="rgb(0, 0, 0)" stroke-width="0.50px" stroke-linecap="butt"
                             stroke-linejoin="miter" fill="rgb(255, 255, 255)"
                             d="M0.162,0.103 L209.081,17.973 L418.083,0.176 L418.054,15.304 L209.052,33.102 L0.133,15.231 L0.162,0.103 Z" />
-                    </svg>
+                    </svg> --}}
+                    <img src="/img/web-assets/downarrow.svg" class="downarrow" alt="">
                 </div>
             </div>
         </div>
