@@ -12,77 +12,52 @@
 
             <hr>
 
-            @foreach ($ships as $s)
-                        <div class="ship-row columns-eight mb-3 shadow">
-                            <div class="d-flex grid-col-span-4">
-                                <div class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
-                                    <p class="rotate--90">{{ $s->rarity->rarity_tag }}</p>
-                                </div>
-
-
-
-                                <img src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt="chibi-sprite" class="chibi-img">
-                                <span class="swiss-font-18 my-auto">
-                                    <a href="/ships/{{ $s->id }}" class="link-none font-inherit">
-                                        {{ $s->name }}
-                                    </a>
-
-                                </span>
-                            </div>
-                            <div class="border-left-white d-grid">
-                                <div class="m-auto altona-sans-10">
-                                    @foreach ($s->archetypes as $a)
-                                        <div class="text-center">
-                                            {{ $a->archetype_name }}
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <div class="border-left-white d-grid">
-                                @foreach ($s->positions as $p)
-                                    <div class="m-auto altona-sans-10">{{ $p->position_name }}</div>
-                                    <div class="mx-auto">
-                                        <img class="position-row-img" src="/img/positions/{{ $p->position_image }}"
-                                            alt="position">
-                                    </div>
+            <table class=" ship-table" style="width:100%;">
+                <thead class="bg-gray1 text-white altona-sans-12">
+                    <th style="width:2%">&nbsp;</th>
+                    <th style="width:48%">@sortablelink('name')</th>
+                    <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                    <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
+                </thead>
+                <tbody>
+                    @foreach ($ships as $s)
+                        <tr class="text-white shadow">
+                            <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
+                            </td>
+                            <td class="bg-gray1 swiss-font-18"><img class="chibi-img"
+                                    src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                    href="/ships/{{ $s->id }}" class="link-none font-inherit">
+                                    {{ $s->name }}
+                                </a></td>
+                            <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
+                                @foreach ($s->archetypes as $a)
+                                    <div>{{ $a->archetype_name }}</div>
                                 @endforeach
-                            </div>
-                            <div class="border-left-white grid-col-span-2">
+                            </td>
+                            <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
+                                <div>
 
-                                <div class="d-flex h-100 justify-content-around align-items-center ">
-                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_9_11, 1) }}">
-                                        <div class="score swiss-font-18">
-                                            {{ number_format($s->mobScore->mob_9_11, 1) }}
-                                        </div>
-                                    </div>
-                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_12_13, 1) }}">
-                                        <div class="score swiss-font-18">
-                                            {{ number_format($s->mobScore->mob_12_13, 1) }}
-                                        </div>
-                                    </div>
-                                    <div class="score-box sac" id="{{ number_format($s->mobScore->mob_14, 1) }}">
-                                        <div class="score swiss-font-18">
-                                            {{ number_format($s->mobScore->mob_14, 1) }}
-                                        </div>
-                                    </div>
-                                    <script>
-                                        for (i = 0; i < 3; i++) {
-                                            scoreId = document.getElementsByClassName('sac')[0].id;
-                                            changeScoreColor(scoreId);
-                                        }
-                                    </script>
+                                        {{ $s->positions->position_name }}
 
                                 </div>
-
-                            </div>
-
+                                <div class="mx-auto">
+                                    <img class="position-row-img" src="/img/positions/{{ $s->positions->position_image }}"
+                                        alt="position">
+                                </div>
+                            </td>
                             <script>
                                 idTag = document.getElementsByClassName('rarity-tag')[0].id;
                                 changeLabel(idTag);
+                                for (i = 0; i < 3; i++) {
+                                    scoreId = document.getElementsByClassName('sac')[0].id;
+                                    changeScoreColor(scoreId);
+                                }
                             </script>
-
-                        </div>
+                        </tr>
                     @endforeach
+                </tbody>
+            </table>
 
                     {{$ships->links()}}
         </div>

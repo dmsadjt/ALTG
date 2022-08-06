@@ -12,7 +12,7 @@
                     <div class="image-wrapper grid-col-span-2">
                         <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
                     </div>
-                    <div class="text-white my-5 grid-col-span-2">
+                    <div class="text-white my-5 grid-col-span-2 score-table">
                         <table>
                             <tr>
                                 <td>Chapter</td>
@@ -126,7 +126,7 @@
                         evaluateSkills(two, three, 'evaluator-2');
                     </script>
 
-                    <div>
+                    <div class="details-table overflow-x">
                         <table class="text-white details-table altona-sans-12">
                             <tr>
                                 <td>Archetype</td>
@@ -143,7 +143,7 @@
                                         <div class>
                                             <span class="pill-dark" style="position: relative;">{{ $r->role_name }}</span>
                                             @foreach ($r->factions as $key=>$f)
-                                                <span class="pl-hd"
+                                                <span class="pl-hd r-hide"
                                                     id="{{ $f->faction_tag }}" style="position: relative;left: calc({{$key+1}}* -1 * .4em );">{{ $f->faction_tag }}</span>
                                                     {{--  --}}
                                                 <script>
