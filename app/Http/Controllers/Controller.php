@@ -53,4 +53,17 @@ class Controller extends BaseController
             return $input->$input_column;
         }
     }
+
+    //function for selecting gear slot
+    protected function selectSlot($counter, $select, $type, $arr)
+    {
+        if ($select[$type . $arr . $counter] != '') {
+            $counter++;
+            return $this->selectSlot($counter, $select, $type, $arr);
+        } else {
+            $ret = $type . $arr . $counter;
+            return $ret;
+        }
+    }
+
 }

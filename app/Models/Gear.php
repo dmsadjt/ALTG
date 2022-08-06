@@ -23,4 +23,8 @@ class Gear extends Model
     public function category(){
         return $this->hasOne(GearCategory::class,'id','gear_type');
     }
+
+    public function templates(){
+        return $this->hasMany(Template::class,'gear_template','gear_id','template_id');
+    }
 }

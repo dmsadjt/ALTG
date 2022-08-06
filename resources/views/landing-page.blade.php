@@ -33,7 +33,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            {{-- <img src="/img/posts/{{ $posts[0]->images->image ? $posts[0]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img"> --}}
+                            <img class="img-fluid" src="/img/posts/{{ isset($posts[0]->images[0]) ? $posts[0]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
                                 <p class="short-text altona-sans-10">{{ $posts[0]->body }}</p>
@@ -41,7 +41,7 @@
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                {{-- <img src="/img/posts/{{ $posts[$i]->img }}" class="d-block" alt="post-img"> --}}
+                                <img class="img-fluid" src="/img/posts/{{ isset($posts[$i]->images[0]) ? $posts[$i]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
                                     <p class="short-text altona-sans-10">{{ $posts[$i]->body }}</p>

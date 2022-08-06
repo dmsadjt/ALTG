@@ -258,16 +258,6 @@ class ShipController extends Controller
         return redirect('admin/ships');
     }
 
-    function selectSlot($counter, $select, $type, $arr)
-    {
-        if ($select[$type . $arr . $counter] != '') {
-            $counter++;
-            return $this->selectSlot($counter, $select, $type, $arr);
-        } else {
-            $ret = $type . $arr . $counter;
-            return $ret;
-        }
-    }
 
     public function editShip($id)
     {

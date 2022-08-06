@@ -14,6 +14,8 @@ use App\Http\Controllers\HullController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TemplateController;
+use App\Models\Template;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,7 @@ Route::get('/admin/positions', [AdminController::class, 'positions'])->middlewar
 Route::get('/admin/gears', [AdminController::class, 'gears'])->middleware(['auth'])->name('gears');
 Route::get('/admin/hulls', [AdminController::class, 'hulls'])->middleware(['auth'])->name('hulls');
 Route::get('/admin/tags', [TagController::class, 'index'])->middleware(['auth'])->name('tags');
+Route::get('/admin/templates', [TemplateController::class, 'index'])->middleware(['auth'])->name('templates');
 
 //add views
 Route::get('/admin/ships/add', [ShipController::class, 'addShips'])->middleware(['auth'])->name('add');
@@ -48,6 +51,7 @@ Route::get('/admin/gears/add', [GearController::class, 'addGear'])->middleware([
 Route::get('/admin/hulls/add', [HullController::class, 'add'])->middleware(['auth'])->name('add.hull');
 Route::get('/admin/blogs/add', [BlogController::class, 'add'])->middleware(['auth'])->name('add.blog');
 Route::get('/admin/tags/add', [TagController::class, 'add'])->middleware(['auth'])->name('add.tag');
+Route::get('/admin/templates/add', [TemplateController::class, 'add'])->middleware(['auth'])->name('add.template');
 
 //edit views
 Route::get('/admin/ships/edit/{id}', [ShipController::class, 'editShip'])->middleware(['auth'])->name('edit');
@@ -60,6 +64,7 @@ Route::get('/admin/hulls/edit/{id}', [HullController::class, 'edit'])->middlewar
 Route::get('/admin/sirens/edit/{id}', [SirenController::class, 'edit'])->middleware(['auth'])->name('edit.siren');
 Route::get('/admin/blogs/edit/{id}', [BlogController::class, 'edit'])->middleware(['auth'])->name('edit.blog');
 Route::get('/admin/tags/edit/{id}', [TagController::class, 'edit'])->middleware(['auth'])->name('edit.tag');
+Route::get('/admin/templates/edit/{id}', [TemplateController::class, 'edit'])->middleware(['auth'])->name('edit.template');
 
 //post
 Route::post('/admin/ships/post', [ShipController::class, 'postShip'])->middleware(['auth'])->name('post');
@@ -70,6 +75,7 @@ Route::post('/admin/gears/post', [GearController::class, 'postGear'])->middlewar
 Route::post('/admin/hulls/post', [HullController::class, 'post'])->middleware(['auth'])->name('post.hull');
 Route::post('/admin/blogs/post', [BlogController::class, 'post'])->middleware(['auth'])->name('post.blog');
 Route::post('/admin/tags/post', [TagController::class, 'post'])->middleware(['auth'])->name('post.tag');
+Route::post('/admin/templates/post', [TemplateController::class, 'post'])->middleware(['auth'])->name('post.template');
 
 //update
 Route::post('/admin/ships/update', [ShipController::class, 'updateShip'])->middleware(['auth'])->name('update');
@@ -82,6 +88,7 @@ Route::post('/admin/hulls/update', [HullController::class, 'update'])->middlewar
 Route::post('/admin/sirens/update', [SirenController::class, 'update'])->middleware(['auth'])->name('update.siren');
 Route::post('/admin/blogs/update', [BlogController::class, 'update'])->middleware(['auth'])->name('update.blog');
 Route::post('/admin/tags/update', [TagController::class, 'update'])->middleware(['auth'])->name('update.tag');
+Route::post('/admin/templates/update', [TemplateController::class, 'update'])->middleware(['auth'])->name('update.template');
 
 //delete
 Route::get('/admin/ships/delete/{id}', [ShipController::class, 'deleteShip'])->middleware(['auth'])->name('delete');

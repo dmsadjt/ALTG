@@ -483,11 +483,12 @@ td {
     border: 2px solid white;
 }
 
+.navbar-image {
+    height: 3rem;
+}
+
 .navbar {
-    background-color: var(--nav_color);
     font-size: 24px;
-    font-family: swiss721;
-    height: 80px;
 }
 
 .navbar-nav {
@@ -495,25 +496,8 @@ td {
     align-items: center;
 }
 
-
-.navbar-image {
-    height: 3rem;
-}
-
 .overflow-x {
     overflow-x: scroll;
-}
-
-.collapse {
-    background-color: var(--nav_color);
-}
-
-.navbar a {
-    color: var(--white);
-}
-
-.navbar a:hover {
-    color: var(--primary);
 }
 
 .nav-style-none {

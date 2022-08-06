@@ -27,9 +27,9 @@
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
     </script>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-nav">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex" href="/">
+            <a class="navbar-brand d-flex text-white" href="/admin/dashboard">
                 <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image align-text-middle"
                     alt="">
                 <span class="swiss-font-24 my-auto">ALTG</span>
@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse content" id="navbarSupportedContent">
                 <form action="/logout" method="POST">
                     @csrf
-                    <input type="submit" value="Log-out">
+                    <input type="submit" class="btn btn-outline-light" value="Log-out">
                 </form>
             </div>
         </div>
@@ -92,6 +92,10 @@
                         <li>
                             <a class="link-none" href="/admin/hulls"><button
                                     class="btn-none text-white w-100 text-start">Hulls</button></a>
+                        </li>
+                        <li>
+                            <a class="link-none" href="/admin/templates"><button
+                                    class="btn-none text-white w-100 text-start">Gear Templates</button></a>
                         </li>
                     </ul>
 

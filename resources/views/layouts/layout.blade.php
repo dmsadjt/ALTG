@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title')</title>
+    <title> @yield('title')</title>
 
 
     <link rel="stylesheet" href="/css/app.css">
@@ -15,8 +15,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.css" /> --}}
-
+    <link rel="icon" href="/altg-logo.ico">
 </head>
 
 <body>
@@ -28,31 +27,30 @@
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
     </script>
 
-    <nav class="navbar sticky-top navbar-expand-lg">
+    <nav class="navbar sticky-top navbar-expand-lg bg-nav">
         <div class="container-fluid">
             <a class="navbar-brand d-flex" href="/">
                 <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image align-text-middle"
                     alt="">
-                <span class="swiss-font-24 my-auto">ALTG</span>
+                <span class="swiss-font-24 my-auto text-white">ALTG</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+                data-bs-target="#submenus" aria-controls="submenus" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse content" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse content" id="submenus">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/ships">TIER LIST</a>
+                        <a class="nav-link text-white" href="/ships">TIER LIST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/siren">OS BOSS STATS</a>
+                        <a class="nav-link text-white" href="/siren">OS BOSS STATS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/blogs">POST</a>
+                        <a class="nav-link text-white" href="/blogs">POST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/search">SEARCH</a>
+                        <a class="nav-link text-white" href="/search">SEARCH</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img class="navbar-image"
