@@ -272,6 +272,24 @@
 
             {{-- gears --}}
             <h2 class="mt-3">Gears</h2>
+            <hr>
+            <h3>Templates</h3>
+            <p>Look up templates to customize your gear templates</p>
+            <div>
+                <select name="templates" id="templates" class="form-select">
+                    <option value="">Select Template</option>
+                    @foreach ($templates as $t)
+                        <option value="{{$t->id}}">{{$t->name}} :
+                            @foreach ($t->gears as $g)
+                                {{$g->gear_name}} ({{$g->pivot->gear_category}}),
+                            @endforeach
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <hr>
+            <p>or.. insert manually</p>
             <div>
                 @foreach ($gear_category as $g)
                     <div class="accordion text-black-50" id="accordionGear">

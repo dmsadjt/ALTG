@@ -352,7 +352,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add ship">
+                    <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit ship">
                 </div>
             @endforeach
             @csrf

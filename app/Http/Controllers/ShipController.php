@@ -16,6 +16,7 @@ use App\Models\Archetype;
 use App\Models\Skill;
 use App\Models\MobScore;
 use App\Models\BossScore;
+use App\Models\Template;
 
 class ShipController extends Controller
 {
@@ -119,6 +120,7 @@ class ShipController extends Controller
         $factions = Faction::all();
         $gears = Gear::all();
         $gear_category = GearCategory::all();
+        $templates = Template::all();
 
         return view('admin.ship.add', compact(
             'hulls',
@@ -129,6 +131,7 @@ class ShipController extends Controller
             'factions',
             'gears',
             'gear_category',
+            'templates',
         ));
     }
 
@@ -169,6 +172,7 @@ class ShipController extends Controller
             'boss1' => 'integer|between:0,11',
             'boss2' => 'integer|between:0,11',
             'boss3' => 'integer|between:0,11',
+            'templates' => '',
         ]);
 
         foreach ($cate as $c) {
@@ -244,15 +248,27 @@ class ShipController extends Controller
         $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
         $skill3->save();
 
+        if(isset($shipdata['templates'])){
+            $template = Template::where('id', $shipdata['templates'])->first();
+            foreach ($template->gears as $g){
+                $temp[$g->id] = ['gear_category' => $g->pivot->gear_category ];
+            }
+        }
+
+
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
                 if ($shipdata[strval($c->id) . '-gear-' . strval($j)] != null) {
-                    $info = $shipdata[strval($c->id) . '-gear-' . strval($j)];
-                    $data = $shipdata[strval($c->id) . '-category-' . strval($j)] != null ? $shipdata[strval($c->id) . '-category-' . strval($j)] : 'General';
-                    $ship->gears()->attach($info, ['gear_category' => $data]);
+                    $id = $shipdata[$c->id . '-gear-' . $j];
+                    $pivot = 'gear_category';
+                    $pivot_data = $shipdata[$c->id . '-category-' . $j] != null ? $shipdata[$c->id . '-category-' . $j] : 'General';
+                    $temp[$id] = [$pivot => $pivot_data];
                 } else continue;
             }
         }
+
+        $ship->gears()->sync($temp);
+
         $ship->save();
 
         return redirect('admin/ships');
@@ -275,9 +291,7 @@ class ShipController extends Controller
         foreach ($ship as $s) {
             $selected['hull'] = $s->hull_id;
             $selected['rarity'] = $s->rarity_id;
-            foreach ($s->positions as $p) {
-                $selected['position'] = $p->id;
-            }
+            $selected['position'] = $s->position_id;
 
             for ($i = 0; $i < 5; $i++) {
                 $selected['archetype' . ($i + 1)] = '';
@@ -364,6 +378,7 @@ class ShipController extends Controller
             'boss1' => 'integer|between:0,11',
             'boss2' => 'integer|between:0,11',
             'boss3' => 'integer|between:0,11',
+            'templates' => '',
         ]);
 
         foreach ($cate as $c) {
@@ -413,7 +428,6 @@ class ShipController extends Controller
             ]);
         }
 
-        $ship->positions()->sync([$data['position']]);
         $temp = array();
 
         for ($i = 1; $i < 6; $i++) {
@@ -436,6 +450,13 @@ class ShipController extends Controller
         unset($temp);
         $temp = array();
 
+        if(isset($shipdata['templates'])){
+            $template = Template::where('id', $shipdata['templates'])->first();
+            foreach ($template->gears as $g){
+                $temp[$g->id] = ['gear_category' => $g->pivot->gear_category ];
+            }
+        }
+
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
                 if ($data[$c->id . '-gear-' . $j] != null) {
@@ -456,7 +477,6 @@ class ShipController extends Controller
     {
         $ship = Ship::where('id', '=', $id)->first();
         $ship->archetypes()->detach();
-        $ship->positions()->detach();
         $ship->roles()->detach();
         $ship->gears()->detach();
 
