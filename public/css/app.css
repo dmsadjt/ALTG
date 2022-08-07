@@ -193,6 +193,9 @@ html {
 @media screen and (max-width : 992px){
 
     .details-table, .score-table{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap:1em;
         overflow-x: scroll;
     }
 

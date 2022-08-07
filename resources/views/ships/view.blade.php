@@ -12,8 +12,8 @@
                     <div class="image-wrapper grid-col-span-2">
                         <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
                     </div>
-                    <div class="text-white my-5 grid-col-span-2 score-table">
-                        <table>
+                    <div class="text-white my-5 grid-col-span-2 score-table overflow-x">
+                        <table class="score-table">
                             <tr>
                                 <td>Chapter</td>
                                 <td class="text-center">9-11</td>
