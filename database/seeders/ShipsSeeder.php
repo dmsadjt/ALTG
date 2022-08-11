@@ -39,7 +39,7 @@ class ShipsSeeder extends Seeder
 
         DB::table('ships')->insert([
             'name'=>'Abukuma',
-            'hull_id'=>'10',
+            'hull_id'=>'7',
             'notes'=>'Torp CL that buff DD torp',
             'faction_id'=>'3',
             'rarity_id'=>'3',

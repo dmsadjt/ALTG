@@ -15,14 +15,12 @@ class HullController extends Controller
     public function post(Request $request){
         $data = $request->validate([
             'name'=>'required',
-            'tag'=>'required',
             'slug'=>'required',
             'img'=>'required|image',
         ]);
 
         $hull = new Hull;
         $hull['hull_name'] = $data['name'];
-        $hull['hull_tag'] = $data['tag'];
         $hull['hull_slug'] = $data['slug'];
         $hull['hull_img'] = $this->postImageRet($request, 'img', '/img/hulls');
         $hull->save();
@@ -40,7 +38,6 @@ class HullController extends Controller
         $data = $request->validate([
             'id'=>'required',
             'name'=>'',
-            'tag'=>'',
             'slug'=>'',
             'img'=>'',
         ]);
@@ -49,7 +46,6 @@ class HullController extends Controller
 
         $hull->update([
             'hull_name'=>$data['name'],
-            'hull_tag'=>$data['tag'],
             'hull_slug'=>$data['slug'],
         ]);
 
@@ -68,6 +64,12 @@ class HullController extends Controller
         $hull = Hull::where('id','=',$id)->first();
 
         foreach ($hull->ship as $s){
+            $s->update([
+                'hull_id'=>'1',
+            ]);
+        }
+
+        foreach($hull->subs as $s){
             $s->update([
                 'hull_id'=>'1',
             ]);

@@ -482,8 +482,13 @@ td {
     border-radius: 0.35em 0 0 0.35em;
 }
 
-.ship-table td:nth-child(7){
+.ship-table td:nth-child(8){
     border-radius: 0 0.35em 0.35em 0;
+}
+
+.two-score td:nth-child(7){
+    border-radius: 0 0.35em 0.35em 0;
+
 }
 
 .ship-table thead {
@@ -922,8 +927,12 @@ td {
 .hull-type {
     cursor: pointer;
     object-fit: cover;
-    height: 13.9em;
     width: 10em;
+}
+
+.wrapper{
+    display: inline-grid;
+    width: fit-content;
 }
 
 .battleship {

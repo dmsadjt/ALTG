@@ -23,10 +23,6 @@
                     <input class="form-control" type="text" name="name" id="name" value={{ $item->hull_name }}>
                 </div>
                 <div>
-                    <label class="form-label altona-sans-12" for="tag">Hull Tag</label>
-                    <input class="form-control" type="text" name="tag" id="tag" value={{ $item->hull_tag }}>
-                </div>
-                <div>
                     <label class="form-label altona-sans-12" for="slug">
                         <div>Hull Slug</div>
                         <div class="altona-sans-10 ms-auto mt-0">example : 'something-cool'</div>
@@ -40,7 +36,7 @@
             @endforeach
 
             <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add hull">
+                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit hull">
             </div>
         </form>
     </div>

@@ -40,9 +40,14 @@ class ShipController extends Controller
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+        $role = Roles::all();
+        $roles = array();
+        foreach($role as $r){
+            array_push($roles, $r->role_name);
+        }
 
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles'));
     }
 
     public function get($id)
@@ -64,6 +69,7 @@ class ShipController extends Controller
 
     public function filter(Request $request, Ship $ship)
     {
+
         $ship = $ship->newQuery();
 
         $roles = explode(',', $request->role);
@@ -103,8 +109,13 @@ class ShipController extends Controller
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+        $role = Roles::all();
+        $roles = array();
+        foreach($role as $r){
+            array_push($roles, $r->role_name);
+        }
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles'));
 
 
     }

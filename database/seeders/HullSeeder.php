@@ -17,114 +17,156 @@ class HullSeeder extends Seeder
     {
         DB::table('hulls')->insert([
             'hull_name'=>'Default',
-            'hull_tag'=>'De',
             'hull_slug'=>'default',
             'hull_img'=>'no-pictures.png',
         ]);
 
         DB::table('hulls')->insert([
-            'hull_name'=>'Aircraft Carrier',
-            'hull_tag'=>'CV',
-            'hull_slug'=>'aircraft',
-            'hull_img'=>'aircraft_carrier.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Aviation Battleship',
-            'hull_tag'=>'BBV',
-            'hull_slug'=>'aviation',
-            'hull_img'=>'aviation_battleship.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Battlecruiser',
-            'hull_tag'=>'BC',
-            'hull_slug'=>'cruiser',
-            'hull_img'=>'battlecruiser.png',
-        ]);
-
-        DB::table('hulls')->insert([
             'hull_name'=>'Battleship',
-            'hull_tag'=>'BB',
             'hull_slug'=>'battleship',
             'hull_img'=>'battleship.png',
         ]);
 
         DB::table('hulls')->insert([
+            'hull_name'=>'Aircraft Carrier',
+            'hull_slug'=>'aircraft-carrier',
+            'hull_img'=>'aircraft_carrier.png',
+        ]);
+
+        DB::table('hulls')->insert([
+            'hull_name'=>'Heavy Cruiser',
+            'hull_slug'=>'heavy-cruiser',
+            'hull_img'=>'heavy_cruiser.png',
+        ]);
+
+        DB::table('hulls')->insert([
+            'hull_name'=>'Light Cruiser',
+            'hull_slug'=>'light-cruiser',
+            'hull_img'=>'light_cruiser.png',
+        ]);
+
+        DB::table('hulls')->insert([
             'hull_name'=>'Destroyer',
-            'hull_tag'=>'DD',
             'hull_slug'=>'destroyer',
             'hull_img'=>'destroyer.png',
         ]);
 
         DB::table('hulls')->insert([
-            'hull_name'=>'Guided-missile destroyer',
-            'hull_tag'=>'DDG',
-            'hull_slug'=>'guided',
-            'hull_img'=>'ddg.png',
+            'hull_name'=>'Submarine',
+            'hull_slug'=>'submarine',
+            'hull_img'=>'submarine.png',
         ]);
 
         DB::table('hulls')->insert([
-            'hull_name'=>'Heavy Cruiser',
-            'hull_tag'=>'CA',
-            'hull_slug'=>'heavycruiser',
-            'hull_img'=>'heavy_cruiser.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Large Cruiser',
-            'hull_tag'=>'LC',
-            'hull_slug'=>'largecruiser',
-            'hull_img'=>'large_cruiser.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Light Aircraft Carrier',
-            'hull_tag'=>'CVL',
-            'hull_slug'=>'lightaircraft',
-            'hull_img'=>'light_aircraft_carrier.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Light Cruiser',
-            'hull_tag'=>'CL',
-            'hull_slug'=>'lightcruiser',
-            'hull_img'=>'light_cruiser.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Monitor',
-            'hull_tag'=>'MM',
-            'hull_slug'=>'monitor',
-            'hull_img'=>'monitor.png',
-        ]);
-
-        DB::table('hulls')->insert([
-            'hull_name'=>'Munition ship',
-            'hull_tag'=>'MS',
-            'hull_slug'=>'munition',
+            'hull_name'=>'Other',
+            'hull_slug'=>'other',
             'hull_img'=>'munition_ship.png',
         ]);
 
-        DB::table('hulls')->insert([
-            'hull_name'=>'Repair ship',
-            'hull_tag'=>'RS',
-            'hull_slug'=>'repair',
-            'hull_img'=>'repair_ship.png',
+        //Subclasses
+        DB::table('subclasses')->insert([
+            'hull_id'=>'3',
+            'sub_name'=>'Aircraft Carrier',
+            'sub_tag'=>'CV',
+            'sub_slug'=>'aircraft',
         ]);
 
-        DB::table('hulls')->insert([
-            'hull_name'=>'Submarine Carrier',
-            'hull_tag'=>'CS',
-            'hull_slug'=>'submarinecarrier',
-            'hull_img'=>'submarine_carrier.png',
+        DB::table('subclasses')->insert([
+            'hull_id'=>'2',
+            'sub_name'=>'Aviation Battleship',
+            'sub_tag'=>'BBV',
+            'sub_slug'=>'aviation',
         ]);
 
-        DB::table('hulls')->insert([
-            'hull_name'=>'Submarine',
-            'hull_tag'=>'SS',
-            'hull_slug'=>'submarine',
-            'hull_img'=>'submarine.png',
+        DB::table('subclasses')->insert([
+            'hull_id'=>'2',
+            'sub_name'=>'Battlecruiser',
+            'sub_tag'=>'BC',
+            'sub_slug'=>'cruiser',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'2',
+            'sub_name'=>'Battleship',
+            'sub_tag'=>'BB',
+            'sub_slug'=>'battleship',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'6',
+            'sub_name'=>'Destroyer',
+            'sub_tag'=>'DD',
+            'sub_slug'=>'destroyer',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'6',
+            'sub_name'=>'Guided-missile destroyer',
+            'sub_tag'=>'DDG',
+            'sub_slug'=>'guided',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'4',
+            'sub_name'=>'Heavy Cruiser',
+            'sub_tag'=>'CA',
+            'sub_slug'=>'heavycruiser',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'4',
+            'sub_name'=>'Large Cruiser',
+            'sub_tag'=>'CB',
+            'sub_slug'=>'largecruiser',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'3',
+            'sub_name'=>'Light Aircraft Carrier',
+            'sub_tag'=>'CVL',
+            'sub_slug'=>'lightaircraft',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'5',
+            'sub_name'=>'Light Cruiser',
+            'sub_tag'=>'CL',
+            'sub_slug'=>'lightcruiser',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'2',
+            'sub_name'=>'Battle Monitor',
+            'sub_tag'=>'BM',
+            'sub_slug'=>'battle-monitor',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'8',
+            'sub_name'=>'Munition ship',
+            'sub_tag'=>'AE',
+            'sub_slug'=>'munition',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'8',
+            'sub_name'=>'Repair ship',
+            'sub_tag'=>'AR',
+            'sub_slug'=>'repair',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'7',
+            'sub_name'=>'Aviation Submarine',
+            'sub_tag'=>'SSV',
+            'sub_slug'=>'aviation-submarine',
+        ]);
+
+        DB::table('subclasses')->insert([
+            'hull_id'=>'7',
+            'sub_name'=>'Submarine',
+            'sub_tag'=>'SS',
+            'sub_slug'=>'submarine',
         ]);
     }
 }

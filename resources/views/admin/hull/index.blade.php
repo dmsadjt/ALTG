@@ -18,8 +18,8 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Tag</th>
                             <th scope="col">Slug</th>
+                            <th scope="col">Sub-classes</th>
                             <th scope="col">Image</th>
                         </tr>
                     </thead>
@@ -42,8 +42,14 @@
                                     @endif
                                 </td>
                                 <td class="altona-sans-10">{{ $s->hull_name }}</td>
-                                <td class="altona-sans-10">{{ $s->hull_tag }}</td>
                                 <td class="altona-sans-10">{{ $s->hull_slug }}</td>
+                                <td class="altona-sans-10">
+                                    <ul class="nav-style-none ps-0">
+                                        @foreach ($s->subs as $c)
+                                            <li>{{$c->sub_name}} ({{$c->sub_tag}})</li>
+                                        @endforeach
+                                    </ul>
+                                </td>
                                 <td><a class="altona-sans-10" href="/img/hulls/{{ $s->hull_img }}">Image</a>
                                 </td>
                             </tr>

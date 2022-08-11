@@ -21,4 +21,8 @@ class Hull extends Model
     public function ship(){
         return $this->hasMany(Ship::class, 'hull_id');
     }
+
+    public function subs(){
+        return $this->hasMany(Subclass::class);
+    }
 }
