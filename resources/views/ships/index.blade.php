@@ -23,13 +23,14 @@
                                     <div class="wrapper bg-gray1 p-1 rounded">
                                         <img src="" alt="" id="changeImage">
                                         <select name="hull" id="hull"
-                                            class="hull-type d-grid text-center altona-sans-12 bg-gray1 text-white border-white rounded">
+                                            class="hull-type d-grid text-center altona-sans-12 mt-1 bg-gray1 text-white border-white rounded">
                                             @foreach ($hulls as $key => $h)
                                                 @if ($key == 0)
                                                     @continue;
                                                 @endif
                                                 <option class="mx-auto mt-auto mb-2 altona-sans-12"
-                                                    data-img="/img/hulls/{{ $h->hull_img }}" value="{{ $h->id }}">
+                                                    data-img="/img/hulls/{{ $h->hull_img }}" value="{{ $h->id }}"
+                                                    {{ $selected['hull'] == $h->id ? 'selected' : '' }}>
                                                     {{ $h->hull_name }}
                                                 </option>
                                             @endforeach
@@ -42,11 +43,12 @@
                                                 $('#hull').change(function() {
                                                     var src = $(this).find('option:selected').attr('data-img');
                                                     $('img#changeImage').attr('src', src);
+                                                    // $("#hull").attr('size', 0);
                                                 });
 
-                                                $("#changeImage").click(function() {
-                                                    $("#hull").toggle();
-                                                })
+                                                // $("#changeImage").click(function() {
+                                                //     $("#hull").attr('size', 7);
+                                                // })
                                             });
                                         </script>
                                     </div>
@@ -65,58 +67,46 @@
                                     </div>
 
                                     <script>
-                                        $( function() {
-                                          var availableRole = @json($roles);
+                                        $(function() {
+                                            var availableRole = @json($roles);
 
 
-                                          $( "#role" )
-                                            // don't navigate away from the field on tab when selecting an item
-                                            .on( "keydown", function( event ) {
-                                              if ( event.keyCode === $.ui.keyCode.TAB &&
-                                                  $( this ).autocomplete( "instance" ).menu.active ) {
-                                                event.preventDefault();
-                                              }
-                                            })
-                                            .autocomplete({
-                                              minLength: 0,
-                                              source: function( request, response ) {
-                                                // delegate back to autocomplete, but extract the last term
-                                                response( $.ui.autocomplete.filter(
-                                                  availableRole, extractLast( request.term ) ) );
-                                              },
-                                              focus: function() {
-                                                // prevent value inserted on focus
-                                                return false;
-                                              },
-                                              select: function( event, ui ) {
-                                                var terms = split( this.value );
-                                                // remove the current input
-                                                terms.pop();
-                                                // add the selected item
-                                                terms.push( ui.item.value );
-                                                // add placeholder to get the comma-and-space at the end
-                                                terms.push( "" );
-                                                this.value = terms.join( ", " );
-                                                return false;
-                                              }
-                                            });
-                                        } );
-                                        </script>
+                                            $("#role")
+                                                // don't navigate away from the field on tab when selecting an item
+                                                .on("keydown", function(event) {
+                                                    if (event.keyCode === $.ui.keyCode.TAB &&
+                                                        $(this).autocomplete("instance").menu.active) {
+                                                        event.preventDefault();
+                                                    }
+                                                })
+                                                .autocomplete({
+                                                    minLength: 0,
+                                                    source: function(request, response) {
+                                                        // delegate back to autocomplete, but extract the last term
+                                                        response($.ui.autocomplete.filter(
+                                                            availableRole, extractLast(request.term)));
+                                                    },
+                                                    focus: function() {
+                                                        // prevent value inserted on focus
+                                                        return false;
+                                                    },
+                                                    select: function(event, ui) {
+                                                        var terms = split(this.value);
+                                                        // remove the current input
+                                                        terms.pop();
+                                                        // add the selected item
+                                                        terms.push(ui.item.value);
+                                                        // add placeholder to get the comma-and-space at the end
+                                                        terms.push("");
+                                                        this.value = terms.join(", ");
+                                                        return false;
+                                                    }
+                                                });
+                                        });
+                                    </script>
 
-                                    <div>
-                                        @foreach ($rarity as $r)
-                                            <label for="rarity">{{ $r->rarity_tag }}</label>
-                                            <input type="checkbox" name="rarity" id="rarity"
-                                                value="{{ $r->id }}">
-                                        @endforeach
-                                    </div>
-                                    <div>
-                                        @foreach ($factions as $r)
-                                            <label for="faction">{{ $r->faction_tag }}</label>
-                                            <input type="checkbox" name="faction" id="faction"
-                                                value="{{ $r->id }}">
-                                        @endforeach
-                                    </div>
+
+
 
 
                                     <div class="columns-two__4-2 gap-2 d-grid">
@@ -128,15 +118,37 @@
                                                 <div class="swiss-font-12">
                                                     Rarity
                                                 </div>
-                                                <div class="d-flex flex-wrap">
-                                                    <ul class="filter-list pill-dark justify-content-center">
-                                                        @foreach ($rarity as $r)
+                                                <div>
+                                                    <ul class="filter-list bg-gray1 rounded d-flex fit-content">
+                                                        @foreach ($rarity as $key => $r)
                                                             <li>
-                                                                <input type="radio" class="filter-radio" name="rarity"
-                                                                    id="{{ $r->rarity_slug }}"
-                                                                    value="{{ $r->rarity_slug }}">
-                                                                <label class="filter-label py-1 px-2 rounded altona-sans-10"
-                                                                    for="{{ $r->rarity_slug }}">{{ $r->rarity_tag }}</label>
+                                                                <input class="filter-option" type="checkbox" name="rarity[]"
+                                                                    id="{{ $r->rarity_name }}" value="{{ $r->rarity_slug }}"
+                                                                    {{ in_array($r->rarity_slug, $selected['rarity']) ? ' checked' : '' }}>
+                                                                <label class="filter-label altona-sans-10 rounded px-2 m-1"
+                                                                    for="{{ $r->rarity_name }}">{{ $r->rarity_tag }}
+                                                                </label>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+
+                                                <div class="swiss-font-12">
+                                                    Faction
+                                                </div>
+                                                <div>
+                                                    <ul class="filter-list bg-gray1 rounded d-flex flex-wrap fit-content">
+                                                        @foreach ($factions as $key => $r)
+                                                            @if ($key == 0)
+                                                                @continue
+                                                            @endif
+                                                            <li>
+                                                                <input class="filter-option" type="checkbox"
+                                                                    name="faction[]" id="{{ $r->faction_tag }}"
+                                                                    value="{{ $r->faction_slug }}" {{ in_array($r->faction_slug, $selected['faction']) ? ' checked' : '' }}>
+                                                                <label class="filter-label altona-sans-10 m-1 rounded px-2"
+                                                                    for="{{ $r->faction_tag }}">{{ $r->faction_tag }}
+                                                                </label>
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -144,31 +156,6 @@
 
                                             </div>
 
-                                            <div class="columns-two__1-5 d-grid">
-
-                                                <div class="swiss-font-12">
-                                                    Faction
-                                                </div>
-
-                                                <div class="columns-five pill-dark">
-                                                    @foreach ($factions as $key => $f)
-                                                        @if ($key == 0)
-                                                            @continue
-                                                        @endif
-                                                        <span class="mx-auto">
-                                                            <input type="radio" class="filter-radio" name="faction"
-                                                                id="{{ $f->faction_slug }}"
-                                                                value="{{ $f->faction_slug }}">
-                                                            <label for="{{ $f->faction_slug }}"
-                                                                class="filter-label rounded"><img
-                                                                    src="/img/faction-logo/{{ $f->faction_img }}"
-                                                                    class="small-img m-1"
-                                                                    alt="{{ $f->faction_tag }}"></label>
-                                                        </span>
-                                                    @endforeach
-                                                </div>
-
-                                            </div>
 
                                         </div>
 
@@ -177,20 +164,23 @@
                                             <span class="swiss-font-12">Select Position</span>
                                             <select name="position" id="position"
                                                 class="pill-dark altona-sans-12 text-center button-square">
-                                                <option value="" selected>Select Position</option>
-                                                @foreach ($positions as $p)
-                                                    @if ($p->position_category == 'backline')
-                                                        <option value="{{ $p->id }}">
-                                                            Backline :
-                                                            {{ $p->position_name }}</option>
-                                                    @elseif ($p->position_category == 'submarine')
-                                                        <option value="{{ $p->id }}">Submarine :
-                                                            {{ $p->position_name }}</option>
-                                                    @elseif ($p->position_category == 'vanguard')
-                                                        <option value="{{ $p->id }}">Vanguard :
-                                                            {{ $p->position_name }}</option>
-                                                    @endif
-                                                @endforeach
+                                                <option value="">None</option>
+
+                                                <option value="tank"
+                                                    {{ $selected['position'] == 'tank' ? 'selected' : '' }}>Tank</option>
+                                                <option value="offtank"
+                                                    {{ $selected['position'] == 'offtank' ? 'selected' : '' }}>Offtank
+                                                </option>
+                                                <option value="mid"
+                                                    {{ $selected['position'] == 'mid' ? 'selected' : '' }}>Mid</option>
+                                                <option value="flagship"
+                                                    {{ $selected['position'] == 'flagship' ? 'selected' : '' }}>Flagship
+                                                </option>
+                                                <option
+                                                    value="offflag {{ $selected['position'] == 'offflag' ? 'selected' : '' }}">
+                                                    Off Flag</option>
+                                                <option value="any"
+                                                    {{ $selected['position'] == 'any' ? 'selected' : '' }}>Any</option>
                                             </select>
 
                                         </div>
@@ -200,8 +190,7 @@
                                     <div></div>
                                 </div>
 
-                                <div class="d-flex justify-content-end mt-2 gap-2">
-                                    <input type="reset" class="pill px-3 altona-sans-10" value="Reset">
+                                <div class="d-flex mt-2">
                                     <input type="submit" class="pill-dark px-5 altona-sans-10" value="Filter">
                                 </div>
 

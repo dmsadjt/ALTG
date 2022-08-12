@@ -35,11 +35,17 @@ class ShipController extends Controller
 
     public function index()
     {
-        $ships = Ship::sortable()->paginate(10);
+        $ships = Ship::where('hull_id',2)->sortable()->paginate(10);
         $hulls = Hull::get();
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+        $selected['hull'] = '2';
+        $selected['position'] = '';
+
+        $selected['rarity'] = array();
+        $selected['faction'] = array();
+
         $role = Roles::all();
         $roles = array();
         foreach($role as $r){
@@ -47,7 +53,7 @@ class ShipController extends Controller
         }
 
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected'));
     }
 
     public function get($id)
@@ -69,10 +75,12 @@ class ShipController extends Controller
 
     public function filter(Request $request, Ship $ship)
     {
-
         $ship = $ship->newQuery();
 
         $roles = explode(',', $request->role);
+
+        $selected['position'] = $request['position'];
+
 
         if ($request->filled('role')){
             $ship->with(['roles'])->whereHas('roles', function($q) use($roles){
@@ -81,10 +89,36 @@ class ShipController extends Controller
         }
 
         if ($request->filled('position')){
-            $ship->with(['positions'])->whereHas('positions', function ($q) use($request){
-                $q->where('position_id',$request->position);
+
+            if($request['position'] == 'tank')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'vanguard-tank')->orWhere('position_slug','vanguard-tank-mid')->orWhere('position_slug','vanguard-tank-off_tank');
             });
 
+            if($request['position'] == 'offtank')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug','vanguard-offtank')->orWhere('position_slug','vanguard-tank-off_tank');
+            });
+
+            if($request['position'] == 'mid')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug','vanguard-tank-mid')->orWhere('position_slug','vanguard-mid');
+            });
+
+            if($request['position'] == 'flagship')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'backline-flagship')->orWhere('position_slug','submarine-flagship');
+            });
+
+            if($request['position'] == 'offflag')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'backline-off_flag')->orWhere('position_slug','submarine-off_flag');
+            });
+
+            if($request['position'] == 'any')
+            $ship->with(['positions'])->whereHas('positions', function ($q){
+                $q->where('position_slug', 'backline-any')->orWhere('position_slug','submarine-all')->orWhere('position_slug','vanguard-any');
+            });
         }
 
         if ($request->filled('hull')){
@@ -92,16 +126,21 @@ class ShipController extends Controller
         }
 
         if($request->filled('rarity')){
-            $ship->with(['rarity'])->whereHas('rarity', function ($q) use($request){
-            $q->where('rarity_slug', $request->rarity);
-            });
+                $ship->with(['rarity'])->whereHas('rarity', function ($q) use($request){
+                    $q->whereIn('rarity_slug', $request->rarity);
+                });
+
         }
 
         if($request->filled('faction')){
-            $ship->with(['faction'])->whereHas('faction', function ($q) use($request){
-            $q->where('faction_slug', $request->faction);
-            });
+                $ship->with(['faction'])->whereHas('faction', function ($q) use($request){
+                    $q->whereIn('faction_slug', $request->faction);
+                });
+
         }
+
+        $selected['rarity'] = ($request->rarity) ? ($request->rarity) : array();
+        $selected['faction'] = ($request->faction) ? ($request->faction) : array();
 
 
         $ships = $ship->sortable()->paginate(10);
@@ -109,13 +148,18 @@ class ShipController extends Controller
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+        $selectedHull = Hull::where('id',$request['hull']);
+
+
+        $selected['hull'] = $request['hull'];
+
         $role = Roles::all();
         $roles = array();
         foreach($role as $r){
             array_push($roles, $r->role_name);
         }
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected','selectedHull'));
 
 
     }

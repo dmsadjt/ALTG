@@ -1237,7 +1237,7 @@ td {
 }
 
 .text-color-flagship {
-    color: var(--flagship);
+    color: var(--flagshp);
 }
 
 .text-color-offflag {
@@ -1265,25 +1265,31 @@ select {
 
 .filter-list {
     list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fit-content{
+    width: fit-content;
 }
 
 .filter-list li {
     display: inline-block;
 }
 
-.filter-radio {
+.filter-option {
     width: 0;
-    visibility: hidden;
+    opacity: 0;
 }
 
 .filter-label {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 
-.filter-radio:checked+label {
-    background-color: black;
+.filter-option:checked + label {
+    background-color: rgb(10, 10, 10);
     opacity: 1;
 }
 
