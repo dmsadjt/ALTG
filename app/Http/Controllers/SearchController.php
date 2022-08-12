@@ -20,7 +20,7 @@ class SearchController extends Controller
             $ship->where('name','LIKE', "%{$result}%");
         }
 
-        $ships = $ship->paginate(10);
+        $ships = $ship->sortable()->paginate(10);
 
 
         return view('search.result', compact('ships','result'));

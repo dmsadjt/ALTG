@@ -45,6 +45,7 @@ class ShipController extends Controller
 
         $selected['rarity'] = array();
         $selected['faction'] = array();
+        $selected['role'] = '';
 
         $role = Roles::all();
         $roles = array();
@@ -141,6 +142,8 @@ class ShipController extends Controller
 
         $selected['rarity'] = ($request->rarity) ? ($request->rarity) : array();
         $selected['faction'] = ($request->faction) ? ($request->faction) : array();
+        $selected['role'] = $request['role'] ? $request['role'] : '';
+
 
 
         $ships = $ship->sortable()->paginate(10);

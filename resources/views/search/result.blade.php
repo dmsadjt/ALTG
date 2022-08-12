@@ -6,8 +6,8 @@
             <h1>Search Results for '{{$result}}'</h1>
 
             <form action="/search/results" class="d-grid">
-                <input type="text" name="ship" id="ship" class="form-control my-3 shadow">
-                <input type="submit" value="Search" class="pill altona-sans-12 w-25 text-center">
+                <input type="text" name="ship" id="ship" class="form-control my-3 shadow" value="{{$result}}">
+                <input type="submit" value="Search" class="pill altona-sans-12 w-25 text-center" >
             </form>
 
             <hr>
@@ -17,6 +17,7 @@
                     <th style="width:2%">&nbsp;</th>
                     <th style="width:48%">@sortablelink('name')</th>
                     <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                    <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Role</a></th>
                     <th class="r-hide"><span>@sortablelink('positions.position_name','Position')</span></th>
                 </thead>
                 <tbody>
@@ -36,6 +37,11 @@
                                 @endforeach
                             </td>
                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
+                                @foreach ($s->roles as $a)
+                                    <div>{{ $a->role_name }}</div>
+                                @endforeach
+                            </td>
+                            <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                 <div>
 
                                         {{ $s->positions->position_name }}
@@ -49,10 +55,6 @@
                             <script>
                                 idTag = document.getElementsByClassName('rarity-tag')[0].id;
                                 changeLabel(idTag);
-                                for (i = 0; i < 3; i++) {
-                                    scoreId = document.getElementsByClassName('sac')[0].id;
-                                    changeScoreColor(scoreId);
-                                }
                             </script>
                         </tr>
                     @endforeach

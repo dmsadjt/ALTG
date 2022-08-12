@@ -63,7 +63,7 @@
                                         <label for="role">
                                             <h3 class="swiss-font-12">Role Tags</h3>
                                         </label>
-                                        <input type="text" name="role" id="role" class="text-form">
+                                        <input type="text" name="role" id="role" class="text-form" value="{{ $selected['role'] }}">
                                     </div>
 
                                     <script>

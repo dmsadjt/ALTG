@@ -54,7 +54,19 @@
                         <a class="nav-link text-white" href="/blogs">POST</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/search">SEARCH</a>
+                        <div>
+                            <a class="nav-link text-white" id="search" href="#">SEARCH</a>
+
+                            <div class="container-fluid d-none" id="searchBar">
+                                <form class="d-flex" role="search" action="/search/results">
+                                    <input class="form-control me-2 altona-sans-10" type="search" name="ship" placeholder="Search"
+                                        aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit"><span class="altona-sans-10">Search</span></button>
+                                </form>
+                            </div>
+
+
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><img class="navbar-image"
@@ -70,5 +82,16 @@
     </main>
 
 </body>
+
+<footer>
+    <script>
+        $(document).ready(function() {
+            $("#search").click(function(){
+                $("#search").addClass("d-none");
+                $("#searchBar").removeClass("d-none");
+            })
+        })
+    </script>
+</footer>
 
 </html>
