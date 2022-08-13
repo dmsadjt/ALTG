@@ -21,18 +21,18 @@
 
                                 <div class="d-flex">
                                     <div>
-                                        Tags :
+                                        <span class="altona-sans-10">Tags :</span>
                                     </div>
                                     @foreach ($p->tags as $t)
-                                    <div class="pill-white mx-1 altona-sans-10">
+                                    <div class="bg-white text-black rounded p-1 w-auto mx-1 altona-sans-10">
                                         {{$t->tag_label}}
                                     </div>
                                 @endforeach
                                 </div>
 
                             </div>
-                            <div class="d-flex justify-content-end">
-                                <img src="{{ url('/img/web-assets/azur-logo.webp') }}" class="medium-img opacity-1"
+                            <div class="d-flex justify-content-end ">
+                                <img src="{{ url('/img/web-assets/azur-logo.webp') }}" class="medium-img opacity-1 r-hide"
                                     alt="">
                             </div>
                         </div>

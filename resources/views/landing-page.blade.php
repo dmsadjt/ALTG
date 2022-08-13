@@ -33,18 +33,18 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="img-fluid" src="/img/posts/{{ isset($posts[0]->images[0]) ? $posts[0]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
-                            <div class="carousel-caption d-none d-md-block">
+                            <img src="/img/posts/{{ isset($posts[0]->images[0]) ? $posts[0]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
+                            <div class="carousel-caption  d-none d-md-block">
                                 <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
                                 <p class="short-text altona-sans-10">{{ $posts[0]->body }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                <img class="img-fluid" src="/img/posts/{{ isset($posts[$i]->images[0]) ? $posts[$i]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
+                                <img src="/img/posts/{{ isset($posts[$i]->images[0]) ? $posts[$i]->images[0]->image : 'no-pictures.png' }}" class="d-block" alt="post-img">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
-                                    <p class="short-text altona-sans-10">{{ $posts[$i]->body }}</p>
+                                    <p class="short-text altona-sans-10 ">{{ $posts[$i]->body }}</p>
                                 </div>
                             </div>
                         @endfor
@@ -75,8 +75,8 @@
     <section class="ships">
         <div class="container">
             <div class="row mt-5 text-center text-white">
-                <p class="as">Click on <span class="orange-btn">Read more details >></span> to learn about
-                    individual world score, gear guides and more</p>
+                <div class="altona-sans-12">Click on <span class="orange-btn ">Read more details >></span> to learn about
+                    individual world score, gear guides and more</div>
             </div>
 
             @for ($i = 0; $i < 2; $i++)
@@ -86,7 +86,7 @@
                             alt="">
                     </div>
                     <div class="grid-col-span-2">
-                        <h1 style="font-size:4rem;color: white;">{{ $ships[$i]->name }}</h1>
+                        <h1 style="font-size:3.5rem;color: white;">{{ $ships[$i]->name }}</h1>
                     </div>
                 </div>
 

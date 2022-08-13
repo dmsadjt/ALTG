@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> @yield('title')</title>
-
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+        integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/app.css">
+
     <script src="/js/scripts.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -18,7 +21,8 @@
     <link rel="icon" href="/altg-logo.ico">
 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+
 
 </head>
 
@@ -38,9 +42,9 @@
                     alt="">
                 <span class="swiss-font-24 my-auto text-white">ALTG</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#submenus"
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#submenus"
                 aria-controls="submenus" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fa-solid fa-bars fa-inverse"></i>
             </button>
             <div class="collapse navbar-collapse content" id="submenus">
                 <ul class="navbar-nav">
@@ -59,9 +63,10 @@
 
                             <div class="container-fluid d-none" id="searchBar">
                                 <form class="d-flex" role="search" action="/search/results">
-                                    <input class="form-control me-2 altona-sans-10" type="search" name="ship" placeholder="Search"
-                                        aria-label="Search">
-                                    <button class="btn btn-outline-light" type="submit"><span class="altona-sans-10">Search</span></button>
+                                    <input class="form-control me-2 altona-sans-10" type="search" name="ship"
+                                        placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-light" type="submit"><span
+                                            class="altona-sans-10">Search</span></button>
                                 </form>
                             </div>
 
@@ -86,7 +91,7 @@
 <footer>
     <script>
         $(document).ready(function() {
-            $("#search").click(function(){
+            $("#search").click(function() {
                 $("#search").addClass("d-none");
                 $("#searchBar").removeClass("d-none");
             })

@@ -75,6 +75,26 @@ html {
 }
 
 @media screen and (min-width: 992px) {
+
+    .score-box{
+        width: 3.5em;
+        height: 3.5em;
+    }
+
+    .r-grid{
+        display: flex !important;
+    }
+
+    .boss-card {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 1em;
+    }
+
+    .bg-overlay{
+        padding: 2em;
+    }
+
     .columns-three {
         display: grid;
         gap: 1rem;
@@ -192,6 +212,96 @@ html {
 
 @media screen and (max-width : 992px){
 
+    .iron-blood {
+        background-size: contain !important;
+    }
+
+    /* change img */
+    .dragon-empery {
+        background-size: contain !important;
+    }
+
+    /* change img */
+    .eagle-union {
+        background-size: contain !important;
+    }
+
+    .iris-libre {
+        background-size: contain !important;
+    }
+
+    .northern-parliament {
+        background-size: contain !important;
+    }
+
+    /* change image */
+    .royal-navy {
+        background-size: contain !important;
+    }
+
+    /* change image */
+    .sakura-empire {
+        background-size: contain !important;
+    }
+
+    .sardegna-empire {
+        background-size: contain !important;
+    }
+
+    .vichya-dominion {
+        background-size: contain !important;
+    }
+
+    .faction img {
+        height:100% !important;
+    }
+
+    .ships{
+        overflow-x: auto;
+    }
+
+    .ship-table th a{
+        font-size: 0.8rem !important;
+        font-weight: 100;
+
+    }
+
+    .ship-table td{
+        font-size: 0.8rem !important;
+        font-weight: 100;
+    }
+
+    .ship-table{
+        width: 25em !important;
+    }
+
+    .r-grid{
+        display: grid !important;
+    }
+
+    .boss-card {
+        max-width: 80vw;
+    }
+
+    .bg-overlay{
+        padding: 0.5em;
+    }
+
+    .score-table td{
+        font-family: AltonaSans;
+        font-size: 1rem;
+    }
+
+    .score-box{
+        width: 2.1em;
+        height: 2.1em;
+    }
+
+    .score{
+        font-family: AltonaSans !important;
+        font-size: 1.2rem !important;
+    }
+
     .details-table, .score-table{
         display: grid;
         grid-template-columns: 1fr;
@@ -266,7 +376,7 @@ html {
     }
 
     .brand-image-page{
-        width: 20em;
+        width: 15em;
 
     }
 
@@ -279,6 +389,7 @@ html {
         grid-row-start: 1;
     }
 }
+
 
 .downarrow{
     max-width: 50%;
@@ -594,9 +705,11 @@ td {
 
 .carousel-item img {
     max-height: 20em;
-    object-fit: contain;
+    object-fit: cover;
     margin: auto;
     transition: 0.2s;
+    max-width: 100%;
+    height: 100%;
 }
 
 .carousel-item img:hover {
@@ -614,8 +727,7 @@ td {
 .score-box {
     display: grid;
     border-radius: 10px;
-    width: 3.5em;
-    height: 3.5em;
+
 }
 
 .score {
@@ -627,11 +739,7 @@ td {
     gap: 1em;
 }
 
-.boss-card {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1em;
-}
+
 
 .grid-col-span-2 {
     grid-column: span 2;
@@ -652,7 +760,7 @@ td {
 
 .bg-overlay {
     background-color: rgba(33, 47, 65, 0.5);
-    padding: 2em;
+
     margin-top: 5em;
 }
 

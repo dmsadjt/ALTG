@@ -8,13 +8,13 @@
 
                     <div class="page-title">
                         <h1>Operation Siren Boss Stats</h1>
-                        <span class="altona-sans-12">Last Updated: 27 March 2022</span>
+                        <span class="altona-sans-12">Last Updated: </span>
                     </div>
 
                     <div class="stronghold">
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Stronghold Boss</h2>
-                            <div class="d-flex gap-3">
+                            <div class="r-grid gap-3">
                                 <span class="my-auto">Adaptability</span>
                                 <div class="tab my-auto">
                                     <button class="tab__links"
@@ -142,7 +142,7 @@
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Abyssal Boss</h2>
 
-                            <div class="d-flex gap-3">
+                            <div class="r-grid gap-3">
                                 <span class="my-auto">Adaptability</span>
 
                                 <div class="tab my-auto">
@@ -274,7 +274,7 @@
 
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Arbiter Boss</h2>
-                            <div class="d-flex gap-3">
+                            <div class="r-grid gap-3">
                                 <span class="my-auto">Adaptability</span>
                                 <div class="tab my-auto">
                                     <button class="tab__links--3"

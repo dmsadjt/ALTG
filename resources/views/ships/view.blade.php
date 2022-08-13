@@ -12,7 +12,7 @@
                     <div class="image-wrapper grid-col-span-2">
                         <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
                     </div>
-                    <div class="text-white my-5 grid-col-span-2 score-table overflow-x">
+                    <div class="text-white my-5 grid-col-span-2 score-table">
                         <table class="score-table">
                             <tr>
                                 <td>Chapter</td>
@@ -93,27 +93,24 @@
 
                 <div class="columns-two__3-6">
                     <div class="d-grid my-auto">
-                        <h2 class="text-white">Skill leveling prio</h2>
-                        <div class="d-flex gap-4 text-white">
+                        <h2 class="text-white mt-2">Skill leveling prio</h2>
+                        <div class="d-flex gap-3 text-white">
                             <div class="d-grid one" id="{{ $skill[2]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[2]->skill_img }}" alt=""
-                                    class="skill-img mx-auto">
+                                <img src="/img/skills/{{ $skill[2]->skill_img }}" alt="" class="skill-img mx-auto">
                             </div>
                             <div class="d-grid ">
                                 <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
                                 <span></span>
                             </div>
                             <div class="d-grid two" id="{{ $skill[1]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
-                                    class="skill-img mx-auto">
+                                <img src="/img/skills/{{ $skill[1]->skill_img }}" alt="" class="skill-img mx-auto">
                             </div>
                             <div class="d-grid">
                                 <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
                                 <span></span>
                             </div>
                             <div class="d-grid three" id="{{ $skill[0]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
-                                    class="skill-img mx-auto">
+                                <img src="/img/skills/{{ $skill[0]->skill_img }}" alt="" class="skill-img mx-auto">
                             </div>
                         </div>
                     </div>
@@ -126,95 +123,91 @@
                         evaluateSkills(two, three, 'evaluator-2');
                     </script>
 
-                    <div class="details-table overflow-x">
-                        <table class="text-white details-table altona-sans-12">
-                            <tr>
-                                <td>Archetype</td>
-                                <td class="altona-sans-12 ps-5">
-                                    @foreach ($ship->archetypes as $a)
-                                        <span class="pill-dark">{{ $a->archetype_name }}</span>
-                                    @endforeach
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Roles</td>
-                                <td class="altona-sans-12 ps-5 d-flex gap-1">
-                                    @foreach ($ship->roles as $key=>$r)
-                                        <div class>
-                                            <span class="pill-dark" style="position: relative;">{{ $r->role_name }}</span>
-                                            @foreach ($r->factions as $key=>$f)
-                                                <span class="pl-hd r-hide"
-                                                    id="{{ $f->faction_tag }}" style="position: relative;left: calc({{$key+1}}* -1 * .4em );">{{ $f->faction_tag }}</span>
-                                                    {{--  --}}
-                                                <script>
-                                                    var zin = (10 - {!! json_encode($key) !!});
-                                                    document.getElementById({!! json_encode($f->faction_tag) !!}).style.zIndex = zin;
-                                                    tag = document.getElementsByClassName('pl-hd')[0].id;
-                                                    changeFactionTag(tag);
-                                                </script>
-                                            @endforeach
+                    <div class="details-table">
+
+                        <div class="columns-two__2-6 mt-3 gap-2 altona-sans-12 text-white">
+                            <div class="swiss-font-12 mt-1">Archetype</div>
+                            <div class="r-grid gap-1 flex-wrap">
+                                @foreach ($ship->archetypes as $a)
+                                    <div><span class="pill-dark">{{ $a->archetype_name }}</span></div>
+                                @endforeach
+                            </div>
+                            <div class="swiss-font-12 mt-1">
+                                Roles
+                            </div>
+                            <div class="r-grid gap-1 flex-wrap">
+                                @foreach ($ship->roles as $key => $r)
+                                    <div>
+                                        <span class="pill-dark" style="position: relative;">{{ $r->role_name }}</span>
+                                        @foreach ($r->factions as $key => $f)
+                                            <span class="pl-hd" id="{{ $f->faction_tag }}"
+                                                style="position: relative;left: calc({{ $key + 1 }}* -1 * .4em );">{{ $f->faction_tag }}</span>
+
+                                            <script>
+                                                var zin = (10 - {!! json_encode($key) !!});
+                                                document.getElementById({!! json_encode($f->faction_tag) !!}).style.zIndex = zin;
+                                                tag = document.getElementsByClassName('pl-hd')[0].id;
+                                                changeFactionTag(tag);
+                                            </script>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="swiss-font-12 mt-1">
+                                Position
+                            </div>
+                            <div>
+                                <div class="d-grid">
+                                    @if ($ship->positions->position_type == 'single')
+                                        <div class="pill-dark d-flex mb-1">
+                                            <div class="my-auto p-3">1</div>
+                                            <div class="border-left-white">
+                                                <div class="d-grid">
+                                                    <h5 class="mx-auto text-center altona-sans-12">
+                                                        {{ $ship->positions->position_name }}
+                                                    </h5>
+                                                    <img src="/img/positions/{{ $ship->positions->position_image }}"
+                                                        alt="">
+                                                </div>
                                             </div>
-                                    @endforeach
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="vertical-align-top">Position</td>
-                                <td class="ps-5">
-                                        @if ($ship->positions->position_type == 'single')
+                                            <div class="my-auto">
+                                                <p class="altona-sans-10">{{ $ship->positions->explanation }} </p>
+                                            </div>
+                                        </div>
+                                    @else
+                                        @foreach ($ship->positions->children as $c)
                                             <div class="pill-dark d-flex mb-1">
                                                 <div class="my-auto p-3">1</div>
                                                 <div class="border-left-white">
                                                     <div class="d-grid">
-                                                        <h5 class="mx-auto text-center altona-sans-12">
-                                                            {{ $ship->positions->position_name }}
+                                                        <h5 class="mx-auto mt-2 text-center altona-sans-12 cl-hd"
+                                                            id="{{ $c->position_slug }}">
+                                                            {{ $c->position_name }}
                                                         </h5>
-                                                        <img src="/img/positions/{{ $ship->positions->position_image }}"
-                                                            alt="">
+                                                        <img src="/img/positions/{{ $c->position_image }}" alt="">
+                                                        <script>
+                                                            textId = document.getElementsByClassName('cl-hd')[0].id;
+                                                            changeTextColor(textId);
+                                                        </script>
+
                                                     </div>
                                                 </div>
                                                 <div class="my-auto">
-                                                    <p class="altona-sans-10">{{ $ship->positions->explanation }} </p>
+                                                    <p class="altona-sans-10">{{ $c->explanation }} </p>
                                                 </div>
                                             </div>
-                                        @else
-                                            @foreach ($ship->positions->children as $c)
-                                                <div class="pill-dark d-flex mb-1">
-                                                    <div class="my-auto p-3">1</div>
-                                                    <div class="border-left-white">
-                                                        <div class="d-grid">
-                                                            <h5 class="mx-auto mt-2 text-center altona-sans-12 cl-hd"
-                                                                id="{{ $c->position_slug }}">
-                                                                {{ $c->position_name }}
-                                                            </h5>
-                                                            <img src="/img/positions/{{ $c->position_image }}"
-                                                                alt="">
-                                                            <script>
-                                                                textId = document.getElementsByClassName('cl-hd')[0].id;
-                                                                changeTextColor(textId);
-                                                            </script>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="my-auto">
-                                                        <p class="altona-sans-10">{{ $c->explanation }} </p>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
 
                 <div class="text-white">
 
-                    <div class="gears">
+                    <div class="gears mt-2">
 
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
 
@@ -259,8 +252,7 @@
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'General')
                                                     <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto"
-                                                            id="{{ $g->gear_rarity }}">
+                                                        <div class="pill-dark pl-hd mx-auto" id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
@@ -326,8 +318,7 @@
                                             @foreach ($ship->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Medium')
                                                     <div class="text-center d-grid">
-                                                        <div class="pill-dark mx-auto pl-hd"
-                                                            id="{{ $g->gear_rarity }}">
+                                                        <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
                                                             <img src="/img/gears/{{ $g->gear_img }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
@@ -339,7 +330,6 @@
                                                             var cl = {!! json_encode($c->gear_category_slug) !!}
                                                             divv = document.getElementById(cl).classList;
                                                             divv.remove('d-none');
-
                                                         </script>
                                                     </div>
 
