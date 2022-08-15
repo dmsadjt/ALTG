@@ -32,26 +32,30 @@
                             <th scope="col">Scores</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($ships as $s)
                             <tr>
                                 <td class="altona-sans-10">
                                     <div>{{ $s->id }}</div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/ships/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/ships/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/ships/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/ships/delete/{{ $s->id }}"><button
+                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
                                     </div>
-                            </td>
+                                </td>
                                 <td class="altona-sans-10">{{ $s->name }}</td>
-                                <td class="altona-sans-10" >{{ $s->hull->hull_name }}</td>
+                                <td class="altona-sans-10">{{ $s->hull->hull_name }}</td>
                                 <td class="altona-sans-10">{{ $s->faction->faction_name }}</td>
                                 <td class="altona-sans-10">{{ $s->rarity->rarity_name }}</td>
                                 <td class="altona-sans-10">
                                     <ul class="nav-style-none m-0 p-0">
 
-                                            <li>{{ $s->positions->position_name }}</li>
+                                        <li>{{ $s->positions->position_name }}</li>
 
                                     </ul>
 
@@ -73,10 +77,13 @@
 
                                 </td>
 
-                                <td class="altona-sans-10" style="width: 10em;">
+                                <td class="altona-sans-10" style="width: 20em;">
+                                    <div>Template Name : {{$s->template->name}}</div>
+                                    <div>Build : {{$s->template->build}}</div>
+
                                     <ul class="nav-style-none  m-0 p-0">
-                                        @foreach ($s->gears as $g)
-                                            <li>{{ $g->gear_name }}</li>
+                                        @foreach ($s->template->gears as $g)
+                                            <li>{{$g->category->gear_category_name}} : {{ $g->gear_name }}</li>
                                         @endforeach
                                     </ul>
 
@@ -90,26 +97,26 @@
                                     </ul>
                                 </td>
 
-                                <td><a class="altona-sans-10" href="/img/ships/sprites/{{$s->sprite}}">Sprite</a></td>
-                                <td><a class="altona-sans-10" href="/img/ships/chibi/{{$s->chibi_sprite}}">Chibi</a></td>
+                                <td><a class="altona-sans-10" href="/img/ships/sprites/{{ $s->sprite }}">Sprite</a></td>
+                                <td><a class="altona-sans-10" href="/img/ships/chibi/{{ $s->chibi_sprite }}">Chibi</a></td>
                                 <td class="altona-sans-10">{{ $s->notes }}</td>
                                 <td class="altona-sans-10" style="width: 5em;">
                                     <ul class="nav-style-none m-0 p-0">
                                         <li>Mob</li>
-                                        <li>9-11 : {{$s->mobScore->mob_9_11}}</li>
-                                        <li>12-13 :{{$s->mobScore->mob_12_13}}</li>
-                                        <li>14 : {{$s->mobScore->mob_14}}</li>
+                                        <li>9-11 : {{ $s->mobScore->mob_9_11 }}</li>
+                                        <li>12-13 :{{ $s->mobScore->mob_12_13 }}</li>
+                                        <li>14 : {{ $s->mobScore->mob_14 }}</li>
                                         <li>Boss</li>
-                                        <li>9-11 : {{$s->bossScore->boss_9_11}}</li>
-                                        <li>12-13 :{{$s->bossScore->boss_12_13}}</li>
-                                        <li>14 : {{$s->bossScore->boss_14}}</li>
+                                        <li>9-11 : {{ $s->bossScore->boss_9_11 }}</li>
+                                        <li>12-13 :{{ $s->bossScore->boss_12_13 }}</li>
+                                        <li>14 : {{ $s->bossScore->boss_14 }}</li>
                                     </ul>
                                 </td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{$ships->links()}}
+                    {{ $ships->links() }}
                 </table>
             </div>
         </div>

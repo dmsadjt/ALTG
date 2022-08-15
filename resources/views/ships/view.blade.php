@@ -249,7 +249,7 @@
                                     <div class="tab-content__{{ $c->gear_category_slug }}  fadeIn"
                                         id="{{ $c->gear_category_slug }}-general">
                                         <div class="d-flex gap-3">
-                                            @foreach ($ship->gears as $g)
+                                            @foreach ($ship->template->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'General')
                                                     <div class="text-center d-grid">
                                                         <div class="pill-dark pl-hd mx-auto" id="{{ $g->gear_rarity }}">
@@ -283,7 +283,7 @@
                                         id="{{ $c->gear_category_slug }}-light">
                                         <div class="d-flex gap-3">
                                             <div class="text-center">
-                                                @foreach ($ship->gears as $g)
+                                                @foreach ($ship->template->gears as $g)
                                                     @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Light')
                                                         <div class="text-center d-grid">
                                                             <div class="pill-dark mx-auto pl-hd"
@@ -315,7 +315,7 @@
                                     <div class="tab-content__{{ $c->gear_category_slug }} fadeIn"
                                         id="{{ $c->gear_category_slug }}-med">
                                         <div class="d-flex gap-3">
-                                            @foreach ($ship->gears as $g)
+                                            @foreach ($ship->template->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Medium')
                                                     <div class="text-center d-grid">
                                                         <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
@@ -345,7 +345,7 @@
                                     <div class="tab-content__{{ $c->gear_category_slug }} fadeIn"
                                         id="{{ $c->gear_category_slug }}-heavy">
                                         <div class="d-flex gap-3">
-                                            @foreach ($ship->gears as $g)
+                                            @foreach ($ship->template->gears as $g)
                                                 @if ($g->gear_type == $c->id && $g->pivot->gear_category == 'Heavy')
                                                     <div class="text-center d-grid">
                                                         <div class="pill-dark pl-hd" id="{{ $g->gear_rarity }}">

@@ -16,6 +16,7 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Template Name</th>
+                            <th scope="col">Template Build</th>
                             <th>Gears</th>
                         </tr>
                     </thead>
@@ -35,11 +36,12 @@
 
                                 </td>
                                 <td class="altona-sans-10">{{ $s->name }}</td>
+                                <td class="altona-sans-10">{{ $s->build }}</td>
                                 <td>
 
                                     <ul class="nav-style-none">
                                         @foreach ($s->gears as $g)
-                                            <li class="altona-sans-10"> {{$g->category->gear_category_name}}:  {{ $g->gear_name }} ({{$g->pivot->gear_category}})</li>
+                                            <li class="altona-sans-10"> {{$g->category->gear_category_name}}:  {{ $g->gear_name }}</li>
                                         @endforeach
                                     </ul>
 

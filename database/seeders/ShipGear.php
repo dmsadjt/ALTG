@@ -13,38 +13,38 @@ class ShipGear extends Seeder
      */
     public function run()
     {
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'1',
             'gear_category'=>'General',
         ]);
 
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'2',
             'gear_category'=>'General',
         ]);
 
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'3',
             'gear_category'=>'General',
         ]);
 
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'4',
             'gear_category'=>'General',
         ]);
 
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'5',
             'gear_category'=>'General',
         ]);
 
-        DB::table('ship_gears')->insert([
-            'ship_id'=>'1',
+        DB::table('gear_template')->insert([
+            'template_id'=>'1',
             'gear_id'=>'6',
             'gear_category'=>'General',
         ]);

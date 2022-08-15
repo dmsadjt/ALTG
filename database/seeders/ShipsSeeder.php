@@ -24,6 +24,7 @@ class ShipsSeeder extends Seeder
             'rarity_id'=>'4',
             'position_id'=>'4',
             'sprite'=>'alabama.png',
+            'template_id'=>'1',
         ]);
 
         DB::table('ships')->insert([
@@ -34,6 +35,7 @@ class ShipsSeeder extends Seeder
             'position_id'=>'3',
             'rarity_id'=>'4',
             'sprite'=>'akagi.png',
+            'template_id'=>'1',
 
         ]);
 
@@ -46,6 +48,7 @@ class ShipsSeeder extends Seeder
             'position_id'=>'2',
             'sprite'=>'abukuma.png',
             'chibi_sprite'=>'abukuma.png',
+            'template_id'=>'1',
         ]);
 
     }

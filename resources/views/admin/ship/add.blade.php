@@ -96,17 +96,22 @@
                 @for ($i = 0; $i < 3; $i++)
                     <div class="columns-three">
                         <div class="mb-2">
-                            <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{$i+1}} name</label>
-                            <input class="form-control" type="text" name="skillname-{{ $i + 1 }}" id="skillname-{{ $i + 1 }}">
+                            <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{ $i + 1 }}
+                                name</label>
+                            <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
+                                id="skillname-{{ $i + 1 }}">
                         </div>
                         <div class="mb-2">
-                            <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill {{$i+1}}  priority</label>
+                            <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill {{ $i + 1 }}
+                                priority</label>
                             <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
                                 id="skillpriority-{{ $i + 1 }}">
                         </div>
                         <div class="mb-2">
-                            <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{$i+1}}  image</label>
-                            <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}" id="skillimg-{{ $i + 1 }}">
+                            <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
+                                image</label>
+                            <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
+                                id="skillimg-{{ $i + 1 }}">
                         </div>
                     </div>
                 @endfor
@@ -272,79 +277,34 @@
 
             {{-- gears --}}
             <h2 class="mt-3">Gears</h2>
-            <hr>
-            <h3>Templates</h3>
-            <p>Look up templates to customize your gear templates</p>
-            <div>
-                <select name="templates" id="templates" class="form-select">
-                    <option value="">Select Template</option>
-                    @foreach ($templates as $t)
-                        <option value="{{$t->id}}">{{$t->name}} :
-                            @foreach ($t->gears as $g)
-                                {{$g->gear_name}} ({{$g->pivot->gear_category}}),
-                            @endforeach
-                        </option>
-                    @endforeach
-                </select>
+            <div class="tab my-auto">
+                <button type="button" class="btn btn-primary tab-links" onclick="openTab(event, 'general', 'tab__content', 'tab-links','grid')"
+                    id="openByDefault">General</button>
+                <button type="button" class="btn btn-primary tab-links"
+                    onclick="openTab(event, 'light', 'tab__content', 'tab-links','grid')">Light</button>
+                <button type="button" class="btn btn-primary tab-links"
+                    onclick="openTab(event, 'medium', 'tab__content', 'tab-links','grid')">Medium  </button>
+                <button type="button" class="btn btn-primary tab-links"
+                    onclick="openTab(event, 'heavy', 'tab__content', 'tab-links','grid')">Heavy</button>
             </div>
 
-            <hr>
-            <p>or.. insert manually</p>
-            <div>
-                @foreach ($gear_category as $g)
-                    <div class="accordion text-black-50" id="accordionGear">
-
-                        <div class="accordion-item altona-sans-10">
-                            <h3 class="accordion-header" id="heading-{{ $g->id }}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse-{{ $g->id }}" aria-expanded="true"
-                                    aria-controls="collapse-{{ $g->id }}">
-                                    {{ $g->gear_category_name }}
-                                </button>
-                            </h3>
-                            <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
-                                aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
-                                <div class="columns-two accordion-body bg-white">
-                                    @for ($i = 1; $i < 16; $i++)
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $g->id }}-gear-{{ $i }}">Gear
-                                                {{ $i  }}</label>
-                                            <select name="{{ $g->id }}-gear-{{ $i }}"
-                                                id="{{ $g->id }}-gear-{{ $i }}" class="form-select">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == $g->id)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $g->id }}-category-{{ $i }}">Gear
-                                                Category {{ $i  }}</label>
-                                            <select class="form-select"
-                                                name="{{ $g->id }}-category-{{ $i }}"
-                                                id="{{ $g->id }}-category-{{ $i }}">
-                                                <option value="" selected>Select Gear Category</option>
-                                                <option value="General">General</option>
-                                                <option value="Light">Light</option>
-                                                <option value="Medium">Med</option>
-                                                <option value="Heavy">Heavy</option>
-                                            </select>
-                                        </div>
-                                    @endfor
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                @endforeach
+            <div id="general" class="tab__content">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!a
             </div>
+            <div id="light" class="tab__content">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aa
+            </div>
+            <div id="medium" class="tab__content">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aaa
+            </div>
+            <div id="heavy" class="tab__content">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aaaa
+            </div>
+
+
 
             <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add ship">
+                <input type="submit" class="btn btn-primary mx-auto my-3 btn-lg" value="Add ship">
             </div>
         </form>
     </div>

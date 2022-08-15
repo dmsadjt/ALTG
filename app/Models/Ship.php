@@ -62,8 +62,8 @@ class Ship extends Model
         return $this->hasMany(Skill::class,'ship_id');
     }
 
-    public function gears(){
-        return $this->belongsToMany(Gear::class,'ship_gears','ship_id','gear_id')->withPivot('gear_category');
+    public function template(){
+        return $this->belongsTo(Template::class);
     }
 
     public function ScopeFilter($query, $filters){

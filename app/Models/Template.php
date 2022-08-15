@@ -11,10 +11,11 @@ class Template extends Model
 
     protected $fillable = [
         'name',
+        'build',
     ];
 
     public function gears(){
-        return $this->belongsToMany(Gear::class, 'gear_template', 'template_id','gear_id')->withPivot('gear_category');
+        return $this->belongsToMany(Gear::class, 'gear_template', 'template_id', 'gear_id')->withPivot('gear_category');
     }
 
 }

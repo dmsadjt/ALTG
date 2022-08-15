@@ -54,6 +54,8 @@ class AdminController extends Controller
     public function ships()
     {
         $ships = Ship::paginate(10);
+        $ship = Ship::first();
+
 
         return view('admin.ship.index', compact('ships'));
     }

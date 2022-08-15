@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Add Templates')
+@section('title', 'Edit Templates')
 @section('contents')
     <div class="d-grid pill-dark p-2 m-3">
 
@@ -22,6 +22,16 @@
                 <input class="form-control" type="text" name="name" id="name" value="{{$template->name}}">
             </div>
 
+            <div class="mt-2">
+                <label class="form-label" for="build">Build</label>
+                <select class="form-select" name="build" id="build">
+                    <option value="General" {{$template->build == 'General' ? 'selected' : ''}}>General</option>
+                    <option value="Light" {{$template->build == 'Light' ? 'selected' : ''}}>Light</option>
+                    <option value="Medium" {{$template->build == 'Medium' ? 'selected' : ''}}>Medium</option>
+                    <option value="Heavy" {{$template->build == 'Heavy' ? 'selected' : ''}}>Heavy</option>
+                </select>
+            </div>
+
             <h2 class="mt-3">Gears</h2>
             <div>
                 @foreach ($gear_category as $g)
@@ -37,7 +47,7 @@
                             </h3>
                             <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
                                 aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
-                                <div class="columns-two accordion-body bg-white">
+                                <div class="accordion-body bg-white">
                                     @for ($i = 1; $i < 16; $i++)
                                         <div>
                                             <label class="form-label"
@@ -57,30 +67,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $g->id }}-category-{{ $i }}">Gear
-                                                Category {{ $i }}</label>
-                                            <select class="form-select"
-                                                name="{{ $g->id }}-category-{{ $i }}"
-                                                id="{{ $g->id }}-category-{{ $i }}">
-                                                <option value=""
-                                                    {{ $selected[$g->id . '-category-' . ($i)] == '' ? 'selected' : '' }}>
-                                                    Select Gear Category</option>
-                                                <option value="General"
-                                                    {{ $selected[$g->id . '-category-' . ($i)] == 'General' ? 'selected' : '' }}>
-                                                    General</option>
-                                                <option value="Light"
-                                                    {{ $selected[$g->id . '-category-' . ($i)] == 'Light' ? 'selected' : '' }}>
-                                                    Light</option>
-                                                <option value="Medium"
-                                                    {{ $selected[$g->id . '-category-' . ($i)] == 'Medium' ? 'selected' : '' }}>
-                                                    Med</option>
-                                                <option value="Heavy"
-                                                    {{ $selected[$g->id . '-category-' . ($i)] == 'Heavy' ? 'selected' : '' }}>
-                                                    Heavy</option>
-                                            </select>
-                                        </div>
                                     @endfor
                                 </div>
                             </div>
@@ -90,7 +76,7 @@
             </div>
 
             <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Tag">
+                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit Tag">
             </div>
         </form>
     </div>

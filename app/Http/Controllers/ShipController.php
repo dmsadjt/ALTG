@@ -176,8 +176,6 @@ class ShipController extends Controller
         $roles = Roles::all();
         $archetypes = Archetype::all();
         $factions = Faction::all();
-        $gears = Gear::all();
-        $gear_category = GearCategory::all();
         $templates = Template::all();
 
         return view('admin.ship.add', compact(
@@ -187,8 +185,6 @@ class ShipController extends Controller
             'roles',
             'archetypes',
             'factions',
-            'gears',
-            'gear_category',
             'templates',
         ));
     }
@@ -196,7 +192,7 @@ class ShipController extends Controller
     public function postShip(Request $request)
     {
         $cate = GearCategory::all();
-        $general = ([
+        $rules = ([
             'name' => 'required',
             'hull' => 'required',
             'rarity' => 'required',
@@ -233,16 +229,6 @@ class ShipController extends Controller
             'templates' => '',
         ]);
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                $g = strval($c->id) . '-gear-' . strval($j);
-                $s = strval($c->id) . '-category-' . strval($j);
-                $gears[$g] = '';
-                $gears[$s] = '';
-            }
-        }
-
-        $rules = array_merge($general, $gears);
         $shipdata = $request->validate($rules);
 
         $ship = new Ship;
@@ -312,20 +298,6 @@ class ShipController extends Controller
                 $temp[$g->id] = ['gear_category' => $g->pivot->gear_category ];
             }
         }
-
-
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                if ($shipdata[strval($c->id) . '-gear-' . strval($j)] != null) {
-                    $id = $shipdata[$c->id . '-gear-' . $j];
-                    $pivot = 'gear_category';
-                    $pivot_data = $shipdata[$c->id . '-category-' . $j] != null ? $shipdata[$c->id . '-category-' . $j] : 'General';
-                    $temp[$id] = [$pivot => $pivot_data];
-                } else continue;
-            }
-        }
-
-        $ship->gears()->sync($temp);
 
         $ship->save();
 

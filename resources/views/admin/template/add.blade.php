@@ -21,6 +21,16 @@
                 <input class="form-control" type="text" name="name" id="name">
             </div>
 
+            <div class="mt-2">
+                <label class="form-label" for="build">Build</label>
+                <select class="form-select" name="build" id="build">
+                    <option value="General">General</option>
+                    <option value="Light">Light</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Heavy">Heavy</option>
+                </select>
+            </div>
+
             <h2 class="mt-3">Gears</h2>
             <div>
                 @foreach ($gear_category as $g)
@@ -34,9 +44,13 @@
                                     {{ $g->gear_category_name }}
                                 </button>
                             </h3>
+
+
+
                             <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
                                 aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
-                                <div class="columns-two accordion-body bg-white">
+                                <div class="accordion-body bg-white">
+
                                     @for ($i = 1; $i < 16; $i++)
                                         <div>
                                             <label class="form-label"
@@ -52,21 +66,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $g->id }}-category-{{ $i }}">Gear
-                                                Category {{ $i  }}</label>
-                                            <select class="form-select"
-                                                name="{{ $g->id }}-category-{{ $i }}"
-                                                id="{{ $g->id }}-category-{{ $i }}">
-                                                <option value="" selected>Select Gear Category</option>
-                                                <option value="General">General</option>
-                                                <option value="Light">Light</option>
-                                                <option value="Medium">Med</option>
-                                                <option value="Heavy">Heavy</option>
-                                            </select>
-                                        </div>
                                     @endfor
+
                                 </div>
                             </div>
                         </div>

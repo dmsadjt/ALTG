@@ -29,14 +29,13 @@ class TemplateController extends Controller
         $cate = GearCategory::all();
         $temp = [
             'name' => 'required',
+            'build' => 'required',
         ];
 
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
                 $g = strval($c->id) . '-gear-' . strval($j);
-                $s = strval($c->id) . '-category-' . strval($j);
                 $gears[$g] = '';
-                $gears[$s] = '';
             }
         }
 
@@ -45,14 +44,14 @@ class TemplateController extends Controller
 
         $template = new Template();
         $template['name'] = $data['name'];
+        $template['build'] = $data['build'];
         $template->save();
 
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
                 if ($data[($c->id) . '-gear-' . ($j)] != null) {
                     $info = $data[$c->id. '-gear-' .$j];
-                    $in = $data[$c->id. '-category-' .$j] != null ? $data[($c->id) . '-category-' . ($j)] : 'General';
-                    $template->gears()->attach($info, ['gear_category' => $in]);
+                    $template->gears()->attach($info, ['gear_category' => $template->build]);
                 }
             }
         }
@@ -76,10 +75,7 @@ class TemplateController extends Controller
 
         foreach ($template->gears as $key => $g) {
             $k = $this->selectSlot(1, $selected, $g->gear_type, '-gear-');
-            $c = $this->selectSlot(1, $selected, $g->gear_type, '-category-');
-
             $selected[$k] = $g->id;
-            $selected[$c] = $g->pivot->gear_category;
         }
 
         return view('admin.template.edit', compact('template', 'selected', 'gear_category', 'gears'));
@@ -90,14 +86,13 @@ class TemplateController extends Controller
         $temp = [
             'id'=>'required',
             'name' => 'required',
+            'build' => 'required',
         ];
 
         foreach ($cate as $c) {
             for ($j = 1; $j < 16; $j++) {
                 $g = strval($c->id) . '-gear-' . strval($j);
-                $s = strval($c->id) . '-category-' . strval($j);
                 $gears[$g] = '';
-                $gears[$s] = '';
             }
         }
 
@@ -108,6 +103,7 @@ class TemplateController extends Controller
 
         $template->update([
             'name'=>$data['name'],
+            'build'=>$data['build'],
         ]);
 
 
@@ -115,14 +111,12 @@ class TemplateController extends Controller
             for ($j = 1; $j < 16; $j++) {
                 if ($data[$c->id . '-gear-' . $j] != null) {
                     $id = $data[$c->id . '-gear-' . $j];
-                    $pivot = 'gear_category';
-                    $pivot_data = $data[$c->id . '-category-' . $j] != null ? $data[$c->id . '-category-' . $j] : 'General';
-                    $temp[$id] = [$pivot => $pivot_data];
+                    array_push($temp, $id);
                 }
             }
         }
 
-        $template->gears()->sync($temp);
+        $template->gears()->syncWithPivotValues($temp, ['gear_category'=>$template->build]);
 
         return redirect('admin/templates');
 
