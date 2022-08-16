@@ -22,6 +22,7 @@ class Ship extends Model
         'sprite',
         'chibi_sprite',
         'position_id',
+        'template_id',
     ];
 
     protected $table = 'ships';

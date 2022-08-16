@@ -78,13 +78,16 @@
                                 </td>
 
                                 <td class="altona-sans-10" style="width: 20em;">
-                                    <div>Template Name : {{$s->template->name}}</div>
-                                    <div>Build : {{$s->template->build}}</div>
+                                    <div>Template Name : {{ $s->template ? $s->template->name : '' }}</div>
+                                    <div>Build : {{ $s->template ? $s->template->build : '' }}</div>
 
                                     <ul class="nav-style-none  m-0 p-0">
-                                        @foreach ($s->template->gears as $g)
-                                            <li>{{$g->category->gear_category_name}} : {{ $g->gear_name }}</li>
-                                        @endforeach
+                                        @if ($s->template)
+                                            @foreach ($s->template->gears as $g)
+                                                <li>{{ $g->category->gear_category_name }} : {{ $g->gear_name }}</li>
+                                            @endforeach
+                                        @endif
+
                                     </ul>
 
                                 </td>

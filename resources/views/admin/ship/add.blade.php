@@ -291,7 +291,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'General')
-                                <option value="id">{{ $t->name }}</option>
+                                <option value="{{$t->id}}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -303,7 +303,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Light')
-                                <option value="id">{{ $t->name }}</option>
+                                <option value="{{$t->id}}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -314,7 +314,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Medium')
-                                <option value="id">{{ $t->name }}</option>
+                                <option value="{{$t->id}}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -325,66 +325,72 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Heavy')
-                                <option value="id">{{ $t->name }}</option>
+                                <option value="{{$t->id}}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
                 </div>
             </div>
 
-            <script>
-                const build = document.getElementById('build');
-                const general = document.getElementById('general');
-                const light = document.getElementById('light');
-                const medium = document.getElementById('medium');
-                const heavy = document.getElementById('heavy');
 
-                const selectGeneral = document.getElementById('template-general');
-                const selectLight = document.getElementById('template-light');
-                const selectMedium = document.getElementById('template-medium');
-                const selectHeavy = document.getElementById('template-heavy');
+    </div>
 
 
 
-                emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+    <script>
+        const build = document.getElementById('build');
+
+        const general = document.getElementById('general');
+        const light = document.getElementById('light');
+        const medium = document.getElementById('medium');
+        const heavy = document.getElementById('heavy');
+
+        const selectGeneral = document.getElementById('template-general');
+        const selectLight = document.getElementById('template-light');
+        const selectMedium = document.getElementById('template-medium');
+        const selectHeavy = document.getElementById('template-heavy');
+
+
+
+        emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+        displayNone([light, medium, heavy]);
+
+        build.addEventListener('change', function handleChange(event) {
+            emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+
+            if (event.target.value === 'General') {
+
                 displayNone([light, medium, heavy]);
+                general.style.display = 'block';
 
-                build.addEventListener('change', function handleChange(event) {
-                    emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+            }
 
-                    if (event.target.value === 'General') {
+            if (event.target.value === 'Light') {
+                displayNone([general, medium, heavy]);
 
-                        displayNone([light, medium, heavy]);
-                        general.style.display = 'block';
+                light.style.display = 'block';
 
-                    }
+            }
 
-                    if (event.target.value === 'Light') {
-                        displayNone([general, medium, heavy]);
+            if (event.target.value === 'Medium') {
+                displayNone([light, general, heavy]);
 
-                        light.style.display = 'block';
+                medium.style.display = 'block';
 
-                    }
+            }
 
-                    if (event.target.value === 'Medium') {
-                        displayNone([light, general, heavy]);
+            if (event.target.value === 'Heavy') {
+                displayNone([light, medium, general]);
+                heavy.style.display = 'block';
+            }
 
-                        medium.style.display = 'block';
-
-                    }
-
-                    if (event.target.value === 'Heavy') {
-                        displayNone([light, medium, general]);
-                        heavy.style.display = 'block';
-                    }
-
-                })
-            </script>
+        })
+    </script>
 
 
-            <div class="d-grid">
-                <input type="submit" class="btn btn-primary mx-auto my-3 btn-lg" value="Add ship">
-            </div>
-        </form>
+    <div class="d-grid">
+        <input type="submit" class="btn btn-primary mx-auto my-3 btn-lg" value="Add ship">
+    </div>
+    </form>
     </div>
 @endsection

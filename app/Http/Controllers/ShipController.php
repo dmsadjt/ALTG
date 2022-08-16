@@ -177,6 +177,8 @@ class ShipController extends Controller
         $archetypes = Archetype::all();
         $factions = Faction::all();
         $templates = Template::all();
+        $gear_category = GearCategory::all();
+        $gears = Gear::all();
 
         return view('admin.ship.add', compact(
             'hulls',
@@ -186,6 +188,8 @@ class ShipController extends Controller
             'archetypes',
             'factions',
             'templates',
+            'gear_category',
+            'gears',
         ));
     }
 
@@ -226,7 +230,10 @@ class ShipController extends Controller
             'boss1' => 'integer|between:0,11',
             'boss2' => 'integer|between:0,11',
             'boss3' => 'integer|between:0,11',
-            'templates' => '',
+            'template-general' => '',
+            'template-light' => '',
+            'template-heavy' => '',
+            'template-medium' => '',
         ]);
 
         $shipdata = $request->validate($rules);
@@ -237,6 +244,24 @@ class ShipController extends Controller
         $ship->faction_id = $shipdata['faction'];
         $ship->rarity_id = $shipdata['rarity'];
         $ship->position_id = $shipdata['position'];
+
+        if(isset($shipdata['template-general'])){
+            $ship->template_id = $shipdata['template-general'];
+        }
+
+        if(isset($shipdata['template-light'])){
+            $ship->template_id = $shipdata['template-light'];
+        }
+
+        if(isset($shipdata['template-medium'])){
+            $ship->template_id = $shipdata['template-medium'];
+        }
+
+        if(isset($shipdata['template-heavy'])){
+            $ship->template_id = $shipdata['template-heavy'];
+        }
+
+
         if ($shipdata['notes'] != null) {
             $ship->notes = $shipdata['notes'];
         }
@@ -292,13 +317,6 @@ class ShipController extends Controller
         $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
         $skill3->save();
 
-        if(isset($shipdata['templates'])){
-            $template = Template::where('id', $shipdata['templates'])->first();
-            foreach ($template->gears as $g){
-                $temp[$g->id] = ['gear_category' => $g->pivot->gear_category ];
-            }
-        }
-
         $ship->save();
 
         return redirect('admin/ships');
@@ -317,6 +335,7 @@ class ShipController extends Controller
         $gears = Gear::all();
         $gear_category = GearCategory::all();
         $ship = Ship::where('id', $id)->get();
+        $templates = Template::all();
 
         foreach ($ship as $s) {
             $selected['hull'] = $s->hull_id;
@@ -337,22 +356,8 @@ class ShipController extends Controller
             }
 
             $selected['faction'] = $s->faction_id;
-
-            foreach ($gear_category as $c) {
-                for ($j = 1; $j < 16; $j++) {
-                    $selected[$c->id . '-gear-' . $j] = '';
-                    $selected[$c->id . '-category-' . $j] = '';
-                }
-            }
-
-            foreach ($s->gears as $key => $g) {
-                // $this->fillGear(1, $selected, $g->gear_type, $g->id, $g->pivot->gear_category);
-                $k = $this->selectSlot(1, $selected, $g->gear_type, '-gear-');
-                $c = $this->selectSlot(1, $selected, $g->gear_type, '-category-');
-
-                $selected[$k] = $g->id;
-                $selected[$c] = $g->pivot->gear_category;
-            }
+            $selected['build'] = $s->template ? $s->template->build : '';
+            $selected['template'] = $s->template_id;
         }
 
 
@@ -367,6 +372,7 @@ class ShipController extends Controller
             'factions',
             'gears',
             'gear_category',
+            'templates',
         ]));
     }
 
@@ -408,7 +414,10 @@ class ShipController extends Controller
             'boss1' => 'integer|between:0,11',
             'boss2' => 'integer|between:0,11',
             'boss3' => 'integer|between:0,11',
-            'templates' => '',
+            'template-general' => '',
+            'template-light' => '',
+            'template-heavy' => '',
+            'template-medium' => '',
         ]);
 
         foreach ($cate as $c) {
@@ -487,18 +496,29 @@ class ShipController extends Controller
             }
         }
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                if ($data[$c->id . '-gear-' . $j] != null) {
-                    $id = $data[$c->id . '-gear-' . $j];
-                    $pivot = 'gear_category';
-                    $pivot_data = $data[$c->id . '-category-' . $j] != null ? $data[$c->id . '-category-' . $j] : 'General';
-                    $temp[$id] = [$pivot => $pivot_data];
-                }
-            }
+        if(isset($data['template-general'])){
+            $ship->update([
+                'template_id'=>$data['template-general'],
+            ]);
         }
 
-        $ship->gears()->sync($temp);
+        if(isset($data['template-light'])){
+            $ship->update([
+                'template_id'=>$data['template-light'],
+            ]);
+        }
+
+        if(isset($data['template-medium'])){
+            $ship->update([
+                'template_id'=>$data['template-medium'],
+            ]);
+        }
+
+        if(isset($data['template-heavy'])){
+            $ship->update([
+                'template_id'=>$data['template-heavy'],
+            ]);
+        }
 
         return redirect('admin/ships');
     }
