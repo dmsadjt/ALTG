@@ -276,31 +276,110 @@
 
 
             {{-- gears --}}
-            <h2 class="mt-3">Gears</h2>
-            <div class="tab my-auto">
-                <button type="button" class="btn btn-primary tab-links" onclick="openTab(event, 'general', 'tab__content', 'tab-links','grid')"
-                    id="openByDefault">General</button>
-                <button type="button" class="btn btn-primary tab-links"
-                    onclick="openTab(event, 'light', 'tab__content', 'tab-links','grid')">Light</button>
-                <button type="button" class="btn btn-primary tab-links"
-                    onclick="openTab(event, 'medium', 'tab__content', 'tab-links','grid')">Medium  </button>
-                <button type="button" class="btn btn-primary tab-links"
-                    onclick="openTab(event, 'heavy', 'tab__content', 'tab-links','grid')">Heavy</button>
+            <div class=" border shadow-lg p-3 my-4 rounded">
+                <h2 class="mt-3">Gears</h2>
+                <label class="form-label" for="build">Select Build</label>
+                <select class="form-select" name="build" id="build">
+                    <option value="General">General</option>
+                    <option value="Light">Light</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Heavy">Heavy</option>
+                </select>
+                <div id="general">
+                    <label for="template-general">Template (General)</label>
+                    <select class="form-select" name="template-general" id="template-general">
+                        <option value="">Select Template</option>
+                        @foreach ($templates as $t)
+                            @if ($t->build == 'General')
+                                <option value="id">{{ $t->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    <script></script>
+                </div>
+                <div id="light">
+                    <label for="template-light">Template (Light)</label>
+                    <select class="form-select" name="template-light" id="template-light">
+                        <option value="">Select Template</option>
+                        @foreach ($templates as $t)
+                            @if ($t->build == 'Light')
+                                <option value="id">{{ $t->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div id="medium">
+                    <label for="template-medium">Template (Medium)</label>
+                    <select class="form-select" name="template-medium" id="template-medium">
+                        <option value="">Select Template</option>
+                        @foreach ($templates as $t)
+                            @if ($t->build == 'Medium')
+                                <option value="id">{{ $t->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
+                <div id="heavy">
+                    <label for="template-heavy">Template (Heavy)</label>
+                    <select class="form-select" name="template-heavy" id="template-heavy">
+                        <option value="">Select Template</option>
+                        @foreach ($templates as $t)
+                            @if ($t->build == 'Heavy')
+                                <option value="id">{{ $t->name }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </div>
             </div>
 
-            <div id="general" class="tab__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!a
-            </div>
-            <div id="light" class="tab__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aa
-            </div>
-            <div id="medium" class="tab__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aaa
-            </div>
-            <div id="heavy" class="tab__content">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta quos excepturi voluptate earum consequatur aperiam molestiae, tempora similique deleniti ab quod dolore! Veritatis suscipit ipsum fugiat eum eos exercitationem maiores!aaaa
-            </div>
+            <script>
+                const build = document.getElementById('build');
+                const general = document.getElementById('general');
+                const light = document.getElementById('light');
+                const medium = document.getElementById('medium');
+                const heavy = document.getElementById('heavy');
 
+                const selectGeneral = document.getElementById('template-general');
+                const selectLight = document.getElementById('template-light');
+                const selectMedium = document.getElementById('template-medium');
+                const selectHeavy = document.getElementById('template-heavy');
+
+
+
+                emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+                displayNone([light, medium, heavy]);
+
+                build.addEventListener('change', function handleChange(event) {
+                    emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+
+                    if (event.target.value === 'General') {
+
+                        displayNone([light, medium, heavy]);
+                        general.style.display = 'block';
+
+                    }
+
+                    if (event.target.value === 'Light') {
+                        displayNone([general, medium, heavy]);
+
+                        light.style.display = 'block';
+
+                    }
+
+                    if (event.target.value === 'Medium') {
+                        displayNone([light, general, heavy]);
+
+                        medium.style.display = 'block';
+
+                    }
+
+                    if (event.target.value === 'Heavy') {
+                        displayNone([light, medium, general]);
+                        heavy.style.display = 'block';
+                    }
+
+                })
+            </script>
 
 
             <div class="d-grid">

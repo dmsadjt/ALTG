@@ -121,4 +121,15 @@ class TemplateController extends Controller
         return redirect('admin/templates');
 
     }
+
+    public function delete($id){
+        $template = Template::where('id',$id)->first();
+
+        $template->gears()->detach();
+
+        $template->delete();
+
+        return redirect('admin/templates');
+
+    }
 }

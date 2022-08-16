@@ -837,6 +837,10 @@ td {
     background-color: var(--gray1);
 }
 
+.bg-gray2 {
+    background-color: var(--gray2);
+}
+
 ._100vh {
     height: calc(100vh - 80px);
 }

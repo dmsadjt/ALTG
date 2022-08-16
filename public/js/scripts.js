@@ -331,6 +331,20 @@ function displaySelect(select, counter) {
     $("#" + select + counter).show();
 }
 
+function emptyValue (array){
+    array.forEach(element => {
+        element.value= "";
+        console.log('ok');
+    });
+}
+
+function displayNone (array){
+    array.forEach(element => {
+        element.style.display = 'none';
+        console.log('ok');
+    });
+}
+
 function split( val ) {
     return val.split( /,\s*/ );
   }
