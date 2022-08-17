@@ -204,26 +204,27 @@
                     </div>
 
                     {{-- score view selection --}}
-                    <div class="scores my-auto p-2">
+                    <div class="scores my-auto p-2" id="scores">
                         <hr>
                         <h2 class="swiss-font-28">View Score by</h2>
                         <h3 class="swiss-font-12">Mob/Boss</h3>
                         <div class="columns-two mb-2 mob-boss">
                             <div>
-                                <button class="button-square btn btn-dark d-grid score-type ms-auto score-link"
-                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')"
-                                    id="openDefault">
+                                <button id="mob-link" data-toggle="tab"
+                                    class="button-square btn btn-dark d-grid score-type ms-auto score-link"
+                                    onclick="openTab(event, 'mob-score', 'score-content', 'score-link','grid')">
                                     <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
                                         alt="">
-                                    <div class="mx-auto my-auto altona-sans-12">Mob</div>
+                                    <div class="mx-auto my-auto altona-sans-12" >Mob</div>
                                 </button>
                             </div>
                             <div>
-                                <button class="button-square btn btn-dark d-grid score-type me-auto score-link"
+                                <button id="boss-link" data-toggle="tab"
+                                    class="button-square btn btn-dark d-grid score-type me-auto score-link"
                                     onclick="openTab(event, 'boss-score', 'score-content', 'score-link','grid')">
                                     <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
                                         alt="">
-                                    <div class="mx-auto my-auto altona-sans-12">Boss</div>
+                                    <div class="mx-auto my-auto altona-sans-12" >Boss</div>
                                 </button>
                             </div>
                         </div>
@@ -231,16 +232,16 @@
                         <h3 class="swiss-font-12">View by Chapters</h3>
                         <div class="d-flex text-white gap-2 justify-content-center mt-3">
 
-                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')">W
+                            <button data-toggle="tab" class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-911', 'score-content', 'score-link','grid')" id="score1-link">W
                                 9-11</button>
 
-                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')">W
+                            <button data-toggle="tab" class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-1213', 'score-content', 'score-link','grid')" id="score2-link">W
                                 12-13</button>
 
-                            <button class="nav-link btn btn-dark score-link altona-sans-12 p-1"
-                                onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')">W 14</button>
+                            <button data-toggle="tab" class="nav-link btn btn-dark score-link altona-sans-12 p-1"
+                                onclick="openTab(event, 'score-14', 'score-content', 'score-link','grid')" id="score3-link">W 14</button>
 
                         </div>
                         <hr>
@@ -707,7 +708,9 @@
             </div>
 
             <script>
-                document.getElementById("openDefault").click();
+                $(document).ready(function() {
+                    document.getElementById(localStorage.getItem('activeTab')).click();
+                });
             </script>
         </div>
 

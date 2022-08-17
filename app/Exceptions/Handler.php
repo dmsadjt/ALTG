@@ -39,9 +39,9 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (ErrorException $e, $request){
-            return response()->view('dump');
-        });
+        // $this->renderable(function (ErrorException $e, $request){
+        //     return response()->view('dump');
+        // });
     }
 
 

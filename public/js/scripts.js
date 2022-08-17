@@ -25,6 +25,8 @@ function openTab(evt, tabStatus, content, links, style) {
     }
 
     evt.currentTarget.className += " active";
+    localStorage.setItem("activeTab", evt.currentTarget.id);
+
 }
 
 const cardId = [];
