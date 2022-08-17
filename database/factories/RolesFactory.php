@@ -2,11 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Roles;
+use App\Models\Faction;
 use Faker\Factory as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Gear;
 
-class gearFactory extends Factory
+class RolesFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,17 +15,14 @@ class gearFactory extends Factory
      * @return array
      */
 
-     protected $model = Gear::class;
+    protected $model = Roles::class;
     public function definition()
     {
-
         $faker = Faker::create();
-
+        $name = $faker->word();
         return [
-            'gear_name'=>$faker->word(),
-            'gear_img'=>'no-pictures.png',
-            'gear_rarity'=>$faker->randomElement(['n','r','e','sr','ur']),
-            'gear_type'=>random_int(1,13),
+            'role_name'=> $name,
+            'role_slug'=> $name,
         ];
     }
 }

@@ -22,7 +22,7 @@ class ShipFactory extends Factory
 
         return [
             'name'=>$faker->name(),
-            'hull_id'=>random_int(1,9),
+            'hull_id'=>random_int(1,8),
             'notes'=>$faker->sentence(),
             'faction_id'=>random_int(1,9),
             'rarity_id'=>random_int(1,5),
@@ -30,7 +30,6 @@ class ShipFactory extends Factory
             'template_id'=>'1',
             'sprite'=>'no-sprite.png',
             'chibi_sprite'=>'no-sprite.png',
-
         ];
     }
 }

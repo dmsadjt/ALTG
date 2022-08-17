@@ -709,7 +709,8 @@
 
             <script>
                 $(document).ready(function() {
-                    document.getElementById(localStorage.getItem('activeTab')).click();
+                    var opened = document.getElementById(localStorage.getItem('activeTab')) ? document.getElementById(localStorage.getItem('activeTab')) : document.getElementById('mob-link');
+                    opened.click();
                 });
             </script>
         </div>

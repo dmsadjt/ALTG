@@ -51,5 +51,6 @@ class ShipsSeeder extends Seeder
             'template_id'=>'1',
         ]);
 
+
     }
 }

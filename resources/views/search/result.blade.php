@@ -62,10 +62,15 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
-            </div>
 
-            {{ $ships->links() }}
+                </table>
+
+
+
+            </div>
+            <div class="ships"><div class="mx-auto" style="width:max-content;">{{$ships->links()}}</div></div>
+
+
         </div>
     </section>
 @endsection
