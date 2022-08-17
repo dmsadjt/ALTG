@@ -8,9 +8,9 @@
 
                     <div class="page-title">
                         <h1>Operation Siren Boss Stats</h1>
-                        <span class="altona-sans-12">Last Updated: </span>
+                        <span class="altona-sans-12">Last Updated: {{$last_updated->updated_at}}</span>
                     </div>
-
+                    {{-- stronghold --}}
                     <div class="stronghold">
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Stronghold Boss</h2>
@@ -33,15 +33,15 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" alt="siren-img">
+                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $s->aa }}</td>
                                                 <td>EVA</td>
@@ -73,14 +73,14 @@
                                     </div>
                                     <div>
                                     </div>
-                                    <div class="grid-col-span-2">
+                                    <div class="grid-col-span-2 altona-sans-12">
                                         Weakness : {{ $s->weakness }}
                                     </div>
                                 </div>
                             @endforeach
                         </div>
 
-                        <div class="tab__content " id="stronghold-full">
+                        <div class="tab__content mb-3" id="stronghold-full">
 
                             @foreach ($stronghold_full as $s)
                                 <div class="boss-card rounded-4 background-primary">
@@ -88,15 +88,15 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" alt="siren-img">
+                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $s->aa }}</td>
                                                 <td>EVA</td>
@@ -128,7 +128,7 @@
                                     </div>
                                     <div>
                                     </div>
-                                    <div class="grid-col-span-2">
+                                    <div class="grid-col-span-2 altona-sans-12 altona-sans-12">
                                         Weakness : {{ $s->weakness }}
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                         </div>
 
                     </div>
-
+                    {{-- abyssal --}}
                     <div class="abyssal">
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Abyssal Boss</h2>
@@ -154,7 +154,6 @@
                                 </div>
                             </div>
 
-
                         </div>
 
                         <div class="tab__content--2 " id="abyssal-none">
@@ -165,15 +164,15 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" alt="siren-img">
+                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $s->aa }}</td>
                                                 <td>EVA</td>
@@ -205,7 +204,7 @@
                                     </div>
                                     <div>
                                     </div>
-                                    <div class="grid-col-span-2">
+                                    <div class="grid-col-span-2 altona-sans-12">
                                         Weakness : {{ $s->weakness }}
                                     </div>
                                 </div>
@@ -220,15 +219,15 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" alt="siren-img">
+                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $s->hull }}</td>
+                                                <td>{{ $s->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $s->aa }}</td>
                                                 <td>EVA</td>
@@ -260,7 +259,7 @@
                                     </div>
                                     <div>
                                     </div>
-                                    <div class="grid-col-span-2">
+                                    <div class="grid-col-span-2 altona-sans-12">
                                         Weakness : {{ $s->weakness }}
                                     </div>
                                 </div>
@@ -270,6 +269,7 @@
                         </div>
                     </div>
 
+                    {{-- arbiter --}}
                     <div class="arbiter">
 
                         <div class="columns-three gap-3 altona-sans-12">
@@ -302,16 +302,16 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_none_normal[0]->img }}" alt="siren-img">
+                                    <img src="/img/siren/{{ $arbiter_none_normal[0]->img }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content overflow-x" id="arbiter-1-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_none_normal[0]->hull }}</td>
+                                            <td>{{ $arbiter_none_normal[0]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_none_normal[0]->hull }}</td>
+                                            <td>{{ $arbiter_none_normal[0]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_none_normal[0]->aa }}</td>
                                             <td>EVA</td>
@@ -346,9 +346,9 @@
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_none_hard[0]->hull }}</td>
+                                            <td>{{ $arbiter_none_hard[0]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_none_hard[0]->hull }}</td>
+                                            <td>{{ $arbiter_none_hard[0]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_none_hard[0]->aa }}</td>
                                             <td>EVA</td>
@@ -382,7 +382,7 @@
                                 <div>
                                 </div>
 
-                                <div class="grid-col-span-2">
+                                <div class="altona-sans-12 grid-col-span-2">
                                     Weakness: {{ $arbiter_none_normal[1]->weakness }}
                                 </div>
 
@@ -402,16 +402,16 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_none_normal[1]->img }}" alt="siren-img">
+                                    <img src="/img/siren/{{ $arbiter_none_normal[1]->img }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--2 overflow-x" id="arbiter-2-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_none_normal[1]->hull }}</td>
+                                            <td>{{ $arbiter_none_normal[1]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_none_normal[1]->hull }}</td>
+                                            <td>{{ $arbiter_none_normal[1]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_none_normal[1]->aa }}</td>
                                             <td>EVA</td>
@@ -446,9 +446,9 @@
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_none_hard[1]->hull }}</td>
+                                            <td>{{ $arbiter_none_hard[1]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_none_hard[1]->hull }}</td>
+                                            <td>{{ $arbiter_none_hard[1]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_none_hard[1]->aa }}</td>
                                             <td>EVA</td>
@@ -481,7 +481,7 @@
 
                                 <div>
                                 </div>
-                                <div class="grid-col-span-2">
+                                <div class="altona-sans-12 grid-col-span-2">
                                     Weakness: {{ $arbiter_none_normal[1]->weakness }}
                                 </div>
 
@@ -502,16 +502,16 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_full_normal[0]->img }}" alt="siren-img">
+                                    <img src="/img/siren/{{ $arbiter_full_normal[0]->img }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--3 overflow-x" id="arbiter-3-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_full_normal[0]->hull }}</td>
+                                            <td>{{ $arbiter_full_normal[0]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_full_normal[0]->hull }}</td>
+                                            <td>{{ $arbiter_full_normal[0]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_full_normal[0]->aa }}</td>
                                             <td>EVA</td>
@@ -546,9 +546,9 @@
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_full_hard[0]->hull }}</td>
+                                            <td>{{ $arbiter_full_hard[0]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_full_hard[0]->hull }}</td>
+                                            <td>{{ $arbiter_full_hard[0]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_full_hard[0]->aa }}</td>
                                             <td>EVA</td>
@@ -582,7 +582,7 @@
                                 <div>
                                 </div>
 
-                                <div class="grid-col-span-2">
+                                <div class="altona-sans-12 grid-col-span-2">
                                     Weakness: {{ $arbiter_full_normal[0]->weakness }}
                                 </div>
 
@@ -601,16 +601,16 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_full_normal[1]->img }}" alt="siren-img">
+                                    <img src="/img/siren/{{ $arbiter_full_normal[1]->img }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--4 overflow-x" id="arbiter-4-normal">
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_full_normal[1]->hull }}</td>
+                                            <td>{{ $arbiter_full_normal[1]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_full_normal[1]->hull }}</td>
+                                            <td>{{ $arbiter_full_normal[1]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_full_normal[1]->aa }}</td>
                                             <td>EVA</td>
@@ -645,9 +645,9 @@
                                     <table class="grey-table">
                                         <tr>
                                             <td>Hull</td>
-                                            <td>{{ $arbiter_full_hard[1]->hull }}</td>
+                                            <td>{{ $arbiter_full_hard[1]->hull->hull_name }}</td>
                                             <td>HP</td>
-                                            <td>{{ $arbiter_full_hard[1]->hull }}</td>
+                                            <td>{{ $arbiter_full_hard[1]->hp }}</td>
                                             <td>AA</td>
                                             <td>{{ $arbiter_full_hard[1]->aa }}</td>
                                             <td>EVA</td>
@@ -681,7 +681,7 @@
                                 <div>
                                 </div>
 
-                                <div class="grid-col-span-2">
+                                <div class="altona-sans-12 grid-col-span-2">
                                     Weakness: {{ $arbiter_full_normal[1]->weakness }}
                                 </div>
 
@@ -689,7 +689,7 @@
                         </div>
 
                     </div>
-
+                    {{-- guild --}}
                     <div class="guild">
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>Guild Boss</h2>
@@ -702,15 +702,15 @@
                                         <h3>{{ $g->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $g->img }}" alt="">
+                                        <img src="/img/siren/{{ $g->img }}" class="siren-img" alt="">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $g->hull }}</td>
+                                                <td>{{ $g->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $g->hull }}</td>
+                                                <td>{{ $g->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $g->aa }}</td>
                                                 <td>EVA</td>
@@ -747,7 +747,7 @@
                         </div>
 
                     </div>
-
+                    {{-- meta --}}
                     <div class="meta">
                         <div class="columns-three gap-3 altona-sans-12">
                             <h2>META Boss</h2>
@@ -760,15 +760,15 @@
                                         <h3>{{ $g->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $g->img }}" alt="">
+                                        <img src="/img/siren/{{ $g->img }}" class="siren-img" alt="">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
                                             <tr>
                                                 <td>Hull</td>
-                                                <td>{{ $g->hull }}</td>
+                                                <td>{{ $g->hull->hull_name }}</td>
                                                 <td>HP</td>
-                                                <td>{{ $g->hull }}</td>
+                                                <td>{{ $g->hp }}</td>
                                                 <td>AA</td>
                                                 <td>{{ $g->aa }}</td>
                                                 <td>EVA</td>

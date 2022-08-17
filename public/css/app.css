@@ -212,6 +212,10 @@ html {
 
 @media screen and (max-width : 992px){
 
+    .card{
+        overflow-x: scroll;
+    }
+
     .iron-blood {
         background-size: contain !important;
     }
@@ -390,6 +394,12 @@ html {
     }
 }
 
+
+.siren-img{
+    width: 100%;
+    height: 15em;
+    object-fit: cover;
+}
 
 .downarrow{
     max-width: 50%;

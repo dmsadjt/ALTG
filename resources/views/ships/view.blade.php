@@ -1,13 +1,17 @@
 @extends('layouts.layout')
-@section('title', 'Ship Section')
+@section('title', $ship->name)
 @section('contents')
     <section class="hero">
         <div class="container">
             <div class="bg-overlay">
+
+                {{-- ship name --}}
                 <div class="columns-five">
                     <div class="grid-col-span-2"></div>
                     <h1 class="text-white grid-col-span-3">{{ $ship->name }}</h1>
                 </div>
+
+                {{-- character card --}}
                 <div class="columns-five character-card" id="{{ $ship->rarity->rarity_slug }}">
                     <div class="image-wrapper grid-col-span-2">
                         <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
@@ -71,27 +75,30 @@
                         </table>
                     </div>
 
+                    {{-- script for scores --}}
                     <script>
                         for (i = 0; i < 6; i++) {
                             scoreId = document.getElementsByClassName('sac')[0].id;
                             changeScoreColor(scoreId);
                         }
                     </script>
-
+                    {{-- faction img and chibis --}}
                     <div class="faction-content">
                         <div class="faction" id="{{ $ship->faction->faction_slug }}">
                             <img src="/img/ships/chibi/{{ $ship->chibi_sprite }}" alt="chibi">
                         </div>
                     </div>
 
+                    {{-- script for changing faction imgs --}}
                     <script>
                         faction = document.getElementsByClassName('faction')[0].id;
                         changeFaction(faction);
                     </script>
-
                 </div>
 
+                {{-- skill and explanation for roles archetypes and positions--}}
                 <div class="columns-two__3-6">
+                    {{-- skills --}}
                     <div class="d-grid my-auto">
                         <h2 class="text-white mt-2">Skill leveling prio</h2>
                         <div class="d-flex gap-3 text-white">
@@ -122,9 +129,8 @@
                         evaluateSkills(one, two, 'evaluator-1');
                         evaluateSkills(two, three, 'evaluator-2');
                     </script>
-
+                    {{-- details --}}
                     <div class="details-table">
-
                         <div class="columns-two__2-6 mt-3 gap-2 altona-sans-12 text-white">
                             <div class="swiss-font-12 mt-1">Archetype</div>
                             <div class="r-grid gap-1 flex-wrap">
@@ -205,6 +211,7 @@
                     </div>
                 </div>
 
+                {{-- gears --}}
                 <div class="text-white">
 
                     <div class="gears mt-2">
@@ -212,14 +219,13 @@
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
 
                         @foreach ($category as $c)
+
                             <div class="columns-six d-none {{ $c->gear_category_slug }}"
                                 id="{{ $c->gear_category_slug }}">
 
                                 <h3 class="altona-sans-12 mt-1">{{ $c->gear_category_name }}</h3>
 
                                 <div class="tab__blue grid-col-span-3">
-
-
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
                                         onclick="openTab(event, '{{ $c->gear_category_slug }}-general', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')"
                                         id="openByDefault-{{ $c->id }}">General</button>
@@ -229,8 +235,6 @@
                                         onclick="openTab(event, '{{ $c->gear_category_slug }}-med', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')">Med</button>
                                     <button class="tab-links__blue {{ $c->gear_category_slug }}-link"
                                         onclick="openTab(event, '{{ $c->gear_category_slug }}-heavy', 'tab-content__{{ $c->gear_category_slug }}', '{{ $c->gear_category_slug }}-link','grid')">Heavy</button>
-
-
                                 </div>
 
                                 <div class="grid-col-span-2"></div>
@@ -396,7 +400,6 @@
         <script>
             idCard = document.getElementsByClassName('character-card')[0].id;
             changeFrame(idCard);
-
             document.getElementById('openByDefault-1').click();
             document.getElementById('openByDefault-2').click();
             document.getElementById('openByDefault-3').click();

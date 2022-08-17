@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use ErrorException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -37,5 +38,11 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        $this->renderable(function (ErrorException $e, $request){
+            return response()->view('dump');
+        });
     }
+
+
 }

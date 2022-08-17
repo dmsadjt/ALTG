@@ -16,7 +16,7 @@
         <h1 class="mx-5">Edit Boss</h1>
         <form action="/admin/sirens/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @foreach ($siren as $s)
-                <input type="hidden" name="id" id="id" value={{$s->id}}>
+                <input type="hidden" name="id" id="id" value={{ $s->id }}>
                 <div>
                     <label for="name">Boss Name</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ $s->name }}">
@@ -43,7 +43,8 @@
                     <div>
                         <label class="form-label" for="difficulty">Boss Difficulty</label>
                         <select class="form-select" name="difficulty" id="difficulty" disabled>
-                            <option value="normal" {{ $selected['difficulty'] == 'normal' ? 'selected' : '' }}>Normal</option>
+                            <option value="normal" {{ $selected['difficulty'] == 'normal' ? 'selected' : '' }}>Normal
+                            </option>
                             <option value="hard" {{ $selected['difficulty'] == 'hard' ? 'selected' : '' }}>Hard</option>
                         </select>
                     </div>
@@ -51,7 +52,9 @@
                         <label class="form-label" for="hull">Boss Hull</label>
                         <select class="form-select" name="hull" id="hull">
                             @foreach ($hulls as $h)
-                                <option value="{{ $h->hull_tag }}" {{ $selected['hull'] == $h->hull_tag ? 'selected' : '' }}>{{ $h->hull_name }}</option>
+                                <option value="{{ $h->id }}"
+                                    {{ $selected['hull'] == $h->id ? 'selected' : '' }}> {{ $h->hull_name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -66,7 +69,7 @@
                     <div>
                         <label class="form-label" for="armor">Boss Armor</label>
                         <select class="form-select" name="armor" id="armor">
-                            <option value="Light" {{ $selected['armor'] == 'Light' ? 'selected' : '' }} >Light</option>
+                            <option value="Light" {{ $selected['armor'] == 'Light' ? 'selected' : '' }}>Light</option>
                             <option value="Medium" {{ $selected['armor'] == 'Medium' ? 'selected' : '' }}>Medium</option>
                             <option value="Heavy" {{ $selected['armor'] == 'Heavy' ? 'selected' : '' }}>Heavy</option>
                         </select>

@@ -20,7 +20,7 @@
                 <input type="hidden" name="id" value="{{ $p->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Title</label>
-                    <input class="form-control" type="text" name="title" id="title" value={{ $p->title }}>
+                    <input class="form-control" type="text" name="title" id="title" value="{{ $p->title }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="body">Body</label>
@@ -47,6 +47,7 @@
 
                 <div class="d-grid">
                     @foreach($p->images as $key=>$i)
+                        <input type="hidden" name="image-id-{{$key+1}}" value={{$i->id}}>
                         <div>
                             <label class="form-label altona-sans-12" for="image-{{ $key+1 }}">Image
                                 {{ $key+1 }}</label>

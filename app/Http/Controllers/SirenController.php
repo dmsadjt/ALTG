@@ -24,11 +24,11 @@ class SirenController extends Controller
         $guild = Siren::where('boss_type', '=', 'guild')->get();
         $meta = Siren::where('boss_type', '=', 'meta')->get();
 
-
+        $last_updated = Siren::orderBy('updated_at','desc')->first();
 
         return view('siren.index', compact(
             'stronghold_none', 'stronghold_full', 'abyssal_none', 'abyssal_full', 'arbiter_none_normal',
-            'arbiter_none_hard', 'arbiter_full_normal', 'arbiter_full_hard', 'guild', 'meta'));
+            'arbiter_none_hard', 'arbiter_full_normal', 'arbiter_full_hard', 'guild', 'meta','last_updated'));
     }
 
     public function edit($id){

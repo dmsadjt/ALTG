@@ -9,6 +9,7 @@
 
                 <div class="post-row shadow">
                     @foreach ($posts as $p)
+
                         <div class="columns-two__5-1 pill-dark p-3 mb-2">
                             <div>
                                 <h3>{{$p->title}}</h3>
@@ -36,6 +37,7 @@
                                     alt="">
                             </div>
                         </div>
+
                     @endforeach
 
                 </div>

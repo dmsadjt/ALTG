@@ -22,7 +22,7 @@ class CreateSirensTable extends Migration
             $table->string('adaptability')->nullable();
             $table->string('difficulty')->nullable();
             $table->string('img')->default('no-pictures.png');
-            $table->string('hull');
+            $table->bigInteger('hull_id');
             $table->integer('level');
             $table->string('armor');
             $table->string('hp');

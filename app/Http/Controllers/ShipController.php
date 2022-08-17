@@ -40,9 +40,9 @@ class ShipController extends Controller
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
+
         $selected['hull'] = '2';
         $selected['position'] = '';
-
         $selected['rarity'] = array();
         $selected['faction'] = array();
         $selected['role'] = '';
@@ -53,12 +53,13 @@ class ShipController extends Controller
             array_push($roles, $r->role_name);
         }
 
-
         return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected'));
     }
 
     public function get($id)
     {
+        if(Ship::find($id))
+
 
         $ship = Ship::where('id', '=', $id)->first();
         $temp = $ship->skill->sortBy('skill_priority');
@@ -77,11 +78,8 @@ class ShipController extends Controller
     public function filter(Request $request, Ship $ship)
     {
         $ship = $ship->newQuery();
-
         $roles = explode(',', $request->role);
-
         $selected['position'] = $request['position'];
-
 
         if ($request->filled('role')){
             $ship->with(['roles'])->whereHas('roles', function($q) use($roles){
@@ -130,7 +128,6 @@ class ShipController extends Controller
                 $ship->with(['rarity'])->whereHas('rarity', function ($q) use($request){
                     $q->whereIn('rarity_slug', $request->rarity);
                 });
-
         }
 
         if($request->filled('faction')){
@@ -143,8 +140,7 @@ class ShipController extends Controller
         $selected['rarity'] = ($request->rarity) ? ($request->rarity) : array();
         $selected['faction'] = ($request->faction) ? ($request->faction) : array();
         $selected['role'] = $request['role'] ? $request['role'] : '';
-
-
+        $selected['hull'] = $request['hull'];
 
         $ships = $ship->sortable()->paginate(10);
         $hulls = Hull::get();
@@ -152,10 +148,6 @@ class ShipController extends Controller
         $factions = Faction::get();
         $positions = Position::get();
         $selectedHull = Hull::where('id',$request['hull']);
-
-
-        $selected['hull'] = $request['hull'];
-
         $role = Roles::all();
         $roles = array();
         foreach($role as $r){
@@ -163,8 +155,6 @@ class ShipController extends Controller
         }
 
         return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected','selectedHull'));
-
-
     }
 
     //database

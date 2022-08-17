@@ -45,7 +45,7 @@
                                 <td class="altona-sans-10">{{ $s->name }}</td>
                                 <td class="altona-sans-10">{{ $s->boss_type }}</td>
                                 <td class="altona-sans-10">{{ $s->difficulty}}</td>
-                                <td class="altona-sans-10">{{ $s->hull}}</td>
+                                <td class="altona-sans-10">{{ $s->hull->hull_name}}</td>
                                 <td class="altona-sans-10">{{ $s->level}}</td>
                                 <td class="altona-sans-10">{{ $s->armor}}</td>
                                 <td class="altona-sans-10">{{ $s->hp}}</td>

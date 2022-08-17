@@ -8,12 +8,14 @@
 
                 <div class="columns-two__5-1 text-white d-grid">
                     {{-- form --}}
+
                     <div>
                         <form action="/ships/filter" method="GET" autocomplete="off">
                             @csrf
                             <div class="columns-two__1-5 d-grid">
                                 <h2 class="swiss-font-24">Filter Ships</h2>
                                 <div></div>
+
                                 {{-- Hull --}}
                                 <div class="d-grid mb-2">
 
@@ -35,6 +37,8 @@
                                                 </option>
                                             @endforeach
                                         </select>
+
+                                        {{-- script for select image --}}
                                         <script>
                                             $(document).ready(function() {
                                                 var src = $(this).find('option:selected').attr('data-img');
@@ -59,18 +63,19 @@
 
                                 <div class="d-grid gap-3">
 
+                                    {{-- role filter --}}
                                     <div class="autocomplete position-relative">
                                         <label for="role">
                                             <h3 class="swiss-font-12">Role Tags</h3>
                                         </label>
-                                        <input type="text" name="role" id="role" class="text-form" value="{{ $selected['role'] }}">
+                                        <input type="text" name="role" id="role" class="text-form"
+                                            value="{{ $selected['role'] }}">
                                     </div>
 
+                                    {{-- script for autofill --}}
                                     <script>
                                         $(function() {
                                             var availableRole = @json($roles);
-
-
                                             $("#role")
                                                 // don't navigate away from the field on tab when selecting an item
                                                 .on("keydown", function(event) {
@@ -106,15 +111,13 @@
                                     </script>
 
 
-
-
-
                                     <div class="columns-two__4-2 gap-2 d-grid">
 
                                         <div>
 
                                             <div class="columns-two__1-5 d-grid">
 
+                                                {{-- rarity filter --}}
                                                 <div class="swiss-font-12">
                                                     Rarity
                                                 </div>
@@ -133,6 +136,7 @@
                                                     </ul>
                                                 </div>
 
+                                                {{-- faction filter --}}
                                                 <div class="swiss-font-12">
                                                     Faction
                                                 </div>
@@ -145,7 +149,8 @@
                                                             <li>
                                                                 <input class="filter-option" type="checkbox"
                                                                     name="faction[]" id="{{ $r->faction_tag }}"
-                                                                    value="{{ $r->faction_slug }}" {{ in_array($r->faction_slug, $selected['faction']) ? ' checked' : '' }}>
+                                                                    value="{{ $r->faction_slug }}"
+                                                                    {{ in_array($r->faction_slug, $selected['faction']) ? ' checked' : '' }}>
                                                                 <label class="filter-label altona-sans-10 m-1 rounded px-2"
                                                                     for="{{ $r->faction_tag }}">{{ $r->faction_tag }}
                                                                 </label>
@@ -155,7 +160,6 @@
                                                 </div>
 
                                             </div>
-
 
                                         </div>
 
@@ -199,9 +203,9 @@
 
                     </div>
 
+                    {{-- score view selection --}}
                     <div class="scores my-auto p-2">
                         <hr>
-
                         <h2 class="swiss-font-28">View Score by</h2>
                         <h3 class="swiss-font-12">Mob/Boss</h3>
                         <div class="columns-two mb-2 mob-boss">
@@ -246,7 +250,6 @@
 
                 <div class="tierlist text-white my-5">
 
-
                     {{-- Mob Score --}}
                     <div class="score-content" id="mob-score">
                         <div class="columns-eight">
@@ -259,7 +262,8 @@
                                 <thead class="bg-gray1 text-white altona-sans-12">
                                     <th>&nbsp;</th>
                                     <th>@sortablelink('name')</th>
-                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a>
+                                    </th>
                                     <th class=""><a href="#" class="altona-sans-12 link-none">Role</a></th>
                                     <th class=""><span>@sortablelink('positions.position_name', 'Position')</span></th>
                                     <th class="">@sortablelink('mobScore.mob_9_11', '9-11')</th>
@@ -275,7 +279,8 @@
                                             </td>
                                             <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                                     src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                                    href="/ships/{{ $s->id }}" class=" ms-1 link-none font-inherit">
+                                                    href="/ships/{{ $s->id }}"
+                                                    class=" ms-1 link-none font-inherit">
                                                     {{ $s->name }}
                                                 </a></td>
                                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
@@ -349,7 +354,8 @@
                                 <thead class="bg-gray1 text-white altona-sans-12">
                                     <th>&nbsp;</th>
                                     <th>@sortablelink('name')</th>
-                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a>
+                                    </th>
                                     <th class=""><a href="#" class="altona-sans-12 link-none">Role</a></th>
                                     <th class="">@sortablelink('positions.position_name', 'Position')</th>
                                     <th class="">@sortablelink('bossScore.boss_9_11', '9-11')</th>
@@ -365,7 +371,8 @@
                                             </td>
                                             <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                                     src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                                    href="/ships/{{ $s->id }}" class=" ms-1 link-none font-inherit">
+                                                    href="/ships/{{ $s->id }}"
+                                                    class=" ms-1 link-none font-inherit">
                                                     {{ $s->name }}
                                                 </a></td>
                                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
@@ -444,7 +451,8 @@
                                 <thead class="bg-gray1 text-white altona-sans-12">
                                     <th>&nbsp;</th>
                                     <th>@sortablelink('name')</th>
-                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a>
+                                    </th>
                                     <th class=""><a href="#" class="altona-sans-12 link-none">Role</a></th>
                                     <th class=""><span>@sortablelink('positions.position_name', 'Position')</span></th>
                                     <th class="">@sortablelink('mobScore.mob_9_11', 'Mob')</th>
@@ -459,7 +467,8 @@
                                             </td>
                                             <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                                     src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                                    href="/ships/{{ $s->id }}" class="ms-1 link-none font-inherit">
+                                                    href="/ships/{{ $s->id }}"
+                                                    class="ms-1 link-none font-inherit">
                                                     {{ $s->name }}
                                                 </a></td>
                                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
@@ -530,7 +539,8 @@
                                 <thead class="bg-gray1 text-white altona-sans-12">
                                     <th>&nbsp;</th>
                                     <th>@sortablelink('name')</th>
-                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a>
+                                    </th>
                                     <th class=""><a href="#" class="altona-sans-12 link-none">Role</a></th>
                                     <th class=""><span>@sortablelink('positions.position_name', 'Position')</span></th>
                                     <th class="">@sortablelink('mobScore.mob_12_13', 'Mob')</th>
@@ -545,7 +555,8 @@
                                             </td>
                                             <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                                     src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                                    href="/ships/{{ $s->id }}" class="ms-1 link-none font-inherit">
+                                                    href="/ships/{{ $s->id }}"
+                                                    class="ms-1 link-none font-inherit">
                                                     {{ $s->name }}
                                                 </a></td>
                                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
@@ -615,9 +626,10 @@
                                 <thead class="bg-gray1 text-white altona-sans-12">
                                     <th>&nbsp;</th>
                                     <th>@sortablelink('name')</th>
-                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                                    <th class=""><a href="#" class="altona-sans-12 link-none">Archetype</a>
+                                    </th>
                                     <th class=""><a href="#" class="altona-sans-12 link-none">Role</a></th>
-                                    <th class=""><span>@sortablelink('positions.position_name', 'Position')</span></th>
+                                    <th class="">@sortablelink('positions.position_name', 'Position')</th>
                                     <th class="">@sortablelink('mobScore.mob_14', 'Mob')</th>
                                     <th class="">@sortablelink('bossScore.boss_14', 'Boss')</th>
                                 </thead>
@@ -630,7 +642,8 @@
                                             </td>
                                             <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                                     src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                                    href="/ships/{{ $s->id }}" class="ms-1 link-none font-inherit">
+                                                    href="/ships/{{ $s->id }}"
+                                                    class="ms-1 link-none font-inherit">
                                                     {{ $s->name }}
                                                 </a></td>
                                             <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
@@ -696,10 +709,6 @@
             <script>
                 document.getElementById("openDefault").click();
             </script>
-        </div>
-
-        </div>
-
         </div>
 
     </section>

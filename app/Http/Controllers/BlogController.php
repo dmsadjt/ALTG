@@ -108,6 +108,11 @@ class BlogController extends Controller
             'caption-4'=>'',
             'image-5' => 'image',
             'caption-5'=>'',
+            'image-id-1'=>'',
+            'image-id-2'=>'',
+            'image-id-3'=>'',
+            'image-id-4'=>'',
+            'image-id-5'=>'',
             'tag-1'=>'',
             'tag-2'=>'',
             'tag-3'=>'',
@@ -123,7 +128,7 @@ class BlogController extends Controller
 
         for ($i = 1; $i < 6; $i++) {
             if(array_key_exists('image-'.$i, $data)){
-                ${'image-'.$i} = PostImage::where('post_id',$data['id']);
+                ${'image-'.$i} = PostImage::where('id', $data['image-id-'.$i]);
                 $img = $this->updateImg($request, 'image-'.$i, '/img/posts/', $post->images, 'image');
                 ${'image-'.$i}->update([
                     'image'=>$img,

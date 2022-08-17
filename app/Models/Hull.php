@@ -25,4 +25,8 @@ class Hull extends Model
     public function subs(){
         return $this->hasMany(Subclass::class);
     }
+
+    public function siren(){
+        return $this->hasOne(Siren::class);
+    }
 }
