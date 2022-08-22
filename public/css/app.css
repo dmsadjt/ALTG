@@ -76,6 +76,7 @@ html {
 
 @media screen and (min-width: 992px) {
 
+
     .score-box{
         width: 3.5em;
         height: 3.5em;
@@ -307,7 +308,6 @@ html {
     }
 
     .details-table, .score-table{
-        display: grid;
         grid-template-columns: 1fr;
         gap:1em;
         overflow-x: scroll;

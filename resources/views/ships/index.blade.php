@@ -43,10 +43,13 @@
                                             $(document).ready(function() {
                                                 var src = $(this).find('option:selected').attr('data-img');
                                                 $('img#changeImage').attr('src', src);
+                                                $('.hull-header').html($(this).find('option:selected').html());
+
 
                                                 $('#hull').change(function() {
                                                     var src = $(this).find('option:selected').attr('data-img');
                                                     $('img#changeImage').attr('src', src);
+                                                    $('.hull-header').html($(this).find('option:selected').html());
                                                     // $("#hull").attr('size', 0);
                                                 });
 
@@ -254,7 +257,7 @@
                     {{-- Mob Score --}}
                     <div class="score-content" id="mob-score">
                         <div class="columns-eight">
-                            <h2 class="grid-col-span-4">Battleship Mob Score</h2>
+                            <h2 class="grid-col-span-4"><span class="hull-header"></span> Mob Score</h2>
                             <span class="grid-col-span-4"></span>
                         </div>
 
@@ -347,7 +350,7 @@
                     <div class="score-content overflow-x" id="boss-score">
 
                         <div class="columns-eight">
-                            <h2 class="grid-col-span-4">Battleship Boss Score</h2>
+                            <h2 class="grid-col-span-4"><span class="hull-header"></span> Boss Score</h2>
                             <span class="grid-col-span-4"></span>
                         </div>
                         <div class="ships">
@@ -443,7 +446,7 @@
                     <div class="score-content overflow-x" id="score-911">
 
                         <div class="columns-eight">
-                            <h2 class="grid-col-span-4">Battleship W 9-11 Score</h2>
+                            <h2 class="grid-col-span-4"><span class="hull-header"></span> W 9-11 Score</h2>
                             <span class="grid-col-span-4"></span>
                         </div>
 
@@ -531,7 +534,7 @@
                     <div class="score-content overflow-x" id="score-1213">
 
                         <div class="columns-eight">
-                            <h2 class="grid-col-span-4">Battleship W 12-13 Score</h2>
+                            <h2 class="grid-col-span-4"><span class="hull-header"></span> W 12-13 Score</h2>
                             <span class="grid-col-span-4"></span>
                         </div>
 
@@ -618,7 +621,7 @@
                     <div class="score-content overflow-x" id="score-14">
 
                         <div class="columns-eight">
-                            <h2 class="grid-col-span-4">Battleship W 14 Score</h2>
+                            <h2 class="grid-col-span-4"><span class="hull-header"></span> W 14 Score</h2>
                             <span class="grid-col-span-4"></span>
                         </div>
 
