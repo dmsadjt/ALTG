@@ -333,26 +333,53 @@ function displaySelect(select, counter) {
     $("#" + select + counter).show();
 }
 
-function emptyValue (array){
+function emptyValue(array) {
     array.forEach(element => {
-        element.value= "";
+        element.value = "";
         console.log('ok');
     });
 }
 
-function displayNone (array){
+function displayNone(array) {
     array.forEach(element => {
         element.style.display = 'none';
         console.log('ok');
     });
 }
 
-function split( val ) {
-    return val.split( /,\s*/ );
-  }
-  function extractLast( term ) {
-    return split( term ).pop();
-  }
+function split(val) {
+    return val.split(/,\s*/);
+}
+function extractLast(term) {
+    return split(term).pop();
+}
+
+function sortShips() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("hull");
+    filter = input.value.toUpperCase();
+    table = document.getElementsByClassName("ship-table");
+
+    for( j = 0; j < table.length; j++){
+
+        tr = table[j].getElementsByTagName('tr');
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.innerHTML;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
+
+}
 
 //sortable
 /*
@@ -689,6 +716,10 @@ sorttable = {
         } // while(swap)
     }
 }
+
+
+
+
 
 /* ******************************************************************
    Supporting functions: bundled here to avoid depending on a library
