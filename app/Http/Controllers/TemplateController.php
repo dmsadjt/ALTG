@@ -26,15 +26,14 @@ class TemplateController extends Controller
 
     public function post(Request $request)
     {
-        $cate = GearCategory::all();
         $temp = [
             'name' => 'required',
             'build' => 'required',
         ];
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                $g = strval($c->id) . '-gear-' . strval($j);
+        for ($i = 1; $i < 7 ; $i++) {
+            for ($j = 1; $j < 9; $j++) {
+                $g = strval($i) . '-gear-' . strval($j);
                 $gears[$g] = '';
             }
         }
@@ -47,11 +46,11 @@ class TemplateController extends Controller
         $template['build'] = $data['build'];
         $template->save();
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                if ($data[($c->id) . '-gear-' . ($j)] != null) {
-                    $info = $data[$c->id. '-gear-' .$j];
-                    $template->gears()->attach($info, ['gear_category' => $template->build]);
+        for ($i = 1; $i < 7 ; $i++) {
+            for ($j = 1; $j < 9; $j++) {
+                if ($data[($i) . '-gear-' . ($j)] != null) {
+                    $info = $data[$i. '-gear-' .$j];
+                    $template->gears()->attach($info, ['gear_category' => $template->build, 'gear_slot' => $i]);
                 }
             }
         }

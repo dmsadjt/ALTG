@@ -19,6 +19,7 @@ class GearTemplate extends Migration
             $table->integer('template_id');
             $table->integer('gear_id');
             $table->string('gear_category')->default('General');
+            $table->string('gear_slot')->default('1');
         });
     }
 
