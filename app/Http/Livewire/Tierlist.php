@@ -8,94 +8,119 @@ use App\Models\Position;
 use App\Models\Rarity;
 use App\Models\Roles;
 use App\Models\Ship;
+use Kyslik\ColumnSortable\Sortable;
 use Livewire\Component;
-
+use Livewire\WithPagination;
 
 class Tierlist extends Component
 {
+    use WithPagination;
+    use Sortable;
+
     public $byHull;
-    public $byPosition;
+    public $position;
     public $byRole;
-    public $byRarities;
-    public $byFactions;
+    public $rarities = [];
+    public $byFactions = [];
+    public $score="Mob";
+    protected $paginationTheme= 'bootstrap';
 
-    public function filter(){
-
+    public function dehydrate(){
+        $this->dispatchBrowserEvent('test');
     }
 
     public function render(Ship $ship)
     {
+        $ship = $ship->newQuery();
         $hulls = Hull::all();
         $factions = Faction::all();
         $rarity = Rarity::all();
         $roles = Roles::all();
         $positions = Position::all();
-        $role = Roles::all();
-        $roles = array();
+        $role = Roles::all();//role buat autofill
+        $roles = array();//array buat store role
+        $roles_exploded = explode(',', $this->byRole);
+        // dd($roles_exploded);
+        $raritys = $this->rarities;
+        $factionsy = $this->byFactions;
+        $shipImage = Hull::where('id', $this->byHull ?? 2)->first();
+
+        //masukin array
         foreach ($role as $r) {
             array_push($roles, $r->role_name);
         }
 
-        $ship = $ship->newQuery();
-
-        if ($byHull) {
-            $ship->where('hull_id', $byHull);
+        if ($this->byHull != '') {
+            $ship->where('hull_id', $this->byHull);
+        }else{
+            $ship->where('hull_id', 2);
         }
 
-        if ($byRole) {
-            $ship->with(['roles'])->whereHas('roles', function ($q) use ($roles) {
-                $q->whereIn('role_name', $roles);
+        if ($this->byRole != '') {
+            $ship->with(['roles'])->whereHas('roles', function ($q) use ($roles_exploded) {
+                $q->whereIn('role_name', $roles_exploded);
             });
         }
 
-        if ($byPosition) {
+        if ($this->position) {
 
-            if ($byPosition == 'tank')
+            if ($this->position == 'tank')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'vanguard-tank')->orWhere('position_slug', 'vanguard-tank-mid')->orWhere('position_slug', 'vanguard-tank-off_tank');
                 });
 
-            if ($byPosition == 'offtank')
+            if ($this->position == 'offtank')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug', 'vanguard-offtank')->orWhere('position_slug', 'vanguard-tank-off_tank');
                 });
 
-            if ($byPosition == 'mid')
+            if ($this->position == 'mid')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug', 'vanguard-tank-mid')->orWhere('position_slug', 'vanguard-mid');
                 });
 
-            if ($byPosition == 'flagship')
+            if ($this->position == 'flagship')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'backline-flagship')->orWhere('position_slug', 'submarine-flagship');
                 });
 
-            if ($byPosition == 'offflag')
+            if ($this->position == 'offflag')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'backline-off_flag')->orWhere('position_slug', 'submarine-off_flag');
                 });
 
-            if ($byPosition == 'any')
+            if ($this->position == 'any')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'backline-any')->orWhere('position_slug', 'submarine-all')->orWhere('position_slug', 'vanguard-any');
                 });
         }
 
-        if ($byRarities) {
-            $ship->with(['rarity'])->whereHas('rarity', function ($q) use ($byRarities) {
-                $q->whereIn('rarity_slug', $byRarities);
+        if ($this->rarities) {
+            $ship->with(['rarity'])->whereHas('rarity', function ($q) use ($raritys) {
+                $q->whereIn('rarity_slug', $raritys);
             });
         }
 
-        if ($byFactions) {
-            $ship->with(['faction'])->whereHas('faction', function ($q) use ($byFactions) {
-                $q->whereIn('faction_slug', $byFactions);
+        if ($this->byFactions) {
+            $ship->with(['faction'])->whereHas('faction', function ($q) use ($factionsy) {
+                $q->whereIn('faction_slug', $factionsy);
             });
         }
 
         $ships = $ship->sortable()->paginate(10);
 
-
-        return view('livewire.tierlist', compact('hulls', 'factions', 'ships', 'rarity', 'roles', 'positions', 'byHull', 'byPosition', 'byRole', 'byFactions', 'byRarities'));
+        return view(
+            'livewire.tierlist',
+            [
+                'ships' => $ships,
+                'hulls' => $hulls,
+                'factions' => $factions,
+                'rarity' => $rarity,
+                'roles' => $roles,
+                'positions' => $positions,
+                'byHull' => $this->byHull,
+                'shipImage' => $shipImage,
+            ]
+        );
     }
 }

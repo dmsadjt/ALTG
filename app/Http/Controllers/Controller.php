@@ -57,11 +57,12 @@ class Controller extends BaseController
     //function for selecting gear slot
     protected function selectSlot($counter, $select, $type, $arr)
     {
+        // cek apakah key array $type+jenis array+counter kosong
         if ($select[$type . $arr . $counter] != '') {
-            $counter++;
-            return $this->selectSlot($counter, $select, $type, $arr);
+            $counter++; //tambah counter kalo ga kosong
+            return $this->selectSlot($counter, $select, $type, $arr); //rekursiv lanjut ke counter selajutnya
         } else {
-            $ret = $type . $arr . $counter;
+            $ret = $type . $arr . $counter; //kalo kosong maka return array key yg sesuai
             return $ret;
         }
     }

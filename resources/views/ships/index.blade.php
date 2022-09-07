@@ -5,10 +5,7 @@
         <div class="container">
             <div class="bg-overlay rounded my-3">
                 @livewire('tierlist')
-            <script>
-
-            </script>
+            </div>
         </div>
-
     </section>
 @endsection

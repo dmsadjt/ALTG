@@ -34,49 +34,76 @@
 
             <h2 class="mt-3">Gears</h2>
             <div>
-                @foreach ($gear_category as $g)
-                    <div class="accordion text-black-50" id="accordionGear">
 
+                @for ($i = 1; $i < 7; $i++)
+                    <div class="accordion text-black-50" id="accordionGear">
                         <div class="accordion-item altona-sans-10">
-                            <h3 class="accordion-header" id="heading-{{ $g->id }}">
+                            @if ($i == 6)
+                                <h3 class="accordion-header" id="heading-{{ $i }}">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse-{{ $i }}" aria-expanded="true"
+                                        aria-controls="collapse-{{ $i }}">
+                                        Augment
+                                    </button>
+                                </h3>
+
+                                <div id="collapse-{{ $i }}" class="accordion-collapse collapse"
+                                    aria-labelledby="heading-{{ $i }}" data-bs-parent="#accordionGear">
+                                    <div class="accordion-body bg-white">
+
+                                        @for ($j = 1; $j < 9; $j++)
+                                            <div>
+
+                                                <label class="form-label"
+                                                    for="{{ $i }}-gear-{{ $j }}">Gear
+                                                    {{ $i }}</label>
+                                                <select name="{{ $i }}-gear-{{ $j }}"
+                                                    id="{{ $i }}-gear-{{ $j }}" class="form-select">
+                                                    <option value="" selected>Select Gear</option>
+                                                    @foreach ($gears as $s)
+                                                        @if ($s->gear_type == 13)
+                                                            <option value="{{ $s->id }}"
+                                                                {{$selected[$i.'-gear-'.$j] == $s->id ? 'selected' : ''}}>{{ $s->gear_name }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+
+                                            </div>
+                                        @endfor
+
+                                    </div>
+                                </div>
+
+                                @continue
+                            @endif
+                            <h3 class="accordion-header" id="heading-{{ $i }}">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse-{{ $g->id }}" aria-expanded="true"
-                                    aria-controls="collapse-{{ $g->id }}">
-                                    {{ $g->gear_category_name }}
+                                    data-bs-target="#collapse-{{ $i }}" aria-expanded="true"
+                                    aria-controls="collapse-{{ $i }}">
+                                    Slot {{ $i }}
                                 </button>
                             </h3>
-                            <div id="collapse-{{ $g->id }}" class="accordion-collapse collapse"
-                                aria-labelledby="heading-{{ $g->id }}" data-bs-parent="#accordionGear">
+
+                            <div id="collapse-{{ $i }}" class="accordion-collapse collapse"
+                                aria-labelledby="heading-{{ $i }}" data-bs-parent="#accordionGear">
                                 <div class="accordion-body bg-white">
-                                    @for ($i = 1; $i < 16; $i++)
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $g->id }}-gear-{{ $i }}">Gear
-                                                {{ $i }}</label>
-                                            <select name="{{ $g->id }}-gear-{{ $i }}"
-                                                id="{{ $g->id }}-gear-{{ $i }}"
-                                                class="form-select">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == $g->id)
-                                                        <option value="{{ $s->id }}"
-                                                            {{ $selected[$g->id . '-gear-' . ($i)] == $s->id ? 'selected' : '' }}>
-                                                            {{ $s->gear_name }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
+
+                                    @for ($j = 1; $j < 9; $j++)
+                                        @livewire('select-gear', ['category_id' => "$i-category-$j", 'gear_id' => "$i-gear-$j", 'gearCategory'=>$selected[$i.'-category-'.$j], 'selectedGear'=>$selected[$i.'-gear-'.$j]])
                                     @endfor
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endfor
+
             </div>
 
-            <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit Tag">
+            <div class="columns-two">
+                <input type="submit" class="btn btn-success mx-auto my-3 me-0" name="submit" value="Edit Template">
+                <input type="submit" class="btn btn-success mx-auto my-3 ms-0" name="submit" value="Save as new Template">
+
             </div>
         </form>
     </div>

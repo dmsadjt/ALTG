@@ -85,158 +85,11 @@
 
                             <div id="collapse-{{ $i }}" class="accordion-collapse collapse"
                                 aria-labelledby="heading-{{ $i }}" data-bs-parent="#accordionGear">
-                                <div class="accordion-body bg-white columns-two">
+                                <div class="accordion-body bg-white">
 
                                     @for ($j = 1; $j < 9; $j++)
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $i }}-category-{{ $j }}">Category
-                                                {{ $j }}</label>
-                                            <select name="{{ $i }}-category-{{ $j }}"
-                                                id="{{ $i }}-category-{{ $j }}" class="form-select">
-                                                @foreach ($gear_category as $g)
-                                                    <option value="{{ $g->id }}">{{ $g->gear_category_name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div>
-                                            <label class="form-label"
-                                                for="{{ $i }}-gear-{{ $j }}">Gear
-                                                {{ $j }}</label>
-
-                                            {{-- 1 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-1" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 1)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 2 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-2" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 2)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 3 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-3" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 3)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 4 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-4" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 4)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 5 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-5" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 5)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 6 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-6" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 6)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 7 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-7" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 7)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 8 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-8" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 8)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 9 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-9" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 9)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 10 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-10" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 10)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 11 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-11" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 11)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                            {{-- 12 --}}
-                                            <select name="{{ $i }}-gear-{{ $j }}"
-                                                id="{{ $i }}-gear-{{ $j }}-12" class="form-select d-none g-c">
-                                                <option value="" selected>Select Gear</option>
-                                                @foreach ($gears as $s)
-                                                    @if ($s->gear_type == 12)
-                                                        <option value="{{ $s->id }}">{{ $s->gear_name }}
-                                                        </option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        @livewire('select-gear', ['category_id' => "$i-category-$j", 'gear_id' => "$i-gear-$j"])
                                     @endfor
-
-                                    <script>
-                                        var slot = {!! json_encode($i)!!}
-                                        var gear = {!! json_encode($j)!!}
-
-
-
-                                    </script>
                                 </div>
                             </div>
                         </div>
@@ -246,7 +99,7 @@
             </div>
 
             <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Tag">
+                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Template">
             </div>
         </form>
     </div>

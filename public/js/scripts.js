@@ -1,4 +1,7 @@
 
+
+
+
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
@@ -66,6 +69,40 @@ function changeFrame(rarity) {
 
 }
 
+function changeTag(collection){
+    divToChange = collection.classList;
+    switch (collection.attributes['data-rarity'].value) {
+        case 'N':
+            divToChange.add('n-tag');
+            // divToChange.remove('rarity-tag');
+            break;
+
+        case 'E':
+            divToChange.add('e-tag');
+            // divToChange.remove('rarity-tag');
+
+            break;
+
+        case 'R':
+            divToChange.add('r-tag');
+            // divToChange.remove('rarity-tag');
+
+            break;
+
+        case 'SR':
+            divToChange.add('sr-tag');
+            // divToChange.remove('rarity-tag');
+
+            break;
+
+        case 'UR':
+            divToChange.add('ur-tag');
+            // divToChange.remove('rarity-tag');
+            break;
+
+    }
+}
+
 
 function changeLabel(rarity) {
     const divToChange = document.getElementById(rarity).classList;
@@ -103,6 +140,30 @@ function changeLabel(rarity) {
 
     }
 
+}
+
+function changeScore(collection){
+    divToChange = collection.classList;
+
+    if (collection.attributes['data-score'].value == 11) {
+        divToChange.add('score-9');
+    } else if (collection.attributes['data-score'].value >= 10.5) {
+        divToChange.add('score-8');
+    } else if (collection.attributes['data-score'].value >= 10) {
+        divToChange.add('score-7');
+    } else if (collection.attributes['data-score'].value >= 8) {
+        divToChange.add('score-6');
+    } else if (collection.attributes['data-score'].value >= 6) {
+        divToChange.add('score-5');
+    } else if (collection.attributes['data-score'].value >= 4) {
+        divToChange.add('score-4');
+    } else if (collection.attributes['data-score'].value >= 2) {
+        divToChange.add('score-3');
+    } else if (collection.attributes['data-score'].value >= 1) {
+        divToChange.add('score-2');
+    } else {
+        divToChange.add('score-1');
+    }
 }
 
 function changeScoreColor(score) {

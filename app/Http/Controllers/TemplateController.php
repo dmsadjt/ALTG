@@ -31,7 +31,7 @@ class TemplateController extends Controller
             'build' => 'required',
         ];
 
-        for ($i = 1; $i < 7 ; $i++) {
+        for ($i = 1; $i < 7; $i++) {
             for ($j = 1; $j < 9; $j++) {
                 $g = strval($i) . '-gear-' . strval($j);
                 $gears[$g] = '';
@@ -46,10 +46,10 @@ class TemplateController extends Controller
         $template['build'] = $data['build'];
         $template->save();
 
-        for ($i = 1; $i < 7 ; $i++) {
+        for ($i = 1; $i < 7; $i++) {
             for ($j = 1; $j < 9; $j++) {
                 if ($data[($i) . '-gear-' . ($j)] != null) {
-                    $info = $data[$i. '-gear-' .$j];
+                    $info = $data[$i . '-gear-' . $j];
                     $template->gears()->attach($info, ['gear_category' => $template->build, 'gear_slot' => $i]);
                 }
             }
@@ -60,75 +60,95 @@ class TemplateController extends Controller
         return redirect('admin/templates');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $template = Template::where('id', $id)->first();
         $gear_category = GearCategory::all();
         $gears = Gear::all();
 
-        foreach ($gear_category as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                $selected[$c->id . '-gear-' . $j] = '';
-                $selected[$c->id . '-category-' . $j] = '';
+        for ($i = 1; $i < 7; $i++) {
+            for ($j = 1; $j < 9; $j++) {
+                $selected[$i . '-gear-' . $j] = '';
+                $selected[$i . '-category-' . $j] = '';
             }
         }
 
         foreach ($template->gears as $key => $g) {
-            $k = $this->selectSlot(1, $selected, $g->gear_type, '-gear-');
+            $k = $this->selectSlot(1, $selected, $g->pivot->gear_slot, '-gear-');
+            $c = $this->selectSlot(1, $selected, $g->pivot->gear_slot, '-category-');
             $selected[$k] = $g->id;
+            $selected[$c] = $g->gear_type;
         }
 
         return view('admin.template.edit', compact('template', 'selected', 'gear_category', 'gears'));
     }
 
-    public function update(Request $request){
-        $cate = GearCategory::all();
+    public function update(Request $request)
+    {
+
+
+
         $temp = [
-            'id'=>'required',
+            'id' => 'required',
             'name' => 'required',
             'build' => 'required',
         ];
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                $g = strval($c->id) . '-gear-' . strval($j);
+        for ($i = 1; $i < 7; $i++) {
+            for ($j = 1; $j < 9; $j++) {
+                $g = strval($i) . '-gear-' . strval($j);
                 $gears[$g] = '';
             }
         }
 
         $rules = array_merge($temp, $gears);
         $data = $request->validate($rules);
-        $template = Template::where('id', $data['id'])->first();
-        $temp = array();
 
-        $template->update([
-            'name'=>$data['name'],
-            'build'=>$data['build'],
-        ]);
+        switch ($request->submit) {
+            case 'Edit Template':
+                $template = Template::where('id', $data['id'])->first();
+                $template->update([
+                    'name' => $data['name'],
+                    'build' => $data['build'],
+                ]);
+                break;
+
+            case 'Save as new Template':
+                $template = new Template();
+                $template['name'] = $data['name'];
+                $template['build'] = $data['build'];
+                $template->save();
+                break;
+        }
 
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                if ($data[$c->id . '-gear-' . $j] != null) {
-                    $id = $data[$c->id . '-gear-' . $j];
-                    array_push($temp, $id);
+
+        $gears_array = array();
+
+        for ($i = 1; $i < 7; $i++) {
+            for ($j = 1; $j < 9; $j++) {
+                if ($data[$i . '-gear-' . $j] != null) {
+                    $id = $data[$i . '-gear-' . $j];
+                    // array_push($temp, $id);
+                    $gears_array[$id] = ['gear_category' => $template->build, 'gear_slot' => $i];
                 }
             }
         }
 
-        $template->gears()->syncWithPivotValues($temp, ['gear_category'=>$template->build]);
+        // dd($gears_array);
+        $template->gears()->sync($gears_array);
 
         return redirect('admin/templates');
-
     }
 
-    public function delete($id){
-        $template = Template::where('id',$id)->first();
+    public function delete($id)
+    {
+        $template = Template::where('id', $id)->first();
 
         $template->gears()->detach();
 
         $template->delete();
 
         return redirect('admin/templates');
-
     }
 }
