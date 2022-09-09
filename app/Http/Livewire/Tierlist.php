@@ -23,10 +23,21 @@ class Tierlist extends Component
     public $rarities = [];
     public $byFactions = [];
     public $score="Mob";
+    public $sortBy = 'name';
+    public $sortDirection = 'asc';
+    public $sortType = 'simple';
     protected $paginationTheme= 'bootstrap';
+
 
     public function dehydrate(){
         $this->dispatchBrowserEvent('test');
+    }
+
+    public function sort($field, $sortType){
+
+        $this->sortBy = $field;
+        $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
+        $this->sortType = $sortType;
     }
 
     public function render(Ship $ship)
@@ -107,7 +118,23 @@ class Tierlist extends Component
             });
         }
 
-        $ships = $ship->sortable()->paginate(10);
+
+
+        if($this->sortType == 'simple'){
+            $ships = $ship->orderBy($this->sortBy, $this->sortDirection)->paginate(10);
+        }
+
+        if($this->sortType == 'complex' ){
+            if($this->sortBy == 'mob_9_11' || $this->sortBy == 'mob_12_13' || $this->sortBy == 'mob_14'){
+                $ships = $ship->join('mob_scores', 'ships.id', '=', 'mob_scores.ship_id')->orderBy('mob_scores.'.$this->sortBy, $this->sortDirection)->paginate(10);
+            }else{
+                $ships = $ship->join('boss_scores', 'ships.id', '=', 'boss_scores.ship_id')->orderBy('boss_scores.'.$this->sortBy, $this->sortDirection)->paginate(10);
+            }
+        }
+
+        // dd($ships);
+
+
 
         return view(
             'livewire.tierlist',

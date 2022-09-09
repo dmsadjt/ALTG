@@ -699,6 +699,8 @@ td {
     border: 0.1em solid var(--white);
 }
 
+
+
 .button-square {
     height: 8em;
     width: 8em;
@@ -733,7 +735,6 @@ td {
     margin-top: auto;
     margin-bottom: auto;
     background-color: rgba(0, 0, 0, 0.3);
-    ;
 }
 
 .score-box {
@@ -1406,6 +1407,11 @@ select {
     opacity: 0;
 }
 
+.filter-option:hover + label {
+
+    border-radius: 0.375em;
+}
+
 .filter-label {
     cursor: pointer;
     opacity: 0.4;
@@ -1413,7 +1419,7 @@ select {
 
 
 .filter-option:checked + label {
-    background-color: rgb(10, 10, 10);
+    background-color: var(--gray1);
     opacity: 1;
 }
 

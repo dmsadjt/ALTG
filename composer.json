@@ -11,6 +11,7 @@
         "kyslik/column-sortable": "^6.4",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
+        "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.10"
     },
@@ -56,7 +57,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": ["laravel/telescope"]
         }
     },
     "config": {
@@ -66,4 +67,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true
+
 }
