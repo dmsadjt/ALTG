@@ -213,6 +213,10 @@ html {
 
 @media screen and (max-width : 992px){
 
+    .r-overflow-x{
+        overflow-x: scroll;
+    }
+
     .card{
         overflow-x: scroll;
     }
@@ -262,6 +266,7 @@ html {
     }
 
     .ships{
+        width: 80vw;
         overflow-x: auto;
     }
 

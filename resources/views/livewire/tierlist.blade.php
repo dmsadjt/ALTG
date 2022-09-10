@@ -1,10 +1,11 @@
-<div class="text-white">
+<div class="container text-white">
 
     <div class="columns-two__4-2">
 
         <div class="columns-two__1-5">
+            <h2 class="swiss-font-24">Filter Ships</h2>
+            <div></div>
             <div class="d-grid mb-2">
-
                 <label for="hull">
                     <h3 class=" swiss-font-12">Hull Type</h3>
                 </label>
@@ -24,8 +25,8 @@
                     </select>
                 </div>
             </div>
-            <div>
-                <div class="autocomplete">
+            <div class="d-grid mb-2">
+                <div class="autocomplete position-relative">
                     <label for="role">
                         <h3 class="swiss-font-12">Role Tags</h3>
                     </label>
@@ -102,7 +103,9 @@
                                             <input wire:model="byFactions" class="filter-option" type="checkbox"
                                                 id="{{ $r->faction_tag }}" value="{{ $r->faction_slug }}">
                                             <label class="filter-label altona-sans-10 m-1 rounded px-2"
-                                                for="{{ $r->faction_tag }}"><img src="/img/faction-logo/{{$r->faction_img}}" class="small-img" alt="">
+                                                for="{{ $r->faction_tag }}"><img
+                                                    src="/img/faction-logo/{{ $r->faction_img }}" class="small-img"
+                                                    alt="">
                                             </label>
                                         </li>
                                     @endforeach
@@ -126,23 +129,24 @@
             </div>
         </div>
 
-        <div class="px-5">
+        <div >
+            <h2 class="swiss-font-24">View Scores by</h2>
             <hr>
-            <h2 class="swiss-font-18">View Scores by</h2>
             <h3 class="swiss-font-12">Mob/Boss</h2>
                 <div class="columns-two mb-2 mob-boss">
                     <div class="button-square btn btn-dark d-grid score-type ms-auto">
-                        <input type="radio" wire:model="score" value="Mob" id="mob" class="filter-option d-none">
+                        <input type="radio" wire:model="score" value="Mob" id="mob"
+                            class="filter-option d-none">
                         <label for="mob" class="filter-label">
-                            <img class="mx-auto img-small" src="{{ url('/img/web-assets/mob.png') }}"
-                                alt="">
+                            <img class="mx-auto img-small" src="{{ url('/img/web-assets/mob.png') }}" alt="">
                             Mob
                         </label>
                     </div>
 
 
                     <div class="button-square btn btn-dark d-grid score-type me-auto">
-                        <input type="radio" wire:model="score" value="Boss" id="boss" class="filter-option d-none">
+                        <input type="radio" wire:model="score" value="Boss" id="boss"
+                            class="filter-option d-none">
 
                         <label for="boss" class="filter-label">
                             <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
@@ -177,33 +181,47 @@
     </div>
 
     <div wire:loading class="d-grid"><span wire:loading class="mx-auto altona-sans-18">Loading...</span></div>
-    <div wire:loading.remove>
+    <div class="ships r-overflow-x" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
             <thead class="bg-gray1 text-white altona-sans-12">
                 <th>#</th>
-                <th><button class="btn text-white" style="font-weight:600;" wire:click="sort('name','simple')">Ship Name</button></th>
+                <th><button class="btn text-white" style="font-weight:600;" wire:click="sort('name','simple')">Ship
+                        Name</button></th>
                 <th class="altona-sans-10">Ship role</th>
                 <th class="altona-sans-10">Ship archetype</th>
-                <th><button class="btn text-white" style="font-weight:600;" wire:click="sort('position_id','simple')">Position</button></th>
+                <th><button class="btn text-white" style="font-weight:600;"
+                        wire:click="sort('position_id','simple')">Position</button></th>
 
                 @if ($score == 'Mob')
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_9_11','complex')">9-11 </button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_12_13','complex')">12-13</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_14','complex')">14</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_9_11','complex')">9-11 </button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_12_13','complex')">12-13</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_14','complex')">14</button></th>
                 @elseif ($score == 'Boss')
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_9_11','complex')">9-11</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_12_13','complex')">12-13</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_14','complex')">14</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_9_11','complex')">9-11</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_12_13','complex')">12-13</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_14','complex')">14</button></th>
                 @elseif ($score = 'W 9-11')
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_9_11','complex')">Mob</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_9_11','complex')">Boss</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_9_11','complex')">Mob</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_9_11','complex')">Boss</button></th>
                 @elseif ($score = 'W 12-13')
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_12_13','complex')">Mob</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_12_13','complex')">Boss</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_12_13','complex')">Mob</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_12_13','complex')">Boss</button></th>
                 @elseif ($score = 'W 14')
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('mob_14','complex')">Mob</button></th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;" wire:click="sort('boss_14','complex')">Boss</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_14','complex')">Mob</button></th>
+                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('boss_14','complex')">Boss</button></th>
                 @endif
             </thead>
             <tbody>
@@ -382,6 +400,6 @@
         })
     </script>
 
-    {{ $ships->links() }}
+    <div>{{ $ships->links() }}</div>
 
 </div>
