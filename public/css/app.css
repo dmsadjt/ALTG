@@ -265,8 +265,12 @@ html {
         height:100% !important;
     }
 
-    .ships{
+    .w-80{
         width: 80vw;
+    }
+
+    .ships{
+
         overflow-x: auto;
     }
 

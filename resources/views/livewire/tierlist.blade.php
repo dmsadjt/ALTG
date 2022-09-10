@@ -181,7 +181,7 @@
     </div>
 
     <div wire:loading class="d-grid"><span wire:loading class="mx-auto altona-sans-18">Loading...</span></div>
-    <div class="ships r-overflow-x" wire:loading.remove>
+    <div class="ships w-80" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
             <thead class="bg-gray1 text-white altona-sans-12">
