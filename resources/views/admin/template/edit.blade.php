@@ -13,22 +13,22 @@
             </div>
         @endif
 
-        <h1 class="mx-5 my-2">Add Templates</h1>
+        <h1 class="mx-5 my-2">Edit Templates</h1>
         <form action="/admin/templates/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id" value="{{$template->id}}">
+            <input type="hidden" name="id" value="{{ $template->id }}">
             <div class="mt-2">
                 <label class="form-label altona-sans-12" for="name">Template name</label>
-                <input class="form-control" type="text" name="name" id="name" value="{{$template->name}}">
+                <input class="form-control" type="text" name="name" id="name" value="{{ $template->name }}">
             </div>
 
             <div class="mt-2">
                 <label class="form-label" for="build">Build</label>
                 <select class="form-select" name="build" id="build">
-                    <option value="General" {{$template->build == 'General' ? 'selected' : ''}}>General</option>
-                    <option value="Light" {{$template->build == 'Light' ? 'selected' : ''}}>Light</option>
-                    <option value="Medium" {{$template->build == 'Medium' ? 'selected' : ''}}>Medium</option>
-                    <option value="Heavy" {{$template->build == 'Heavy' ? 'selected' : ''}}>Heavy</option>
+                    <option value="General" {{ $template->build == 'General' ? 'selected' : '' }}>General</option>
+                    <option value="Light" {{ $template->build == 'Light' ? 'selected' : '' }}>Light</option>
+                    <option value="Medium" {{ $template->build == 'Medium' ? 'selected' : '' }}>Medium</option>
+                    <option value="Heavy" {{ $template->build == 'Heavy' ? 'selected' : '' }}>Heavy</option>
                 </select>
             </div>
 
@@ -63,7 +63,8 @@
                                                     @foreach ($gears as $s)
                                                         @if ($s->gear_type == 13)
                                                             <option value="{{ $s->id }}"
-                                                                {{$selected[$i.'-gear-'.$j] == $s->id ? 'selected' : ''}}>{{ $s->gear_name }}
+                                                                {{ $selected[$i . '-gear-' . $j] == $s->id ? 'selected' : '' }}>
+                                                                {{ $s->gear_name }}
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -90,7 +91,7 @@
                                 <div class="accordion-body bg-white">
 
                                     @for ($j = 1; $j < 9; $j++)
-                                        @livewire('select-gear', ['category_id' => "$i-category-$j", 'gear_id' => "$i-gear-$j", 'gearCategory'=>$selected[$i.'-category-'.$j], 'selectedGear'=>$selected[$i.'-gear-'.$j]])
+                                        @livewire('select-gear', ['category_id' => "$i-category-$j", 'gear_id' => "$i-gear-$j", 'gearCategory' => $selected[$i . '-category-' . $j], 'selectedGear' => $selected[$i . '-gear-' . $j]])
                                     @endfor
                                 </div>
                             </div>

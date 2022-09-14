@@ -61,6 +61,35 @@
                 </div>
             @endif
 
+
+            @if ($post->table != null)
+                <div class="w-80">
+                    <div class="r-overflow-x mx-5">
+                        <table class="bg-gray1">
+                            @foreach ($table as $key => $c)
+                                @if ($key == 1)
+                                    <thead>
+                                        @foreach ($c as $r)
+                                            <th class="altona-sans-12 border-bottom p-2">{{ $r }}</th>
+                                        @endforeach
+                                    </thead>
+                                    @continue
+                                @endif
+                                <tbody>
+                                    <tr>
+                                        @foreach ($c as $r)
+                                            <td class="altona-sans-12 p-2">{{ $r }}</td>
+                                        @endforeach
+                                    </tr>
+                                </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+
+
+            @endif
+
             {{-- body --}}
             <div class="mx-5 mt-5">
                 <div class="altona-sans-10"><i>Author : Admin</i></div>

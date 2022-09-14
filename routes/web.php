@@ -10,6 +10,7 @@ use App\Http\Controllers\ShipController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FactionController;
 use App\Http\Controllers\GearController;
+use App\Http\Controllers\GuidelineController;
 use App\Http\Controllers\HullController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RoleController;
@@ -103,6 +104,7 @@ Route::get('/admin/templates/delete/{id}', [TemplateController::class, 'delete']
 
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/guideline', [GuidelineController::class, 'index'])->name('guideline');
 
 Route::get('/siren', [SirenController::class, 'index'])->name('siren');
 

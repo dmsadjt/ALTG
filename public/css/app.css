@@ -289,6 +289,10 @@ html {
         width: 25em !important;
     }
 
+    .post-table{
+        width: 25em !important;
+    }
+
     .r-grid{
         display: grid !important;
     }

@@ -18,6 +18,7 @@ class CreatePostImagesTable extends Migration
             $table->unsignedBigInteger('post_id');
             $table->string('image');
             $table->string('caption')->default('No captions');
+
             $table->timestamps();
         });
     }
