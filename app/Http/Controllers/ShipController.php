@@ -348,7 +348,7 @@ class ShipController extends Controller
             $selected['template'] = $s->template_id;
         }
 
-        dd($ship->skill[0]->skill_name->exists());
+
 
 
         return view('admin.ship.edit', compact([
