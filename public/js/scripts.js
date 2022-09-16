@@ -1,7 +1,3 @@
-
-
-
-
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
@@ -390,6 +386,18 @@ function changeTextColor(text) {
 
 }
 
+function addRequired(currentClass, targetClass){
+    current = document.getElementById(currentClass);
+    target = document.getElementById(targetClass);
+    if(current.value != ''){
+        target.setAttribute('required','')
+    }
+    else{
+        target.removeAttribute('required')
+    }
+
+}
+
 function displaySelect(select, counter) {
     $("#" + select + counter).show();
 }
@@ -397,14 +405,12 @@ function displaySelect(select, counter) {
 function emptyValue(array) {
     array.forEach(element => {
         element.value = "";
-        console.log('ok');
     });
 }
 
 function displayNone(array) {
     array.forEach(element => {
         element.style.display = 'none';
-        console.log('ok');
     });
 }
 

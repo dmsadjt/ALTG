@@ -21,11 +21,11 @@ use App\Models\Template;
 class ShipController extends Controller
 {
 
-    function urut($collection, $index, $orderBy){
-        if($orderBy == 'asc'){
+    function urut($collection, $index, $orderBy)
+    {
+        if ($orderBy == 'asc') {
             $res = $collection->getCollection()->sortBy($index)->values();
-        }
-        elseif($orderBy == 'desc'){
+        } elseif ($orderBy == 'desc') {
             $res = $collection->getCollection()->sortByDesc($index)->values();
         }
 
@@ -48,19 +48,19 @@ class ShipController extends Controller
 
         $role = Roles::all();
         $roles = array();
-        foreach($role as $r){
+        foreach ($role as $r) {
             array_push($roles, $r->role_name);
         }
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions', 'roles', 'selected'));
     }
 
     public function get($id)
     {
-        if(Ship::find($id))
+        if (Ship::find($id))
 
 
-        $ship = Ship::where('id', '=', $id)->first();
+            $ship = Ship::where('id', '=', $id)->first();
         $temp = $ship->skill->sortBy('skill_priority');
         $skill = array();
         foreach ($temp as $t) {
@@ -80,56 +80,55 @@ class ShipController extends Controller
         $roles = explode(',', $request->role);
         $selected['position'] = $request['position'];
 
-        if ($request->filled('role')){
-            $ship->with(['roles'])->whereHas('roles', function($q) use($roles){
+        if ($request->filled('role')) {
+            $ship->with(['roles'])->whereHas('roles', function ($q) use ($roles) {
                 $q->whereIn('role_name', $roles);
             });
         }
 
-        if ($request->filled('position')){
+        if ($request->filled('position')) {
 
-            if($request['position'] == 'tank')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'vanguard-tank')->orWhere('position_slug','vanguard-tank-mid')->orWhere('position_slug','vanguard-tank-off_tank');
-            });
+            if ($request['position'] == 'tank')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'vanguard-tank')->orWhere('position_slug', 'vanguard-tank-mid')->orWhere('position_slug', 'vanguard-tank-off_tank');
+                });
 
-            if($request['position'] == 'offtank')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug','vanguard-offtank')->orWhere('position_slug','vanguard-tank-off_tank');
-            });
+            if ($request['position'] == 'offtank')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug', 'vanguard-offtank')->orWhere('position_slug', 'vanguard-tank-off_tank');
+                });
 
-            if($request['position'] == 'mid')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug','vanguard-tank-mid')->orWhere('position_slug','vanguard-mid');
-            });
+            if ($request['position'] == 'mid')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'vanguard-mid-offtank')->orWhere('position_slug', 'vanguard-tank-mid')->orWhere('position_slug', 'vanguard-mid');
+                });
 
-            if($request['position'] == 'flagship')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'backline-flagship')->orWhere('position_slug','submarine-flagship');
-            });
+            if ($request['position'] == 'flagship')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'backline-flagship')->orWhere('position_slug', 'submarine-flagship');
+                });
 
-            if($request['position'] == 'offflag')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'backline-off_flag')->orWhere('position_slug','submarine-off_flag');
-            });
+            if ($request['position'] == 'offflag')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'backline-off_flag')->orWhere('position_slug', 'submarine-off_flag');
+                });
 
-            if($request['position'] == 'any')
-            $ship->with(['positions'])->whereHas('positions', function ($q){
-                $q->where('position_slug', 'backline-any')->orWhere('position_slug','submarine-all')->orWhere('position_slug','vanguard-any');
-            });
-        }
-
-        if($request->filled('rarity')){
-                $ship->with(['rarity'])->whereHas('rarity', function ($q) use($request){
-                    $q->whereIn('rarity_slug', $request->rarity);
+            if ($request['position'] == 'any')
+                $ship->with(['positions'])->whereHas('positions', function ($q) {
+                    $q->where('position_slug', 'backline-any')->orWhere('position_slug', 'submarine-all')->orWhere('position_slug', 'vanguard-any');
                 });
         }
 
-        if($request->filled('faction')){
-                $ship->with(['faction'])->whereHas('faction', function ($q) use($request){
-                    $q->whereIn('faction_slug', $request->faction);
-                });
+        if ($request->filled('rarity')) {
+            $ship->with(['rarity'])->whereHas('rarity', function ($q) use ($request) {
+                $q->whereIn('rarity_slug', $request->rarity);
+            });
+        }
 
+        if ($request->filled('faction')) {
+            $ship->with(['faction'])->whereHas('faction', function ($q) use ($request) {
+                $q->whereIn('faction_slug', $request->faction);
+            });
         }
 
         $selected['rarity'] = ($request->rarity) ? ($request->rarity) : array();
@@ -141,14 +140,14 @@ class ShipController extends Controller
         $rarity = Rarity::get();
         $factions = Faction::get();
         $positions = Position::get();
-        $selectedHull = Hull::where('id',$request['hull']);
+        $selectedHull = Hull::where('id', $request['hull']);
         $role = Roles::all();
         $roles = array();
-        foreach($role as $r){
+        foreach ($role as $r) {
             array_push($roles, $r->role_name);
         }
 
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions','roles','selected','selectedHull'));
+        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions', 'roles', 'selected', 'selectedHull'));
     }
 
     //database
@@ -190,11 +189,11 @@ class ShipController extends Controller
             'chibi_sprite' => 'image',
             'notes' => '',
             'skillname-1' => 'required',
-            'skillname-2' => 'required',
-            'skillname-3' => 'required',
+            'skillname-2' => '',
+            'skillname-3' => '',
             'skillpriority-1' => 'required|integer|between:1,3',
-            'skillpriority-2' => 'required|integer|between:1,3',
-            'skillpriority-3' => 'required|integer|between:1,3',
+            'skillpriority-2' => 'nullable|integer|between:1,3',
+            'skillpriority-3' => 'nullable|integer|between:1,3',
             'skillimg-1' => 'image',
             'skillimg-2' => 'image',
             'skillimg-3' => 'image',
@@ -229,19 +228,19 @@ class ShipController extends Controller
         $ship->rarity_id = $shipdata['rarity'];
         $ship->position_id = $shipdata['position'];
 
-        if(isset($shipdata['template-general'])){
+        if (isset($shipdata['template-general'])) {
             $ship->template_id = $shipdata['template-general'];
         }
 
-        if(isset($shipdata['template-light'])){
+        if (isset($shipdata['template-light'])) {
             $ship->template_id = $shipdata['template-light'];
         }
 
-        if(isset($shipdata['template-medium'])){
+        if (isset($shipdata['template-medium'])) {
             $ship->template_id = $shipdata['template-medium'];
         }
 
-        if(isset($shipdata['template-heavy'])){
+        if (isset($shipdata['template-heavy'])) {
             $ship->template_id = $shipdata['template-heavy'];
         }
 
@@ -287,19 +286,24 @@ class ShipController extends Controller
         $this->postImage($request, 'skillimg-1', '/img/skills/', $skill, 'skill_img');
         $skill->save();
 
-        $skill2 = new Skill;
-        $skill2->ship_id = $ship->id;
-        $skill2->skill_name = $shipdata['skillname-2'];
-        $skill2->skill_priority = $shipdata['skillpriority-2'];
-        $this->postImage($request, 'skillimg-2', '/img/skills/', $skill2, 'skill_img');
-        $skill2->save();
+        if ($shipdata['skillname-2'] != null) {
+            $skill2 = new Skill;
+            $skill2->ship_id = $ship->id;
+            $skill2->skill_name = $shipdata['skillname-2'];
+            $skill2->skill_priority = $shipdata['skillpriority-2'];
+            $this->postImage($request, 'skillimg-2', '/img/skills/', $skill2, 'skill_img');
+            $skill2->save();
+        }
 
-        $skill3 = new Skill;
-        $skill3->ship_id = $ship->id;
-        $skill3->skill_name = $shipdata['skillname-3'];
-        $skill3->skill_priority = $shipdata['skillpriority-3'];
-        $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
-        $skill3->save();
+        if ($shipdata['skillname-3'] != null) {
+            $skill3 = new Skill;
+            $skill3->ship_id = $ship->id;
+            $skill3->skill_name = $shipdata['skillname-3'];
+            $skill3->skill_priority = $shipdata['skillpriority-3'];
+            $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
+            $skill3->save();
+        }
+
 
         $ship->save();
 
@@ -343,6 +347,8 @@ class ShipController extends Controller
             $selected['build'] = $s->template ? $s->template->build : '';
             $selected['template'] = $s->template_id;
         }
+
+        dd($ship->skill[0]->skill_name->exists());
 
 
         return view('admin.ship.edit', compact([
@@ -424,7 +430,7 @@ class ShipController extends Controller
             'rarity_id' => $data['rarity'],
             'faction_id' => $data['faction'],
             'notes' => $data['notes'],
-            'position_id'=> $data['position'],
+            'position_id' => $data['position'],
             'sprite' => $sprite,
             'chibi_sprite' => $chibi,
         ]);
@@ -473,34 +479,34 @@ class ShipController extends Controller
         unset($temp);
         $temp = array();
 
-        if(isset($shipdata['templates'])){
+        if (isset($shipdata['templates'])) {
             $template = Template::where('id', $shipdata['templates'])->first();
-            foreach ($template->gears as $g){
-                $temp[$g->id] = ['gear_category' => $g->pivot->gear_category ];
+            foreach ($template->gears as $g) {
+                $temp[$g->id] = ['gear_category' => $g->pivot->gear_category];
             }
         }
 
-        if(isset($data['template-general'])){
+        if (isset($data['template-general'])) {
             $ship->update([
-                'template_id'=>$data['template-general'],
+                'template_id' => $data['template-general'],
             ]);
         }
 
-        if(isset($data['template-light'])){
+        if (isset($data['template-light'])) {
             $ship->update([
-                'template_id'=>$data['template-light'],
+                'template_id' => $data['template-light'],
             ]);
         }
 
-        if(isset($data['template-medium'])){
+        if (isset($data['template-medium'])) {
             $ship->update([
-                'template_id'=>$data['template-medium'],
+                'template_id' => $data['template-medium'],
             ]);
         }
 
-        if(isset($data['template-heavy'])){
+        if (isset($data['template-heavy'])) {
             $ship->update([
-                'template_id'=>$data['template-heavy'],
+                'template_id' => $data['template-heavy'],
             ]);
         }
 
@@ -521,6 +527,4 @@ class ShipController extends Controller
 
         return redirect('admin/ships');
     }
-
-
 }

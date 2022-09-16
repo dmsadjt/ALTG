@@ -99,7 +99,8 @@
                             <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{ $i + 1 }}
                                 name</label>
                             <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
-                                id="skillname-{{ $i + 1 }}">
+                                id="skillname-{{ $i + 1 }}"
+                                onchange="addRequired('skillname-{{ $i + 1 }}','skillpriority-{{ $i + 1 }}')">
                         </div>
                         <div class="mb-2">
                             <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill {{ $i + 1 }}
@@ -291,7 +292,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'General')
-                                <option value="{{$t->id}}">{{ $t->name }}</option>
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -303,7 +304,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Light')
-                                <option value="{{$t->id}}">{{ $t->name }}</option>
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -314,7 +315,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Medium')
-                                <option value="{{$t->id}}">{{ $t->name }}</option>
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>
@@ -325,7 +326,7 @@
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Heavy')
-                                <option value="{{$t->id}}">{{ $t->name }}</option>
+                                <option value="{{ $t->id }}">{{ $t->name }}</option>
                             @endif
                         @endforeach
                     </select>

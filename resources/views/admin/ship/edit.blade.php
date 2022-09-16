@@ -86,13 +86,14 @@
                                 <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{ $i + 1 }}
                                     name</label>
                                 <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
-                                    id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]->skill_name }}">
+                                    id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]?->skill_name }} ?? ''">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
                                     {{ $i + 1 }} priority</label>
                                 <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
-                                    id="skillpriority-{{ $i + 1 }}" value="{{ $s->skill[$i]->skill_priority }}">
+                                    id="skillpriority-{{ $i + 1 }}"
+                                    value="{{ $s->skill[$i]->skill_priority->exists() ?? '' }}">
                             </div>
                             <div class="mb-2">
                                 <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
@@ -289,10 +290,10 @@
                     <h2 class="mt-3">Gears</h2>
                     <label class="form-label" for="build">Select Build</label>
                     <select class="form-select" name="build" id="build">
-                        <option value="General" {{$selected['build'] == 'General' ? 'selected' : ''}}>General</option>
-                        <option value="Light" {{$selected['build'] == 'Light' ? 'selected' : ''}}>Light</option>
-                        <option value="Medium" {{$selected['build'] == 'Medium' ? 'selected' : ''}}>Medium</option>
-                        <option value="Heavy" {{$selected['build'] == 'Heavy' ? 'selected' : ''}}>Heavy</option>
+                        <option value="General" {{ $selected['build'] == 'General' ? 'selected' : '' }}>General</option>
+                        <option value="Light" {{ $selected['build'] == 'Light' ? 'selected' : '' }}>Light</option>
+                        <option value="Medium" {{ $selected['build'] == 'Medium' ? 'selected' : '' }}>Medium</option>
+                        <option value="Heavy" {{ $selected['build'] == 'Heavy' ? 'selected' : '' }}>Heavy</option>
                     </select>
                     <div id="general">
                         <label for="template-general">Template (General)</label>
@@ -300,7 +301,9 @@
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'General')
-                                    <option value="{{$t->id}}" {{$selected['template'] == $t->id ? 'selected' : ''}}>{{ $t->name }}</option>
+                                    <option value="{{ $t->id }}"
+                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
@@ -312,7 +315,9 @@
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Light')
-                                    <option value="{{$t->id}}" {{$selected['template'] == $t->id ? 'selected' : ''}}>{{ $t->name }}</option>
+                                    <option value="{{ $t->id }}"
+                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
@@ -323,7 +328,9 @@
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Medium')
-                                    <option value="{{$t->id}}" {{$selected['template'] == $t->id ? 'selected' : ''}}>{{ $t->name }}</option>
+                                    <option value="{{ $t->id }}"
+                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
@@ -334,7 +341,9 @@
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Heavy')
-                                    <option value="{{$t->id}}" {{$selected['template'] == $t->id ? 'selected' : ''}}>{{ $t->name }}</option>
+                                    <option value="{{ $t->id }}"
+                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                    </option>
                                 @endif
                             @endforeach
                         </select>
