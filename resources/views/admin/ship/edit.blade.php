@@ -79,30 +79,36 @@
                 <h2 class="my-3">Skill</h2>
                 <div>
 
-
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="columns-three">
-                            <div class="mb-2">
-                                <label class="form-label" for="skillname-{{ $i + 1 }}">Skill {{ $i + 1 }}
-                                    name</label>
-                                <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
-                                    id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]?->skill_name }} ?? ''">
+                    @if ($s->skill->count() == 3)
+                        @for ($i = 0; $i < 3; $i++)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillname-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
+                                        id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]?->skill_name }} ?? ''">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
+                                        id="skillpriority-{{ $i + 1 }}"
+                                        value="{{ $s->skill[$i]->skill_priority->exists() ?? '' }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
+                                        id="skillimg-{{ $i + 1 }}">
+                                </div>
                             </div>
-                            <div class="mb-2">
-                                <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
-                                    {{ $i + 1 }} priority</label>
-                                <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
-                                    id="skillpriority-{{ $i + 1 }}"
-                                    value="{{ $s->skill[$i]->skill_priority->exists() ?? '' }}">
-                            </div>
-                            <div class="mb-2">
-                                <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
-                                    image</label>
-                                <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
-                                    id="skillimg-{{ $i + 1 }}">
-                            </div>
-                        </div>
-                    @endfor
+                        @endfor
+                    @elseif($s->skill->count() == 2)
+                        @foreach ($s->skill as $key => $k)
+                        @endforeach
+                    @else
+                    @endif
                 </div>
 
 
