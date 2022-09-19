@@ -99,36 +99,80 @@
                 {{-- skill and explanation for roles archetypes and positions --}}
                 <div class="columns-two__3-6">
                     {{-- skills --}}
-                    <div class="d-grid my-auto">
-                        <h2 class="text-white mt-2">Skill leveling prio</h2>
-                        <div class="d-flex gap-3 text-white">
-                            <div class="d-grid one" id="{{ $skill[2]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[2]->skill_img }}" alt="" class="skill-img mx-auto">
-                            </div>
-                            <div class="d-grid ">
-                                <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
-                                <span></span>
-                            </div>
-                            <div class="d-grid two" id="{{ $skill[1]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[1]->skill_img }}" alt="" class="skill-img mx-auto">
-                            </div>
-                            <div class="d-grid">
-                                <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
-                                <span></span>
-                            </div>
-                            <div class="d-grid three" id="{{ $skill[0]->skill_priority }}">
-                                <img src="/img/skills/{{ $skill[0]->skill_img }}" alt="" class="skill-img mx-auto">
+
+                    @if (count($skill) == 3)
+                        <div class="d-grid my-auto">
+                            <h2 class="text-white mt-2">Skill leveling prio</h2>
+                            <div class="d-flex gap-3 text-white">
+                                <div class="d-grid one" id="{{ $skill[2]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[2]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
+                                <div class="d-grid ">
+                                    <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
+                                    <span></span>
+                                </div>
+                                <div class="d-grid two" id="{{ $skill[1]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
+                                <div class="d-grid">
+                                    <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
+                                    <span></span>
+                                </div>
+                                <div class="d-grid three" id="{{ $skill[0]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <script>
-                        one = document.getElementsByClassName('one')[0].id;
-                        two = document.getElementsByClassName('two')[0].id;
-                        three = document.getElementsByClassName('three')[0].id;
-                        evaluateSkills(one, two, 'evaluator-1');
-                        evaluateSkills(two, three, 'evaluator-2');
-                    </script>
+                        <script>
+                            one = document.getElementsByClassName('one')[0].id;
+                            two = document.getElementsByClassName('two')[0].id;
+                            three = document.getElementsByClassName('three')[0].id;
+                            evaluateSkills(one, two, 'evaluator-1');
+                            evaluateSkills(two, three, 'evaluator-2');
+                        </script>
+                    @elseif (count($skill) == 2)
+                        <div class="d-grid my-auto">
+                            <h2 class="text-white mt-2">Skill leveling prio</h2>
+                            <div class="d-flex gap-3 text-white">
+                                <div class="d-grid one" id="{{ $skill[1]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
+                                <div class="d-grid">
+                                    <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
+                                    <span></span>
+                                </div>
+                                <div class="d-grid two" id="{{ $skill[0]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            one = document.getElementsByClassName('one')[0].id;
+                            two = document.getElementsByClassName('two')[0].id;
+                            evaluateSkills(one, two, 'evaluator-1');
+                            evaluateSkills(two, three, 'evaluator-2');
+                        </script>
+                    @elseif (count($skill) == 1)
+                        <div class="d-grid my-auto">
+                            <h2 class="text-white mt-2">Skill leveling prio</h2>
+                            <div class="d-flex gap-3 text-white">
+                                <div class="d-grid one" id="{{ $skill[0]->skill_priority }}">
+                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                        class="skill-img mx-auto">
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+
+
+
                     {{-- details --}}
                     <div class="details-table">
                         <div class="columns-two__2-6 mt-3 gap-2 altona-sans-12 text-white">
@@ -190,7 +234,8 @@
                                                             id="{{ $c->position_slug }}">
                                                             {{ $c->position_name }}
                                                         </h5>
-                                                        <img src="/img/positions/{{ $c->position_image }}" alt="">
+                                                        <img src="/img/positions/{{ $c->position_image }}"
+                                                            alt="">
                                                         <script>
                                                             textId = document.getElementsByClassName('cl-hd')[0].id;
                                                             changeTextColor(textId);
@@ -397,7 +442,6 @@
             document.getElementById('openByDefault-4').click();
             document.getElementById('openByDefault-5').click();
             document.getElementById('openByDefault-6').click();
-
         </script>
 
     </section>

@@ -18,7 +18,7 @@ class skillFactory extends Factory
         return [
             'skill_name' => $faker->word(),
             'skill_img' => 'no-skill-pictures.png',
-            'skill_priority' => $faker->randomDigitNot(0, 4, 5, 6, 7, 8, 9),
+            'skill_priority' => random_int(1, 3),
         ];
     }
 }

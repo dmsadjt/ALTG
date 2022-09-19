@@ -380,11 +380,11 @@ class ShipController extends Controller
             'chibi_sprite' => 'image',
             'notes' => '',
             'skillname-1' => 'required',
-            'skillname-2' => 'required',
-            'skillname-3' => 'required',
+            'skillname-2' => '',
+            'skillname-3' => '',
             'skillpriority-1' => 'required|integer|between:1,3',
-            'skillpriority-2' => 'required|integer|between:1,3',
-            'skillpriority-3' => 'required|integer|between:1,3',
+            'skillpriority-2' => 'nullable|integer|between:1,3',
+            'skillpriority-3' => 'nullable|integer|between:1,3',
             'skillimg-1' => 'image',
             'skillimg-2' => 'image',
             'skillimg-3' => 'image',
@@ -410,17 +410,8 @@ class ShipController extends Controller
             'template-medium' => '',
         ]);
 
-        foreach ($cate as $c) {
-            for ($j = 1; $j < 16; $j++) {
-                $g = strval($c->id) . '-gear-' . strval($j);
-                $s = strval($c->id) . '-category-' . strval($j);
-                $gears[$g] = '';
-                $gears[$s] = '';
-            }
-        }
-
-        $rules = array_merge($general, $gears);
-        $data = $request->validate($rules);
+        $data = $request->validate($general);
+        // dd($data);
         $ship = Ship::where('id', $data['id'])->first();
         $sprite = $this->updateImg($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
         $chibi = $this->updateImg($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
@@ -447,14 +438,33 @@ class ShipController extends Controller
             'boss_14' => $data['boss3'],
         ]);
 
-        foreach ($ship->skill as $key => $s) {
+        // dd($data);
 
-            $img = $this->updateImg($request, 'skillimg-' . ($key + 1), '/img/skills/', $s, 'skill_img');
-            $s->update([
-                'skill_name' => $data['skillname-' . ($key + 1)],
-                'skill_priority' => $data['skillpriority-' . ($key + 1)],
-                'skill_img' => $img,
-            ]);
+        for ($i = 0; $i < 3; $i++) {
+            if (isset($data['skillname-' . ($i + 1)])) {
+                $img = isset($data['skillimg-' . ($i + 1)]) ? $this->updateImg($request, 'skillimg-' . ($i + 1), '/img/skills/', $ship->skill[$i + 1], 'skill_img') : 'no-skill-pictures.png';
+                if (isset($ship->skill[$i])) {
+
+                    $ship->skill[$i]->update([
+                        'skill_name' => $data['skillname-' . ($i + 1)],
+                        'skill_priority' => $data['skillpriority-' . ($i + 1)],
+                        'skill_img' => $img,
+                    ]);
+                } else {
+                    ${'skill' . $i} = new Skill();
+                    ${'skill' . $i}['ship_id'] = $data['id'];
+                    ${'skill' . $i}['skill_name'] = $data['skillname-' . ($i + 1)];
+                    ${'skill' . $i}['skill_priority'] = $data['skillpriority-' . ($i + 1)];
+                    $this->postImage($request, 'skillimg-3', '/img/skills/', ${'skill' . $i}, 'skill_img');
+                    ${'skill' . $i}->save();
+                }
+            } elseif (!isset($data['skillname-' . ($i + 1)])) {
+                if (isset($ship->skill[$i])) {
+                    $id = $ship->skill[$i]->id;
+                    // dd(Skill::where('id', $id)->first());
+                    Skill::where('id', $id)->delete();
+                }
+            }
         }
 
         $temp = array();
@@ -518,7 +528,6 @@ class ShipController extends Controller
         $ship = Ship::where('id', '=', $id)->first();
         $ship->archetypes()->detach();
         $ship->roles()->detach();
-        $ship->gears()->detach();
 
         Ship::where('id', '=', $id)->delete();
         Skill::where('ship_id', '=', $id)->delete();

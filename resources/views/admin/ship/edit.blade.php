@@ -87,14 +87,14 @@
                                         {{ $i + 1 }}
                                         name</label>
                                     <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
-                                        id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]?->skill_name }} ?? ''">
+                                        id="skillname-{{ $i + 1 }}" value="{{ $s->skill[$i]->skill_name }}">
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
                                         {{ $i + 1 }} priority</label>
                                     <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
                                         id="skillpriority-{{ $i + 1 }}"
-                                        value="{{ $s->skill[$i]->skill_priority->exists() ?? '' }}">
+                                        value="{{ $s->skill[$i]->skill_priority }}">
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill {{ $i + 1 }}
@@ -106,8 +106,104 @@
                         @endfor
                     @elseif($s->skill->count() == 2)
                         @foreach ($s->skill as $key => $k)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillname-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $key + 1 }}"
+                                        id="skillname-{{ $key + 1 }}" value="{{ $k->skill_name }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillpriority-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $key + 1 }}"
+                                        id="skillpriority-{{ $key + 1 }}" value="{{ $k->skill_priority }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillimg-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $key + 1 }}"
+                                        id="skillimg-{{ $key + 1 }}">
+                                </div>
+                            </div>
                         @endforeach
-                    @else
+                        @for ($i = 2; $i < 3; $i++)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillname-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
+                                        id="skillname-{{ $i + 1 }}"
+                                        onchange="addRequired('skillname-{{ $i + 1 }}','skillpriority-{{ $i + 1 }}')">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
+                                        id="skillpriority-{{ $i + 1 }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
+                                        id="skillimg-{{ $i + 1 }}">
+                                </div>
+                            </div>
+                        @endfor
+                    @elseif($s->skill->count() == 1)
+                        @foreach ($s->skill as $key => $k)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillname-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $key + 1 }}"
+                                        id="skillname-{{ $key + 1 }}" value="{{ $k->skill_name }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillpriority-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $key + 1 }}"
+                                        id="skillpriority-{{ $key + 1 }}" value="{{ $k->skill_priority }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillimg-{{ $key + 1 }}">Skill
+                                        {{ $key + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $key + 1 }}"
+                                        id="skillimg-{{ $key + 1 }}">
+                                </div>
+                            </div>
+                        @endforeach
+                        @for ($i = 1; $i < 3; $i++)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillname-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
+                                        id="skillname-{{ $i + 1 }}"
+                                        onchange="addRequired('skillname-{{ $i + 1 }}','skillpriority-{{ $i + 1 }}')">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillpriority-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
+                                        id="skillpriority-{{ $i + 1 }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label" for="skillimg-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
+                                        id="skillimg-{{ $i + 1 }}">
+                                </div>
+                            </div>
+                        @endfor
                     @endif
                 </div>
 
@@ -115,7 +211,7 @@
                 {{-- archetypes --}}
                 <h2 class="my-3">Archetype</h2>
                 <div>
-                    <label class="form-label" for="archetype">Archetype</label>
+                    <label class="form-label" for="archetype">Archetype 1</label>
                     <div class="columns-two">
                         <select class="form-select" name="archetype1" id="archetype">
                             <option value="" selected>Select Archetype</option>
@@ -125,13 +221,12 @@
                                 </option>
                             @endforeach
                         </select>
-                        <div class="btn btn-primary w-50" disabled id="appendArc">Add another Archetype</div>
                     </div>
 
 
                 </div>
                 <div id="archetype2">
-                    <label class="form-label" for="archetype2">Archetype</label>
+                    <label class="form-label" for="archetype2">Archetype 2</label>
                     <div class="columns-two">
                         <select class="form-select" name="archetype2" id="archetype2">
                             <option value="" selected>Select Archetype</option>
@@ -144,7 +239,7 @@
                     </div>
                 </div>
                 <div id="archetype3">
-                    <label class="form-label" for="archetype3">Archetype</label>
+                    <label class="form-label" for="archetype3">Archetype 3</label>
                     <div class="columns-two">
                         <select class="form-select" name="archetype3" id="archetype3">
                             <option value="" selected>Select Archetype</option>
@@ -157,7 +252,7 @@
                     </div>
                 </div>
                 <div id="archetype4">
-                    <label class="form-label" for="archetype4">Archetype</label>
+                    <label class="form-label" for="archetype4">Archetype 4</label>
                     <div class="columns-two">
                         <select class="form-select" name="archetype4" id="archetype4">
                             <option value="" selected>Select Archetype</option>
@@ -170,7 +265,7 @@
                     </div>
                 </div>
                 <div id="archetype5">
-                    <label class="form-label" for="archetype5">Archetype</label>
+                    <label class="form-label" for="archetype5">Archetype 5</label>
                     <div class="columns-two">
                         <select class="form-select" name="archetype5" id="archetype5">
                             <option value="" selected>Select Archetype</option>
@@ -186,63 +281,68 @@
 
                 {{-- Roles --}}
                 <h2 class="my-2">Roles</h2>
-                <div>
-                    <label class="form-label" for="role">role</label>
+                <div class="my-1">
+                    <label class="form-label" for="role">Role 1</label>
                     <div class="columns-two">
                         <select class="form-select" name="role1" id="role">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{ $r->id == $selected['role1'] ? 'selected' : '' }}>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['role1'] ? 'selected' : '' }}>
                                     {{ $r->role_name }}</option>
                             @endforeach
                         </select>
-                        <div class="btn btn-primary w-50" id="appendRole" disabled>Add another Role</div>
+                        <div></div>
                     </div>
 
                 </div>
-                <div id="role2">
-                    <label class="form-label" for="role2">role</label>
+                <div id="role2" class="my-1">
+                    <label class="form-label" for="role2">Role 2</label>
                     <div class="columns-two">
                         <select class="form-select" name="role2" id="role2">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{ $r->id == $selected['role2'] ? 'selected' : '' }}>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['role2'] ? 'selected' : '' }}>
                                     {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div id="role3">
-                    <label class="form-label" for="role3">role</label>
+                <div id="role3" class="my-1">
+                    <label class="form-label" for="role3">Role 3</label>
                     <div class="columns-two">
                         <select class="form-select" name="role3" id="role3">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{ $r->id == $selected['role3'] ? 'selected' : '' }}>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['role3'] ? 'selected' : '' }}>
                                     {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div id="role4">
-                    <label class="form-label" for="role4">role</label>
+                <div id="role4" class="my-1">
+                    <label class="form-label" for="role4">Role 4</label>
                     <div class="columns-two">
                         <select class="form-select" name="role4" id="role4">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{ $r->id == $selected['role4'] ? 'selected' : '' }}>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['role4'] ? 'selected' : '' }}>
                                     {{ $r->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div id="role5">
-                    <label class="form-label" for="role5">role</label>
+                <div id="role5" class="my-1">
+                    <label class="form-label" for="role5">Role 5</label>
                     <div class="columns-two">
                         <select class="form-select" name="role5" id="role5">
                             <option value="" selected>Select Roles</option>
                             @foreach ($roles as $r)
-                                <option value="{{ $r->id }}" {{ $r->id == $selected['role5'] ? 'selected' : '' }}>
+                                <option value="{{ $r->id }}"
+                                    {{ $r->id == $selected['role5'] ? 'selected' : '' }}>
                                     {{ $r->role_name }}</option>
                             @endforeach
                         </select>
@@ -355,6 +455,62 @@
                         </select>
                     </div>
                 </div>
+
+                <script>
+                    const build = document.getElementById('build');
+
+                    const general = document.getElementById('general');
+                    const light = document.getElementById('light');
+                    const medium = document.getElementById('medium');
+                    const heavy = document.getElementById('heavy');
+
+                    const selectGeneral = document.getElementById('template-general');
+                    const selectLight = document.getElementById('template-light');
+                    const selectMedium = document.getElementById('template-medium');
+                    const selectHeavy = document.getElementById('template-heavy');
+                    let buildType = [general, light, medium, heavy]
+                    let select = [selectGeneral, selectLight, selectMedium, selectHeavy];
+                    select.forEach((element, index) => {
+                        if (element.value != '') {
+                            select.splice(index, 1);
+                            buildType.splice(index, 1);
+                        }
+                    })
+
+                    emptyValue(select);
+                    displayNone(buildType);
+
+                    build.addEventListener('change', function handleChange(event) {
+                        emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
+
+                        if (event.target.value === 'General') {
+
+                            displayNone([light, medium, heavy]);
+                            general.style.display = 'block';
+
+                        }
+
+                        if (event.target.value === 'Light') {
+                            displayNone([general, medium, heavy]);
+
+                            light.style.display = 'block';
+
+                        }
+
+                        if (event.target.value === 'Medium') {
+                            displayNone([light, general, heavy]);
+
+                            medium.style.display = 'block';
+
+                        }
+
+                        if (event.target.value === 'Heavy') {
+                            displayNone([light, medium, general]);
+                            heavy.style.display = 'block';
+                        }
+
+                    })
+                </script>
 
                 <div class="d-grid">
                     <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit ship">
