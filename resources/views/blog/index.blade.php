@@ -9,26 +9,25 @@
 
                 <div class="post-row shadow">
                     @foreach ($posts as $p)
-
                         <div class="columns-two__5-1 pill-dark p-3 mb-2">
                             <div>
-                                <h3>{{$p->title}}</h3>
-                                <p class="altona-sans-10">{{$p->created_at}}</p>
+                                <h3>{{ $p->title }}</h3>
+                                <p class="altona-sans-10">{{ $p->created_at }}</p>
                                 <p class="altona-sans-12 medium-text">
-                                    {{Str::limit($p->body, 200)}}
-                                    <a class="altona-sans-12"
-                                href="/blogs/view/{{$p->id}}">See more</a>
+                                    {{ Str::limit($p->body, 200) }}
+                                    <a class="altona-sans-12" href="/blogs/view/{{ $p->id }}">See more</a>
                                 </p>
 
+                                <div>
+                                    <span class="altona-sans-10">Tags :</span>
+                                </div>
                                 <div class="d-flex">
-                                    <div>
-                                        <span class="altona-sans-10">Tags :</span>
-                                    </div>
+
                                     @foreach ($p->tags as $t)
-                                    <div class="bg-white text-black rounded p-1 w-auto mx-1 altona-sans-10">
-                                        {{$t->tag_label}}
-                                    </div>
-                                @endforeach
+                                        <div class="bg-white text-black rounded p-1 w-auto mx-1 altona-sans-10">
+                                            {{ $t->tag_label }}
+                                        </div>
+                                    @endforeach
                                 </div>
 
                             </div>
@@ -37,12 +36,11 @@
                                     alt="">
                             </div>
                         </div>
-
                     @endforeach
 
                 </div>
 
-                {{$posts->links()}}
+                {{ $posts->links() }}
             </div>
 
 

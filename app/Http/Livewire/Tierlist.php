@@ -22,18 +22,21 @@ class Tierlist extends Component
     public $byRole;
     public $rarities = [];
     public $byFactions = [];
-    public $score="Mob";
+    public $score = "Mob";
     public $sortBy = 'name';
     public $sortDirection = 'asc';
     public $sortType = 'simple';
-    protected $paginationTheme= 'bootstrap';
+    protected $paginationTheme = 'bootstrap';
 
 
-    public function dehydrate(){
+    public function dehydrate()
+    {
         $this->dispatchBrowserEvent('test');
+        $this->resetPage();
     }
 
-    public function sort($field, $sortType){
+    public function sort($field, $sortType)
+    {
 
         $this->sortBy = $field;
         $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
@@ -48,8 +51,8 @@ class Tierlist extends Component
         $rarity = Rarity::all();
         $roles = Roles::all();
         $positions = Position::all();
-        $role = Roles::all();//role buat autofill
-        $roles = array();//array buat store role
+        $role = Roles::all(); //role buat autofill
+        $roles = array(); //array buat store role
         $roles_exploded = explode(',', $this->byRole);
         // dd($roles_exploded);
         $raritys = $this->rarities;
@@ -63,7 +66,7 @@ class Tierlist extends Component
 
         if ($this->byHull != '') {
             $ship->where('hull_id', $this->byHull);
-        }else{
+        } else {
             $ship->where('hull_id', 2);
         }
 
@@ -120,15 +123,15 @@ class Tierlist extends Component
 
 
 
-        if($this->sortType == 'simple'){
+        if ($this->sortType == 'simple') {
             $ships = $ship->orderBy($this->sortBy, $this->sortDirection)->paginate(10);
         }
 
-        if($this->sortType == 'complex' ){
-            if($this->sortBy == 'mob_9_11' || $this->sortBy == 'mob_12_13' || $this->sortBy == 'mob_14'){
-                $ships = $ship->join('mob_scores', 'ships.id', '=', 'mob_scores.ship_id')->orderBy('mob_scores.'.$this->sortBy, $this->sortDirection)->paginate(10);
-            }else{
-                $ships = $ship->join('boss_scores', 'ships.id', '=', 'boss_scores.ship_id')->orderBy('boss_scores.'.$this->sortBy, $this->sortDirection)->paginate(10);
+        if ($this->sortType == 'complex') {
+            if ($this->sortBy == 'mob_9_11' || $this->sortBy == 'mob_12_13' || $this->sortBy == 'mob_14') {
+                $ships = $ship->join('mob_scores', 'ships.id', '=', 'mob_scores.ship_id')->orderBy('mob_scores.' . $this->sortBy, $this->sortDirection)->paginate(10);
+            } else {
+                $ships = $ship->join('boss_scores', 'ships.id', '=', 'boss_scores.ship_id')->orderBy('boss_scores.' . $this->sortBy, $this->sortDirection)->paginate(10);
             }
         }
 

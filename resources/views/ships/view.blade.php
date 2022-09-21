@@ -262,10 +262,64 @@
                     <div class="gears mt-2">
 
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
+                        <hr>
+                        <div class="tab__blue grid-col-span-3 mb-3">
+                            <button class="tab-links__blue tab-link"
+                                onclick="openTab(event, 'general', 'tab-content', 'tab-link','grid')"
+                                id="openByDefault">General</button>
+                            <button class="tab-links__blue tab-link"
+                                onclick="openTab(event, 'light', 'tab-content', 'tab-link','grid')">Light</button>
+                            <button class="tab-links__blue tab-link"
+                                onclick="openTab(event, 'med', 'tab-content', 'tab-link','grid')">Med</button>
+                            <button class="tab-links__blue tab-link"
+                                onclick="openTab(event, 'heavy', 'tab-content', 'tab-link','grid')">Heavy</button>
+                        </div>
+
+                        <div class="tab-content" id="general">
+                            @for ($i = 1; $i < 7; $i++)
+                                <div class="columns-six">
+                                    @if ($i == 6)
+                                        <h3 class="altona-sans-12 mt-1">
+                                            Augment
+                                        </h3>
+                                    @else
+                                        <h3 class="altona-sans-12 mt-1">
+                                            Slot {{ $i }}
+                                        </h3>
+                                    @endif
+
+                                    <div class="fadeIn grid-col-span-4">
+                                        <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                            @foreach ($ship->template->gears as $g)
+                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'General')
+                                                    <div class="text-center d-grid">
+                                                        <div class="pill-dark pl-hd mx-auto shadow"
+                                                            id="{{ $g->gear_rarity }}">
+                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                        </div>
+
+                                                        <div class="medium-label altona-sans-10">
+                                                            {{ $g->gear_name }}
+                                                        </div>
+                                                    </div>
+
+                                                    <script>
+                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                        changeGear(gearR);
+                                                    </script>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
 
 
-                        @for ($i = 1; $i < 7; $i++)
-                            <div class="columns-six">
+                            @endfor
+                        </div>
+
+                        <div class="tab-content" id="light">
+                            @for ($i = 1; $i < 7; $i++)
                                 @if ($i == 6)
                                     <h3 class="altona-sans-12 mt-1">
                                         Augment
@@ -276,28 +330,13 @@
                                     </h3>
                                 @endif
 
-
-                                <div class="tab__blue grid-col-span-3 mb-3">
-                                    <button class="tab-links__blue slot-{{ $i }}-link"
-                                        onclick="openTab(event, 'slot-{{ $i }}-general', 'tab-content__slot-{{ $i }}', 'slot-{{ $i }}-link','grid')"
-                                        id="openByDefault-{{ $i }}">General</button>
-                                    <button class="tab-links__blue slot-{{ $i }}-link"
-                                        onclick="openTab(event, 'slot-{{ $i }}-light', 'tab-content__slot-{{ $i }}', 'slot-{{ $i }}-link','grid')">Light</button>
-                                    <button class="tab-links__blue slot-{{ $i }}-link"
-                                        onclick="openTab(event, 'slot-{{ $i }}-med', 'tab-content__slot-{{ $i }}', 'slot-{{ $i }}-link','grid')">Med</button>
-                                    <button class="tab-links__blue slot-{{ $i }}-link"
-                                        onclick="openTab(event, 'slot-{{ $i }}-heavy', 'tab-content__slot-{{ $i }}', 'slot-{{ $i }}-link','grid')">Heavy</button>
-                                </div>
-                                <div class="grid-col-span-2"></div>
-                                <div></div>
-
-                                <div class="tab-content__slot-{{ $i }} fadeIn grid-col-span-4 "
-                                    id="slot-{{ $i }}-general">
-                                    <div class="d-flex gap-3 r-overflow-x">
+                                <div class="fadeIn grid-col-span-4 ">
+                                    <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
                                         @foreach ($ship->template->gears as $g)
-                                            @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'General')
+                                            @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Light')
                                                 <div class="text-center d-grid">
-                                                    <div class="pill-dark pl-hd mx-auto" id="{{ $g->gear_rarity }}">
+                                                    <div class="pill-dark pl-hd mx-auto shadow"
+                                                        id="{{ $g->gear_rarity }}">
                                                         <img src="/img/gears/{{ $g->gear_img }}"
                                                             class="rounded-2 img-small m-1" alt="img1">
                                                     </div>
@@ -305,11 +344,6 @@
                                                     <div class="medium-label altona-sans-10">
                                                         {{ $g->gear_name }}
                                                     </div>
-                                                    <script>
-                                                        var cl = "slot-" + {!! json_encode($i) !!} + "-general"
-                                                        divv = document.getElementById(cl).classList;
-                                                        divv.remove('d-none');
-                                                    </script>
 
                                                 </div>
 
@@ -322,75 +356,28 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-content__slot-{{ $i }} fadeIn"
-                                    id="slot-{{ $i }}-light">
-                                    <div class="d-flex gap-3">
-                                        <div class="text-center">
-                                            @foreach ($ship->template->gears as $g)
-                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Light')
-                                                    <div class="text-center d-grid">
-                                                        <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
-                                                            <img src="/img/gears/{{ $g->gear_img }}"
-                                                                class="rounded-2 img-small m-1" alt="img1">
-                                                        </div>
+                            @endfor
+                        </div>
 
-                                                        <div class="medium-label altona-sans-10">
-                                                            {{ $g->gear_name }}
-                                                        </div>
+                        <div class="tab-content" id="med">
+                            @for ($i = 1; $i < 7; $i++)
+                                @if ($i == 6)
+                                    <h3 class="altona-sans-12 mt-1">
+                                        Augment
+                                    </h3>
+                                @else
+                                    <h3 class="altona-sans-12 mt-1">
+                                        Slot {{ $i }}
+                                    </h3>
+                                @endif
 
-                                                        <script>
-                                                            divId = document.getElementsByClassName('d-none')[0].id;
-                                                            displayItem(divId);
-                                                        </script>
-                                                    </div>
-                                                    <script>
-                                                        var cl = "slot-" + {!! json_encode($i) !!} + "-light"
-                                                        divv = document.getElementById(cl).classList;
-                                                        divv.remove('d-none');
-                                                    </script>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-content__slot-{{ $i }} fadeIn"
-                                    id="slot-{{ $i }}-med">
-                                    <div class="d-flex gap-3">
+                                <div class="fadeIn grid-col-span-4 ">
+                                    <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
                                         @foreach ($ship->template->gears as $g)
                                             @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Medium')
                                                 <div class="text-center d-grid">
-                                                    <div class="pill-dark mx-auto pl-hd" id="{{ $g->gear_rarity }}">
-                                                        <img src="/img/gears/{{ $g->gear_img }}"
-                                                            class="rounded-2 img-small m-1" alt="img1">
-                                                    </div>
-                                                    <div class="medium-label mx-auto altona-sans-10">
-                                                        {{ $g->gear_name }}
-                                                    </div>
-
-                                                    <script>
-                                                        var cl = "slot-" + {!! json_encode($i) !!} + "-medium"
-                                                        divv = document.getElementById(cl).classList;
-                                                        divv.remove('d-none');
-                                                    </script>
-                                                </div>
-
-                                                <script>
-                                                    gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                    changeGear(gearR);
-                                                </script>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="tab-content__slot-{{ $i }} fadeIn"
-                                    id="slot-{{ $i }}-heavy">
-                                    <div class="d-flex gap-3">
-                                        @foreach ($ship->template->gears as $g)
-                                            @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Heavy')
-                                                <div class="text-center d-grid">
-                                                    <div class="pill-dark pl-hd" id="{{ $g->gear_rarity }}">
+                                                    <div class="pill-dark pl-hd mx-auto shadow"
+                                                        id="{{ $g->gear_rarity }}">
                                                         <img src="/img/gears/{{ $g->gear_img }}"
                                                             class="rounded-2 img-small m-1" alt="img1">
                                                     </div>
@@ -399,11 +386,6 @@
                                                         {{ $g->gear_name }}
                                                     </div>
 
-                                                    <script>
-                                                        var cl = "slot-" + {!! json_encode($i) !!} + "-heavy"
-                                                        divv = document.getElementById(cl).classList;
-                                                        divv.remove('d-none');
-                                                    </script>
                                                 </div>
 
                                                 <script>
@@ -415,11 +397,52 @@
                                     </div>
                                 </div>
 
-                            </div>
-                        @endfor
+                            @endfor
+                        </div>
+
+                        <div class="tab-content" id="heavy">
+                            @for ($i = 1; $i < 7; $i++)
+                                @if ($i == 6)
+                                    <h3 class="altona-sans-12 mt-1">
+                                        Augment
+                                    </h3>
+                                @else
+                                    <h3 class="altona-sans-12 mt-1">
+                                        Slot {{ $i }}
+                                    </h3>
+                                @endif
+
+                                <div class="fadeIn grid-col-span-4 ">
+                                    <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                        @foreach ($ship->template->gears as $g)
+                                            @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Heavy')
+                                                <div class="text-center d-grid">
+                                                    <div class="pill-dark pl-hd mx-auto shadow"
+                                                        id="{{ $g->gear_rarity }}">
+                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                            class="rounded-2 img-small m-1" alt="img1">
+                                                    </div>
+
+                                                    <div class="medium-label altona-sans-10">
+                                                        {{ $g->gear_name }}
+                                                    </div>
+
+                                                </div>
+
+                                                <script>
+                                                    gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                    changeGear(gearR);
+                                                </script>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+
+                            @endfor
+                        </div>
 
                     </div>
-
+                    <hr>
                     <div class="explanation mt-5">
 
                         <h2 class="altona-sans-18">Explanation</h2>
@@ -436,12 +459,7 @@
         <script>
             idCard = document.getElementsByClassName('character-card')[0].id;
             changeFrame(idCard);
-            document.getElementById('openByDefault-1').click();
-            document.getElementById('openByDefault-2').click();
-            document.getElementById('openByDefault-3').click();
-            document.getElementById('openByDefault-4').click();
-            document.getElementById('openByDefault-5').click();
-            document.getElementById('openByDefault-6').click();
+            document.getElementById('openByDefault').click();
         </script>
 
     </section>

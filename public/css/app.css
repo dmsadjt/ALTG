@@ -1092,7 +1092,7 @@ td {
     background-color: var(--gray1);
     color: var(--white);
     padding: 0.3em;
-    border-radius: 0.35em;
+    border-radius: 0.35em !important;
     z-index: 99;
     border: none;
 }
@@ -1175,7 +1175,6 @@ td {
 }
 
 .gears {
-    display: grid;
     gap: 4em;
 }
 
