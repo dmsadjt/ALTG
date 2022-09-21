@@ -12,7 +12,7 @@
 
             </div>
             <div class="d-grid mx-auto">
-                <a class="text-white text-center" href="#"><b>Read our tiering guidelines here</b></a>
+                <a class="text-white text-center" href="/blogs/view/1"><b>Read our tiering guidelines here</b></a>
             </div>
 
 

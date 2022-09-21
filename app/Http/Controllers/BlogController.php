@@ -58,7 +58,16 @@ class BlogController extends Controller
     {
         $data = $request->validate([
             'title' => 'required',
+            'subtitle_1' => '',
+            'subtitle_2' => '',
+            'subtitle_3' => '',
+            'subtitle_4' => '',
+            'subtitle_5' => '',
             'body' => '',
+            'body_2' => '',
+            'body_3' => '',
+            'body_4' => '',
+            'body_5' => '',
             'table' => 'file',
             'image-1' => 'image',
             'caption-1' => '',
@@ -79,7 +88,16 @@ class BlogController extends Controller
 
         $post = new Post;
         $post['title'] = $data['title'];
+        $post['subtitle_1'] = $data['subtitle_1'];
+        $post['subtitle_2'] = $data['subtitle_2'];
+        $post['subtitle_3'] = $data['subtitle_3'];
+        $post['subtitle_4'] = $data['subtitle_4'];
+        $post['subtitle_5'] = $data['subtitle_5'];
         $post['body'] = $data['body'];
+        $post['body_2'] = $data['body_2'];
+        $post['body_3'] = $data['body_3'];
+        $post['body_4'] = $data['body_4'];
+        $post['body_5'] = $data['body_5'];
         $post['table'] = $data['table'] != null ? $this->postImageRet($request, 'table', '/files/post') : null;
         $post->save();
         for ($i = 1; $i < 6; $i++) {
@@ -124,7 +142,17 @@ class BlogController extends Controller
         $data = $request->validate([
             'id' => 'required',
             'title' => 'required',
+            'subtitle_1' => '',
+            'subtitle_2' => '',
+            'subtitle_3' => '',
+            'subtitle_4' => '',
+            'subtitle_5' => '',
             'body' => '',
+            'body_2' => '',
+            'body_3' => '',
+            'body_4' => '',
+            'body_5' => '',
+            'table' => 'file',
             'image-1' => 'image',
             'caption-1' => '',
             'image-2' => 'image',
@@ -135,11 +163,6 @@ class BlogController extends Controller
             'caption-4' => '',
             'image-5' => 'image',
             'caption-5' => '',
-            'image-id-1' => '',
-            'image-id-2' => '',
-            'image-id-3' => '',
-            'image-id-4' => '',
-            'image-id-5' => '',
             'tag-1' => '',
             'tag-2' => '',
             'tag-3' => '',
@@ -150,7 +173,16 @@ class BlogController extends Controller
         $post = Post::where('id', $data['id'])->first();
         $post->update([
             'title' => $data['title'],
+            'subtitle_1' => $data['subtitle_1'],
+            'subtitle_2' => $data['subtitle_2'],
+            'subtitle_4' => $data['subtitle_3'],
+            'subtitle_4' => $data['subtitle_4'],
+            'subtitle_5' => $data['subtitle_5'],
             'body' => $data['body'],
+            'body_2' => $data['body_2'],
+            'body_3' => $data['body_3'],
+            'body_4' => $data['body_4'],
+            'body_5' => $data['body_5'],
         ]);
 
         for ($i = 1; $i < 6; $i++) {
