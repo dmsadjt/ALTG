@@ -178,9 +178,7 @@
                     <hr>
         </div>
     </div>
-    {{ var_export($sortBy) }}
-    {{ var_export($sortDirection) }}
-    {{ var_export($score) }}
+
     <div wire:loading class="d-grid"><span wire:loading class="mx-auto altona-sans-18">Loading...</span></div>
     <div class="ships w-80" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
@@ -225,58 +223,58 @@
                     <th class=""><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_9_11','complex')">9-11</button>
                         @if ($sortBy == 'boss_9_11')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                     <th class=""><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_12_13','complex')">12-13</button>
                         @if ($sortBy == 'boss_12_13')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                     <th class=""><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_14','complex')">14</button>
                         @if ($sortBy == 'boss_14')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                @elseif ($score = 'W 9-11')
+                @elseif ($score == 'W 9-11')
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_9_11','complex')">Mob 11</button>
+                            wire:click="sort('mob_9_11','complex')">Mob</button>
                         @if ($sortBy == 'mob_9_11')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('boss_9_11','complex')">Boss 11</button>
+                            wire:click="sort('boss_9_11','complex')">Boss</button>
                         @if ($sortBy == 'boss_9_11')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                @elseif ($score = 'W 12-13')
+                @elseif ($score == 'W 12-13')
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_12_13','complex')">Mob 22</button>
+                            wire:click="sort('mob_12_13','complex')">Mob</button>
                         @if ($sortBy == 'mob_12_13')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_12_13','complex')">Boss 22</button>
+                            wire:click="sort('mob_12_13','complex')">Boss</button>
                         @if ($sortBy == 'boss_12_13')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                @elseif ($score = 'W 14')
+                @elseif ($score == 'W 14')
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_14','complex')">Mob 33</button>
+                            wire:click="sort('mob_14','complex')">Mob</button>
                         @if ($sortBy == 'mob_14')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                     <th class=""><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('boss_14','complex')">Boss 33</button>
+                            wire:click="sort('boss_14','complex')">Boss</button>
                         @if ($sortBy == 'boss_14')
-                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                 @endif
