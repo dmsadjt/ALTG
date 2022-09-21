@@ -69,6 +69,7 @@ class BlogController extends Controller
             'body_4' => '',
             'body_5' => '',
             'table' => 'file',
+            'table_caption' => '',
             'image-1' => 'image',
             'caption-1' => '',
             'image-2' => 'image',
@@ -98,6 +99,7 @@ class BlogController extends Controller
         $post['body_3'] = $data['body_3'];
         $post['body_4'] = $data['body_4'];
         $post['body_5'] = $data['body_5'];
+        $post['table_caption'] = $data['table_caption'];
         $post['table'] = $data['table'] != null ? $this->postImageRet($request, 'table', '/files/post') : null;
         $post->save();
         for ($i = 1; $i < 6; $i++) {
@@ -153,6 +155,7 @@ class BlogController extends Controller
             'body_4' => '',
             'body_5' => '',
             'table' => 'file',
+            'table_caption' => '',
             'image-1' => 'image',
             'caption-1' => '',
             'image-2' => 'image',
@@ -183,11 +186,13 @@ class BlogController extends Controller
             'body_3' => $data['body_3'],
             'body_4' => $data['body_4'],
             'body_5' => $data['body_5'],
+            'table_caption' => $data['table_caption'],
         ]);
 
         for ($i = 1; $i < 6; $i++) {
             if (array_key_exists('image-' . $i, $data)) {
-                ${'image-' . $i} = PostImage::where('id', $data['image-id-' . $i]);
+                if()
+                ${'image-' . $i} = PostImage::where('id', $data['image-' . $i]);
                 $img = $this->updateImg($request, 'image-' . $i, '/img/posts/', $post->images, 'image');
                 ${'image-' . $i}->update([
                     'image' => $img,

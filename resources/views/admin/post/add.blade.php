@@ -22,18 +22,13 @@
             </div>
 
             <div>
-                <label class="form-label altona-sans-12" for="body_1">Body 1</label>
-                <textarea class="form-control" name="body_1" id="body_1" cols="30" rows="10"></textarea>
-            </div>
-
-            <div>
                 <label class="form-label altona-sans-12" for="subtitle_1">Subtitle 1</label>
                 <input class="form-control" type="text" name="subtitle_1" id="subtitle_1">
             </div>
 
             <div>
-                <label class="form-label altona-sans-12" for="body_2">Body 2</label>
-                <textarea class="form-control" name="body_2" id="body_2" cols="30" rows="10"></textarea>
+                <label class="form-label altona-sans-12" for="body_1">Body 1</label>
+                <textarea class="form-control" name="body_1" id="body_1" cols="30" rows="10"></textarea>
             </div>
 
             <div>
@@ -42,8 +37,8 @@
             </div>
 
             <div>
-                <label class="form-label altona-sans-12" for="body_3">Body 2</label>
-                <textarea class="form-control" name="body_3" id="body_3" cols="30" rows="10"></textarea>
+                <label class="form-label altona-sans-12" for="body_2">Body 2</label>
+                <textarea class="form-control" name="body_2" id="body_2" cols="30" rows="10"></textarea>
             </div>
 
             <div>
@@ -52,8 +47,8 @@
             </div>
 
             <div>
-                <label class="form-label altona-sans-12" for="body_4">Body 2</label>
-                <textarea class="form-control" name="body_4" id="body_4" cols="30" rows="10"></textarea>
+                <label class="form-label altona-sans-12" for="body_3">Body 3</label>
+                <textarea class="form-control" name="body_3" id="body_3" cols="30" rows="10"></textarea>
             </div>
 
             <div>
@@ -62,7 +57,17 @@
             </div>
 
             <div>
-                <label class="form-label altona-sans-12" for="body_5">Body 2</label>
+                <label class="form-label altona-sans-12" for="body_4">Body 4</label>
+                <textarea class="form-control" name="body_4" id="body_4" cols="30" rows="10"></textarea>
+            </div>
+
+            <div>
+                <label class="form-label altona-sans-12" for="subtitle_5">Subtitle 5</label>
+                <input class="form-control" type="text" name="subtitle_5" id="subtitle_5">
+            </div>
+
+            <div>
+                <label class="form-label altona-sans-12" for="body_5">Body 5</label>
                 <textarea class="form-control" name="body_5" id="body_5" cols="30" rows="10"></textarea>
             </div>
 
@@ -86,6 +91,10 @@
             <div class="d-grid">
                 <label class="form-label altona-sans-12" for="table">Insert table (.xlsx)</label>
                 <input class="form-control" type="file" name="table" id="table">
+            </div>
+            <div>
+                <label class="form-label altona-sans-12" for="table_caption">Table Caption</label>
+                <input class="form-control" type="text" name="table_captions=" id="table_caption">
             </div>
             <hr>
 
