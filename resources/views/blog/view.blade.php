@@ -13,7 +13,7 @@
 
             {{-- picture carousel --}}
             @if ($post->images()->exists())
-                <div id="postImageIndicator" class="carousel slide mx-5" data-bs-ride="true">
+                <div id="postImageIndicator" class="carousel slide mx-5 shadow" data-bs-ride="true">
                     <div class="carousel-indicators">
                         @foreach ($post->images as $key => $p)
                             @if ($key == 0)
@@ -31,7 +31,7 @@
                         @foreach ($post->images as $key => $p)
                             @if ($key == 0)
                                 <div class="carousel-item active">
-                                    <img src="/img/posts/{{ $p->image }}" class="d-block w-100"
+                                    <img src="{{ asset('storage/' . $p->image) }}" class="d-block w-100"
                                         alt="{{ $p->image }}">
                                     <div class="carousel-caption d-none d-md-block">
                                         <p>{{ $p->caption }}</p>
@@ -39,7 +39,7 @@
                                 </div>
                             @else
                                 <div class="carousel-item">
-                                    <img src="/img/posts/{{ $p->image }}" class="d-block w-100"
+                                    <img src="{{ asset('storage/' . $p->image) }}" class="d-block w-100"
                                         alt="{{ $p->image }}">
                                     <div class="carousel-caption d-none d-md-block">
                                         <p>{{ $p->caption }}</p>

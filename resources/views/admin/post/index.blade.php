@@ -52,7 +52,8 @@
                                 <td>
                                     <ul style="list-style: none; padding:0">
                                         @foreach ($s->images as $i)
-                                            <li><a class="altona-sans-10" href="/img/posts/{{ $i->image }}">Image</a>
+                                            <li><a class="altona-sans-10"
+                                                    href="{{ asset('storage/' . $i->image) }}">Image</a>
                                             </li>
                                         @endforeach
                                     </ul>

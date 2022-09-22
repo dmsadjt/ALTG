@@ -84,11 +84,13 @@ class BlogController extends Controller
         $post['table_caption'] = $data['table_caption'] ?? null;
         $post['table'] = isset($data['table']) ? $this->postImageRet($request, 'table', '/files/post') : null;
         $post->save();
+
+
         for ($i = 1; $i < 6; $i++) {
             if (array_key_exists('image-' . $i, $data)) {
                 ${'image-' . $i} = new PostImage;
                 ${'image-' . $i}['post_id'] = $post->id;
-                ${'image-' . $i}['image'] = $this->postImageRet($request, 'image-' . $i, '/img/posts/');
+                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts');
                 ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
                 ${'image-' . $i}->save();
             }
@@ -106,10 +108,12 @@ class BlogController extends Controller
 
     public function edit($id)
     {
+
+
         $tags = Tag::all();
         $post = Post::where('id', $id)->get();
         $post1 = Post::where('id', $id)->first();
-
+        dd($post1->images[0]);
         for ($i = 1; $i < 6; $i++) {
             $selected['tag-' . $i] = '';
         }
