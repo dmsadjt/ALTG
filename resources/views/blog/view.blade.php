@@ -99,49 +99,11 @@
                 <div class="altona-sans-10"><i>Author : Admin</i></div>
                 <div class="altona-sans-12"><i>Last Updated : {{ $post->updated_at }}</i></div>
                 <hr>
-                {{-- body1 and subtitle1 --}}
-                <h2>
-                    {{ $post->subtitle_1 ?? '' }}
-                </h2>
                 <p class=" altona-sans-12 text-justify">
-                    {{ $post->body }}
+                    {!! $post->body !!}
 
                 </p>
-                {{-- subtitle2 and body2 --}}
-                <h2>
-                    {{ $post->subtitle_2 ?? '' }}
-                </h2>
-                <p class=" altona-sans-12 text-justify">
-                    {{ $post->body_2 ?? '' }}
-                </p>
 
-                {{-- subtitle3 and body 3 --}}
-                <h2>
-                    {{ $post->subtitle_3 ?? '' }}
-                </h2>
-                <p class=" altona-sans-12 text-justify">
-                    {{ $post->body_3 ?? '' }}
-                </p>
-
-                {{-- subtitle4 and body4 --}}
-
-                <h2>
-                    {{ $post->subtitle_4 ?? '' }}
-                </h2>
-                <p class=" altona-sans-12 text-justify">
-                    {{ $post->body_4 ?? '' }}
-                </p>
-
-                {{-- subtitle5 and body5 --}}
-
-                <h2>
-                    {{ $post->subtitle_5 ?? '' }}
-                </h2>
-                <p class=" altona-sans-12 text-justify">
-                    {{ $post->body_5 ?? '' }}
-                </p>
-
-                <hr>
             </div>
 
 

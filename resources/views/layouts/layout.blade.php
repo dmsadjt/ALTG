@@ -82,7 +82,7 @@
         </div>
     </nav>
 
-    <main>
+    <main class="altona-sans-12">
         @livewireScripts
 
         @yield('contents')

@@ -23,32 +23,37 @@
                             <th scope="col">Images</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($post as $s)
                             <tr>
                                 <td class="altona-sans-10">
                                     <div>{{ $s->id }}</div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/blogs/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/blogs/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/blogs/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/blogs/delete/{{ $s->id }}"><button
+                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
                                     </div>
-                            </td>
+                                </td>
                                 <td class="altona-sans-10">{{ $s->title }}</td>
-                                <td class="altona-sans-10">{{ $s->body }}</td>
+                                <td class="altona-sans-10"> {{ Str::limit(strip_tags($s->body), 200) }}</td>
 
                                 <td>
                                     <ul style="list-style: none; padding:0">
                                         @foreach ($s->tags as $t)
-                                            <li class="altona-sans-10">{{$t->tag_label}}</li>
+                                            <li class="altona-sans-10">{{ $t->tag_label }}</li>
                                         @endforeach
                                     </ul>
                                 </td>
                                 <td>
                                     <ul style="list-style: none; padding:0">
                                         @foreach ($s->images as $i)
-                                            <li ><a class="altona-sans-10" href="/img/posts/{{$i->image}}">Image</a></li>
+                                            <li><a class="altona-sans-10" href="/img/posts/{{ $i->image }}">Image</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </td>
@@ -56,7 +61,7 @@
                         @endforeach
 
                     </tbody>
-                    {{$post->links()}}
+                    {{ $post->links() }}
                 </table>
             </div>
         </div>

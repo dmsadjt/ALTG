@@ -17,16 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
 
             $table->string('title');
-            $table->string('subtitle_1')->nullable();
-            $table->string('subtitle_2')->nullable();
-            $table->string('subtitle_3')->nullable();
-            $table->string('subtitle_4')->nullable();
-            $table->string('subtitle_5')->nullable();
             $table->longText('body');
-            $table->longText('body_2')->nullable();
-            $table->longText('body_3')->nullable();
-            $table->longText('body_4')->nullable();
-            $table->longText('body_5')->nullable();
             $table->string('table')->nullable();
             $table->string('table_caption')->nullable();
             $table->timestamps();
