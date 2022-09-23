@@ -108,12 +108,9 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-
-
         $tags = Tag::all();
         $post = Post::where('id', $id)->get();
         $post1 = Post::where('id', $id)->first();
-        dd($post1->images[0]);
         for ($i = 1; $i < 6; $i++) {
             $selected['tag-' . $i] = '';
         }
@@ -133,14 +130,19 @@ class BlogController extends Controller
             'body' => '',
             'table' => 'file',
             'table_caption' => '',
+            'image-id-1' => '',
             'image-1' => 'image',
             'caption-1' => '',
+            'image-id-2' => '',
             'image-2' => 'image',
             'caption-2' => '',
+            'image-id-3' => '',
             'image-3' => 'image',
             'caption-3' => '',
+            'image-id-4' => '',
             'image-4' => 'image',
             'caption-4' => '',
+            'image-id-5' => '',
             'image-5' => 'image',
             'caption-5' => '',
             'tag-1' => '',
@@ -150,6 +152,8 @@ class BlogController extends Controller
             'tag-5' => '',
         ]);
 
+        // dd($request);
+
         $post = Post::where('id', $data['id'])->first();
         $post->update([
             'title' => $data['title'],
@@ -158,13 +162,19 @@ class BlogController extends Controller
         ]);
 
         for ($i = 1; $i < 6; $i++) {
-            if (array_key_exists('image-' . $i, $data)) {
-                ${'image-' . $i} = PostImage::where('id', $data['image-' . $i]);
-                $img = $this->updateImg($request, 'image-' . $i, '/img/posts/', $post->images, 'image');
+            if (array_key_exists('image-id-' . $i, $data)) {
+                ${'image-' . $i} = PostImage::where('id', $data['image-id-' . $i]);
+                $img = array_key_exists('image-' . $i, $data) ? $request->file('image-' . $i)->store('posts') : $post->images[$i - 1]->image;
                 ${'image-' . $i}->update([
                     'image' => $img,
                     'caption' => $data['caption-' . $i],
                 ]);
+            } elseif (array_key_exists('image-' . $i, $data)) {
+                ${'image-' . $i} = new PostImage;
+                ${'image-' . $i}['post_id'] = $post->id;
+                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts');
+                ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
+                ${'image-' . $i}->save();
             }
         }
 

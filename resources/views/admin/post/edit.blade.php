@@ -62,17 +62,34 @@
                 <hr>
                 <div class="d-grid">
                     @if ($p->images->count() > 0)
-                        {{ $num_img = $p->images->count() }}
-                        @for ($j = $num_img + 1; $j < 6; $j++)
+                        @foreach ($p->images as $key => $i)
+                            <input type="hidden" name="image-id-{{ $key + 1 }}" value={{ $i->id }}>
+                            <div>
+                                <label class="form-label altona-sans-12" for="image-{{ $key + 1 }}">Image
+                                    {{ $key + 1 }}</label>
+                                <img src="{{ asset('storage/' . $i->image) }}" alt="{{ $i->image }}"
+                                    class="medium-img d-block my-2 border shadow">
+                                <input class="form-control" type="file" name="image-{{ $key + 1 }}"
+                                    id="image-{{ $key + 1 }}">
+                            </div>
+                            <div class="my-2">
+                                <label class="form-label altona-sans-12" for="caption-{{ $key + 1 }}">Caption
+                                    {{ $key + 1 }}</label>
+                                <input class="form-control altona-sans-12" type="text"
+                                    name="caption-{{ $key + 1 }}" id="caption-{{ $key + 1 }}"
+                                    value="{{ $i->caption }}">
+                            </div>
+                        @endforeach
+                        @for ($j = $p->images->count() + 1; $j < 6; $j++)
                             <div>
                                 <label class="form-label altona-sans-12" for="image-{{ $j }}">Image
-                                    {{ $i }}</label>
+                                    {{ $j }}</label>
                                 <input class="form-control" type="file" name="image-{{ $j }}"
-                                    id="image-{{ $i }}">
+                                    id="image-{{ $j }}">
                             </div>
                             <div class="my-2">
                                 <label class="form-label altona-sans-12" for="caption-{{ $j }}">Caption
-                                    {{ $i }}</label>
+                                    {{ $j }}</label>
                                 <input class="form-control altona-sans-12" type="text"
                                     name="caption-{{ $j }}" id="caption-{{ $j }}">
                             </div>
@@ -93,21 +110,7 @@
                             </div>
                         @endfor
                     @endif
-                    @foreach ($p->images as $key => $i)
-                        <input type="hidden" name="image-id-{{ $key + 1 }}" value={{ $i->id }}>
-                        <div>
-                            <label class="form-label altona-sans-12" for="image-{{ $key + 1 }}">Image
-                                {{ $key + 1 }}</label>
-                            <input class="form-control" type="file" name="image-{{ $key + 1 }}"
-                                id="image-{{ $key + 1 }}">
-                        </div>
-                        <div class="my-2">
-                            <label class="form-label altona-sans-12" for="caption-{{ $key + 1 }}">Caption
-                                {{ $key + 1 }}</label>
-                            <input class="form-control altona-sans-12" type="text" name="caption-{{ $key + 1 }}"
-                                id="caption-{{ $key + 1 }}" value="{{ $i->caption }}">
-                        </div>
-                    @endforeach
+
                 </div>
             @endforeach
 

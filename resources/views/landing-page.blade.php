@@ -40,20 +40,29 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="/img/posts/{{ isset($posts[0]->images[0]) ? $posts[0]->images[0]->image : 'no-pictures.png' }}"
-                                class="d-block" alt="post-img">
+                            @if (isset($posts[0]->images[0]))
+                                <img src="{{ asset('storage/' . $posts[0]->images[0]->image) }}" class="d-block"
+                                    alt="post-img">
+                            @else
+                                <img src="{{ asset('storage/posts/no-pictures.png') }}" class="d-block" alt="post-img">
+                            @endif
+
                             <div class="carousel-caption  d-none d-md-block">
                                 <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
-                                <p class="short-text altona-sans-10">{{ $posts[0]->body }}</p>
+                                <p class="short-text altona-sans-10">{{ strip_tags($posts[0]->body) }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                <img src="/img/posts/{{ isset($posts[$i]->images[0]) ? $posts[$i]->images[0]->image : 'no-pictures.png' }}"
-                                    class="d-block" alt="post-img">
+                                @if (isset($posts[$i]->images[0]))
+                                    <img src="{{ asset('storage/' . $posts[$i]->images[0]->image) }}" class="d-block"
+                                        alt="post-img">
+                                @else
+                                    <img src="{{ asset('storage/posts/no-pictures.png') }}" class="d-block" alt="post-img">
+                                @endif
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
-                                    <p class="short-text altona-sans-10 ">{{ $posts[$i]->body }}</p>
+                                    <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
                                 </div>
                             </div>
                         @endfor
