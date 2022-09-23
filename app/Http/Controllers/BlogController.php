@@ -25,8 +25,7 @@ class BlogController extends Controller
         $post = Post::where('id', $id)->first();
         $table = array();
         if ($post->table != null) {
-            $file_dir = 'files/post/' . $post->table;
-
+            $file_dir = 'storage/'. $post->table;
             $spreadsheet = IOFactory::load($file_dir);
             $column = $spreadsheet->getActiveSheet()->getColumnDimensions();
             $rowSize = $spreadsheet->getActiveSheet()->getHighestRow();
@@ -82,7 +81,7 @@ class BlogController extends Controller
         $post['title'] = $data['title'];
         $post['body'] = $data['body'];
         $post['table_caption'] = $data['table_caption'] ?? null;
-        $post['table'] = isset($data['table']) ? $this->postImageRet($request, 'table', '/files/post') : null;
+        $post['table'] = isset($data['table']) ? $request->file('table')->store('posts/table') : null;
         $post->save();
 
 
@@ -155,6 +154,9 @@ class BlogController extends Controller
         // dd($request);
 
         $post = Post::where('id', $data['id'])->first();
+        if(isset($data['table'])){
+            $post['table'] = $request->file('table')->store('posts/table');
+        }
         $post->update([
             'title' => $data['title'],
             'body' => $data['body'],
