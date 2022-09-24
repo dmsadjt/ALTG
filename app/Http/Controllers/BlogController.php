@@ -25,7 +25,7 @@ class BlogController extends Controller
         $post = Post::where('id', $id)->first();
         $table = array();
         if ($post->table != null) {
-            $file_dir = 'storage/'. $post->table;
+            $file_dir = 'storage/' . $post->table;
             $spreadsheet = IOFactory::load($file_dir);
             $column = $spreadsheet->getActiveSheet()->getColumnDimensions();
             $rowSize = $spreadsheet->getActiveSheet()->getHighestRow();
@@ -151,17 +151,24 @@ class BlogController extends Controller
             'tag-5' => '',
         ]);
 
-        // dd($request);
+        // dd($data['table_caption']);
 
         $post = Post::where('id', $data['id'])->first();
-        if(isset($data['table'])){
-            $post['table'] = $request->file('table')->store('posts/table');
-        }
+        // dd($post->table_caption);
+
+
         $post->update([
             'title' => $data['title'],
             'body' => $data['body'],
             'table_caption' => $data['table_caption'],
         ]);
+
+
+        if (isset($data['table'])) {
+            $post['table'] = $request->file('table')->store('posts/table');
+            $post->save();
+        }
+
 
         for ($i = 1; $i < 6; $i++) {
             if (array_key_exists('image-id-' . $i, $data)) {

@@ -18,9 +18,11 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Body</th>
+                            <th scope="col" style="width:40%">Body</th>
                             <th scope="col">Tags</th>
                             <th scope="col">Images</th>
+                            <th scope="col">Table</th>
+                            <th scope="col">Table Caption</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +59,14 @@
                                             </li>
                                         @endforeach
                                     </ul>
+                                </td>
+                                <td>
+                                    @if ($s->table != null)
+                                        <a href="{{ asset('storage/' . $s->table) }}" class="altona-sans-10">Table</a>
+                                    @endif
+                                </td>
+                                <td class="altona-sans-10">
+                                    {{ $s->table_caption }}
                                 </td>
                             </tr>
                         @endforeach
