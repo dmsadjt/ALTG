@@ -63,7 +63,7 @@
 
 
             @if ($post->table != null)
-                <div class="w-80">
+                <div class="w-80 mt-2">
                     <div class="r-overflow-x mx-5">
                         <table class="bg-gray1">
                             @foreach ($table as $key => $c)

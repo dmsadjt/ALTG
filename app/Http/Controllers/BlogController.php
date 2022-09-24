@@ -89,7 +89,7 @@ class BlogController extends Controller
             if (array_key_exists('image-' . $i, $data)) {
                 ${'image-' . $i} = new PostImage;
                 ${'image-' . $i}['post_id'] = $post->id;
-                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts');
+                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts/img');
                 ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
                 ${'image-' . $i}->save();
             }
@@ -173,7 +173,7 @@ class BlogController extends Controller
         for ($i = 1; $i < 6; $i++) {
             if (array_key_exists('image-id-' . $i, $data)) {
                 ${'image-' . $i} = PostImage::where('id', $data['image-id-' . $i]);
-                $img = array_key_exists('image-' . $i, $data) ? $request->file('image-' . $i)->store('posts') : $post->images[$i - 1]->image;
+                $img = array_key_exists('image-' . $i, $data) ? $request->file('image-' . $i)->store('posts/img') : $post->images[$i - 1]->image;
                 ${'image-' . $i}->update([
                     'image' => $img,
                     'caption' => $data['caption-' . $i],
@@ -181,7 +181,7 @@ class BlogController extends Controller
             } elseif (array_key_exists('image-' . $i, $data)) {
                 ${'image-' . $i} = new PostImage;
                 ${'image-' . $i}['post_id'] = $post->id;
-                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts');
+                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts/img');
                 ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
                 ${'image-' . $i}->save();
             }

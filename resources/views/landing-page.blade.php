@@ -44,7 +44,7 @@
                                 <img src="{{ asset('storage/' . $posts[0]->images[0]->image) }}" class="d-block"
                                     alt="post-img">
                             @else
-                                <img src="{{ asset('storage/posts/no-pictures.png') }}" class="d-block" alt="post-img">
+                                <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block" alt="post-img">
                             @endif
 
                             <div class="carousel-caption  d-none d-md-block">
@@ -58,7 +58,8 @@
                                     <img src="{{ asset('storage/' . $posts[$i]->images[0]->image) }}" class="d-block"
                                         alt="post-img">
                                 @else
-                                    <img src="{{ asset('storage/posts/no-pictures.png') }}" class="d-block" alt="post-img">
+                                    <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block"
+                                        alt="post-img">
                                 @endif
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
@@ -110,7 +111,7 @@
                 <div class="character-card columns-four" id="{{ $ships[$i]->rarity->rarity_slug }}">
 
                     <div class="image-wrapper grid-col-span-2">
-                        <img class="image-out" src="/img/ships/sprites/{{ $ships[$i]->sprite }}" alt="">
+                        <img class="image-out" src="{{ asset('storage/' . $ships[$i]->sprite) }}" alt="">
                     </div>
 
                     <div class="mt-4">

@@ -14,7 +14,7 @@
                 {{-- character card --}}
                 <div class="columns-five character-card" id="{{ $ship->rarity->rarity_slug }}">
                     <div class="image-wrapper grid-col-span-2">
-                        <img src="/img/ships/sprites/{{ $ship->sprite }}" class="image-out" alt="">
+                        <img src="{{ asset('storage/' . $ship->sprite) }}" class="image-out" alt="">
                     </div>
                     <div class="text-white my-5 grid-col-span-2 score-table">
                         <table class="score-table">
@@ -85,7 +85,7 @@
                     {{-- faction img and chibis --}}
                     <div class="faction-content">
                         <div class="faction" id="{{ $ship->faction->faction_slug }}">
-                            <img src="/img/ships/chibi/{{ $ship->chibi_sprite }}" alt="chibi">
+                            <img src="{{ asset('storage/' . $ship->chibi_sprite) }}" alt="chibi">
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
                                 <div class="d-grid one" id="{{ $skill[2]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[2]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[2]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                                 <div class="d-grid ">
@@ -113,7 +113,7 @@
                                     <span></span>
                                 </div>
                                 <div class="d-grid two" id="{{ $skill[1]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[1]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                                 <div class="d-grid">
@@ -121,7 +121,7 @@
                                     <span></span>
                                 </div>
                                 <div class="d-grid three" id="{{ $skill[0]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
                                 <div class="d-grid one" id="{{ $skill[1]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[1]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[1]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                                 <div class="d-grid">
@@ -147,7 +147,7 @@
                                     <span></span>
                                 </div>
                                 <div class="d-grid two" id="{{ $skill[0]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                             </div>
@@ -163,7 +163,7 @@
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
                                 <div class="d-grid one" id="{{ $skill[0]->skill_priority }}">
-                                    <img src="/img/skills/{{ $skill[0]->skill_img }}" alt=""
+                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                             </div>

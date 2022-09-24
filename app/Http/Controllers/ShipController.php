@@ -249,8 +249,18 @@ class ShipController extends Controller
             $ship->notes = $shipdata['notes'];
         }
 
-        $this->postImage($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
-        $this->postImage($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
+        if (isset($shipdata['sprite'])) {
+            $ship['sprite'] = $request->file('sprite')->store('ships/img/sprite');
+        } else {
+            $ship['sprite'] = 'ships/img/sprite/no-sprite.png';
+        }
+
+        if (isset($shipdata['chibi_sprite'])) {
+            $ship['chibi_sprite'] = $request->file('chibi_sprite')->store('ships/img/chibi');
+        } else {
+            $ship['chibi_sprite'] = 'ships/img/chibi/no-sprite.png';
+        }
+
         $ship->save();
 
         for ($i = 1; $i < 6; $i++) {
@@ -283,7 +293,11 @@ class ShipController extends Controller
         $skill->ship_id = $ship->id;
         $skill->skill_name = $shipdata['skillname-1'];
         $skill->skill_priority = $shipdata['skillpriority-1'];
-        $this->postImage($request, 'skillimg-1', '/img/skills/', $skill, 'skill_img');
+        if ((isset($shipdata['skillimg-1']))) {
+            $skill->skill_img = $request->file('skillimg-1')->store('skill/img');
+        } else {
+            $skill->skill_img = 'skill/img/no-skill-pictures.png';
+        }
         $skill->save();
 
         if ($shipdata['skillname-2'] != null) {
@@ -291,7 +305,11 @@ class ShipController extends Controller
             $skill2->ship_id = $ship->id;
             $skill2->skill_name = $shipdata['skillname-2'];
             $skill2->skill_priority = $shipdata['skillpriority-2'];
-            $this->postImage($request, 'skillimg-2', '/img/skills/', $skill2, 'skill_img');
+            if ((isset($shipdata['skillimg-2']))) {
+                $skill2->skill_img = $request->file('skillimg-2')->store('skill/img');
+            } else {
+                $skill2->skill_img = 'skill/img/no-skill-pictures.png';
+            }
             $skill2->save();
         }
 
@@ -300,7 +318,11 @@ class ShipController extends Controller
             $skill3->ship_id = $ship->id;
             $skill3->skill_name = $shipdata['skillname-3'];
             $skill3->skill_priority = $shipdata['skillpriority-3'];
-            $this->postImage($request, 'skillimg-3', '/img/skills/', $skill3, 'skill_img');
+            if ((isset($shipdata['skillimg-3']))) {
+                $skill3->skill_img = $request->file('skillimg-3')->store('skill/img');
+            } else {
+                $skill3->skill_img = 'skill/img/no-skill-pictures.png';
+            }
             $skill3->save();
         }
 
@@ -347,9 +369,6 @@ class ShipController extends Controller
             $selected['build'] = $s->template ? $s->template->build : '';
             $selected['template'] = $s->template_id;
         }
-
-
-
 
         return view('admin.ship.edit', compact([
             'ship',
@@ -413,8 +432,12 @@ class ShipController extends Controller
         $data = $request->validate($general);
         // dd($data);
         $ship = Ship::where('id', $data['id'])->first();
-        $sprite = $this->updateImg($request, 'sprite', '/img/ships/sprites/', $ship, 'sprite');
-        $chibi = $this->updateImg($request, 'chibi_sprite', '/img/ships/chibi/', $ship, 'chibi_sprite');
+        if (isset($data['sprite'])) {
+            $ship['sprite'] = $request->file('sprite')->store('ships/img/sprite');
+        }
+        if (isset($data['chibi_sprite'])) {
+            $ship['chibi_sprite'] = $request->file('chibi_sprite')->store('ships/img/chibi');
+        }
         $ship->update([
             'name' => $data['name'],
             'hull_id' => $data['hull'],
@@ -422,8 +445,6 @@ class ShipController extends Controller
             'faction_id' => $data['faction'],
             'notes' => $data['notes'],
             'position_id' => $data['position'],
-            'sprite' => $sprite,
-            'chibi_sprite' => $chibi,
         ]);
 
         $ship->mobScore->update([
@@ -442,20 +463,24 @@ class ShipController extends Controller
 
         for ($i = 0; $i < 3; $i++) {
             if (isset($data['skillname-' . ($i + 1)])) {
-                $img = isset($data['skillimg-' . ($i + 1)]) ? $this->updateImg($request, 'skillimg-' . ($i + 1), '/img/skills/', $ship->skill[$i + 1], 'skill_img') : 'no-skill-pictures.png';
                 if (isset($ship->skill[$i])) {
-
                     $ship->skill[$i]->update([
                         'skill_name' => $data['skillname-' . ($i + 1)],
                         'skill_priority' => $data['skillpriority-' . ($i + 1)],
-                        'skill_img' => $img,
                     ]);
+                    if ((isset($data['skillimg-' . $i]))) {
+                        ${'skill' . $i}['skill_img'] = $request->file('skillimg-' . $i)->store('skill/img');
+                    }
                 } else {
                     ${'skill' . $i} = new Skill();
                     ${'skill' . $i}['ship_id'] = $data['id'];
                     ${'skill' . $i}['skill_name'] = $data['skillname-' . ($i + 1)];
                     ${'skill' . $i}['skill_priority'] = $data['skillpriority-' . ($i + 1)];
-                    $this->postImage($request, 'skillimg-3', '/img/skills/', ${'skill' . $i}, 'skill_img');
+                    if ((isset($data['skillimg-' . $i]))) {
+                        ${'skill' . $i}['skill_img'] = $request->file('skillimg-3')->store('skill/img');
+                    } else {
+                        ${'skill' . $i}['skill_img'] = 'skill/img/no-skill-pictures.png';
+                    }
                     ${'skill' . $i}->save();
                 }
             } elseif (!isset($data['skillname-' . ($i + 1)])) {

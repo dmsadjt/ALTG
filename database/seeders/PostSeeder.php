@@ -30,7 +30,7 @@ class PostSeeder extends Seeder
 
         DB::table('post_images')->insert([
             'post_id' => 1,
-            'image' => '/posts/altg-logo.png',
+            'image' => '/posts/img/altg-logo.png',
             'caption' => 'Azur Lane Tierlist'
         ]);
 
