@@ -52,8 +52,8 @@
                         <label class="form-label" for="hull">Boss Hull</label>
                         <select class="form-select" name="hull" id="hull">
                             @foreach ($hulls as $h)
-                                <option value="{{ $h->id }}"
-                                    {{ $selected['hull'] == $h->id ? 'selected' : '' }}> {{ $h->hull_name }}
+                                <option value="{{ $h->id }}" {{ $selected['hull'] == $h->id ? 'selected' : '' }}>
+                                    {{ $h->hull_name }}
                                 </option>
                             @endforeach
                         </select>
@@ -123,7 +123,9 @@
                         value={{ $s->weakness }}>
                 </div>
 
-                <div>
+                <div class="my-1">
+                    <img src="{{ asset('storage/' . $s->img) }}" class="medium-img d-block shadow" alt="">
+                    <i class="d-block altona-sans-10">Current image</i>
                     <label class="form-label" for="img">Boss Image</label>
                     <input class="form-control" type="file" name="img" id="img">
                 </div>

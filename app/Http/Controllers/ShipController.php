@@ -335,6 +335,9 @@ class ShipController extends Controller
 
     public function editShip($id)
     {
+        if (!Ship::find($id)) {
+            return view('dump');
+        }
         $cek = array();
         $hulls = Hull::all();
         $rarities = Rarity::all();
@@ -468,8 +471,10 @@ class ShipController extends Controller
                         'skill_name' => $data['skillname-' . ($i + 1)],
                         'skill_priority' => $data['skillpriority-' . ($i + 1)],
                     ]);
-                    if ((isset($data['skillimg-' . $i]))) {
-                        ${'skill' . $i}['skill_img'] = $request->file('skillimg-' . $i)->store('skill/img');
+                    if ((isset($data['skillimg-' . ($i  + 1)]))) {
+                        $ship->skill[$i]->update([
+                            'skill_img' => $request->file('skillimg-' . ($i + 1))->store('skill/img'),
+                        ]);
                     }
                 } else {
                     ${'skill' . $i} = new Skill();
@@ -477,7 +482,7 @@ class ShipController extends Controller
                     ${'skill' . $i}['skill_name'] = $data['skillname-' . ($i + 1)];
                     ${'skill' . $i}['skill_priority'] = $data['skillpriority-' . ($i + 1)];
                     if ((isset($data['skillimg-' . $i]))) {
-                        ${'skill' . $i}['skill_img'] = $request->file('skillimg-3')->store('skill/img');
+                        ${'skill' . $i}['skill_img'] = $request->file('skillimg-' . $i)->store('skill/img');
                     } else {
                         ${'skill' . $i}['skill_img'] = 'skill/img/no-skill-pictures.png';
                     }
