@@ -33,7 +33,7 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
+                                        <img src="{{asset('storage/'. $s->img)}}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">

@@ -58,7 +58,7 @@
                                 <td class="altona-sans-10">{{ $s->lck}}</td>
                                 <td class="altona-sans-10">{{ $s->spd}}</td>
                                 <td class="altona-sans-10">{{ $s->weakness}}</td>
-                                <td><a class="altona-sans-10" href="/img/siren/{{$s->img}}">Image</a></td>
+                                <td><a class="altona-sans-10" href="{{asset('storage/'. $s->img)}}">Image</a></td>
                             </tr>
                         @endforeach
 
