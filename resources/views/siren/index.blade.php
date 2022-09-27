@@ -88,7 +88,7 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
+                                        <img src="{{asset('storage/' . $s->img)}}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
@@ -164,7 +164,7 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
+                                        <img src="{{asset('storage/' . $s->img)}}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
@@ -219,7 +219,7 @@
                                         <h3>{{ $s->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $s->img }}" class="siren-img" alt="siren-img">
+                                        <img src="{{asset('storage/' . $s->img)}}" class="siren-img" alt="siren-img">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
@@ -302,7 +302,7 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_none_normal[0]->img }}" class="siren-img" alt="siren-img">
+                                    <img src="{{ asset('storage/' . $arbiter_none_normal[0]->img) }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content overflow-x" id="arbiter-1-normal">
@@ -402,7 +402,7 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_none_normal[1]->img }}" class="siren-img" alt="siren-img">
+                                    <img src="{{ asset('storage/' . $arbiter_none_normal[1]->img) }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--2 overflow-x" id="arbiter-2-normal">
@@ -502,7 +502,7 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_full_normal[0]->img }}" class="siren-img" alt="siren-img">
+                                    <img src="{{ asset('storage/'. $arbiter_full_normal[0]->img)}}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--3 overflow-x" id="arbiter-3-normal">
@@ -601,7 +601,7 @@
                                 </div>
 
                                 <div>
-                                    <img src="/img/siren/{{ $arbiter_full_normal[1]->img }}" class="siren-img" alt="siren-img">
+                                    <img src="{{ asset('storage/' . $arbiter_full_normal[1]->img) }}" class="siren-img" alt="siren-img">
                                 </div>
 
                                 <div class="grid-col-span-2 my-auto tab-inside__content--4 overflow-x" id="arbiter-4-normal">
@@ -702,7 +702,7 @@
                                         <h3>{{ $g->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $g->img }}" class="siren-img" alt="">
+                                        <img src="{{ asset('storage/' . $g->img) }}" class="siren-img" alt="">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
@@ -760,7 +760,7 @@
                                         <h3>{{ $g->name }}</h3>
                                     </div>
                                     <div>
-                                        <img src="/img/siren/{{ $g->img }}" class="siren-img" alt="">
+                                        <img src="{{ asset('storage/'. $g->img) }}" class="siren-img" alt="">
                                     </div>
                                     <div class="grid-col-span-2 my-auto overflow-x">
                                         <table class="grey-table">
