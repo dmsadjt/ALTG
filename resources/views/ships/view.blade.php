@@ -216,7 +216,7 @@
                                                     <h5 class="mx-auto text-center altona-sans-12">
                                                         {{ $ship->positions->position_name }}
                                                     </h5>
-                                                    <img src="/img/positions/{{ $ship->positions->position_image }}"
+                                                    <img src="{{ asset('storage/' . $ship->positions->position_image) }}"
                                                         alt="">
                                                 </div>
                                             </div>
@@ -234,7 +234,7 @@
                                                             id="{{ $c->position_slug }}">
                                                             {{ $c->position_name }}
                                                         </h5>
-                                                        <img src="/img/positions/{{ $c->position_image }}"
+                                                        <img src="{{ asset('storage/' . $c->position_image) }}"
                                                             alt="">
                                                         <script>
                                                             textId = document.getElementsByClassName('cl-hd')[0].id;

@@ -286,7 +286,7 @@
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
-                                src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
+                                src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""> <a
                                 href="/ships/{{ $s->id }}" class=" ms-1 link-none font-inherit">
                                 {{ $s->name }}
                             </a></td>
@@ -306,7 +306,7 @@
                             </div>
                             <div class="mx-auto">
                                 <img class="position-row-img"
-                                    src="/img/positions/{{ $s->positions->position_image }}" alt="position">
+                                    src=" {{ asset('storage/' . $s->positions->position_image) }}" alt="position">
                             </div>
                         </td>
 

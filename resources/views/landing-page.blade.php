@@ -157,7 +157,7 @@
                                     </td>
                                     <td>
 
-                                        <img src="/img/positions/{{ $ships[$i]->positions->position_image }}"
+                                        <img src="{{ asset('storage/' . $ships[$i]->positions->position_image) }}"
                                             alt="position">
 
 

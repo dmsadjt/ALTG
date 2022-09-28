@@ -19,7 +19,7 @@ class CreateSkillsTable extends Migration
 
             $table->unsignedBigInteger('ship_id');
             $table->string('skill_name');
-            $table->string('skill_img')->default('no-skill-pictures.png');
+            $table->string('skill_img')->default('skill/img/no-skill-pictures.png');
             $table->integer('skill_priority');
         });
     }

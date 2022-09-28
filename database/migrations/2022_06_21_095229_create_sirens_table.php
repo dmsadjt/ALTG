@@ -21,7 +21,7 @@ class CreateSirensTable extends Migration
             $table->string('boss_type');
             $table->string('adaptability')->nullable();
             $table->string('difficulty')->nullable();
-            $table->string('img')->default('no-pictures.png');
+            $table->string('img')->default('siren/img/no-pictures.png');
             $table->bigInteger('hull_id');
             $table->integer('level');
             $table->string('armor');
@@ -35,7 +35,6 @@ class CreateSirensTable extends Migration
             $table->integer('lck');
             $table->integer('spd');
             $table->string('weakness')->default('-');
-
         });
     }
 
