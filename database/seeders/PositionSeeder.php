@@ -18,7 +18,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Any',
             'position_category'=>'backline',
             'position_type'=>'single',
-            'position_image'=>'backline-any.png',
+            'position_image'=>'position/backline-any.png',
             'position_slug'=>'backline-any',
         ]);
 
@@ -26,7 +26,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Flagship',
             'position_category'=>'backline',
             'position_type'=>'single',
-            'position_image'=>'backline-flagship.png',
+            'position_image'=>'position/backline-flagship.png',
             'position_slug'=>'backline-flagship',
         ]);
 
@@ -34,7 +34,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Off Flag',
             'position_category'=>'backline',
             'position_type'=>'single',
-            'position_image'=>'backline-off_flag.png',
+            'position_image'=>'position/backline-off_flag.png',
             'position_slug'=>'backline-off_flag',
         ]);
 
@@ -42,7 +42,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'All',
             'position_category'=>'submarine',
             'position_type'=>'composite',
-            'position_image'=>'submarine-all.png',
+            'position_image'=>'position/submarine-all.png',
             'position_slug'=>'submarine-all',
         ]);
 
@@ -50,7 +50,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Flagship',
             'position_category'=>'submarine',
             'position_type'=>'single',
-            'position_image'=>'submarine-flagship.png',
+            'position_image'=>'position/submarine-flagship.png',
             'position_slug'=>'submarine-flagship',
         ]);
 
@@ -58,7 +58,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Off Flag',
             'position_category'=>'submarine',
             'position_type'=>'single',
-            'position_image'=>'submarine-off_flag.png',
+            'position_image'=>'position/submarine-off_flag.png',
             'position_slug'=>'submarine-off_flag',
         ]);
 
@@ -66,7 +66,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Any',
             'position_category'=>'vanguard',
             'position_type'=>'single',
-            'position_image'=>'vanguard-any.png',
+            'position_image'=>'position/vanguard-any.png',
             'position_slug'=>'vanguard-any',
         ]);
 
@@ -74,7 +74,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Mid, Off tank',
             'position_category'=>'vanguard',
             'position_type'=>'composite',
-            'position_image'=>'vanguard-mid-offtank.png',
+            'position_image'=>'position/vanguard-mid-offtank.png',
             'position_slug'=>'vanguard-mid-offtank',
         ]);
 
@@ -82,7 +82,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Mid',
             'position_category'=>'vanguard',
             'position_type'=>'single',
-            'position_image'=>'vanguard-mid.png',
+            'position_image'=>'position/vanguard-mid.png',
             'position_slug'=>'vanguard-mid',
         ]);
 
@@ -90,7 +90,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Off tank',
             'position_category'=>'vanguard',
             'position_type'=>'single',
-            'position_image'=>'vanguard-offtank.png',
+            'position_image'=>'position/vanguard-offtank.png',
             'position_slug'=>'vanguard-offtank',
         ]);
 
@@ -98,7 +98,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Tank, Mid',
             'position_category'=>'vanguard',
             'position_type'=>'composite',
-            'position_image'=>'vanguard-tank-mid.png',
+            'position_image'=>'position/vanguard-tank-mid.png',
             'position_slug'=>'vanguard-tank-mid',
         ]);
 
@@ -106,7 +106,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Tank, Off tank',
             'position_category'=>'vanguard',
             'position_type'=>'composite',
-            'position_image'=>'vanguard-tank-off_tank.png',
+            'position_image'=>'position/vanguard-tank-off_tank.png',
             'position_slug'=>'vanguard-tank-off_tank',
         ]);
 
@@ -114,7 +114,7 @@ class PositionSeeder extends Seeder
             'position_name'=>'Tank',
             'position_category'=>'vanguard',
             'position_type'=>'single',
-            'position_image'=>'vanguard-tank.png',
+            'position_image'=>'position/vanguard-tank.png',
             'position_slug'=>'vanguard-tank',
         ]);
 
@@ -124,13 +124,13 @@ class PositionSeeder extends Seeder
             'position_name'=>'Flagship',
             'position_category'=>'submarine',
             'position_slug'=>'submarine-flagship',
-            'position_image'=>'submarine-flagship.png',
+            'position_image'=>'position/submarine-flagship.png',
         ]);
 
         DB::table('position_children')->insert([
             'position_name'=>'Off Flag',
             'position_category'=>'submarine',
-            'position_slug'=>'submarine-off_flag',
+            'position_slug'=>'position/submarine-off_flag',
             'position_image'=>'submarine-off_flag.png',
         ]);
 
@@ -138,21 +138,21 @@ class PositionSeeder extends Seeder
             'position_name'=>'Mid',
             'position_category'=>'vanguard',
             'position_slug'=>'vanguard-mid',
-            'position_image'=>'vanguard-mid.png',
+            'position_image'=>'positon/vanguard-mid.png',
         ]);
 
         DB::table('position_children')->insert([
             'position_name'=>'Off Tank',
             'position_category'=>'vanguard',
             'position_slug'=>'vanguard-offtank',
-            'position_image'=>'vanguard-offtank.png',
+            'position_image'=>'position/vanguard-offtank.png',
         ]);
 
         DB::table('position_children')->insert([
             'position_name'=>'Tank',
             'position_category'=>'vanguard',
             'position_slug'=>'vanguard-tank',
-            'position_image'=>'vanguard-tank.png',
+            'position_image'=>'position/vanguard-tank.png',
         ]);
 
         DB::table('position_position')->insert([
