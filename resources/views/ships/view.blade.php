@@ -295,7 +295,7 @@
                                                     <div class="text-center d-grid">
                                                         <div class="pill-dark pl-hd mx-auto shadow"
                                                             id="{{ $g->gear_rarity }}">
-                                                            <img src="/img/gears/{{ $g->gear_img }}"
+                                                            <img src="{{ asset('storage/' . $g->gear_img) }}"
                                                                 class="rounded-2 img-small m-1" alt="img1">
                                                         </div>
 
@@ -337,7 +337,7 @@
                                                 <div class="text-center d-grid">
                                                     <div class="pill-dark pl-hd mx-auto shadow"
                                                         id="{{ $g->gear_rarity }}">
-                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                        <img src="{{ asset('storage/' . $g->gear_img) }}"
                                                             class="rounded-2 img-small m-1" alt="img1">
                                                     </div>
 
@@ -378,7 +378,7 @@
                                                 <div class="text-center d-grid">
                                                     <div class="pill-dark pl-hd mx-auto shadow"
                                                         id="{{ $g->gear_rarity }}">
-                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                        <img src="{{ asset('storage/' . $g->gear_img) }}"
                                                             class="rounded-2 img-small m-1" alt="img1">
                                                     </div>
 
@@ -419,7 +419,7 @@
                                                 <div class="text-center d-grid">
                                                     <div class="pill-dark pl-hd mx-auto shadow"
                                                         id="{{ $g->gear_rarity }}">
-                                                        <img src="/img/gears/{{ $g->gear_img }}"
+                                                        <img src="{{ asset('storage/' . $g->gear_img) }}"
                                                             class="rounded-2 img-small m-1" alt="img1">
                                                     </div>
 

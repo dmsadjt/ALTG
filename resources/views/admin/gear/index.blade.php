@@ -23,27 +23,31 @@
                             <th scope="col">Image</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($gears as $s)
                             <tr>
                                 <td class="altona-sans-10 w-25">
                                     <span>{{ $s->id }}</span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/admin/gears/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/gears/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/admin/gears/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/gears/delete/{{ $s->id }}"><button
+                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
                                     </span>
-                            </td>
+                                </td>
                                 <td class="altona-sans-10">{{ $s->gear_name }}</td>
                                 <td class="altona-sans-10">{{ $s->category->gear_category_name }}</td>
                                 <td class="altona-sans-10">{{ strtoupper($s->gear_rarity) }}</td>
-                                <td><a class="altona-sans-10" href="/img/gears/{{$s->gear_img}}">Image</a></td>
+                                <td><a class="altona-sans-10" href="{{ asset('storage/' . $s->gear_img) }}">Image</a></td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{$gears->links()}}
+                    {{ $gears->links() }}
                 </table>
             </div>
         </div>

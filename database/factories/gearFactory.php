@@ -14,17 +14,17 @@ class gearFactory extends Factory
      * @return array
      */
 
-     protected $model = Gear::class;
+    protected $model = Gear::class;
     public function definition()
     {
 
         $faker = Faker::create();
 
         return [
-            'gear_name'=>$faker->word(),
-            'gear_img'=>'no-pictures.png',
-            'gear_rarity'=>$faker->randomElement(['n','r','e','sr','ur']),
-            'gear_type'=>random_int(1,13),
+            'gear_name' => $faker->word(),
+            'gear_img' => 'gear/img/no-pictures.png',
+            'gear_rarity' => $faker->randomElement(['n', 'r', 'e', 'sr', 'ur']),
+            'gear_type' => random_int(1, 13),
         ];
     }
 }

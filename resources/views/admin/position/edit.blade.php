@@ -44,13 +44,13 @@
                         {{ $f->explanation }}
                     </textarea>
                 </div>
-                <div>
+                {{-- <div>
                     <img src="{{ asset('storage/' . $f->position_image) }}" class="medium-img d-block shadow" alt="">
                     <i class="d-block altona-sans-10">Current image</i>
                     <label class="form-label altona-sans-12" for="img">Position img</label>
                     <input class="form-control" type="file" name="img" id="img">
 
-                </div>
+                </div> --}}
             @endforeach
 
             <div class="d-grid">

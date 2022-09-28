@@ -27,7 +27,8 @@
                     <select class="form-select" name="type" id="type">
                         <option value="">Select Gear Type</option>
                         @foreach ($category as $c)
-                            <option value="{{ $c->id }}" {{$selected['type'] == $c->id ? 'selected' : ''}} >{{ $c->gear_category_name }}</option>
+                            <option value="{{ $c->id }}" {{ $selected['type'] == $c->id ? 'selected' : '' }}>
+                                {{ $c->gear_category_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -36,11 +37,15 @@
                     <select class="form-select" name="rarity" id="rarity">
                         <option value="">Select Rarity</option>
                         @foreach ($rarity as $r)
-                            <option value="{{ strtolower($r->rarity_tag) }}" {{$selected['rarity'] == strtolower($r->rarity_tag) ? 'selected' : ''}}>{{ $r->rarity_name }}</option>
+                            <option value="{{ strtolower($r->rarity_tag) }}"
+                                {{ $selected['rarity'] == strtolower($r->rarity_tag) ? 'selected' : '' }}>
+                                {{ $r->rarity_name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div>
+                <div class="my-3">
+                    <img src="{{ asset('storage/' . $f->gear_img) }}" class="medium-img d-block shadow" alt="">
+                    <i class="d-block altona-sans-10">Current image</i>
                     <label class="form-label altona-sans-12" for="img">Gear image</label>
                     <input class="form-control" type="file" name="img" id="img">
                 </div>
