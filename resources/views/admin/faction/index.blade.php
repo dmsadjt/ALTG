@@ -45,8 +45,8 @@
                                 <td class="altona-sans-10">{{ $s->faction_name }}</td>
                                 <td class="altona-sans-10">{{ $s->faction_tag }}</td>
                                 <td class="altona-sans-10">{{ $s->faction_slug }}</td>
-                                <td><a class="altona-sans-10"
-                                        href="/img/faction-logo/{{ $s->faction_img }}">Image</a></td>
+                                <td><a class="altona-sans-10" href="{{ asset('storage/' . $s->faction_img) }}">Image</a>
+                                </td>
                             </tr>
                         @endforeach
 

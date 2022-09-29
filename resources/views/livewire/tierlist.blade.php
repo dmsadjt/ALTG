@@ -104,7 +104,7 @@
                                                 id="{{ $r->faction_tag }}" value="{{ $r->faction_slug }}">
                                             <label class="filter-label altona-sans-10 m-1 rounded px-2"
                                                 for="{{ $r->faction_tag }}"><img
-                                                    src="/img/faction-logo/{{ $r->faction_img }}" class="small-img"
+                                                    src="{{ asset('storage/' . $r->faction_img) }}" class="small-img"
                                                     alt="">
                                             </label>
                                         </li>

@@ -33,7 +33,9 @@
                     <input class="form-control" type="text" name="slug" id="slug" value="{{ $f->faction_slug }}"
                         disabled>
                 </div>
-                <div>
+                <div class="my-3">
+                    <img src="{{ asset('storage/' . $f->faction_img) }}" class="medium-img d-block shadow" alt="">
+                    <i class="d-block altona-sans-10">Current image</i>
                     <label class="form-label altona-sans-12" for="img">Faction image</label>
                     <input class="form-control" type="file" name="img" id="img">
                 </div>
