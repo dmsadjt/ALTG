@@ -53,8 +53,6 @@ class SirenController extends Controller
             $selected['armor'] = $s->armor;
         }
 
-
-
         return view('admin.siren.edit', compact('siren', 'hulls', 'selected'));
     }
 

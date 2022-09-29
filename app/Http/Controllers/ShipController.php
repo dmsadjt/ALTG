@@ -35,32 +35,14 @@ class ShipController extends Controller
 
     public function index()
     {
-        $ships = Ship::sortable()->paginate(10);
-        $hulls = Hull::get();
-        $rarity = Rarity::get();
-        $factions = Faction::get();
-        $positions = Position::get();
-
-        $selected['position'] = '';
-        $selected['rarity'] = array();
-        $selected['faction'] = array();
-        $selected['role'] = '';
-
-        $role = Roles::all();
-        $roles = array();
-        foreach ($role as $r) {
-            array_push($roles, $r->role_name);
-        }
-
-        return view('ships.index', compact('ships', 'hulls', 'rarity', 'factions', 'positions', 'roles', 'selected'));
+        return view('ships.index');
     }
 
     public function get($id)
     {
-        if (Ship::find($id))
-
-
-            $ship = Ship::where('id', '=', $id)->first();
+        if (Ship::find($id)) {
+            $ship = Ship::where('id', '=', $id)->with(['mobScore', 'bossScore', 'archetypes', 'roles', 'positions', 'skill', 'template'])->first();
+        } else return view('dump');
         $temp = $ship->skill->sortBy('skill_priority');
         $skill = array();
         foreach ($temp as $t) {

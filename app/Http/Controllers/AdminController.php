@@ -53,7 +53,7 @@ class AdminController extends Controller
 
     public function ships()
     {
-        $ships = Ship::paginate(10);
+        $ships = Ship::with(['hull', 'faction', 'positions', 'archetypes', 'template', 'skill', 'mobScore', 'bossScore', 'rarity', 'roles'])->paginate(10);
         $ship = Ship::first();
 
 
@@ -63,14 +63,14 @@ class AdminController extends Controller
 
     public function sirens()
     {
-        $siren = Siren::paginate(10);
+        $siren = Siren::with('hull')->paginate(10);
 
         return view('admin.siren.index', compact('siren'));
     }
 
     public function posts()
     {
-        $post = Post::paginate(10);
+        $post = Post::with(['tags', 'images'])->paginate(10);
 
         return view('admin.post.index', compact('post'));
     }
@@ -91,14 +91,14 @@ class AdminController extends Controller
 
     public function roles()
     {
-        $roles = Roles::paginate(10);
+        $roles = Roles::with('factions')->paginate(10);
 
         return view('admin.role.index', compact('roles'));
     }
 
     public function positions()
     {
-        $positions = Position::paginate(10);
+        $positions = Position::with('children')->paginate(10);
 
         return view('admin.position.index', compact('positions'));
     }
@@ -112,7 +112,7 @@ class AdminController extends Controller
 
     public function hulls()
     {
-        $hulls = Hull::paginate(10);
+        $hulls = Hull::with('subs')->paginate(10);
 
         return view('admin.hull.index', compact('hulls'));
     }

@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
-    public function index(){
-        $ships = Ship::orderBy('id', 'desc')->get();
-        $posts = Post::orderBy('id','desc')->get();
+    public function index()
+    {
+        $ships = Ship::orderBy('id', 'desc')->with(['archetypes', 'roles', 'positions', 'mobScore', 'bossScore'])->get();
+        $posts = Post::orderBy('id', 'desc')->with('images')->get();
 
         return view('landing-page', compact('ships', 'posts'));
     }

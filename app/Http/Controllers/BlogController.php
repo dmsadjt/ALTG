@@ -12,7 +12,7 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(5);
+        $posts = Post::orderBy('id', 'desc')->with('tags')->paginate(5);
 
         return view('blog.index', compact('posts'));
     }
@@ -22,7 +22,7 @@ class BlogController extends Controller
         if (Post::where('id', $id)->first() == null) {
             return view('dump');
         }
-        $post = Post::where('id', $id)->first();
+        $post = Post::where('id', $id)->with(['tags', 'images'])->first();
         $table = array();
         if ($post->table != null) {
             $file_dir = 'storage/' . $post->table;

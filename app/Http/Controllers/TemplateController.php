@@ -11,7 +11,7 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $templates = Template::paginate(10);
+        $templates = Template::with('gears')->paginate(10);
 
         return view('admin.template.index', compact('templates'));
     }
