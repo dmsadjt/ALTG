@@ -17,10 +17,10 @@
         <form action="/admin/ships/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
             @foreach ($ship as $s)
                 <h2>General data</h2>
-                <input type="hidden" name="id" value={{ $s->id }}>
+                <input type="hidden" name="id" value="{{ $s->id }}">
                 <div>
                     <label class="form-label altona-sans-12 my-1" for="name">Ship Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value={{ $s->name }}
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $s->name }}"
                         required>
                 </div>
                 <div>

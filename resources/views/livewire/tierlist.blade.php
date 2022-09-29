@@ -9,7 +9,8 @@
                     <h3 class=" swiss-font-12">Hull Type</h3>
                 </label>
                 <div class="wrapper bg-gray1 p-1 rounded">
-                    <img src="img/hulls/{{ $shipImage->hull_img }}" alt="{{ $byHull }}">
+                    <img src="{{ asset('storage/' . $shipImage->hull_img) }}" alt="{{ $byHull }}"
+                        style="width: 192px;height:256px;">
                     <select wire:model="byHull" name="hull" id="hull"
                         class="hull-type d-grid text-center altona-sans-12 mt-1 bg-gray1 text-white border-white rounded">
                         @foreach ($hulls as $key => $h)
@@ -17,7 +18,7 @@
                                 @continue;
                             @endif
                             <option class="mx-auto mt-auto mb-2 altona-sans-12"
-                                hull-img="/img/hulls/{{ $h->hull_img }}" value="{{ $h->id }}">
+                                hull-img="{{ asset('storage/' . $h->hull_img) }}" value="{{ $h->id }}">
                                 {{ $h->hull_name }}
                             </option>
                         @endforeach

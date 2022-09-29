@@ -54,7 +54,6 @@ class Tierlist extends Component
         $role = Roles::all(); //role buat autofill
         $roles = array(); //array buat store role
         $roles_exploded = explode(',', $this->byRole);
-        // dd($roles_exploded);
         $raritys = $this->rarities;
         $factionsy = $this->byFactions;
         $shipImage = Hull::where('id', $this->byHull ?? 2)->first();

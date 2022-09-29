@@ -24,7 +24,7 @@ class HullController extends Controller
         $hull = new Hull;
         $hull['hull_name'] = $data['name'];
         $hull['hull_slug'] = $data['slug'];
-        $hull['hull_img'] = $this->postImageRet($request, 'img', '/img/hulls');
+        $hull['hull_img'] = $request->file('img')->store('hulls/img');
         $hull->save();
 
         return redirect('admin/hulls');
@@ -54,7 +54,7 @@ class HullController extends Controller
         ]);
 
         if (array_key_exists('img', $data)) {
-            $img = $this->updateImg($request, 'img', '/img/hulls', $hull, 'hull_img');
+            $img = $request->file('img')->store('hulls/img');
             $hull->update([
                 'hull_img' => $img,
             ]);

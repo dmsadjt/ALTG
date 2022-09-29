@@ -30,7 +30,7 @@ class GearController extends Controller
         $gear['gear_name'] = $data['name'];
         $gear['gear_type'] = $data['type'];
         $gear['gear_rarity'] = $data['rarity'];
-        $gear['gear_img'] = $img = $request->file('img')->store('gear/img');
+        $gear['gear_img'] = $request->file('img')->store('gear/img');
         $gear->save();
 
         return redirect('admin/gears');

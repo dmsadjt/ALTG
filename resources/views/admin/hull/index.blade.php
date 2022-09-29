@@ -46,11 +46,11 @@
                                 <td class="altona-sans-10">
                                     <ul class="nav-style-none ps-0">
                                         @foreach ($s->subs as $c)
-                                            <li>{{$c->sub_name}} ({{$c->sub_tag}})</li>
+                                            <li>{{ $c->sub_name }} ({{ $c->sub_tag }})</li>
                                         @endforeach
                                     </ul>
                                 </td>
-                                <td><a class="altona-sans-10" href="/img/hulls/{{ $s->hull_img }}">Image</a>
+                                <td><a class="altona-sans-10" href="{{ asset('storage/' . $s->hull_img) }}">Image</a>
                                 </td>
                             </tr>
                         @endforeach

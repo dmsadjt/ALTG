@@ -29,7 +29,9 @@
                     </label>
                     <input class="form-control" type="text" name="slug" id="slug" value={{ $item->hull_slug }}>
                 </div>
-                <div>
+                <div class="my-2">
+                    <img src="{{ asset('storage/' . $item->hull_img) }}" class="medium-img d-block shadow" alt="">
+                    <i class="d-block altona-sans-10">Current image</i>
                     <label class="form-label" for="img">Hull image</label>
                     <input class="form-control" type="file" name="img" id="img">
                 </div>
