@@ -290,6 +290,9 @@
 
                                     <div class="fadeIn grid-col-span-4">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                            @if ($ship->template()->exists())
+
+
                                             @foreach ($ship->template->gears as $g)
                                                 @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'General')
                                                     <div class="text-center d-grid">
@@ -310,6 +313,7 @@
                                                     </script>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -333,6 +337,8 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                            @if ($ship->template()->exists())
+
                                             @foreach ($ship->template->gears as $g)
                                                 @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Light')
                                                     <div class="text-center d-grid">
@@ -354,6 +360,7 @@
                                                     </script>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -375,6 +382,8 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                            @if ($ship->template()->exists())
+
                                             @foreach ($ship->template->gears as $g)
                                                 @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Medium')
                                                     <div class="text-center d-grid">
@@ -396,6 +405,7 @@
                                                     </script>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -417,6 +427,8 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
+                                            @if ($ship->template()->exists())
+
                                             @foreach ($ship->template->gears as $g)
                                                 @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Heavy')
                                                     <div class="text-center d-grid">
@@ -438,6 +450,7 @@
                                                     </script>
                                                 @endif
                                             @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

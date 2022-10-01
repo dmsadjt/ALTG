@@ -80,7 +80,7 @@ class GearController extends Controller
     public function deleteGear($id)
     {
         $gear = Gear::where('id', $id)->first();
-        $gear->ships()->detach();
+        $gear->templates()->detach();
         $gear->delete();
 
         return redirect('admin/gears');

@@ -18,6 +18,7 @@ use App\Models\Hull;
 use App\Models\MobScore;
 use App\Models\Rarity;
 use App\Models\Skill;
+use App\Models\Template;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -35,6 +36,7 @@ class AdminController extends Controller
         $totalPositions = Position::count();
         $totalGears = Gear::count();
         $totalHulls = Hull::count();
+        $totalTemplates = Template::count();
 
         return view('admin.dashboard', compact(
             'user',
@@ -48,6 +50,7 @@ class AdminController extends Controller
             'totalRoles',
             'totalGears',
             'totalHulls',
+            'totalTemplates',
         ));
     }
 
