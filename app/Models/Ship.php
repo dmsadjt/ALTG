@@ -63,7 +63,19 @@ class Ship extends Model
         return $this->hasMany(Skill::class,'ship_id');
     }
 
-    public function template(){
+    public function general(){
+        return $this->belongsTo(Template::class);
+    }
+
+    public function light(){
+        return $this->belongsTo(Template::class);
+    }
+
+    public function medium(){
+        return $this->belongsTo(Template::class);
+    }
+
+    public function heavy(){
         return $this->belongsTo(Template::class);
     }
 

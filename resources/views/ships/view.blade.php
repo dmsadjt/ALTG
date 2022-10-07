@@ -104,8 +104,8 @@
                         <div class="d-grid my-auto">
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
-                                <div class="d-grid one shadow" id="{{ $skill[2]->skill_priority }}">
-                                    <img src="{{ asset('storage/' . $skill[2]->skill_img) }}" alt=""
+                                <div class="d-grid one shadow" id="{{ $skill[0]->skill_priority }}">
+                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                                 <div class="d-grid ">
@@ -120,8 +120,8 @@
                                     <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
                                     <span></span>
                                 </div>
-                                <div class="d-grid three shadow" id="{{ $skill[0]->skill_priority }}">
-                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
+                                <div class="d-grid three shadow" id="{{ $skill[2]->skill_priority }}">
+                                    <img src="{{ asset('storage/' . $skill[2]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                             </div>
@@ -138,16 +138,16 @@
                         <div class="d-grid my-auto">
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
-                                <div class="d-grid one shadow" id="{{ $skill[1]->skill_priority }}">
-                                    <img src="{{ asset('storage/' . $skill[1]->skill_img) }}" alt=""
+                                <div class="d-grid one shadow" id="{{ $skill[0]->skill_priority }}">
+                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                                 <div class="d-grid">
                                     <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
                                     <span></span>
                                 </div>
-                                <div class="d-grid two shadow" id="{{ $skill[0]->skill_priority }}">
-                                    <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
+                                <div class="d-grid two shadow" id="{{ $skill[1]->skill_priority }}">
+                                    <img src="{{ asset('storage/' . $skill[1]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
                             </div>

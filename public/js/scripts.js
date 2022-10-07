@@ -243,9 +243,9 @@ function changeFaction(faction) {
 function evaluateSkills(a, b, eval) {
     evaluator = document.getElementById(eval);
 
-    if (a >= b) {
-        if (a > b) {
-            evaluator.innerHTML = '<';
+    if (a <= b) {
+        if (a < b) {
+            evaluator.innerHTML = '>';
         }
         else if (a == b) {
             evaluator.innerHTML = '=';

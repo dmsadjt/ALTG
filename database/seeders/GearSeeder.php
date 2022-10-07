@@ -87,5 +87,20 @@ class GearSeeder extends Seeder
             'build'=>'General',
         ]);
 
+        DB::table('templates')->insert([
+            'name'=>'Test Template 2',
+            'build'=>'Light',
+        ]);
+
+        DB::table('templates')->insert([
+            'name'=>'Test Template 3',
+            'build'=>'Medium',
+        ]);
+
+        DB::table('templates')->insert([
+            'name'=>'Test Template 4',
+            'build'=>'Heavy',
+        ]);
+
     }
 }

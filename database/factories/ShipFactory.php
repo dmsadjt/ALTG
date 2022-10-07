@@ -27,7 +27,10 @@ class ShipFactory extends Factory
             'faction_id' => random_int(1, 9),
             'rarity_id' => random_int(1, 5),
             'position_id' => $faker->randomDigitNot(0),
-            'template_id' => '1',
+            'general_id' => '1',
+            'light_id' => '2',
+            'medium_id' => '3',
+            'heavy_id' => '4',
             'sprite' => 'ships/img/sprite/no-sprite.png',
             'chibi_sprite' => 'ships/img/chibi/no-sprite.png',
         ];

@@ -24,7 +24,11 @@ class ShipsSeeder extends Seeder
             'rarity_id' => '4',
             'position_id' => '4',
             'sprite' => 'ships/img/sprite/alabama.png',
-            'template_id' => '1',
+            'general_id' => '1',
+            'light_id' => '2',
+            'medium_id' => '3',
+            'heavy_id'=>'4',
+
         ]);
 
         DB::table('ships')->insert([
@@ -35,7 +39,11 @@ class ShipsSeeder extends Seeder
             'position_id' => '3',
             'rarity_id' => '4',
             'sprite' => 'ships/img/sprite/akagi.png',
-            'template_id' => '1',
+            'general_id' => '1',
+            'light_id' => '2',
+            'medium_id' => '3',
+            'heavy_id'=>'4',
+
 
         ]);
 
@@ -48,7 +56,11 @@ class ShipsSeeder extends Seeder
             'position_id' => '2',
             'sprite' => 'ships/img/sprite/abukuma.png',
             'chibi_sprite' => 'ships/img/chibi/abukuma.png',
-            'template_id' => '1',
+            'general_id' => '1',
+            'light_id' => '2',
+            'medium_id' => '3',
+            'heavy_id'=>'4',
+
         ]);
     }
 }

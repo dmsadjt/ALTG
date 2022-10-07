@@ -50,10 +50,11 @@ class TemplateController extends Controller
             for ($j = 1; $j < 9; $j++) {
                 if ($data[($i) . '-gear-' . ($j)] != null) {
                     $info = $data[$i . '-gear-' . $j];
-                    $template->gears()->attach($info, ['gear_category' => $template->build, 'gear_slot' => $i]);
+                    $gears_array[$info] = ['gear_category' => $template->build, 'gear_slot' => $i];
                 }
             }
         }
+        $template->gears()->sync($gears_array);
 
         $template->save();
 
@@ -85,9 +86,6 @@ class TemplateController extends Controller
 
     public function update(Request $request)
     {
-
-
-
         $temp = [
             'id' => 'required',
             'name' => 'required',
