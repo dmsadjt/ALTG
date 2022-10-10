@@ -445,21 +445,14 @@
                 <h2 class="mt-3">Gears</h2>
                 <div class=" border shadow-lg p-3 my-4 rounded">
                     <h2 class="mt-3">Gears</h2>
-                    <label class="form-label altona-sans-12 my-1" for="build">Select Build</label>
-                    <select class="form-select" name="build" id="build">
-                        <option value="General" {{ $selected['build'] == 'General' ? 'selected' : '' }}>General</option>
-                        <option value="Light" {{ $selected['build'] == 'Light' ? 'selected' : '' }}>Light</option>
-                        <option value="Medium" {{ $selected['build'] == 'Medium' ? 'selected' : '' }}>Medium</option>
-                        <option value="Heavy" {{ $selected['build'] == 'Heavy' ? 'selected' : '' }}>Heavy</option>
-                    </select>
                     <div id="general">
-                        <label class="form-label altona-sans-12 my-1" for="template-general">Template (General)</label>
+                        <label class="form-label altona-sans-12 my-2" for="template-general">Template (General)</label>
                         <select class="form-select" name="template-general" id="template-general">
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'General')
                                     <option value="{{ $t->id }}"
-                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                        {{ $selected['general'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
                                     </option>
                                 @endif
                             @endforeach
@@ -467,101 +460,45 @@
                         <script></script>
                     </div>
                     <div id="light">
-                        <label class="form-label altona-sans-12 my-1" for="template-light">Template (Light)</label>
+                        <label class="form-label altona-sans-12 my-2" for="template-light">Template (Light)</label>
                         <select class="form-select" name="template-light" id="template-light">
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Light')
                                     <option value="{{ $t->id }}"
-                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                        {{ $selected['light'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
                                     </option>
                                 @endif
                             @endforeach
                         </select>
                     </div>
                     <div id="medium">
-                        <label class="form-label altona-sans-12 my-1" for="template-medium">Template (Medium)</label>
+                        <label class="form-label altona-sans-12 my-2" for="template-medium">Template (Medium)</label>
                         <select class="form-select" name="template-medium" id="template-medium">
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Medium')
                                     <option value="{{ $t->id }}"
-                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                        {{ $selected['medium'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
                                     </option>
                                 @endif
                             @endforeach
                         </select>
                     </div>
                     <div id="heavy">
-                        <label class="form-label altona-sans-12 my-1" for="template-heavy">Template (Heavy)</label>
+                        <label class="form-label altona-sans-12 my-2" for="template-heavy">Template (Heavy)</label>
                         <select class="form-select" name="template-heavy" id="template-heavy">
                             <option value="">Select Template</option>
                             @foreach ($templates as $t)
                                 @if ($t->build == 'Heavy')
                                     <option value="{{ $t->id }}"
-                                        {{ $selected['template'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
+                                        {{ $selected['heavy'] == $t->id ? 'selected' : '' }}>{{ $t->name }}
                                     </option>
                                 @endif
                             @endforeach
                         </select>
                     </div>
                 </div>
-
-                <script>
-                    const build = document.getElementById('build');
-
-                    const general = document.getElementById('general');
-                    const light = document.getElementById('light');
-                    const medium = document.getElementById('medium');
-                    const heavy = document.getElementById('heavy');
-
-                    const selectGeneral = document.getElementById('template-general');
-                    const selectLight = document.getElementById('template-light');
-                    const selectMedium = document.getElementById('template-medium');
-                    const selectHeavy = document.getElementById('template-heavy');
-                    let buildType = [general, light, medium, heavy]
-                    let select = [selectGeneral, selectLight, selectMedium, selectHeavy];
-                    select.forEach((element, index) => {
-                        if (element.value != '') {
-                            select.splice(index, 1);
-                            buildType.splice(index, 1);
-                        }
-                    })
-
-                    emptyValue(select);
-                    displayNone(buildType);
-
-                    build.addEventListener('change', function handleChange(event) {
-                        emptyValue([selectGeneral, selectLight, selectMedium, selectHeavy]);
-
-                        if (event.target.value === 'General') {
-
-                            displayNone([light, medium, heavy]);
-                            general.style.display = 'block';
-
-                        }
-
-                        if (event.target.value === 'Light') {
-                            displayNone([general, medium, heavy]);
-
-                            light.style.display = 'block';
-
-                        }
-
-                        if (event.target.value === 'Medium') {
-                            displayNone([light, general, heavy]);
-
-                            medium.style.display = 'block';
-
-                        }
-
-                        if (event.target.value === 'Heavy') {
-                            displayNone([light, medium, general]);
-                            heavy.style.display = 'block';
-                        }
-
-                    })
-                </script>
 
                 <div class="d-grid">
                     <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit ship">

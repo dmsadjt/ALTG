@@ -104,26 +104,32 @@
                         <div class="d-grid my-auto">
                             <h2 class="text-white mt-2">Skill leveling prio</h2>
                             <div class="d-flex gap-3 text-white">
+
                                 <div class="d-grid one shadow" id="{{ $skill[0]->skill_priority }}">
                                     <img src="{{ asset('storage/' . $skill[0]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
+
                                 <div class="d-grid ">
                                     <span class="my-auto swiss-font-18 evaluator-1" id="evaluator-1"></span>
                                     <span></span>
                                 </div>
+
                                 <div class="d-grid two shadow" id="{{ $skill[1]->skill_priority }}">
                                     <img src="{{ asset('storage/' . $skill[1]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
+
                                 <div class="d-grid">
                                     <span class="my-auto swiss-font-18 evaluator-2" id="evaluator-2"></span>
                                     <span></span>
                                 </div>
+
                                 <div class="d-grid three shadow" id="{{ $skill[2]->skill_priority }}">
                                     <img src="{{ asset('storage/' . $skill[2]->skill_img) }}" alt=""
                                         class="skill-img mx-auto">
                                 </div>
+
                             </div>
                         </div>
 
@@ -169,8 +175,6 @@
                             </div>
                         </div>
                     @endif
-
-
 
 
                     {{-- details --}}
@@ -290,29 +294,27 @@
 
                                     <div class="fadeIn grid-col-span-4">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
-                                            @if ($ship->template()->exists())
+                                            @if ($ship->general()->exists())
+                                                @foreach ($ship->general->gears as $g)
+                                                    @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'General')
+                                                        <div class="text-center d-grid">
+                                                            <div class="pill-dark pl-hd mx-auto shadow"
+                                                                id="{{ $g->gear_rarity }}">
+                                                                <img src="{{ asset('storage/' . $g->gear_img) }}"
+                                                                    class="rounded-2 img-small m-1" alt="img1">
+                                                            </div>
 
-
-                                            @foreach ($ship->template->gears as $g)
-                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'General')
-                                                    <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto shadow"
-                                                            id="{{ $g->gear_rarity }}">
-                                                            <img src="{{ asset('storage/' . $g->gear_img) }}"
-                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                            <div class="medium-label altona-sans-10">
+                                                                {{ $g->gear_name }}
+                                                            </div>
                                                         </div>
 
-                                                        <div class="medium-label altona-sans-10">
-                                                            {{ $g->gear_name }}
-                                                        </div>
-                                                    </div>
-
-                                                    <script>
-                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                        changeGear(gearR);
-                                                    </script>
-                                                @endif
-                                            @endforeach
+                                                        <script>
+                                                            gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                            changeGear(gearR);
+                                                        </script>
+                                                    @endif
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
@@ -337,29 +339,28 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
-                                            @if ($ship->template()->exists())
+                                            @if ($ship->light()->exists())
+                                                @foreach ($ship->light->gears as $g)
+                                                    @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Light')
+                                                        <div class="text-center d-grid">
+                                                            <div class="pill-dark pl-hd mx-auto shadow"
+                                                                id="{{ $g->gear_rarity }}">
+                                                                <img src="{{ asset('storage/' . $g->gear_img) }}"
+                                                                    class="rounded-2 img-small m-1" alt="img1">
+                                                            </div>
 
-                                            @foreach ($ship->template->gears as $g)
-                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Light')
-                                                    <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto shadow"
-                                                            id="{{ $g->gear_rarity }}">
-                                                            <img src="{{ asset('storage/' . $g->gear_img) }}"
-                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                            <div class="medium-label altona-sans-10">
+                                                                {{ $g->gear_name }}
+                                                            </div>
+
                                                         </div>
 
-                                                        <div class="medium-label altona-sans-10">
-                                                            {{ $g->gear_name }}
-                                                        </div>
-
-                                                    </div>
-
-                                                    <script>
-                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                        changeGear(gearR);
-                                                    </script>
-                                                @endif
-                                            @endforeach
+                                                        <script>
+                                                            gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                            changeGear(gearR);
+                                                        </script>
+                                                    @endif
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
@@ -382,29 +383,28 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
-                                            @if ($ship->template()->exists())
+                                            @if ($ship->medium()->exists())
+                                                @foreach ($ship->medium->gears as $g)
+                                                    @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Medium')
+                                                        <div class="text-center d-grid">
+                                                            <div class="pill-dark pl-hd mx-auto shadow"
+                                                                id="{{ $g->gear_rarity }}">
+                                                                <img src="{{ asset('storage/' . $g->gear_img) }}"
+                                                                    class="rounded-2 img-small m-1" alt="img1">
+                                                            </div>
 
-                                            @foreach ($ship->template->gears as $g)
-                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Medium')
-                                                    <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto shadow"
-                                                            id="{{ $g->gear_rarity }}">
-                                                            <img src="{{ asset('storage/' . $g->gear_img) }}"
-                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                            <div class="medium-label altona-sans-10">
+                                                                {{ $g->gear_name }}
+                                                            </div>
+
                                                         </div>
 
-                                                        <div class="medium-label altona-sans-10">
-                                                            {{ $g->gear_name }}
-                                                        </div>
-
-                                                    </div>
-
-                                                    <script>
-                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                        changeGear(gearR);
-                                                    </script>
-                                                @endif
-                                            @endforeach
+                                                        <script>
+                                                            gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                            changeGear(gearR);
+                                                        </script>
+                                                    @endif
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>
@@ -427,29 +427,28 @@
 
                                     <div class="fadeIn grid-col-span-4 ">
                                         <div class="d-flex gap-3 r-overflow-x flex-wrap" style="min-height: 10em;">
-                                            @if ($ship->template()->exists())
+                                            @if ($ship->heavy()->exists())
+                                                @foreach ($ship->heavy->gears as $g)
+                                                    @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Heavy')
+                                                        <div class="text-center d-grid">
+                                                            <div class="pill-dark pl-hd mx-auto shadow"
+                                                                id="{{ $g->gear_rarity }}">
+                                                                <img src="{{ asset('storage/' . $g->gear_img) }}"
+                                                                    class="rounded-2 img-small m-1" alt="img1">
+                                                            </div>
 
-                                            @foreach ($ship->template->gears as $g)
-                                                @if ($g->pivot->gear_slot == $i && $g->pivot->gear_category == 'Heavy')
-                                                    <div class="text-center d-grid">
-                                                        <div class="pill-dark pl-hd mx-auto shadow"
-                                                            id="{{ $g->gear_rarity }}">
-                                                            <img src="{{ asset('storage/' . $g->gear_img) }}"
-                                                                class="rounded-2 img-small m-1" alt="img1">
+                                                            <div class="medium-label altona-sans-10">
+                                                                {{ $g->gear_name }}
+                                                            </div>
+
                                                         </div>
 
-                                                        <div class="medium-label altona-sans-10">
-                                                            {{ $g->gear_name }}
-                                                        </div>
-
-                                                    </div>
-
-                                                    <script>
-                                                        gearR = document.getElementsByClassName('pl-hd')[0].id;
-                                                        changeGear(gearR);
-                                                    </script>
-                                                @endif
-                                            @endforeach
+                                                        <script>
+                                                            gearR = document.getElementsByClassName('pl-hd')[0].id;
+                                                            changeGear(gearR);
+                                                        </script>
+                                                    @endif
+                                                @endforeach
                                             @endif
                                         </div>
                                     </div>

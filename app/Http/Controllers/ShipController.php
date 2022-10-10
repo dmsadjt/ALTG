@@ -20,19 +20,6 @@ use App\Models\Template;
 
 class ShipController extends Controller
 {
-
-    function urut($collection, $index, $orderBy)
-    {
-        if ($orderBy == 'asc') {
-            $res = $collection->getCollection()->sortBy($index)->values();
-        } elseif ($orderBy == 'desc') {
-            $res = $collection->getCollection()->sortByDesc($index)->values();
-        }
-
-        return $res;
-    }
-
-
     public function index()
     {
         return view('ships.index');
@@ -41,7 +28,7 @@ class ShipController extends Controller
     public function get($id)
     {
         if (Ship::find($id)) {
-            $ship = Ship::where('id', '=', $id)->with(['mobScore', 'bossScore', 'archetypes', 'roles', 'positions', 'skill', 'template'])->first();
+            $ship = Ship::where('id', '=', $id)->with(['mobScore', 'bossScore', 'archetypes', 'roles', 'positions', 'skill', 'general', 'light', 'medium', 'heavy'])->first();
         } else return view('dump');
         $temp = $ship->skill->sortBy('skill_priority');
         $skill = array();
@@ -211,19 +198,19 @@ class ShipController extends Controller
         $ship->position_id = $shipdata['position'];
 
         if (isset($shipdata['template-general'])) {
-            $ship->template_id = $shipdata['template-general'];
+            $ship->general_id = $shipdata['template-general'];
         }
 
         if (isset($shipdata['template-light'])) {
-            $ship->template_id = $shipdata['template-light'];
+            $ship->light_id = $shipdata['template-light'];
         }
 
         if (isset($shipdata['template-medium'])) {
-            $ship->template_id = $shipdata['template-medium'];
+            $ship->medium_id = $shipdata['template-medium'];
         }
 
         if (isset($shipdata['template-heavy'])) {
-            $ship->template_id = $shipdata['template-heavy'];
+            $ship->heavy_id = $shipdata['template-heavy'];
         }
 
 
@@ -308,7 +295,6 @@ class ShipController extends Controller
             $skill3->save();
         }
 
-
         $ship->save();
 
         return redirect('admin/ships');
@@ -352,7 +338,10 @@ class ShipController extends Controller
 
             $selected['faction'] = $s->faction_id;
             $selected['build'] = $s->template ? $s->template->build : '';
-            $selected['template'] = $s->template_id;
+            $selected['general'] = $s->general_id;
+            $selected['light'] = $s->light_id;
+            $selected['medium'] = $s->medium_id;
+            $selected['heavy'] = $s->heavy_id;
         }
 
         return view('admin.ship.edit', compact([
@@ -415,8 +404,9 @@ class ShipController extends Controller
         ]);
 
         $data = $request->validate($general);
-        // dd($data);
+
         $ship = Ship::where('id', $data['id'])->first();
+
         if (isset($data['sprite'])) {
             $ship['sprite'] = $request->file('sprite')->store('ships/img/sprite');
         }
@@ -430,6 +420,10 @@ class ShipController extends Controller
             'faction_id' => $data['faction'],
             'notes' => $data['notes'],
             'position_id' => $data['position'],
+            'general_id' => $data['template-general'],
+            'light_id' => $data['template-light'],
+            'medium_id' => $data['template-medium'],
+            'heavy_id' => $data['template-heavy'],
         ]);
 
         $ship->mobScore->update([
@@ -443,8 +437,6 @@ class ShipController extends Controller
             'boss_12_13' => $data['boss2'],
             'boss_14' => $data['boss3'],
         ]);
-
-        // dd($data);
 
         for ($i = 0; $i < 3; $i++) {
             if (isset($data['skillname-' . ($i + 1)])) {
@@ -506,30 +498,6 @@ class ShipController extends Controller
             foreach ($template->gears as $g) {
                 $temp[$g->id] = ['gear_category' => $g->pivot->gear_category];
             }
-        }
-
-        if (isset($data['template-general'])) {
-            $ship->update([
-                'template_id' => $data['template-general'],
-            ]);
-        }
-
-        if (isset($data['template-light'])) {
-            $ship->update([
-                'template_id' => $data['template-light'],
-            ]);
-        }
-
-        if (isset($data['template-medium'])) {
-            $ship->update([
-                'template_id' => $data['template-medium'],
-            ]);
-        }
-
-        if (isset($data['template-heavy'])) {
-            $ship->update([
-                'template_id' => $data['template-heavy'],
-            ]);
         }
 
         return redirect('admin/ships');

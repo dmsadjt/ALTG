@@ -22,64 +22,81 @@ class Ship extends Model
         'sprite',
         'chibi_sprite',
         'position_id',
-        'template_id',
+        'general_id',
+        'light_id',
+        'medium_id',
+        'heavy_id',
     ];
 
     protected $table = 'ships';
 
-    public function positions(){
-        return $this->belongsTo(Position::class,'position_id');
+    public function positions()
+    {
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
-    public function archetypes(){
-        return $this->belongsToMany(Archetype::class, 'ship_archetypes','ship_id','archetype_id');
+    public function archetypes()
+    {
+        return $this->belongsToMany(Archetype::class, 'ship_archetypes', 'ship_id', 'archetype_id');
     }
 
-    public function roles(){
-        return $this->belongsToMany(Roles::class, 'ship_roles','ship_id','role_id');
+    public function roles()
+    {
+        return $this->belongsToMany(Roles::class, 'ship_roles', 'ship_id', 'role_id');
     }
 
-    public function rarity(){
+    public function rarity()
+    {
         return $this->belongsTo(Rarity::class);
     }
 
-    public function faction(){
+    public function faction()
+    {
         return $this->belongsTo(Faction::class);
     }
 
-    public function hull(){
+    public function hull()
+    {
         return $this->belongsTo(Hull::class);
     }
 
-    public function mobScore(){
+    public function mobScore()
+    {
         return $this->hasOne(MobScore::class);
     }
 
-    public function bossScore(){
+    public function bossScore()
+    {
         return $this->hasOne(BossScore::class);
     }
 
-    public function skill(){
-        return $this->hasMany(Skill::class,'ship_id');
+    public function skill()
+    {
+        return $this->hasMany(Skill::class, 'ship_id');
     }
 
-    public function general(){
+    public function general()
+    {
         return $this->belongsTo(Template::class);
     }
 
-    public function light(){
+    public function light()
+    {
         return $this->belongsTo(Template::class);
     }
 
-    public function medium(){
+    public function medium()
+    {
         return $this->belongsTo(Template::class);
     }
 
-    public function heavy(){
+    public function heavy()
+    {
         return $this->belongsTo(Template::class);
     }
 
-    public function ScopeFilter($query, $filters){
+    public function ScopeFilter($query, $filters)
+    {
         return $filters->apply($query);
     }
 }

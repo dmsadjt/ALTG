@@ -56,7 +56,7 @@ class AdminController extends Controller
 
     public function ships()
     {
-        $ships = Ship::with(['hull', 'faction', 'positions', 'archetypes', 'template', 'skill', 'mobScore', 'bossScore', 'rarity', 'roles'])->paginate(10);
+        $ships = Ship::with(['hull', 'faction', 'positions', 'archetypes', 'skill', 'mobScore', 'bossScore', 'rarity', 'roles', 'general', 'light', 'medium', 'heavy'])->paginate(10);
         $ship = Ship::first();
 
 

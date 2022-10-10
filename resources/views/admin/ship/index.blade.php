@@ -24,7 +24,10 @@
                             <th scope="col">Positions</th>
                             <th scope="col">Roles</th>
                             <th scope="col">Archetypes</th>
-                            <th scope="col">Gears</th>
+                            <th scope="col">Gears (General)</th>
+                            <th scope="col">Gears (Light)</th>
+                            <th scope="col">Gears (Medium)</th>
+                            <th scope="col">Gears (Heavy)</th>
                             <th scope="col">Skills</th>
                             <th scope="col">Sprite</th>
                             <th scope="col">Chibi Sprite</th>
@@ -78,12 +81,57 @@
                                 </td>
 
                                 <td class="altona-sans-10" style="width: 20em;">
-                                    <div>Template Name : {{ $s->template ? $s->template->name : '' }}</div>
-                                    <div>Build : {{ $s->template ? $s->template->build : '' }}</div>
+                                    <div>Template Name : {{ $s->general ? $s->general->name : '' }}</div>
+                                    <div>Build : {{ $s->general ? $s->general->build : '' }}</div>
 
                                     <ul class="nav-style-none  m-0 p-0">
-                                        @if ($s->template)
-                                            @foreach ($s->template->gears as $g)
+                                        @if ($s->general)
+                                            @foreach ($s->general->gears as $g)
+                                                <li>{{ $g->category->gear_category_name }} : {{ $g->gear_name }}</li>
+                                            @endforeach
+                                        @endif
+
+                                    </ul>
+
+                                </td>
+
+                                <td class="altona-sans-10" style="width: 20em;">
+                                    <div>Template Name : {{ $s->light ? $s->light->name : '' }}</div>
+                                    <div>Build : {{ $s->light ? $s->light->build : '' }}</div>
+
+                                    <ul class="nav-style-none  m-0 p-0">
+                                        @if ($s->light)
+                                            @foreach ($s->light->gears as $g)
+                                                <li>{{ $g->category->gear_category_name }} : {{ $g->gear_name }}</li>
+                                            @endforeach
+                                        @endif
+
+                                    </ul>
+
+                                </td>
+
+                                <td class="altona-sans-10" style="width: 20em;">
+                                    <div>Template Name : {{ $s->medium ? $s->medium->name : '' }}</div>
+                                    <div>Build : {{ $s->medium ? $s->medium->build : '' }}</div>
+
+                                    <ul class="nav-style-none  m-0 p-0">
+                                        @if ($s->medium)
+                                            @foreach ($s->medium->gears as $g)
+                                                <li>{{ $g->category->gear_category_name }} : {{ $g->gear_name }}</li>
+                                            @endforeach
+                                        @endif
+
+                                    </ul>
+
+                                </td>
+
+                                <td class="altona-sans-10" style="width: 20em;">
+                                    <div>Template Name : {{ $s->heavy ? $s->heavy->name : '' }}</div>
+                                    <div>Build : {{ $s->heavy ? $s->heavy->build : '' }}</div>
+
+                                    <ul class="nav-style-none  m-0 p-0">
+                                        @if ($s->heavy)
+                                            @foreach ($s->heavy->gears as $g)
                                                 <li>{{ $g->category->gear_category_name }} : {{ $g->gear_name }}</li>
                                             @endforeach
                                         @endif
