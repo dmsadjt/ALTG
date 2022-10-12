@@ -37,7 +37,6 @@ class Tierlist extends Component
 
     public function sort($field, $sortType)
     {
-
         $this->sortBy = $field;
         $this->sortDirection = $this->sortDirection == 'asc' ? 'desc' : 'asc';
         $this->sortType = $sortType;
