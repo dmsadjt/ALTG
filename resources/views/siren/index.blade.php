@@ -17,10 +17,11 @@
                         <h2>Stronghold Boss</h2>
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'stronghold')
-                                <h3>{{ $s->name }}</h3>
+                                <h3 class="mt-3">{{ $s->name }}</h3>
                                 <div class="columns-two__1-5 bg-nav">
                                     <div>
-                                        <img src="{{ asset('storage/' . $s->img) }}" class="siren-img" alt="siren-img">
+                                        <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                            alt="siren-img">
                                     </div>
                                     <div class="columns-four">
                                         <div>
