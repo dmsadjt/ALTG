@@ -10,9 +10,9 @@
                         <h1>Operation Siren Boss Stats</h1>
                         {{-- <span class="altona-sans-12">Last Updated: {{ $last_updated->updated_at }}</span> --}}
                     </div>
-                    <div class="d-flex">
-                        <button></button>
-                    </div>
+
+
+
                     <div class="bg-gray1 p-4 rounded border">
                         <h2>Stronghold Boss</h2>
                         @foreach ($sirens as $s)

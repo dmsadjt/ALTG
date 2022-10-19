@@ -65,7 +65,7 @@ function changeFrame(rarity) {
 
 }
 
-function changeTag(collection){
+function changeTag(collection) {
     divToChange = collection.classList;
     switch (collection.attributes['data-rarity'].value) {
         case 'N':
@@ -138,7 +138,7 @@ function changeLabel(rarity) {
 
 }
 
-function changeScore(collection){
+function changeScore(collection) {
     divToChange = collection.classList;
 
     if (collection.attributes['data-score'].value == 11) {
@@ -386,13 +386,13 @@ function changeTextColor(text) {
 
 }
 
-function addRequired(currentClass, targetClass){
+function addRequired(currentClass, targetClass) {
     current = document.getElementById(currentClass);
     target = document.getElementById(targetClass);
-    if(current.value != ''){
-        target.setAttribute('required','')
+    if (current.value != '') {
+        target.setAttribute('required', '')
     }
-    else{
+    else {
         target.removeAttribute('required')
     }
 
@@ -427,7 +427,7 @@ function sortShips() {
     filter = input.value.toUpperCase();
     table = document.getElementsByClassName("ship-table");
 
-    for( j = 0; j < table.length; j++){
+    for (j = 0; j < table.length; j++) {
 
         tr = table[j].getElementsByTagName('tr');
 
