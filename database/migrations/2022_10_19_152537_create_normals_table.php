@@ -18,7 +18,6 @@ class CreateNormalsTable extends Migration
             $table->timestamps();
             $table->bigInteger('siren_id');
             $table->bigInteger('hull_id');
-            $table->bigInteger('difficulty')->default('0');
             $table->integer('level');
             $table->string('armor');
             $table->string('hp');
@@ -30,7 +29,6 @@ class CreateNormalsTable extends Migration
             $table->integer('eva');
             $table->integer('lck');
             $table->integer('spd');
-            $table->string('weakness')->default('-');
         });
     }
 

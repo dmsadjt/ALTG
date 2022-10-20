@@ -14,8 +14,13 @@ class Siren extends Model
         return $this->belongsTo(Hull::class);
     }
 
-    public function stats()
+    public function normal()
     {
-        return $this->hasMany(Normal::class);
+        return $this->hasOne(Normal::class);
+    }
+
+    public function hard()
+    {
+        return $this->belongsTo(Hard::class);
     }
 }

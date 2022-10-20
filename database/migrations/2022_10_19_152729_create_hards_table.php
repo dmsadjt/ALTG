@@ -16,6 +16,19 @@ class CreateHardsTable extends Migration
         Schema::create('hards', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('siren_id');
+            $table->bigInteger('hull_id');
+            $table->integer('level');
+            $table->string('armor');
+            $table->string('hp');
+            $table->integer('fp')->nullable();
+            $table->integer('trp')->nullable();
+            $table->integer('aa');
+            $table->integer('avi');
+            $table->integer('acc');
+            $table->integer('eva');
+            $table->integer('lck');
+            $table->integer('spd');
         });
     }
 

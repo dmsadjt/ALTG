@@ -18,15 +18,23 @@ class Hull extends Model
         'hull_img',
     ];
 
-    public function ship(){
+    public function ship()
+    {
         return $this->hasMany(Ship::class, 'hull_id');
     }
 
-    public function subs(){
+    public function subs()
+    {
         return $this->hasMany(Subclass::class);
     }
 
-    public function siren(){
+    public function normal()
+    {
+        return $this->hasOne(Siren::class);
+    }
+
+    public function hard()
+    {
         return $this->hasOne(Siren::class);
     }
 }

@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Hard extends Model
 {
     use HasFactory;
+
+    public function sirens()
+    {
+        return $this->belongsTo(Siren::class);
+    }
+
+    public function hull()
+    {
+        return $this->belongsTo(Hull::class, 'siren_id');
+    }
 }

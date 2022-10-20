@@ -20,6 +20,7 @@ class CreateSirensTable extends Migration
             $table->string('boss_type');
             $table->string('adaptability')->nullable();
             $table->string('img')->default('siren/img/no-pictures.png');
+            $table->string('weakness')->default('-');
         });
     }
 
