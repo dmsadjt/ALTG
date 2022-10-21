@@ -1,3 +1,11 @@
+window.addEventListener('load', function () {
+    this.document.getElementById('openDef').click();
+    this.document.getElementById('openDef2').click();
+})
+
+
+
+
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
@@ -27,7 +35,6 @@ function openTab(evt, tabStatus, content, links, style) {
     localStorage.setItem("activeTab", evt.currentTarget.id);
 
 }
-
 const cardId = [];
 
 
