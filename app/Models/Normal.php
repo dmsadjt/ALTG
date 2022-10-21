@@ -16,6 +16,6 @@ class Normal extends Model
 
     public function hull()
     {
-        return $this->belongsTo(Hull::class, 'siren_id');
+        return $this->belongsTo(Hull::class, 'hull_id');
     }
 }

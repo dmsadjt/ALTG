@@ -9,11 +9,6 @@ class Siren extends Model
 {
     use HasFactory;
 
-    public function hull()
-    {
-        return $this->belongsTo(Hull::class);
-    }
-
     public function normal()
     {
         return $this->hasOne(Normal::class);

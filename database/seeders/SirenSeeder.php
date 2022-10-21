@@ -208,7 +208,7 @@ class SirenSeeder extends Seeder
 
         DB::table('normals')->insert([
             'siren_id' => '7',
-            'hull_id' => '5',
+            'hull_id' => '2',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',
@@ -224,7 +224,7 @@ class SirenSeeder extends Seeder
 
         DB::table('normals')->insert([
             'siren_id' => '8',
-            'hull_id' => '5',
+            'hull_id' => '2',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',
@@ -240,7 +240,23 @@ class SirenSeeder extends Seeder
 
         DB::table('normals')->insert([
             'siren_id' => '9',
-            'hull_id' => '5',
+            'hull_id' => '2',
+            'level' => '100',
+            'armor' => 'Medium',
+            'hp' => '400k',
+            'fp' => '100',
+            'trp' => '100',
+            'aa' => '100',
+            'avi' => '100',
+            'acc' => '100',
+            'eva' => '100',
+            'lck' => '100',
+            'spd' => '100',
+        ]);
+
+        DB::table('normals')->insert([
+            'siren_id' => '10',
+            'hull_id' => '2',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',
