@@ -479,12 +479,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
 
-
-
-                            @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
-                                <div class="arbiter" id="arbiter-full" style="display:none;">
+                                <div>
                                     <h3 class="mt-3">{{ $s->name }}</h3>
                                     <div class="columns-two__1-5 bg-nav">
                                         <div>
@@ -497,15 +493,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->hard->hull->hull_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
+                                                            <td>{{ $s->hard->level }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
+                                                            <td>{{ $s->hard->armor }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -515,15 +511,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
+                                                            <td>{{ $s->hard->fp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
+                                                            <td>{{ $s->hard->hp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
+                                                            <td>{{ $s->hard->trp }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -533,15 +529,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
+                                                            <td>{{ $s->hard->aa }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
+                                                            <td>{{ $s->hard->avi }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
+                                                            <td>{{ $s->hard->acc }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -551,15 +547,103 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
+                                                            <td>{{ $s->hard->eva }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
+                                                            <td>{{ $s->hard->lck }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
+                                                            <td>{{ $s->hard->spd }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+
+
+
+                            @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
+                                <div>
+                                    <h3 class="mt-3">{{ $s->name }}</h3>
+                                    <div class="columns-two__1-5 bg-nav">
+                                        <div>
+                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                                alt="siren-img">
+                                        </div>
+                                        <div class="columns-four">
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Hull</td>
+                                                            <td>{{ $s->hard->hull->hull_name }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Level</td>
+                                                            <td>{{ $s->hard->level }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Armor</td>
+                                                            <td>{{ $s->hard->armor }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>FP</td>
+                                                            <td>{{ $s->hard->fp }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HP</td>
+                                                            <td>{{ $s->hard->hp }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TRP</td>
+                                                            <td>{{ $s->hard->trp }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>AA</td>
+                                                            <td>{{ $s->hard->aa }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>AVI</td>
+                                                            <td>{{ $s->hard->avi }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ACC</td>
+                                                            <td>{{ $s->hard->acc }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>EVA</td>
+                                                            <td>{{ $s->hard->eva }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LCK</td>
+                                                            <td>{{ $s->hard->lck }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SPD</td>
+                                                            <td>{{ $s->hard->spd }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

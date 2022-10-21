@@ -16,6 +16,6 @@ class Hard extends Model
 
     public function hull()
     {
-        return $this->belongsTo(Hull::class, 'siren_id');
+        return $this->belongsTo(Hull::class);
     }
 }

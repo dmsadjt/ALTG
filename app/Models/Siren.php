@@ -16,6 +16,6 @@ class Siren extends Model
 
     public function hard()
     {
-        return $this->belongsTo(Hard::class);
+        return $this->hasOne(Hard::class);
     }
 }
