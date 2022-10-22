@@ -1,7 +1,7 @@
 window.addEventListener('load', function () {
-    this.document.getElementById('openDef').click();
-    this.document.getElementById('openDef2').click();
-    this.document.getElementById('openDef3').click();
+    this.document.querySelectorAll('.active').forEach(e =>
+        e.click()
+    )
 })
 
 

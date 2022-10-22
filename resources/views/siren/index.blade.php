@@ -11,16 +11,16 @@
                         {{-- <span class="altona-sans-12">Last Updated: {{ $last_updated->updated_at }}</span> --}}
                     </div>
 
-
-
-                    <div class="bg-gray1 p-4 rounded border">
-                        <h2>Stronghold Boss</h2>
-                        <div class="tab">
-                            <button onclick="openTab(event, 'stronghold-none',  'stronghold', 'bossLink', 'block')"
-                                class="bossLink" id="openDef">None</button>
-
-                            <button onclick="openTab(event, 'stronghold-full',  'stronghold', 'bossLink', 'block')"
-                                class="bossLink">Full</button>
+                    <div class="bg-nav p-4 rounded border">
+                        <div class="columns-two__2-4">
+                            <h2>Stronghold Boss</h2>
+                            <div class="tab r-grid gap-3">
+                                <div class="my-auto">Adaptability</div>
+                                <button onclick="openTab(event, 'stronghold-none',  'stronghold', 'tab__links', 'block')"
+                                    class="bossLink altona-sans-12 border tab__links active">None</button>
+                                <button onclick="openTab(event, 'stronghold-full',  'stronghold', 'tab__links', 'block')"
+                                    class="bossLink altona-sans-12 border tab__links">Full</button>
+                            </div>
                         </div>
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'stronghold' && $s->adaptability == 'none')
@@ -31,13 +31,13 @@
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0 ">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -119,13 +119,13 @@
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -199,14 +199,16 @@
                         @endforeach
                     </div>
 
-                    <div class="bg-gray1 p-4 rounded border">
-                        <h2>Abyssal Boss</h2>
-                        <div class="tab">
-                            <button onclick="openTab(event, 'abyssal-none',  'abyssal', 'bossLink', 'block')"
-                                class="bossLink" id="openDef3">None</button>
-
-                            <button onclick="openTab(event, 'abyssal-full',  'abyssal', 'bossLink', 'block')"
-                                class="bossLink">Full</button>
+                    <div class="bg-nav p-4 rounded border">
+                        <div class="columns-two__2-4">
+                            <h2>Abyssal Boss</h2>
+                            <div class="tab r-grid gap-3">
+                                <div class="my-auto">Adaptability</div>
+                                <button onclick="openTab(event, 'abyssal-none',  'abyssal', 'tab__links--2', 'block')"
+                                    class="bossLink altona-sans-12 border tab__links--2 active">None</button>
+                                <button onclick="openTab(event, 'abyssal-full',  'abyssal', 'tab__links--2', 'block')"
+                                    class="bossLink altona-sans-12 border tab__links--2">Full</button>
+                            </div>
                         </div>
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'abyssal' && $s->adaptability == 'none')
@@ -217,13 +219,13 @@
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -305,13 +307,13 @@
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -385,31 +387,46 @@
                         @endforeach
                     </div>
 
-                    <div class="bg-gray1 p-4 rounded border">
-                        <h2>Arbiter Boss</h2>
-                        <div class="tab">
-                            <button onclick="openTab(event, 'arbiter-none',  'arbiter', 'bossLink', 'block')"
-                                class="bossLink" id="openDef2">None</button>
-
-                            <button onclick="openTab(event, 'arbiter-full',  'arbiter', 'bossLink', 'block')"
-                                class="bossLink">Full</button>
+                    <div class="bg-nav p-4 rounded border">
+                        <div class="columns-two__2-4">
+                            <h2>Arbiter Boss</h2>
+                            <div class="tab r-grid gap-3">
+                                <div class="my-auto">Adaptability</div>
+                                <button onclick="openTab(event, 'arbiter-none',  'arbiter', 'tab__links--3 border', 'grid')"
+                                    class="tab__links--3 altona-sans-12 border active">None</button>
+                                <button onclick="openTab(event, 'arbiter-full',  'arbiter', 'tab__links--3 border', 'grid')"
+                                    class="tab__links--3 altona-sans-12 border">Full</button>
+                            </div>
                         </div>
-                        @foreach ($sirens as $s)
+                        @foreach ($sirens as $key => $s)
                             @if ($s->boss_type == 'arbiter' && $s->adaptability == 'none')
                                 <div class="arbiter" id="arbiter-none" style="display:none;">
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
+                                    <div class="columns-two__4-2">
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="tab ms-auto mb-2">
+                                            <button
+                                                onclick="openTab(event, 'arbiter-none-normal',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
+                                                class="bossLink-{{ $key }} active tab__links border">Normal</button>
+
+                                            <button
+                                                onclick="openTab(event, 'arbiter-none-hard',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
+                                                class="bossLink-{{ $key }} tab__links border">Hard</button>
+                                        </div>
+                                    </div>
                                     <div class="columns-two__1-5 bg-nav">
                                         <div>
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
+
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                            id="arbiter-none-normal">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -477,23 +494,15 @@
                                                 </table>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
-                                    <div class="columns-two__1-5 bg-nav">
-                                        <div>
-                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
-                                                alt="siren-img">
-                                        </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                            id="arbiter-none-hard">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->hard->hull->hull_name }}</td>
+                                                            <td>{{ $s->hard->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -565,23 +574,108 @@
                                 </div>
                             @endif
 
-
-
                             @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
-                                <div>
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
+                                <div class="arbiter" id="arbiter-full" style="display:none;">
+                                    <div class="columns-two__4-2">
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="tab ms-auto mb-2">
+                                            <button
+                                                onclick="openTab(event, 'arbiter-full-normal',  'arbiter-d', 'bossLink-{{ $key }}', 'grid')"
+                                                class="bossLink-{{ $key }} active tab__links border">Normal</button>
+
+                                            <button
+                                                onclick="openTab(event, 'arbiter-full-hard',  'arbiter-d', 'bossLink-{{ $key }}', 'grid')"
+                                                class="bossLink-{{ $key }} tab__links border">Hard</button>
+                                        </div>
+                                    </div>
                                     <div class="columns-two__1-5 bg-nav">
                                         <div>
                                             <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                                 alt="siren-img">
+
                                         </div>
-                                        <div class="columns-four">
+                                        <div class="columns-four gap-0 arbiter-d" id="arbiter-full-normal">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->hard->hull->hull_name }}</td>
+                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Level</td>
+                                                            <td>{{ $s->normal->level }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Armor</td>
+                                                            <td>{{ $s->normal->armor }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>FP</td>
+                                                            <td>{{ $s->normal->fp }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>HP</td>
+                                                            <td>{{ $s->normal->hp }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TRP</td>
+                                                            <td>{{ $s->normal->trp }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>AA</td>
+                                                            <td>{{ $s->normal->aa }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>AVI</td>
+                                                            <td>{{ $s->normal->avi }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>ACC</td>
+                                                            <td>{{ $s->normal->acc }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>EVA</td>
+                                                            <td>{{ $s->normal->eva }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>LCK</td>
+                                                            <td>{{ $s->normal->lck }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SPD</td>
+                                                            <td>{{ $s->normal->spd }}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="columns-four gap-0 arbiter-d" id="arbiter-full-hard">
+                                            <div>
+                                                <table class="grey-table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Hull</td>
+                                                            <td>{{ $s->hard->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -656,7 +750,7 @@
 
                     </div>
 
-                    <div class="bg-gray1 p-4 rounded border">
+                    <div class="bg-nav p-4 rounded border">
                         <h2>Guild Boss</h2>
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'guild')
@@ -666,13 +760,13 @@
                                         <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                             alt="siren-img">
                                     </div>
-                                    <div class="columns-four">
+                                    <div class="columns-four gap-0">
                                         <div>
                                             <table class="grey-table">
                                                 <tbody>
                                                     <tr>
                                                         <td>Hull</td>
-                                                        <td>{{ $s->normal->hull->hull_name }}</td>
+                                                        <td>{{ $s->normal->hull->hull_tag }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Level</td>
@@ -749,7 +843,7 @@
                         @endforeach
                     </div>
 
-                    <div class="bg-gray1 p-4 rounded border">
+                    <div class="bg-nav p-4 rounded border">
                         <h2>Meta Boss</h2>
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'meta')
@@ -759,13 +853,13 @@
                                         <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
                                             alt="siren-img">
                                     </div>
-                                    <div class="columns-four">
+                                    <div class="columns-four gap-0">
                                         <div>
                                             <table class="grey-table">
                                                 <tbody>
                                                     <tr>
                                                         <td>Hull</td>
-                                                        <td>{{ $s->normal->hull->hull_name }}</td>
+                                                        <td>{{ $s->normal->hull->hull_tag }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Level</td>

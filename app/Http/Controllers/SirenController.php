@@ -20,6 +20,42 @@ class SirenController extends Controller
         ));
     }
 
+    public function add()
+    {
+        return view('admin.siren.add');
+    }
+
+    public function post(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required',
+            'type' => 'required',
+            'adaptability' => 'required',
+            'weakness' => 'required',
+            'img' => 'image',
+            'hp' => 'integer',
+            'fp' => 'integer',
+            'trp' => 'integer',
+            'aa' => 'integer',
+            'avi' => 'integer',
+            'acc' => 'integer',
+            'eva' => 'integer',
+            'lck' => 'integer',
+            'spd' => 'integer',
+            'hp-hard' => 'integer',
+            'fp-hard' => 'integer',
+            'trp-hard' => 'integer',
+            'aa-hard' => 'integer',
+            'avi-hard' => 'integer',
+            'acc-hard' => 'integer',
+            'eva-hard' => 'integer',
+            'lck-hard' => 'integer',
+            'spd-hard' => 'integer',
+        ]);
+
+        dd($data);
+    }
+
     public function edit($id)
     {
         $siren = Siren::where('id', $id)->get();

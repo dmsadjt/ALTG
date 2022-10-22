@@ -160,7 +160,7 @@ class SirenSeeder extends Seeder
 
         DB::table('hards')->insert([
             'siren_id' => '5',
-            'hull_id' => '5',
+            'hull_id' => '2',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',
@@ -192,7 +192,7 @@ class SirenSeeder extends Seeder
 
         DB::table('hards')->insert([
             'siren_id' => '6',
-            'hull_id' => '5',
+            'hull_id' => '3',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',

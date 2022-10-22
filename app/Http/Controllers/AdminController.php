@@ -66,7 +66,7 @@ class AdminController extends Controller
 
     public function sirens()
     {
-        $siren = Siren::with('hull')->paginate(10);
+        $siren = Siren::with('normal', 'hard')->paginate(10);
 
         return view('admin.siren.index', compact('siren'));
     }

@@ -53,6 +53,7 @@ Route::get('/admin/hulls/add', [HullController::class, 'add'])->middleware(['aut
 Route::get('/admin/blogs/add', [BlogController::class, 'add'])->middleware(['auth'])->name('add.blog');
 Route::get('/admin/tags/add', [TagController::class, 'add'])->middleware(['auth'])->name('add.tag');
 Route::get('/admin/templates/add', [TemplateController::class, 'add'])->middleware(['auth'])->name('add.template');
+Route::get('/admin/sirens/add', [SirenController::class, 'add'])->middleware(['auth'])->name('add.siren');
 
 //edit views
 Route::get('/admin/ships/edit/{id}', [ShipController::class, 'editShip'])->middleware(['auth'])->name('edit');
@@ -77,6 +78,7 @@ Route::post('/admin/hulls/post', [HullController::class, 'post'])->middleware(['
 Route::post('/admin/blogs/post', [BlogController::class, 'post'])->middleware(['auth'])->name('post.blog');
 Route::post('/admin/tags/post', [TagController::class, 'post'])->middleware(['auth'])->name('post.tag');
 Route::post('/admin/templates/post', [TemplateController::class, 'post'])->middleware(['auth'])->name('post.template');
+Route::post('/admin/sirens/post', [SirenController::class, 'post'])->middleware(['auth'])->name('post.sirens');
 
 //update
 Route::post('/admin/ships/update', [ShipController::class, 'updateShip'])->middleware(['auth'])->name('update');

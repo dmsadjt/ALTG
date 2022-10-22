@@ -33,32 +33,79 @@
                             <th scope="col">Image</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($siren as $s)
                             <tr>
                                 <td class="altona-sans-10">
                                     <div>{{ $s->id }}</div>
                                     <div>
-                                        <a class="link-none altona-sans-10" href="/admin/sirens/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/sirens/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
-                            </td>
+                                </td>
                                 <td class="altona-sans-10">{{ $s->name }}</td>
                                 <td class="altona-sans-10">{{ $s->boss_type }}</td>
-                                <td class="altona-sans-10">{{ $s->difficulty}}</td>
-                                <td class="altona-sans-10">{{ $s->hull->hull_name}}</td>
-                                <td class="altona-sans-10">{{ $s->level}}</td>
-                                <td class="altona-sans-10">{{ $s->armor}}</td>
-                                <td class="altona-sans-10">{{ $s->hp}}</td>
-                                <td class="altona-sans-10">{{ $s->fp}}</td>
-                                <td class="altona-sans-10">{{ $s->trp}}</td>
-                                <td class="altona-sans-10">{{ $s->aa}}</td>
-                                <td class="altona-sans-10">{{ $s->avi}}</td>
-                                <td class="altona-sans-10">{{ $s->acc}}</td>
-                                <td class="altona-sans-10">{{ $s->eva}}</td>
-                                <td class="altona-sans-10">{{ $s->lck}}</td>
-                                <td class="altona-sans-10">{{ $s->spd}}</td>
-                                <td class="altona-sans-10">{{ $s->weakness}}</td>
-                                <td><a class="altona-sans-10" href="{{asset('storage/'. $s->img)}}">Image</a></td>
+                                <td class="altona-sans-10">
+                                    @if ($s->normal)
+                                        Normal
+                                    @endif
+                                    @if ($s->hard)
+                                        and Hard
+                                    @endif
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->hull->hull_name }}</div>
+                                    <div>{{ $s->hard?->hull->hull_name }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->level }}</div>
+                                    <div>{{ $s->hard?->level }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->armor }}</div>
+                                    <div>{{ $s->hard?->armor }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->hp }}</div>
+                                    <div>{{ $s->hard?->hp }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->fp }}</div>
+                                    <div>{{ $s->hard?->fp }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->trp }}</div>
+                                    <div>{{ $s->hard?->trp }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->aa }}</div>
+                                    <div>{{ $s->hard?->aa }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->avi }}</div>
+                                    <div>{{ $s->hard?->avi }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->acc }}</div>
+                                    <div>{{ $s->hard?->acc }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->eva }}</div>
+                                    <div>{{ $s->hard?->eva }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->lck }}</div>
+                                    <div>{{ $s->hard?->lck }}</div>
+                                </td>
+                                <td class="altona-sans-10">
+                                    <div>{{ $s->normal->spd }}</div>
+                                    <div>{{ $s->hard?->spd }}</div>
+                                </td>
+
+                                <td class="altona-sans-10">{{ $s->weakness }}</td>
+
+                                <td><a class="altona-sans-10" href="{{ asset('storage/' . $s->img) }}">Image</a></td>
                             </tr>
                         @endforeach
 
@@ -66,7 +113,7 @@
 
                 </table>
             </div>
-            {{$siren->links()}}
+            {{ $siren->links() }}
         </div>
     </div>
 
