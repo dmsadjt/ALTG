@@ -22,8 +22,7 @@
                 <div>
                     <label class="form-label altona-sans-12 mt-2" for="type">Boss type</label>
                     <select class="form-select" name="type" id="type">
-                        <option value="stronghold">Stronghold
-                        </option>
+                        <option value="stronghold">Stronghold</option>
                         <option value="abyssal">Abyssal</option>
                         <option value="arbiter">Arbiter</option>
                         <option value="meta">Meta</option>

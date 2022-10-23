@@ -253,21 +253,5 @@ class SirenSeeder extends Seeder
             'lck' => '100',
             'spd' => '100',
         ]);
-
-        DB::table('normals')->insert([
-            'siren_id' => '10',
-            'hull_id' => '2',
-            'level' => '100',
-            'armor' => 'Medium',
-            'hp' => '400k',
-            'fp' => '100',
-            'trp' => '100',
-            'aa' => '100',
-            'avi' => '100',
-            'acc' => '100',
-            'eva' => '100',
-            'lck' => '100',
-            'spd' => '100',
-        ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Siren;
 use App\Models\Hull;
+use App\Models\Normal;
 
 class SirenController extends Controller
 {
@@ -33,6 +34,9 @@ class SirenController extends Controller
             'adaptability' => 'required',
             'weakness' => 'required',
             'img' => 'image',
+            'armor' => 'required',
+            'hull' => 'required',
+            'level' => 'integer',
             'hp' => 'integer',
             'fp' => 'integer',
             'trp' => 'integer',
@@ -42,6 +46,9 @@ class SirenController extends Controller
             'eva' => 'integer',
             'lck' => 'integer',
             'spd' => 'integer',
+            'armor-hard' => '',
+            'hull-hard' => '',
+            'level-hard' => 'integer',
             'hp-hard' => 'integer',
             'fp-hard' => 'integer',
             'trp-hard' => 'integer',
@@ -53,8 +60,52 @@ class SirenController extends Controller
             'spd-hard' => 'integer',
         ]);
 
-        dd($data);
+        $boss = Siren::create([
+            'name' => $data['name'],
+            'boss_type' => $data['type'],
+            'adaptability' => $data['adaptability'],
+            'weakness' => $data['weakness'],
+            'img' => $request->file('img')->store('siren/img'),
+        ]);
+
+        $boss->normal()->create([
+            'armor' => $data['armor'],
+            'hull_id' => $data['hull'],
+            'level' => $data['level'],
+            'hp' => $data['hp'],
+            'fp' => $data['fp'],
+            'trp' => $data['trp'],
+            'aa' => $data['aa'],
+            'avi' => $data['avi'],
+            'acc' => $data['acc'],
+            'eva' => $data['eva'],
+            'lck' => $data['lck'],
+            'spd' => $data['spd'],
+        ]);
+
+
+        if (isset($data['hp-hard'])) {
+            $boss->hard()->create([
+                'armor' => $data['armor-hard'],
+                // 'siren_id' => $boss->id,
+                'hull_id' => $data['hull-hard'],
+                'level' => $data['level-hard'],
+                'hp' => $data['hp-hard'],
+                'fp' => $data['fp-hard'],
+                'trp' => $data['trp-hard'],
+                'aa' => $data['aa-hard'],
+                'avi' => $data['avi-hard'],
+                'acc' => $data['acc-hard'],
+                'eva' => $data['eva-hard'],
+                'lck' => $data['lck-hard'],
+                'spd' => $data['spd-hard'],
+            ]);
+        }
+
+
+        return redirect('admin/sirens');
     }
+
 
     public function edit($id)
     {

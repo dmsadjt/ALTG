@@ -9,6 +9,14 @@ class Siren extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'boss_type',
+        'adaptability',
+        'weakness',
+        'img',
+    ];
+
     public function normal()
     {
         return $this->hasOne(Normal::class);
