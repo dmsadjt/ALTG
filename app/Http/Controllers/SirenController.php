@@ -15,7 +15,7 @@ class SirenController extends Controller
         // $siren = Siren::find(2)->first();
         // dd($siren->normal);
 
-
+        // dd($sirens);
         return view('siren.index', compact(
             'sirens'
         ));

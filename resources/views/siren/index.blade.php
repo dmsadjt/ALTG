@@ -22,181 +22,189 @@
                                     class="bossLink altona-sans-12 border tab__links">Full</button>
                             </div>
                         </div>
-                        @foreach ($sirens as $s)
-                            @if ($s->boss_type == 'stronghold' && $s->adaptability == 'none')
-                                <div class="stronghold" id="stronghold-none" style="display:none;">
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
-                                    <div class="columns-two__1-5 bg-nav">
-                                        <div>
-                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
-                                                alt="siren-img">
-                                        </div>
-                                        <div class="columns-four gap-0 ">
+
+                        <div class="stronghold" id="stronghold-none" style="display:none;">
+                            @foreach ($sirens as $s)
+                                @if ($s->boss_type == 'stronghold' && $s->adaptability == 'none')
+                                    <div>
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="columns-two__1-5 bg-nav">
                                             <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                                    alt="siren-img">
                                             </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="columns-four gap-0 ">
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Hull</td>
+                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Level</td>
+                                                                <td>{{ $s->normal->level }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Armor</td>
+                                                                <td>{{ $s->normal->armor }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>FP</td>
+                                                                <td>{{ $s->normal->fp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>HP</td>
+                                                                <td>{{ $s->normal->hp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>TRP</td>
+                                                                <td>{{ $s->normal->trp }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>AA</td>
+                                                                <td>{{ $s->normal->aa }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>AVI</td>
+                                                                <td>{{ $s->normal->avi }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ACC</td>
+                                                                <td>{{ $s->normal->acc }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>EVA</td>
+                                                                <td>{{ $s->normal->eva }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCK</td>
+                                                                <td>{{ $s->normal->lck }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SPD</td>
+                                                                <td>{{ $s->normal->spd }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
+                            @endforeach
+
+                        </div>
 
 
-
-                            @if ($s->boss_type == 'stronghold' && $s->adaptability == 'full')
-                                <div class="stronghold" id="stronghold-full" style="display:none;">
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
-                                    <div class="columns-two__1-5 bg-nav">
-                                        <div>
-                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
-                                                alt="siren-img">
-                                        </div>
-                                        <div class="columns-four gap-0">
+                        <div class="stronghold" id="stronghold-full" style="display:none;">
+                            @foreach ($sirens as $s)
+                                @if ($s->boss_type == 'stronghold' && $s->adaptability == 'full')
+                                    <div>
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="columns-two__1-5 bg-nav">
                                             <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                                    alt="siren-img">
                                             </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="columns-four gap-0">
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Hull</td>
+                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Level</td>
+                                                                <td>{{ $s->normal->level }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Armor</td>
+                                                                <td>{{ $s->normal->armor }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>FP</td>
+                                                                <td>{{ $s->normal->fp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>HP</td>
+                                                                <td>{{ $s->normal->hp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>TRP</td>
+                                                                <td>{{ $s->normal->trp }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>AA</td>
+                                                                <td>{{ $s->normal->aa }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>AVI</td>
+                                                                <td>{{ $s->normal->avi }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ACC</td>
+                                                                <td>{{ $s->normal->acc }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>EVA</td>
+                                                                <td>{{ $s->normal->eva }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCK</td>
+                                                                <td>{{ $s->normal->lck }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SPD</td>
+                                                                <td>{{ $s->normal->spd }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
+                        </div>
+
                     </div>
 
                     <div class="bg-nav p-4 rounded border">
@@ -210,181 +218,188 @@
                                     class="bossLink altona-sans-12 border tab__links--2">Full</button>
                             </div>
                         </div>
-                        @foreach ($sirens as $s)
-                            @if ($s->boss_type == 'abyssal' && $s->adaptability == 'none')
-                                <div class="abyssal" id="abyssal-none" style="display:none;">
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
-                                    <div class="columns-two__1-5 bg-nav">
-                                        <div>
-                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
-                                                alt="siren-img">
-                                        </div>
-                                        <div class="columns-four gap-0">
+                        <div class="abyssal" id="abyssal-none" style="display:none;">
+
+                            @foreach ($sirens as $s)
+                                @if ($s->boss_type == 'abyssal' && $s->adaptability == 'none')
+                                    <div>
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="columns-two__1-5 bg-nav">
                                             <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                                    alt="siren-img">
                                             </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="columns-four gap-0">
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Hull</td>
+                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Level</td>
+                                                                <td>{{ $s->normal->level }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Armor</td>
+                                                                <td>{{ $s->normal->armor }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>FP</td>
+                                                                <td>{{ $s->normal->fp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>HP</td>
+                                                                <td>{{ $s->normal->hp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>TRP</td>
+                                                                <td>{{ $s->normal->trp }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>AA</td>
+                                                                <td>{{ $s->normal->aa }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>AVI</td>
+                                                                <td>{{ $s->normal->avi }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ACC</td>
+                                                                <td>{{ $s->normal->acc }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>EVA</td>
+                                                                <td>{{ $s->normal->eva }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCK</td>
+                                                                <td>{{ $s->normal->lck }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SPD</td>
+                                                                <td>{{ $s->normal->spd }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
+                            @endforeach
+                        </div>
 
 
 
-                            @if ($s->boss_type == 'abyssal' && $s->adaptability == 'full')
-                                <div class="abyssal" id="abyssal-full" style="display:none;">
-                                    <h3 class="mt-3">{{ $s->name }}</h3>
-                                    <div class="columns-two__1-5 bg-nav">
-                                        <div>
-                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
-                                                alt="siren-img">
-                                        </div>
-                                        <div class="columns-four gap-0">
+                        <div class="abyssal" id="abyssal-full" style="display:none;">
+                            @foreach ($sirens as $s)
+                                @if ($s->boss_type == 'abyssal' && $s->adaptability == 'full')
+                                    <div>
+                                        <h3 class="mt-3">{{ $s->name }}</h3>
+                                        <div class="columns-two__1-5 bg-nav">
                                             <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <img src="{{ asset('storage/' . $s->img) }}" class="siren-img rounded"
+                                                    alt="siren-img">
                                             </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div>
-                                                <table class="grey-table">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <div class="columns-four gap-0">
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Hull</td>
+                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Level</td>
+                                                                <td>{{ $s->normal->level }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Armor</td>
+                                                                <td>{{ $s->normal->armor }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>FP</td>
+                                                                <td>{{ $s->normal->fp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>HP</td>
+                                                                <td>{{ $s->normal->hp }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>TRP</td>
+                                                                <td>{{ $s->normal->trp }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>AA</td>
+                                                                <td>{{ $s->normal->aa }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>AVI</td>
+                                                                <td>{{ $s->normal->avi }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>ACC</td>
+                                                                <td>{{ $s->normal->acc }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div>
+                                                    <table class="grey-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>EVA</td>
+                                                                <td>{{ $s->normal->eva }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>LCK</td>
+                                                                <td>{{ $s->normal->lck }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>SPD</td>
+                                                                <td>{{ $s->normal->spd }}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
+                        </div>
                     </div>
 
                     <div class="bg-nav p-4 rounded border">
@@ -398,9 +413,9 @@
                                     class="tab__links--3 altona-sans-12 border">Full</button>
                             </div>
                         </div>
-                        @foreach ($sirens as $key => $s)
-                            @if ($s->boss_type == 'arbiter' && $s->adaptability == 'none')
-                                <div class="arbiter" id="arbiter-none" style="display:none;">
+                        <div class="arbiter" id="arbiter-none" style="display:none;">
+                            @foreach ($sirens as $key => $s)
+                                @if ($s->boss_type == 'arbiter' && $s->adaptability == 'none')
                                     <div class="columns-two__4-2">
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
@@ -571,11 +586,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
+                            @endforeach
+                        </div>
 
-                            @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
-                                <div class="arbiter" id="arbiter-full" style="display:none;">
+                        <div class="arbiter" id="arbiter-full" style="display:none;">
+                            @foreach ($sirens as $key => $s)
+                                @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
                                     <div class="columns-two__4-2">
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
@@ -744,9 +761,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                        @endforeach
+                                @endif
+                            @endforeach
+                        </div>
 
                     </div>
 

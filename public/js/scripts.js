@@ -4,9 +4,6 @@ window.addEventListener('load', function () {
     )
 })
 
-
-
-
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 
