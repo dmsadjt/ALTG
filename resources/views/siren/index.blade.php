@@ -420,11 +420,11 @@
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
                                             <button
-                                                onclick="openTab(event, 'arbiter-none-normal',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
+                                                onclick="openTab(event, 'arbiter-none-normal-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
                                                 class="bossLink-{{ $key }} active tab__links border">Normal</button>
 
                                             <button
-                                                onclick="openTab(event, 'arbiter-none-hard',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
+                                                onclick="openTab(event, 'arbiter-none-hard-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
                                                 class="bossLink-{{ $key }} tab__links border">Hard</button>
                                         </div>
                                     </div>
@@ -435,7 +435,7 @@
 
                                         </div>
                                         <div class="columns-four gap-0 arbiter-d-{{ $key }}"
-                                            id="arbiter-none-normal">
+                                            id="arbiter-none-normal-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
@@ -511,7 +511,7 @@
                                         </div>
 
                                         <div class="columns-four gap-0 arbiter-d-{{ $key }}"
-                                            id="arbiter-none-hard">
+                                            id="arbiter-none-hard-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
@@ -597,11 +597,11 @@
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
                                             <button
-                                                onclick="openTab(event, 'arbiter-full-normal',  'arbiter-d', 'bossLink-{{ $key }}', 'grid')"
+                                                onclick="openTab(event, 'arbiter-full-normal-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
                                                 class="bossLink-{{ $key }} active tab__links border">Normal</button>
 
                                             <button
-                                                onclick="openTab(event, 'arbiter-full-hard',  'arbiter-d', 'bossLink-{{ $key }}', 'grid')"
+                                                onclick="openTab(event, 'arbiter-full-hard-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
                                                 class="bossLink-{{ $key }} tab__links border">Hard</button>
                                         </div>
                                     </div>
@@ -611,7 +611,8 @@
                                                 alt="siren-img">
 
                                         </div>
-                                        <div class="columns-four gap-0 arbiter-d" id="arbiter-full-normal">
+                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                            id="arbiter-full-normal-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
@@ -686,7 +687,8 @@
                                             </div>
                                         </div>
 
-                                        <div class="columns-four gap-0 arbiter-d" id="arbiter-full-hard">
+                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                            id="arbiter-full-hard-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
