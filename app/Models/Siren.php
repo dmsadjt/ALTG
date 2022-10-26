@@ -26,4 +26,14 @@ class Siren extends Model
     {
         return $this->hasOne(Hard::class);
     }
+
+    public function fullNormal()
+    {
+        return $this->hasOne(FullNormal::class);
+    }
+
+    public function fullHard()
+    {
+        return $this->hasOne(FullHard::class);
+    }
 }
