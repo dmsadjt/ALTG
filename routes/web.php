@@ -103,6 +103,7 @@ Route::get('/admin/hulls/delete/{id}', [HullController::class, 'delete'])->middl
 Route::get('/admin/blogs/delete/{id}', [BlogController::class, 'delete'])->middleware(['auth'])->name('delete.blog');
 Route::get('/admin/tags/delete/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('delete.tag');
 Route::get('/admin/templates/delete/{id}', [TemplateController::class, 'delete'])->middleware(['auth'])->name('delete.template');
+Route::get('/admin/sirens/delete/{id}', [SirenController::class, 'delete'])->middleware(['auth'])->name('delete.siren');
 
 
 Route::get('/', [LandingController::class, 'index'])->name('home');

@@ -25,7 +25,7 @@
 
                         <div class="stronghold" id="stronghold-none" style="display:none;">
                             @foreach ($sirens as $s)
-                                @if ($s->boss_type == 'stronghold' && $s->adaptability == 'none')
+                                @if ($s->boss_type == 'stronghold')
                                     <div>
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="columns-two__1-5 bg-nav">
@@ -117,7 +117,7 @@
 
                         <div class="stronghold" id="stronghold-full" style="display:none;">
                             @foreach ($sirens as $s)
-                                @if ($s->boss_type == 'stronghold' && $s->adaptability == 'full')
+                                @if ($s->boss_type == 'stronghold')
                                     <div>
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="columns-two__1-5 bg-nav">
@@ -131,15 +131,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->fullNormal->hull->hull_tag }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
-                                                                <td>{{ $s->normal->level }}</td>
+                                                                <td>{{ $s->fullNormal->level }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Armor</td>
-                                                                <td>{{ $s->normal->armor }}</td>
+                                                                <td>{{ $s->fullNormal->armor }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -149,15 +149,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>FP</td>
-                                                                <td>{{ $s->normal->fp }}</td>
+                                                                <td>{{ $s->fullNormal->fp }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>HP</td>
-                                                                <td>{{ $s->normal->hp }}</td>
+                                                                <td>{{ $s->fullNormal->hp }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>TRP</td>
-                                                                <td>{{ $s->normal->trp }}</td>
+                                                                <td>{{ $s->fullNormal->trp }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -167,15 +167,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>AA</td>
-                                                                <td>{{ $s->normal->aa }}</td>
+                                                                <td>{{ $s->fullNormal->aa }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>AVI</td>
-                                                                <td>{{ $s->normal->avi }}</td>
+                                                                <td>{{ $s->fullNormal->avi }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>ACC</td>
-                                                                <td>{{ $s->normal->acc }}</td>
+                                                                <td>{{ $s->fullNormal->acc }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -185,15 +185,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>EVA</td>
-                                                                <td>{{ $s->normal->eva }}</td>
+                                                                <td>{{ $s->fullNormal->eva }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>LCK</td>
-                                                                <td>{{ $s->normal->lck }}</td>
+                                                                <td>{{ $s->fullNormal->lck }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>SPD</td>
-                                                                <td>{{ $s->normal->spd }}</td>
+                                                                <td>{{ $s->fullNormal->spd }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -221,7 +221,7 @@
                         <div class="abyssal" id="abyssal-none" style="display:none;">
 
                             @foreach ($sirens as $s)
-                                @if ($s->boss_type == 'abyssal' && $s->adaptability == 'none')
+                                @if ($s->boss_type == 'abyssal')
                                     <div>
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="columns-two__1-5 bg-nav">
@@ -313,7 +313,7 @@
 
                         <div class="abyssal" id="abyssal-full" style="display:none;">
                             @foreach ($sirens as $s)
-                                @if ($s->boss_type == 'abyssal' && $s->adaptability == 'full')
+                                @if ($s->boss_type == 'abyssal')
                                     <div>
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="columns-two__1-5 bg-nav">
@@ -327,15 +327,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->fullNormal->hull->hull_tag }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
-                                                                <td>{{ $s->normal->level }}</td>
+                                                                <td>{{ $s->fullNormal->level }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Armor</td>
-                                                                <td>{{ $s->normal->armor }}</td>
+                                                                <td>{{ $s->fullNormal->armor }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -345,15 +345,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>FP</td>
-                                                                <td>{{ $s->normal->fp }}</td>
+                                                                <td>{{ $s->fullNormal->fp }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>HP</td>
-                                                                <td>{{ $s->normal->hp }}</td>
+                                                                <td>{{ $s->fullNormal->hp }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>TRP</td>
-                                                                <td>{{ $s->normal->trp }}</td>
+                                                                <td>{{ $s->fullNormal->trp }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -363,15 +363,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>AA</td>
-                                                                <td>{{ $s->normal->aa }}</td>
+                                                                <td>{{ $s->fullNormal->aa }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>AVI</td>
-                                                                <td>{{ $s->normal->avi }}</td>
+                                                                <td>{{ $s->fullNormal->avi }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>ACC</td>
-                                                                <td>{{ $s->normal->acc }}</td>
+                                                                <td>{{ $s->fullNormal->acc }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -381,15 +381,15 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>EVA</td>
-                                                                <td>{{ $s->normal->eva }}</td>
+                                                                <td>{{ $s->fullNormal->eva }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>LCK</td>
-                                                                <td>{{ $s->normal->lck }}</td>
+                                                                <td>{{ $s->fullNormal->lck }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>SPD</td>
-                                                                <td>{{ $s->normal->spd }}</td>
+                                                                <td>{{ $s->fullNormal->spd }}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -415,17 +415,17 @@
                         </div>
                         <div class="arbiter" id="arbiter-none" style="display:none;">
                             @foreach ($sirens as $key => $s)
-                                @if ($s->boss_type == 'arbiter' && $s->adaptability == 'none')
+                                @if ($s->boss_type == 'arbiter')
                                     <div class="columns-two__4-2">
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
                                             <button
-                                                onclick="openTab(event, 'arbiter-none-normal-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
-                                                class="bossLink-{{ $key }} active tab__links border">Normal</button>
+                                                onclick="openTab(event, 'arbiter-none-normal-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-none-{{ $key }}', 'grid')"
+                                                class="bossLink-none-{{ $key }} active tab__links border">Normal</button>
 
                                             <button
-                                                onclick="openTab(event, 'arbiter-none-hard-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
-                                                class="bossLink-{{ $key }} tab__links border">Hard</button>
+                                                onclick="openTab(event, 'arbiter-none-hard-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-none-{{ $key }}', 'grid')"
+                                                class="bossLink-none-{{ $key }} tab__links border">Hard</button>
                                         </div>
                                     </div>
                                     <div class="columns-two__1-5 bg-nav">
@@ -592,17 +592,17 @@
 
                         <div class="arbiter" id="arbiter-full" style="display:none;">
                             @foreach ($sirens as $key => $s)
-                                @if ($s->boss_type == 'arbiter' && $s->adaptability == 'full')
+                                @if ($s->boss_type == 'arbiter')
                                     <div class="columns-two__4-2">
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="tab ms-auto mb-2">
                                             <button
-                                                onclick="openTab(event, 'arbiter-full-normal-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
-                                                class="bossLink-{{ $key }} active tab__links border">Normal</button>
+                                                onclick="openTab(event, 'arbiter-full-normal-{{ $key }}',  'arbiter-d-full-{{ $key }}', 'bossLink-full-{{ $key }}', 'grid')"
+                                                class="bossLink-full-{{ $key }} active tab__links border">Normal</button>
 
                                             <button
-                                                onclick="openTab(event, 'arbiter-full-hard-{{ $key }}',  'arbiter-d-{{ $key }}', 'bossLink-{{ $key }}', 'grid')"
-                                                class="bossLink-{{ $key }} tab__links border">Hard</button>
+                                                onclick="openTab(event, 'arbiter-full-hard-{{ $key }}',  'arbiter-d-full-{{ $key }}', 'bossLink-full-{{ $key }}', 'grid')"
+                                                class="bossLink-full-{{ $key }} tab__links border">Hard</button>
                                         </div>
                                     </div>
                                     <div class="columns-two__1-5 bg-nav">
@@ -611,22 +611,22 @@
                                                 alt="siren-img">
 
                                         </div>
-                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                        <div class="columns-four gap-0 arbiter-d-full-{{ $key }}"
                                             id="arbiter-full-normal-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            <td>{{ $s->fullNormal->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
-                                                            <td>{{ $s->normal->level }}</td>
+                                                            <td>{{ $s->fullNormal->level }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Armor</td>
-                                                            <td>{{ $s->normal->armor }}</td>
+                                                            <td>{{ $s->fullNormal->armor }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -636,15 +636,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>FP</td>
-                                                            <td>{{ $s->normal->fp }}</td>
+                                                            <td>{{ $s->fullNormal->fp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>HP</td>
-                                                            <td>{{ $s->normal->hp }}</td>
+                                                            <td>{{ $s->fullNormal->hp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>TRP</td>
-                                                            <td>{{ $s->normal->trp }}</td>
+                                                            <td>{{ $s->fullNormal->trp }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -654,15 +654,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>AA</td>
-                                                            <td>{{ $s->normal->aa }}</td>
+                                                            <td>{{ $s->fullNormal->aa }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>AVI</td>
-                                                            <td>{{ $s->normal->avi }}</td>
+                                                            <td>{{ $s->fullNormal->avi }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>ACC</td>
-                                                            <td>{{ $s->normal->acc }}</td>
+                                                            <td>{{ $s->fullNormal->acc }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -672,37 +672,37 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>EVA</td>
-                                                            <td>{{ $s->normal->eva }}</td>
+                                                            <td>{{ $s->fullNormal->eva }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>LCK</td>
-                                                            <td>{{ $s->normal->lck }}</td>
+                                                            <td>{{ $s->fullNormal->lck }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>SPD</td>
-                                                            <td>{{ $s->normal->spd }}</td>
+                                                            <td>{{ $s->fullNormal->spd }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
 
-                                        <div class="columns-four gap-0 arbiter-d-{{ $key }}"
+                                        <div class="columns-four gap-0 arbiter-d-full-{{ $key }}"
                                             id="arbiter-full-hard-{{ $key }}">
                                             <div>
                                                 <table class="grey-table">
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->hard->hull->hull_tag }}</td>
+                                                            <td>{{ $s->fullHard->hull->hull_tag }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
-                                                            <td>{{ $s->hard->level }}</td>
+                                                            <td>{{ $s->fullHard->level }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Armor</td>
-                                                            <td>{{ $s->hard->armor }}</td>
+                                                            <td>{{ $s->fullHard->armor }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -712,15 +712,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>FP</td>
-                                                            <td>{{ $s->hard->fp }}</td>
+                                                            <td>{{ $s->fullHard->fp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>HP</td>
-                                                            <td>{{ $s->hard->hp }}</td>
+                                                            <td>{{ $s->fullHard->hp }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>TRP</td>
-                                                            <td>{{ $s->hard->trp }}</td>
+                                                            <td>{{ $s->fullHard->trp }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -730,15 +730,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>AA</td>
-                                                            <td>{{ $s->hard->aa }}</td>
+                                                            <td>{{ $s->fullHard->aa }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>AVI</td>
-                                                            <td>{{ $s->hard->avi }}</td>
+                                                            <td>{{ $s->fullHard->avi }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>ACC</td>
-                                                            <td>{{ $s->hard->acc }}</td>
+                                                            <td>{{ $s->fullHard->acc }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -748,15 +748,15 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>EVA</td>
-                                                            <td>{{ $s->hard->eva }}</td>
+                                                            <td>{{ $s->fullHard->eva }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>LCK</td>
-                                                            <td>{{ $s->hard->lck }}</td>
+                                                            <td>{{ $s->fullHard->lck }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>SPD</td>
-                                                            <td>{{ $s->hard->spd }}</td>
+                                                            <td>{{ $s->fullHard->spd }}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

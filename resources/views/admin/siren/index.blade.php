@@ -6,6 +6,12 @@
             <h1>Siren Bosses</h1>
             <p class="altona-sans-12">Manage the bosses</p>
         </div>
+        <div class="mt-auto ms-auto">
+            <a href="/admin/sirens/add">
+                <button class="btn btn-primary"><span class="altona-sans-12">Add boss</span></button></a>
+
+        </div>
+
     </div>
     <div class="m-3">
         <div class="card">
@@ -41,6 +47,12 @@
                                         <a class="link-none altona-sans-10"
                                             href="/admin/sirens/edit/{{ $s->id }}"><button
                                                 class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                    </div>
+
+                                    <div>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/sirens/delete/{{ $s->id }}"><button
+                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
                                     </div>
                                 </td>
                                 <td class="altona-sans-10">{{ $s->name }} <small>({{ $s->boss_type }})</small></td>

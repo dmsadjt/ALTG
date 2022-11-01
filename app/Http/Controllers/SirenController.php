@@ -26,12 +26,24 @@ class SirenController extends Controller
         return view('admin.siren.add');
     }
 
+    public function delete($id)
+    {
+        $boss = Siren::where('id', $id);
+
+        $boss->normal()->delete();
+        $boss->hard()->delete();
+        $boss->fullNormal()->delete();
+        $boss->fullHard()->delete();
+        $boss->delete();
+
+        return redirect('admin/sirens');
+    }
+
     public function post(Request $request)
     {
         $data = $request->validate([
             'name' => 'required',
             'type' => 'required',
-            'adaptability' => 'required',
             'weakness' => 'required',
             'img' => 'image',
             'armor' => 'required',
@@ -58,12 +70,35 @@ class SirenController extends Controller
             'eva-hard' => 'integer',
             'lck-hard' => 'integer',
             'spd-hard' => 'integer',
+            'full-armor' => '',
+            'full-hull' => '',
+            'full-level' => 'integer',
+            'full-hp' => 'integer',
+            'full-fp' => 'integer',
+            'full-trp' => 'integer',
+            'full-aa' => 'integer',
+            'full-avi' => 'integer',
+            'full-acc' => 'integer',
+            'full-eva' => 'integer',
+            'full-lck' => 'integer',
+            'full-spd' => 'integer',
+            'full-armor-hard' => '',
+            'full-hull-hard' => '',
+            'full-level-hard' => 'integer',
+            'full-hp-hard' => 'integer',
+            'full-fp-hard' => 'integer',
+            'full-trp-hard' => 'integer',
+            'full-aa-hard' => 'integer',
+            'full-avi-hard' => 'integer',
+            'full-acc-hard' => 'integer',
+            'full-eva-hard' => 'integer',
+            'full-lck-hard' => 'integer',
+            'full-spd-hard' => 'integer',
         ]);
 
         $boss = Siren::create([
             'name' => $data['name'],
             'boss_type' => $data['type'],
-            'adaptability' => $data['adaptability'],
             'weakness' => $data['weakness'],
             'img' => $request->file('img')->store('siren/img'),
         ]);
@@ -102,6 +137,42 @@ class SirenController extends Controller
             ]);
         }
 
+        if (isset($data['full-hp'])) {
+            $boss->fullNormal()->create([
+                'armor' => $data['full-armor'],
+                // 'siren_id' => $boss->id,
+                'hull_id' => $data['full-hull'],
+                'level' => $data['full-level'],
+                'hp' => $data['full-hp'],
+                'fp' => $data['full-fp'],
+                'trp' => $data['full-trp'],
+                'aa' => $data['full-aa'],
+                'avi' => $data['full-avi'],
+                'acc' => $data['full-acc'],
+                'eva' => $data['full-eva'],
+                'lck' => $data['full-lck'],
+                'spd' => $data['full-spd'],
+            ]);
+        }
+
+        if (isset($data['full-hp-hard'])) {
+            $boss->fullHard()->create([
+                'armor' => $data['full-armor-hard'],
+                // 'siren_id' => $boss->id,
+                'hull_id' => $data['full-hull-hard'],
+                'level' => $data['full-level-hard'],
+                'hp' => $data['full-hp-hard'],
+                'fp' => $data['full-fp-hard'],
+                'trp' => $data['full-trp-hard'],
+                'aa' => $data['full-aa-hard'],
+                'avi' => $data['full-avi-hard'],
+                'acc' => $data['full-acc-hard'],
+                'eva' => $data['full-eva-hard'],
+                'lck' => $data['full-lck-hard'],
+                'spd' => $data['full-spd-hard'],
+            ]);
+        }
+
 
         return redirect('admin/sirens');
     }
@@ -121,6 +192,7 @@ class SirenController extends Controller
 
         return view('admin.siren.edit', compact('siren', 'hulls', 'selected'));
     }
+
 
     public function update(Request $request)
     {

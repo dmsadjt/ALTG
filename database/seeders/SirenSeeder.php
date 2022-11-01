@@ -15,12 +15,9 @@ class SirenSeeder extends Seeder
     public function run()
     {
         //stronghold
-
-
         DB::table('sirens')->insert([
             'name' => 'Stronghold-1',
             'boss_type' => 'stronghold',
-            'adaptability' => 'none',
         ]);
 
         DB::table('normals')->insert([
@@ -59,7 +56,6 @@ class SirenSeeder extends Seeder
         DB::table('sirens')->insert([
             'name' => 'Abyssal-1',
             'boss_type' => 'abyssal',
-            'adaptability' => 'none',
         ]);
 
         DB::table('normals')->insert([
@@ -98,7 +94,6 @@ class SirenSeeder extends Seeder
         DB::table('sirens')->insert([
             'name' => 'Arbiter-1',
             'boss_type' => 'arbiter',
-            'adaptability' => 'none',
         ]);
 
         DB::table('normals')->insert([
@@ -135,7 +130,7 @@ class SirenSeeder extends Seeder
 
         DB::table('hards')->insert([
             'siren_id' => '3',
-            'hull_id' => '5',
+            'hull_id' => '2',
             'level' => '100',
             'armor' => 'Medium',
             'hp' => '400k',

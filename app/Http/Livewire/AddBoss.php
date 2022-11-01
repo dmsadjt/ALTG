@@ -8,6 +8,8 @@ use Livewire\Component;
 class AddBoss extends Component
 {
     public $hardToggle;
+    public $hardToggleFull;
+    public $FullToggle;
 
     public function render()
     {
