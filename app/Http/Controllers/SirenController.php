@@ -41,6 +41,7 @@ class SirenController extends Controller
 
     public function post(Request $request)
     {
+        // dd($request);
         $data = $request->validate([
             'name' => 'required',
             'type' => 'required',
@@ -180,17 +181,10 @@ class SirenController extends Controller
 
     public function edit($id)
     {
-        $siren = Siren::where('id', $id)->get();
+        $siren = Siren::where('id', $id)->first();
         $hulls = Hull::all();
-        foreach ($siren as $s) {
-            $selected['type'] = $s->boss_type;
-            $selected['difficulty'] = $s->difficulty;
-            $selected['adaptability'] = $s->adaptability;
-            $selected['hull'] = $s->hull_id;
-            $selected['armor'] = $s->armor;
-        }
 
-        return view('admin.siren.edit', compact('siren', 'hulls', 'selected'));
+        return view('admin.siren.edit', compact('siren', 'hulls'));
     }
 
 
@@ -198,10 +192,13 @@ class SirenController extends Controller
     {
         $data = $request->validate([
             'id' => 'required',
-            'name' => '',
-            'hull' => '',
+            'name' => 'required',
+            'type' => 'required',
+            'weakness' => 'required',
+            'img' => 'image',
+            'armor' => 'required',
+            'hull' => 'required',
             'level' => 'integer',
-            'armor' => '',
             'hp' => 'integer',
             'fp' => 'integer',
             'trp' => 'integer',
@@ -211,8 +208,42 @@ class SirenController extends Controller
             'eva' => 'integer',
             'lck' => 'integer',
             'spd' => 'integer',
-            'weakness' => '',
-            'img' => 'image',
+            'armor-hard' => '',
+            'hull-hard' => '',
+            'level-hard' => 'integer',
+            'hp-hard' => 'integer',
+            'fp-hard' => 'integer',
+            'trp-hard' => 'integer',
+            'aa-hard' => 'integer',
+            'avi-hard' => 'integer',
+            'acc-hard' => 'integer',
+            'eva-hard' => 'integer',
+            'lck-hard' => 'integer',
+            'spd-hard' => 'integer',
+            'full-armor' => '',
+            'full-hull' => '',
+            'full-level' => 'integer',
+            'full-hp' => 'integer',
+            'full-fp' => 'integer',
+            'full-trp' => 'integer',
+            'full-aa' => 'integer',
+            'full-avi' => 'integer',
+            'full-acc' => 'integer',
+            'full-eva' => 'integer',
+            'full-lck' => 'integer',
+            'full-spd' => 'integer',
+            'full-armor-hard' => '',
+            'full-hull-hard' => '',
+            'full-level-hard' => 'integer',
+            'full-hp-hard' => 'integer',
+            'full-fp-hard' => 'integer',
+            'full-trp-hard' => 'integer',
+            'full-aa-hard' => 'integer',
+            'full-avi-hard' => 'integer',
+            'full-acc-hard' => 'integer',
+            'full-eva-hard' => 'integer',
+            'full-lck-hard' => 'integer',
+            'full-spd-hard' => 'integer',
         ]);
 
         $siren = Siren::where('id', $data['id']);
