@@ -249,9 +249,20 @@ class SirenController extends Controller
         $siren = Siren::where('id', $data['id']);
         $siren->update([
             'name' => $data['name'],
+            'boss_type' => $data['type'],
+            'weakness' => $data['weakness'],
+        ]);
+
+        if (array_key_exists('img', $data)) {
+            $siren->update([
+                'img' => $request->file('img')->store('siren/img'),
+            ]);
+        }
+
+        $siren->normal->update([
+            'armor' => $data['armor'],
             'hull_id' => $data['hull'],
             'level' => $data['level'],
-            'armor' => $data['armor'],
             'hp' => $data['hp'],
             'fp' => $data['fp'],
             'trp' => $data['trp'],
@@ -261,14 +272,57 @@ class SirenController extends Controller
             'eva' => $data['eva'],
             'lck' => $data['lck'],
             'spd' => $data['spd'],
-            'weakness' => $data['weakness'],
         ]);
 
-        if (array_key_exists('img', $data)) {
-            $siren->update([
-                'img' => $request->file('img')->store('siren/img'),
+        if ($siren->boss_type == 'arbiter' || $siren->boss_type == 'stronghold' || $siren->boss_type == 'abyssal') {
+            $siren->fullNormal->update([
+                'armor' => $data['full-armor'],
+                'hull_id' => $data['full-hull'],
+                'level' => $data['full-level'],
+                'hp' => $data['full-hp'],
+                'fp' => $data['full-fp'],
+                'trp' => $data['full-trp'],
+                'aa' => $data['full-aa'],
+                'avi' => $data['full-avi'],
+                'acc' => $data['full-acc'],
+                'eva' => $data['full-eva'],
+                'lck' => $data['full-lck'],
+                'spd' => $data['full-spd'],
             ]);
         }
+
+        if ($siren->boss_type == 'arbiter') {
+            $siren->hard->update([
+                'armor' => $data['armor-hard'],
+                'hull_id' => $data['hull-hard'],
+                'level' => $data['level-hard'],
+                'hp' => $data['hp-hard'],
+                'fp' => $data['fp-hard'],
+                'trp' => $data['trp-hard'],
+                'aa' => $data['aa-hard'],
+                'avi' => $data['avi-hard'],
+                'acc' => $data['acc-hard'],
+                'eva' => $data['eva-hard'],
+                'lck' => $data['lck-hard'],
+                'spd' => $data['spd-hard'],
+            ]);
+
+            $siren->fullHard->update([
+                'armor' => $data['full-armor-hard'],
+                'hull_id' => $data['full-hull-hard'],
+                'level' => $data['full-level-hard'],
+                'hp' => $data['full-hp-hard'],
+                'fp' => $data['full-fp-hard'],
+                'trp' => $data['full-trp-hard'],
+                'aa' => $data['full-aa-hard'],
+                'avi' => $data['full-avi-hard'],
+                'acc' => $data['full-acc-hard'],
+                'eva' => $data['full-eva-hard'],
+                'lck' => $data['full-lck-hard'],
+                'spd' => $data['full-spd-hard'],
+            ]);
+        }
+
 
         return redirect('admin/sirens');
     }
