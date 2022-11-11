@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FullHard;
+use App\Models\FullNormal;
 use Illuminate\Http\Request;
 use App\Models\Siren;
 use App\Models\Hull;
 use App\Models\Normal;
+use App\Models\Hard;
 
 class SirenController extends Controller
 {
@@ -29,11 +32,10 @@ class SirenController extends Controller
     public function delete($id)
     {
         $boss = Siren::where('id', $id);
-
-        $boss->normal()->delete();
-        $boss->hard()->delete();
-        $boss->fullNormal()->delete();
-        $boss->fullHard()->delete();
+        Normal::where('siren_id', $id)->delete();
+        Hard::where('siren_id', $id)->delete();
+        FullNormal::where('siren_id', $id)->delete();
+        FullHard::where('siren_id', $id)->delete();
         $boss->delete();
 
         return redirect('admin/sirens');
@@ -246,7 +248,7 @@ class SirenController extends Controller
             'full-spd-hard' => 'integer',
         ]);
 
-        $siren = Siren::where('id', $data['id']);
+        $siren = Siren::where('id', $data['id'])->first();
         $siren->update([
             'name' => $data['name'],
             'boss_type' => $data['type'],

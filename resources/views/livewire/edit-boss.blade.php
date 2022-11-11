@@ -14,6 +14,9 @@
         <h1 class="mx-5">Edit Boss</h1>
         <p class="mx-5 altona-sans-12">Edit current Boss</p>
         <form action="/admin/sirens/update" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
+
+            <input type="hidden" name="id" value="{{ $boss->id }}">
+
             <div>
                 <label class="form-label altona-sans-12" for="name">Boss Name</label>
                 <input class="form-control" type="text" name="name" id="name" value="{{ $boss->name }}">
@@ -371,7 +374,7 @@
             <hr>
             @endif
             <div class="d-grid">
-                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Boss">
+                <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit Boss">
             </div>
             @csrf
 
