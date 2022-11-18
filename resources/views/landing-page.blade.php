@@ -184,7 +184,7 @@
                                     <td>
                                         <div class="score-box sac"
                                             id="{{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
-                                            <span class="score swiss-font-24">
+                                            <span class="score swiss-font-18">
                                                 {{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}
                                             </span>
                                         </div>
@@ -197,7 +197,7 @@
                                     <td>
                                         <div class="score-box sac"
                                             id="{{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
-                                            <span class=" score swiss-font-24">
+                                            <span class=" score swiss-font-18">
                                                 {{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}
                                             </span>
                                         </div>

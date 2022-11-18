@@ -28,21 +28,21 @@
                                 <td>Mob</td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_9_11 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->mobScore->mob_9_11 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_12_13 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->mobScore->mob_12_13 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->mobScore->mob_14 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->mobScore->mob_14 }}
                                         </span>
                                     </div>
@@ -52,21 +52,21 @@
                                 <td>Boss</td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_9_11 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->bossScore->boss_9_11 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_12_13 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->bossScore->boss_12_13 }}
                                         </span>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="score-box mx-auto sac" id="{{ $ship->bossScore->boss_14 }}">
-                                        <span class=" score swiss-font-24">
+                                        <span class=" score swiss-font-18">
                                             {{ $ship->bossScore->boss_14 }}
                                         </span>
                                     </div>

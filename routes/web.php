@@ -13,6 +13,7 @@ use App\Http\Controllers\GearController;
 use App\Http\Controllers\GuidelineController;
 use App\Http\Controllers\HullController;
 use App\Http\Controllers\PositionController;
+use App\Http\Controllers\PostImageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TemplateController;
@@ -79,6 +80,7 @@ Route::post('/admin/blogs/post', [BlogController::class, 'post'])->middleware(['
 Route::post('/admin/tags/post', [TagController::class, 'post'])->middleware(['auth'])->name('post.tag');
 Route::post('/admin/templates/post', [TemplateController::class, 'post'])->middleware(['auth'])->name('post.template');
 Route::post('/admin/sirens/post', [SirenController::class, 'post'])->middleware(['auth'])->name('post.sirens');
+Route::post('/admin/posts/image/post', [PostImageController::class, 'store'])->middleware(['auth'])->name('post.images');
 
 //update
 Route::post('/admin/ships/update', [ShipController::class, 'updateShip'])->middleware(['auth'])->name('update');
@@ -104,6 +106,7 @@ Route::get('/admin/blogs/delete/{id}', [BlogController::class, 'delete'])->middl
 Route::get('/admin/tags/delete/{id}', [TagController::class, 'delete'])->middleware(['auth'])->name('delete.tag');
 Route::get('/admin/templates/delete/{id}', [TemplateController::class, 'delete'])->middleware(['auth'])->name('delete.template');
 Route::get('/admin/sirens/delete/{id}', [SirenController::class, 'delete'])->middleware(['auth'])->name('delete.siren');
+
 
 
 Route::get('/', [LandingController::class, 'index'])->name('home');

@@ -1,6 +1,5 @@
 <div class="container text-white">
     <div class="columns-two__4-2">
-
         <div class="columns-two__1-5">
             <h2 class="swiss-font-24">Filter Ships</h2>
             <div></div>
@@ -129,50 +128,50 @@
             </div>
         </div>
 
-        <div>
+        <div class="ms-2">
             <h2 class="swiss-font-24">View Scores by</h2>
             <hr>
             <h3 class="swiss-font-12">Mob/Boss</h2>
-                <div class="columns-two mb-2 mob-boss">
-                    <div class="button-square btn btn-dark d-grid score-type ms-auto">
+                <div class="d-flex mb-2 mob-boss">
+                    <div class="d-grid score-type">
                         <input type="radio" wire:model="score" value="Mob" id="mob"
                             class="filter-option d-none">
-                        <label for="mob" class="filter-label">
+                        <label for="mob" class="filter-label d-grid">
                             <img class="mx-auto img-small" src="{{ url('/img/web-assets/mob.png') }}" alt="">
-                            Mob
+                            <span class="mx-auto">Mob</span>
                         </label>
                     </div>
 
 
-                    <div class="button-square btn btn-dark d-grid score-type me-auto">
+                    <div class="d-grid score-type">
                         <input type="radio" wire:model="score" value="Boss" id="boss"
                             class="filter-option d-none">
 
-                        <label for="boss" class="filter-label">
+                        <label for="boss" class="filter-label d-grid">
                             <img class="mx-auto mt-auto img-small" src="{{ url('/img/web-assets/boss.png') }}"
                                 alt="">
-                            Boss
+                            <span class="mx-auto">Boss</span>
                         </label>
                     </div>
                 </div>
                 <h3 class="swiss-font-12">Chapters</h2>
-                    <div class="columns-three">
-                        <div class="nav-link btn btn-dark score-link altona-sans-12 p-1">
+                    <div class="d-grid">
+                        <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 9-11" id="911"
                                 class="filter-option d-none">
-                            <label for="911" class="filter-label">W 9-11</label>
+                            <label for="911" class="filter-label p-2">W 9-11</label>
 
                         </div>
-                        <div class="nav-link btn btn-dark score-link altona-sans-12 p-1">
+                        <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 12-13" id="1213"
                                 class="filter-option d-none">
-                            <label for="1213" class="filter-label">W 12-13</label>
+                            <label for="1213" class="filter-label p-2">W 12-13</label>
 
                         </div>
-                        <div class="nav-link btn btn-dark score-link altona-sans-12 p-1">
+                        <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 14" id="14"
                                 class="filter-option d-none">
-                            <label for="14" class="filter-label">W 14</label>
+                            <label for="14" class="filter-label p-2">W 14</label>
 
                         </div>
                     </div>

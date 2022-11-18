@@ -1417,14 +1417,21 @@ select {
 }
 
 .filter-option {
-    width: 0;
     opacity: 0;
+    width: 0;
+}
+
+.filter-option+label {
+    background-color: var(--gray1);
+    opacity: 1;
+    border-radius: 0.375em;
 }
 
 .filter-option:hover+label {
-
+    background-color: var(--gray2);
     border-radius: 0.375em;
 }
+
 
 .filter-label {
     cursor: pointer;
@@ -1433,7 +1440,8 @@ select {
 
 
 .filter-option:checked+label {
-    background-color: var(--gray1);
+    background-color: var(--gray2);
+    border-radius: 0.375em;
     opacity: 1;
 }
 
