@@ -12,10 +12,10 @@ class PostImageController extends Controller
         $blog = new Post();
         $blog->id = 0;
         $blog->exists = true;
-        $image = $blog->addMediaFromRequest('upload')->toMediaCollection('images');
+        $image = $request->file('upload')->store('posts/img');
 
         return response()->json([
-            'url' => $image->getUrl()
+            'url' => asset('storage/' . $image)
         ]);
     }
 }

@@ -17,6 +17,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/scripts.js" type="text/javascript"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.1/decoupled-document/ckeditor.js"></script>
+
     @livewireStyles
 
 </head>

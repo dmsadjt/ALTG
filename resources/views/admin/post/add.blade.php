@@ -24,7 +24,7 @@
             <label class="form-label altona-sans-12 mt-2" for="body">Body</label>
             <div class="bg-white text-black border rounded p-2">
 
-                <div id="editor"></div>
+                <textarea id="editor" name="body"></textarea>
                 <script>
                     class MyUploadAdapter {
                         constructor(loader) {
