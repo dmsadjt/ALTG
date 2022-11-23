@@ -25,7 +25,9 @@
             <div class="bg-white text-black border rounded p-2">
 
                 <textarea id="editor" name="body"></textarea>
-                <script>
+                <script type="module">
+                    import Image from '@ckeditor/ckeditor5-image/src/image';
+                    import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
                     class MyUploadAdapter {
                         constructor(loader) {
                             // The file loader instance to use during the upload.
@@ -136,7 +138,7 @@
                     ClassicEditor
                         .create(document.querySelector('#editor'), {
                             extraPlugins: [SimpleUploadAdapterPlugin],
-
+                            plugins: [ Image, ImageResize ]
                             // ...
                         })
                         .catch(error => {
