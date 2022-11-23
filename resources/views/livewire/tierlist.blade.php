@@ -132,7 +132,7 @@
             <h2 class="swiss-font-24">View Scores by</h2>
             <hr>
             <h3 class="swiss-font-12">Mob/Boss</h2>
-                <div class="d-flex mb-2 mob-boss">
+                <div class="d-flex justify-content-center gap-2 mb-2 mob-boss">
                     <div class="d-grid score-type">
                         <input type="radio" wire:model="score" value="Mob" id="mob"
                             class="filter-option d-none">
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <h3 class="swiss-font-12">Chapters</h2>
-                    <div class="d-grid">
+                    <div class="d-flex justify-content-center">
                         <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 9-11" id="911"
                                 class="filter-option d-none">
