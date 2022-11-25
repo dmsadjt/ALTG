@@ -25,9 +25,10 @@
             <div class="bg-white text-black border rounded p-2">
 
                 <textarea id="editor" name="body"></textarea>
-                <script type="module">
-                    import Image from '@ckeditor/ckeditor5-image/src/image';
-                    import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
+                <script type="module" src="/ckeditor5/src/ckeditor.js">
+
+                </script>
+                <script>
                     class MyUploadAdapter {
                         constructor(loader) {
                             // The file loader instance to use during the upload.
@@ -71,7 +72,7 @@
                         _initListeners(resolve, reject, file) {
                             const xhr = this.xhr;
                             const loader = this.loader;
-                            const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                            const genericErrorText = `Couldn't upload file: ${file.name}.`;
 
                             xhr.addEventListener('error', () => reject(genericErrorText));
                             xhr.addEventListener('abort', () => reject());
@@ -134,18 +135,15 @@
                         };
                     }
 
-
                     ClassicEditor
                         .create(document.querySelector('#editor'), {
                             extraPlugins: [SimpleUploadAdapterPlugin],
-                            plugins: [ Image, ImageResize ]
                             // ...
                         })
                         .catch(error => {
                             console.error(error);
                         });
                 </script>
-
             </div>
 
             <div class="columns-five my-3">
