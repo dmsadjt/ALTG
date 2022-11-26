@@ -42,17 +42,19 @@
             <div class="collapse navbar-collapse content" id="submenus">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/ships">TIER LIST</a>
+                        <a class="nav-link text-white" href="/ships"><span class="swiss-font-18">TIER LIST</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/siren">OS BOSS STATS</a>
+                        <a class="nav-link text-white" href="/siren"><span class="swiss-font-18">OS BOSS
+                                STATS</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="/blogs">POST</a>
+                        <a class="nav-link text-white" href="/blogs"><span class="swiss-font-18">POST</span></a>
                     </li>
                     <li class="nav-item">
                         <div>
-                            <a class="nav-link text-white" id="search" href="#">SEARCH</a>
+                            <a class="nav-link text-white" id="search" href="#"><span
+                                    class="swiss-font-18">SEARCH</span></a>
 
                             <div class="container-fluid d-none" id="searchBar">
                                 <form class="d-flex" role="search" action="/search/results">

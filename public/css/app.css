@@ -590,10 +590,15 @@ body {
 h1,
 h2,
 h3,
-p,
-a,
 td {
     font-family: swiss721;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+p,
+a {
+    font-family: AltonaSans;
     font-size: 1.2rem;
     font-weight: 100;
 }

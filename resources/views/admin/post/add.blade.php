@@ -43,8 +43,6 @@
                                     this._initListeners(resolve, reject, file);
                                     this._sendRequest(file);
                                 }));
-
-
                         }
 
                         // Aborts the upload process.
@@ -330,32 +328,7 @@
                 @endfor
             </div>
 
-            <div class="d-grid">
-                <label class="form-label altona-sans-12" for="table">Insert table (.xlsx)</label>
-                <input class="form-control" type="file" name="table" id="table">
-            </div>
-            <div>
-                <label class="form-label altona-sans-12" for="table_caption">Table Caption</label>
-                <input class="form-control" type="text" name="table_captions=" id="table_caption">
-            </div>
             <hr>
-
-            <div class="d-grid">
-                @for ($i = 1; $i < 6; $i++)
-                    <div>
-                        <label class="form-label altona-sans-12" for="image-{{ $i }}">Image
-                            {{ $i }}</label>
-                        <input class="form-control" type="file" name="image-{{ $i }}"
-                            id="image-{{ $i }}">
-                    </div>
-                    <div class="my-2">
-                        <label class="form-label altona-sans-12" for="caption-{{ $i }}">Caption
-                            {{ $i }}</label>
-                        <input class="form-control altona-sans-12" type="text" name="caption-{{ $i }}"
-                            id="caption-{{ $i }}">
-                    </div>
-                @endfor
-            </div>
 
             <div class="d-grid">
                 <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Post">
