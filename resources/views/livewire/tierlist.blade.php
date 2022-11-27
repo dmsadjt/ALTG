@@ -191,9 +191,9 @@
                         <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                     @endif
                 </th>
-                <th class="altona-sans-10">Ship role</th>
-                <th class="altona-sans-10">Ship archetype</th>
-                <th><button class="btn text-white" style="font-weight:600;"
+                <th class="altona-sans-10 r-hide">Ship role</th>
+                <th class="altona-sans-10 r-hide">Ship archetype</th>
+                <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                         wire:click="sort('position_id','simple')">Position</button>
                     @if ($sortBy == 'position_id')
                         <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
@@ -286,21 +286,40 @@
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
-                                src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""> <a
-                                href="/ships/{{ $s->id }}" class=" ms-1 link-none font-inherit">
+                                src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""><a
+                                href="/ships/{{ $s->id }}" class=" ms-1 link-none">
                                 {{ $s->name }}
-                            </a></td>
-                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
+                            </a>
+                            <div class="r-show">
+                                <div class="altona-sans-10 ms-1">
+                                    Archetypes :
+                                    @foreach ($s->archetypes as $a)
+                                        {{ $a->archetype_name }},
+                                    @endforeach
+                                </div>
+                                <div class="altona-sans-10 ms-1">
+                                    Roles :
+                                    @foreach ($s->roles as $a)
+                                        {{ $a->role_name }},
+                                    @endforeach
+                                </div>
+                                <div class="altona-sans-10 ms-1">
+                                    Position :
+                                    {{ $s->positions->position_name }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                             @foreach ($s->archetypes as $a)
                                 <div>{{ $a->archetype_name }}</div>
                             @endforeach
                         </td>
-                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
+                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                             @foreach ($s->roles as $a)
                                 <div>{{ $a->role_name }}</div>
                             @endforeach
                         </td>
-                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center ">
+                        <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                             <div>
                                 {{ $s->positions->position_name }}
                             </div>

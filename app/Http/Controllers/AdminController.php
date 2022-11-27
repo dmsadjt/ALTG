@@ -73,7 +73,7 @@ class AdminController extends Controller
 
     public function posts()
     {
-        $post = Post::with(['tags', 'images'])->paginate(10);
+        $post = Post::with(['tags'])->paginate(10);
 
         return view('admin.post.index', compact('post'));
     }

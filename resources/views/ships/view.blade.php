@@ -3,7 +3,7 @@
 @section('contents')
     <section class="hero">
         <div class="container">
-            <div class="bg-overlay">
+            <div class="bg-overlay p-2">
 
                 {{-- ship name --}}
                 <div class="columns-five">

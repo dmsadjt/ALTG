@@ -328,6 +328,9 @@
                 @endfor
             </div>
 
+            <label class="form-label altona-sans-12" for="thumbnail-image">Thumbnail Image</label>
+            <input class="form-control" type="file" name="thumbnail-image" id="thumbnail-image">
+
             <hr>
 
             <div class="d-grid">

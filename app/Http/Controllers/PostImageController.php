@@ -11,7 +11,6 @@ class PostImageController extends Controller
     public function store(Request $request)
     {
         $image = new PostImage();
-        $image->post_id = 0;
         $image->image = $request->file('upload')->store('posts/img');
         $image->save();
 

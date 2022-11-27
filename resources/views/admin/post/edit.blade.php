@@ -312,6 +312,17 @@
                     </script>
                 </div>
 
+                @if ($p->images)
+                    <input type="hidden" name="thumbnail-id" value={{ $i->id }}>
+                @endif
+                <div>
+                    <label class="form-label altona-sans-12" for="thumbnail-image">Thumbnail Image</label>
+                    @if ($p->images)
+                        <img src="{{ asset('storage/' . $i->image) }}" alt="{{ $i->image }}"
+                            class="medium-img d-block my-2 border shadow">
+                    @endif
+                    <input class="form-control" type="file" name="thumbnail-image" id="thumbnail-image">
+                </div>
 
                 <div class="columns-five my-3">
                     @for ($i = 1; $i < 6; $i++)

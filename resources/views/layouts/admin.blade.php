@@ -58,47 +58,47 @@
                 <div class="bg-nav d-grid">
                     <ul class="nav-style-none ul-h-3">
                         <li>
-                            <a class="link-none" href="/admin/ships"><button
+                            <a class="link-none swiss-font-12" href="/admin/ships"><button
                                     class="btn-none text-white w-100 text-start">Ships</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/sirens"><button
+                            <a class="link-none swiss-font-12" href="/admin/sirens"><button
                                     class="btn-none text-white w-100 text-start">Sirens</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/blogs"><button
+                            <a class="link-none swiss-font-12" href="/admin/blogs"><button
                                     class="btn-none text-white w-100 text-start">Posts</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/tags"><button
+                            <a class="link-none swiss-font-12" href="/admin/tags"><button
                                     class="btn-none text-white w-100 text-start">Post tags</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/factions"><button
+                            <a class="link-none swiss-font-12" href="/admin/factions"><button
                                     class="btn-none text-white w-100 text-start">Factions</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/archetypes"><button
+                            <a class="link-none swiss-font-12" href="/admin/archetypes"><button
                                     class="btn-none text-white w-100 text-start">Archetypes</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/roles"><button
+                            <a class="link-none swiss-font-12" href="/admin/roles"><button
                                     class="btn-none text-white w-100 text-start">Roles</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/positions"><button
+                            <a class="link-none swiss-font-12" href="/admin/positions"><button
                                     class="btn-none text-white w-100 text-start">Positions</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/gears"><button
+                            <a class="link-none swiss-font-12" href="/admin/gears"><button
                                     class="btn-none text-white w-100 text-start">Gears</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/hulls"><button
+                            <a class="link-none swiss-font-12" href="/admin/hulls"><button
                                     class="btn-none text-white w-100 text-start">Hulls</button></a>
                         </li>
                         <li>
-                            <a class="link-none" href="/admin/templates"><button
+                            <a class="link-none swiss-font-12" href="/admin/templates"><button
                                     class="btn-none text-white w-100 text-start">Gear Templates</button></a>
                         </li>
                     </ul>
@@ -114,11 +114,5 @@
     @livewireScripts
 
 </body>
-
-<script>
-    document.addEventListener('trix-file-accept', function(e) {
-        e.preventDefault();
-    })
-</script>
 
 </html>

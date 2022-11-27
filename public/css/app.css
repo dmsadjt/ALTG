@@ -205,6 +205,9 @@ html {
         background-size: 100% 100%;
     }
 
+    .r-show {
+        display: none;
+    }
 
 }
 
@@ -300,9 +303,6 @@ html {
         max-width: 80vw;
     }
 
-    .bg-overlay {
-        padding: 0.5em;
-    }
 
     .score-table td {
         font-family: AltonaSans;
@@ -352,14 +352,14 @@ html {
         background-color: var(--gray1);
         border-radius: 0.35em;
         border: 0.2em solid var(--normal);
-        padding: 2em;
+        padding: 1em;
     }
 
     .character-card-elite {
         background-color: var(--gray1);
         border-radius: 0.35em;
         border: 0.2em solid var(--elite);
-        padding: 2em;
+        padding: 1em;
 
     }
 
@@ -368,7 +368,7 @@ html {
         background-color: var(--gray1);
         border-radius: 0.35em;
         border: 0.2em solid var(--rare);
-        padding: 2em;
+        padding: 1em;
     }
 
     .character-card-sr {
@@ -376,7 +376,7 @@ html {
         background-color: var(--gray1);
         border-radius: 0.35em;
         border: 0.2em solid var(--sr);
-        padding: 2em;
+        padding: 1em;
     }
 
     .character-card-ur {
@@ -384,7 +384,7 @@ html {
         background-color: var(--gray1);
         border-radius: 0.35em;
         border: 0.2em solid var(--_11);
-        padding: 2em;
+        padding: 1em;
     }
 
     .character-name {
@@ -575,6 +575,11 @@ body {
 .altona-sans-10 {
     font-family: AltonaSans;
     font-size: 1rem;
+}
+
+.altona-sans-6 {
+    font-family: AltonaSans;
+    font-size: 0.6rem;
 }
 
 .altona-sans-18 {

@@ -10,8 +10,4 @@ use App\Models\Post;
 class PostImage extends Model
 {
     use HasFactory;
-
-    public function post(){
-        return $this->belongsTo(Post::class);
-    }
 }

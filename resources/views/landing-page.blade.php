@@ -4,6 +4,7 @@
     <section class="hero">
         <div class="container">
             <div class="d-grid mx-auto mt-4">
+
                 <button class="text-white orange-button shadow">
                     <a href="/ships" class="link-none">
                         <h1 class="p-3">GO TO TIERLIST</h1>
@@ -11,10 +12,10 @@
                 </button>
 
             </div>
+
             <div class="d-grid mx-auto">
                 <a class="text-white text-center" href="/blogs/view/1"><b>Read our tiering guidelines here</b></a>
             </div>
-
 
             <div class="columns-two text-center mx-auto">
 
@@ -40,12 +41,8 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            @if (isset($posts[0]->images[0]))
-                                <img src="{{ asset('storage/' . $posts[0]->images[0]->image) }}" class="d-block"
-                                    alt="post-img">
-                            @else
-                                <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block" alt="post-img">
-                            @endif
+
+                            <img src="{{ asset('storage/' . $posts[0]->thumbnail) }}" class="d-block" alt="post-img">
 
                             <div class="carousel-caption  d-none d-md-block">
                                 <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
@@ -54,13 +51,8 @@
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                @if (isset($posts[$i]->images[0]))
-                                    <img src="{{ asset('storage/' . $posts[$i]->images[0]->image) }}" class="d-block"
-                                        alt="post-img">
-                                @else
-                                    <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block"
-                                        alt="post-img">
-                                @endif
+                                <img src="{{ asset('storage/' . $posts[$i]->thumbnail) }}" class="d-block" alt="post-img">
+
                                 <div class="carousel-caption d-none d-md-block">
                                     <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
                                     <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
@@ -104,7 +96,7 @@
                             alt="">
                     </div>
                     <div class="grid-col-span-2">
-                        <h1 style="font-size:3.5rem;color: white;">{{ $ships[$i]->name }}</h1>
+                        <h1 style="font-size:2.5rem;color: white;">{{ $ships[$i]->name }}</h1>
                     </div>
                 </div>
 
