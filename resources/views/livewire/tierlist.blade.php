@@ -201,77 +201,77 @@
                 </th>
 
                 @if ($score == 'Mob')
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_9_11','complex')">9-11 </button>
                         @if ($sortBy == 'mob_9_11')
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_12_13','complex')">12-13</button>
                         @if ($sortBy == 'mob_12_13')
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_14','complex')">14</button>
                         @if ($sortBy == 'mob_14')
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                 @elseif ($score == 'Boss')
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_9_11','complex')">9-11</button>
                         @if ($sortBy == 'boss_9_11')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_12_13','complex')">12-13</button>
                         @if ($sortBy == 'boss_12_13')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_14','complex')">14</button>
                         @if ($sortBy == 'boss_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                 @elseif ($score == 'W 9-11')
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_9_11','complex')">Mob</button>
                         @if ($sortBy == 'mob_9_11')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_9_11','complex')">Boss</button>
                         @if ($sortBy == 'boss_9_11')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                 @elseif ($score == 'W 12-13')
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_12_13','complex')">Mob</button>
                         @if ($sortBy == 'mob_12_13')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_12_13','complex')">Boss</button>
                         @if ($sortBy == 'boss_12_13')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
                 @elseif ($score == 'W 14')
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('mob_14','complex')">Mob</button>
                         @if ($sortBy == 'mob_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class=""><button class="btn text-white" style="font-weight:600;"
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_14','complex')">Boss</button>
                         @if ($sortBy == 'boss_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
@@ -291,22 +291,88 @@
                                 {{ $s->name }}
                             </a>
                             <div class="r-show">
-                                <div class="altona-sans-10 ms-1">
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
                                     Archetypes :
                                     @foreach ($s->archetypes as $a)
                                         {{ $a->archetype_name }},
                                     @endforeach
                                 </div>
-                                <div class="altona-sans-10 ms-1">
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
                                     Roles :
                                     @foreach ($s->roles as $a)
                                         {{ $a->role_name }},
                                     @endforeach
                                 </div>
-                                <div class="altona-sans-10 ms-1">
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
                                     Position :
                                     {{ $s->positions->position_name }}
                                 </div>
+
+                                @if ($score == 'Mob')
+                                    <div class="d-flex p-1 gap-1">
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_9_11, 1 }}">W 9-11 :
+                                            <span>{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_12_13, 1 }}">W 12-13 :
+                                            <span>{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_14, 1 }}">W 14 :
+                                            <span>{{ number_format($s->mobScore->mob_14, 1) }}</span>
+                                        </div>
+                                    </div>
+                                @elseif ($score == 'Boss')
+                                    <div class="d-flex p-1 gap-1">
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_9_11, 1 }}">W 9-11 :
+                                            <span>{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_12_13, 1 }}">W 12-13 :
+                                            <span>{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_14, 1 }}">W 14 :
+                                            <span>{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                        </div>
+                                    </div>
+                                @elseif ($score == 'W 9-11')
+                                    <div class="d-flex p-1 gap-1">
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_9_11, 1 }}">Mob :
+                                            <span>{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_9_11, 1 }}">Boss :
+                                            <span>{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
+                                        </div>
+                                    </div>
+                                @elseif ($score == 'W 12-13')
+                                    <div class="d-flex p-1 gap-1">
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_12_13, 1 }}">Mob :
+                                            <span>{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_12_13, 1 }}">Boss :
+                                            <span>{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
+                                        </div>
+                                    </div>
+                                @elseif ($score == 'W 14')
+                                    <div class="d-flex p-1 gap-1">
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->mobScore->mob_14, 1 }}">Mob :
+                                            <span>{{ number_format($s->mobScore->mob_14, 1) }}</span>
+                                        </div>
+                                        <div class="badge score-badge text-white"
+                                            data-score="{{ $s->bossScore->boss_14, 1 }}">Boss :
+                                            <span>{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                        </div>
+                                    </div>
+                                @endif
+
                             </div>
                         </td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
@@ -331,7 +397,7 @@
 
                         {{-- Mob Score --}}
                         @if ($score == 'Mob')
-                            <td class="bg-gray1 border-left-white ">
+                            <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
@@ -339,7 +405,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1  ">
+                            <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
@@ -347,7 +413,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1 ">
+                            <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
@@ -358,7 +424,7 @@
 
                             {{-- Boss Score --}}
                         @elseif ($score == 'Boss')
-                            <td class="bg-gray1 border-left-white ">
+                            <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
@@ -366,7 +432,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1  ">
+                            <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
@@ -374,7 +440,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1 ">
+                            <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
@@ -385,7 +451,7 @@
 
                             {{-- 9-11 Score --}}
                         @elseif ($score = 'W 9-11')
-                            <td class="bg-gray1 border-left-white ">
+                            <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
@@ -393,7 +459,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1 border-left-white ">
+                            <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
@@ -404,7 +470,7 @@
 
                             {{-- 12-13 Score --}}
                         @elseif ($score = 'W 12-13')
-                            <td class="bg-gray1  ">
+                            <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
@@ -412,7 +478,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1  ">
+                            <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
@@ -422,7 +488,7 @@
                             </td>
                             {{-- 14 Score --}}
                         @elseif ($score = 'W 14')
-                            <td class="bg-gray1 ">
+                            <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
@@ -430,7 +496,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="bg-gray1 ">
+                            <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
                                     data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
@@ -459,6 +525,11 @@
                 changeScore(y[i]);
             }
 
+            z = document.getElementsByClassName('score-badge');
+            for (i = 0; i < z.length; i++) {
+                changeScore(z[i]);
+            }
+
         })
 
         document.addEventListener('test', function() {
@@ -470,6 +541,11 @@
             y = document.getElementsByClassName('score-box');
             for (i = 0; i < y.length; i++) {
                 changeScore(y[i]);
+            }
+
+            z = document.getElementsByClassName('score-badge');
+            for (i = 0; i < z.length; i++) {
+                changeScore(z[i]);
             }
         })
     </script>
