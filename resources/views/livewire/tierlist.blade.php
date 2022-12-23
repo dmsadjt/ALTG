@@ -285,9 +285,9 @@
                         <td class="rarity-tag" data-rarity="{{ $s->rarity->rarity_tag }}">
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
-                        <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
+                        <td class="bg-gray1 "><img class="chibi-img r-hide"
                                 src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""><a
-                                href="/ships/{{ $s->id }}" class=" ms-1 link-none">
+                                href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
                                 {{ $s->name }}
                             </a>
                             <div class="r-show">
