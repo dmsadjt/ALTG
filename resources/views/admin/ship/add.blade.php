@@ -22,6 +22,8 @@
 
         })
     </script>
+
+
     <div class="d-grid pill-dark p-2 m-3">
 
         @if ($errors->any())
@@ -34,8 +36,8 @@
             </div>
         @endif
 
-        <h1 class="mx-5">Add Ships</h1>
         <form action="/admin/ships/post" class="mx-5 p-1" method="POST" enctype="multipart/form-data">
+            <h1>Add Ships</h1>
             @csrf
             <h2>General data</h2>
             <div>

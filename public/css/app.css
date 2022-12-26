@@ -215,6 +215,15 @@ html {
 
 @media screen and (max-width : 992px) {
 
+    .details {
+        transition: 0.4s
+    }
+
+    .chibi-img {
+        height: 2rem !important;
+        width: 3rem !important;
+    }
+
     .r-overflow-x {
         overflow-x: scroll;
     }
@@ -1381,7 +1390,7 @@ td {
 }
 
 .text-color-flagship {
-    color: var(--flagshp);
+    color: var(--flagship);
 }
 
 .text-color-offflag {

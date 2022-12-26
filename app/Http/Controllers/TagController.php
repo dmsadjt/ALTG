@@ -7,53 +7,56 @@ use App\Models\Tag;
 
 class TagController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $tags = Tag::paginate(10);
         return view('admin.tag.index', compact('tags'));
     }
 
-    public function add(){
+    public function add()
+    {
         return view('admin.tag.add');
     }
 
-    public function post(Request $request){
+    public function post(Request $request)
+    {
         $data = $request->validate([
-            'label'=>'required',
-            'slug'=>'required',
+            'label' => 'required',
         ]);
 
-        $tag = new Tag;
-        $tag['tag_label'] = $data['label'];
-        $tag['tag_slug'] = $data['slug'];
-        $tag->save();
+        Tag::create([
+            'tag_label' => $data['label'],
+        ]);
 
         return redirect('admin/tags');
-
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $tag = Tag::where('id', $id)->get();
 
         return view('admin.tag.edit', compact('tag'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $data = $request->validate([
-            'id'=>'required',
-            'label'=>'required',
-            'slug'=>'required',
+            'id' => 'required',
+            'label' => 'required',
+            'slug' => 'required',
         ]);
 
         $tag = Tag::where('id', $data['id']);
+        $tag->tag_slug = null;
         $tag->update([
-            'tag_label'=>$data['label'],
-            'tag_slug'=>$data['slug'],
+            'tag_label' => $data['label'],
         ]);
 
         return redirect('admin/tags');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $tag = Tag::where('id', $id)->first();
         $tag->posts()->detach();
         $tag->delete();

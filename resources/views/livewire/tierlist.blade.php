@@ -133,6 +133,7 @@
             <hr>
             <h3 class="swiss-font-12">Mob/Boss</h2>
                 <div class="d-flex justify-content-center gap-2 mb-2 mob-boss">
+
                     <div class="d-grid score-type">
                         <input type="radio" wire:model="score" value="Mob" id="mob"
                             class="filter-option d-none">
@@ -141,7 +142,6 @@
                             <span class="mx-auto">Mob</span>
                         </label>
                     </div>
-
 
                     <div class="d-grid score-type">
                         <input type="radio" wire:model="score" value="Boss" id="boss"
@@ -285,29 +285,26 @@
                         <td class="rarity-tag" data-rarity="{{ $s->rarity->rarity_tag }}">
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
-                        <td class="bg-gray1 "><img class="chibi-img r-hide"
-                                src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""><a
-                                href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                        <td class="bg-gray1 ">
+                            <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                    alt="">
                                 {{ $s->name }}
                             </a>
-                            <div class="r-show">
-                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
-                                    Archetypes :
-                                    @foreach ($s->archetypes as $a)
-                                        {{ $a->archetype_name }},
-                                    @endforeach
-                                </div>
-                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
-                                    Roles :
-                                    @foreach ($s->roles as $a)
-                                        {{ $a->role_name }},
-                                    @endforeach
-                                </div>
-                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
-                                    Position :
-                                    {{ $s->positions->position_name }}
-                                </div>
-
+                            <div class="btn btn-outline-light altona-sans-10" id="button-{{ $s->id }}"
+                                data-id="{{ $s->name . '-' . $s->id }}" style="font-size: 0.6rem; padding:0.175em">
+                                scores
+                            </div>
+                            <script>
+                                kapalId = {!! json_encode($s->id) !!};
+                                btn = document.getElementById('button-' + kapalId);
+                                btn.addEventListener('click', (event) => {
+                                    tempid = event.target.getAttribute('data-id');
+                                    tmp = document.getElementById(tempid).classList;
+                                    tmp.toggle('d-none');
+                                })
+                            </script>
+                            <div class="details" id="{{ $s->name . '-' . $s->id }}">
                                 @if ($score == 'Mob')
                                     <div class="d-flex p-1 gap-1">
                                         <div class="badge score-badge text-white"

@@ -21,25 +21,29 @@
                             <th scope="col">Slug</th>
                         </tr>
                     </thead>
-                    <tbody >
+                    <tbody>
                         @foreach ($archetypes as $s)
                             <tr>
                                 <td class="altona-sans-10 w-25">
                                     <span>{{ $s->id }}</span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/admin/archetypes/edit/{{$s->id}}"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/archetypes/edit/{{ $s->id }}"><button
+                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </span>
                                     <span>
-                                        <a class="link-none altona-sans-10" href="/admin/archetypes/delete/{{$s->id}}"><button class="btn btn-outline-danger btn-sm" >Delete</button></a>
+                                        <a class="link-none altona-sans-10"
+                                            href="/admin/archetypes/delete/{{ $s->id }}"><button
+                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
                                     </span>
-                            </td>
+                                </td>
                                 <td class="altona-sans-10">{{ $s->archetype_name }}</td>
                                 <td class="altona-sans-10">{{ $s->archetype_slug }}</td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{$archetypes->links()}}
+                    {{ $archetypes->links() }}
                 </table>
             </div>
         </div>

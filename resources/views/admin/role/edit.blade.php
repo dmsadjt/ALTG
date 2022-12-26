@@ -17,28 +17,24 @@
         <form action="/admin/roles/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
             @csrf
             @foreach ($role as $f)
+
                 <input type="hidden" name="id" value="{{ $f->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Role Name</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ $f->role_name }}">
                 </div>
-                <div>
-                    <label class="form-label altona-sans-12" for="slug">
-                        <div>Role Slug</div>
-                    </label>
-                    <input class="form-control" type="text" name="slug" id="slug" value="{{ $f->role_slug }}"
-                        disabled>
-                </div>
 
-                @for ($i = 1 ; $i < 4; $i++)
-                <label class="form-label altona-sans-12" for="faction-{{$i}}">Faction {{$i}}</label>
-                    <select class="form-select altona-sans-12" name="faction-{{$i}}" id="faction-{{$i}}">
+                @for ($i = 1; $i < 4; $i++)
+                    <label class="form-label altona-sans-12" for="faction-{{ $i }}">Faction
+                        {{ $i }}</label>
+                    <select class="form-select altona-sans-12" name="faction-{{ $i }}"
+                        id="faction-{{ $i }}">
                         <option value="">Select Faction</option>
                         @foreach ($faction as $f)
-                            <option value="{{$f->id}}" {{$selected['role-'.$i] == $f->id ? 'selected':'' }}>{{$f->faction_name}}</option>
+                            <option value="{{ $f->id }}" {{ $selected['role-' . $i] == $f->id ? 'selected' : '' }}>
+                                {{ $f->faction_name }}</option>
                         @endforeach
                     </select>
-
                 @endfor
             @endforeach
 

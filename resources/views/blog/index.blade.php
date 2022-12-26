@@ -21,10 +21,10 @@
                                 <div>
                                     <span class="altona-sans-10">Tags :</span>
                                 </div>
-                                <div class="d-flex">
+                                <div class="d-flex flex-wrap">
 
                                     @foreach ($p->tags as $t)
-                                        <div class="bg-white text-black rounded p-1 w-auto mx-1 altona-sans-10">
+                                        <div class="bg-white text-black badge altona-sans-10 m-1">
                                             {{ $t->tag_label }}
                                         </div>
                                     @endforeach

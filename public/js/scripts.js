@@ -2,6 +2,10 @@ window.addEventListener('load', function () {
     this.document.querySelectorAll('.active').forEach(e =>
         e.click()
     )
+
+    for (i = 0; i < this.document.getElementsByClassName('details').length; i++) {
+        this.document.getElementsByClassName('details')[i].classList.add('d-none');
+    }
 })
 
 function openTab(evt, tabStatus, content, links, style) {

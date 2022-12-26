@@ -20,14 +20,8 @@
                 <input type="hidden" name="id" value="{{ $f->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Archetype Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->archetype_name }}">
-                </div>
-                <div>
-                    <label class="form-label altona-sans-12" for="slug">
-                        <div>Archetype Slug</div>
-                    </label>
-                    <input class="form-control" type="text" name="slug" id="slug" value="{{ $f->archetype_slug }}"
-                        disabled>
+                    <input class="form-control" type="text" name="name" id="name"
+                        value="{{ $f->archetype_name }}">
                 </div>
             @endforeach
 
