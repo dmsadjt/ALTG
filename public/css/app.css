@@ -206,7 +206,7 @@ html {
     }
 
     .r-show {
-        display: none;
+        display: none !important;
     }
 
 }
@@ -346,7 +346,7 @@ html {
     }
 
     .r-hide {
-        display: none;
+        display: none !important;
     }
 
     .image-out {
@@ -413,6 +413,11 @@ html {
     }
 }
 
+.r-columns-two {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
 
 .siren-img {
     width: 100%;
