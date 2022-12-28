@@ -286,20 +286,28 @@
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 ">
-                            <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
-                                <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
-                                    alt="">
-                                <span class="r-hide">
-                                    {{ $s->name }}
-                                </span>
-                                <span class="r-show">
-                                    {{ Str::limit($s->name, 15) }}
-                                </span>
-                            </a>
-                            <div class="r-show btn btn-outline-light altona-sans-10 justify-content-end"
-                                id="button-{{ $s->id }}" data-id="{{ $s->name . '-' . $s->id }}"
-                                style="font-size: 0.6rem; padding:0.1em">
-                                +
+                            <div class="row">
+                                <div class="col-2">
+                                    <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                        alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                        <span class="r-hide">
+                                            {{ $s->name }}
+                                        </span>
+                                        <span class="r-show">
+                                            {{ Str::limit($s->name, 13) }}
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <div class="r-show btn btn-outline-light altona-sans-10 justify-content-end"
+                                        id="button-{{ $s->id }}" data-id="{{ $s->name . '-' . $s->id }}"
+                                        style="font-size: 0.6rem; padding:0.1em">
+                                        +
+                                    </div>
+                                </div>
                             </div>
                             <script>
                                 kapalId = {!! json_encode($s->id) !!};
@@ -312,120 +320,156 @@
                             </script>
                             <div class="details r-show" id="{{ $s->name . '-' . $s->id }}">
                                 @if ($score == 'Mob')
-                                    <div class="d-flex p-1 gap-3 justify-content-center">
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 9-11</div>
-                                            <div class="score-box score-badge text-white mx-auto"
-                                                data-score="{{ $s->mobScore->mob_9_11, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-2 d-grid">
                                         </div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-1">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                        9-11</div>
+                                                    <div class="score-box score-badge text-white mx-auto"
+                                                        data-score="{{ $s->mobScore->mob_9_11, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
+                                                    </div>
+                                                </div>
 
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 12-13
-                                            </div>
-                                            <div class="score-box score-badge text-white mx-auto"
-                                                data-score="{{ $s->mobScore->mob_12_13, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 14</div>
-                                            <div class="score-box score-badge text-white mx-auto"
-                                                data-score="{{ $s->mobScore->mob_14, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->mobScore->mob_14, 1) }}</span>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                        12-13
+                                                    </div>
+                                                    <div class="score-box score-badge text-white mx-auto"
+                                                        data-score="{{ $s->mobScore->mob_12_13, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 14
+                                                    </div>
+                                                    <div class="score-box score-badge text-white mx-auto"
+                                                        data-score="{{ $s->mobScore->mob_14, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->mobScore->mob_14, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'Boss')
-                                    <div class="d-flex p-1 gap-1 justify-content-center">
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 12-13
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_9_11, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
-                                            </div>
-                                        </div class="d-grid">
-                                        <div>
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 12-13
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_12_13, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 12-13
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_14, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-1">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                        12-13
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_9_11, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
+                                                    </div>
+                                                </div class="d-grid">
+                                                <div>
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                        12-13
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_12_13, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                        12-13
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_14, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 9-11')
-                                    <div class="d-flex p-1 gap-1 justify-content-center">
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->mobScore->mob_9_11, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_9_11, 1 }}">
-                                                <span
-                                                    class="score ">{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-1">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->mobScore->mob_9_11, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_9_11, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 12-13')
-                                    <div class="d-flex p-1 gap-1 justify-content-center">
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->mobScore->mob_12_13, 1 }}">
-                                                <span>{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_12_13, 1 }}">
-                                                <span>{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-1 ">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->mobScore->mob_12_13, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->mobScore->mob_12_13, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_12_13, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->bossScore->boss_12_13, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 14')
-                                    <div class="d-flex p-1 gap-1 justify-content-center">
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->mobScore->mob_14, 1 }}">
-                                                <span>{{ number_format($s->mobScore->mob_14, 1) }}</span>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid">
-                                            <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
-                                            </div>
-                                            <div class="score-box score-badge text-white"
-                                                data-score="{{ $s->bossScore->boss_14, 1 }}">
-                                                <span>{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-1">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->mobScore->mob_14, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->mobScore->mob_14, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_14, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -604,6 +648,10 @@
             z = document.getElementsByClassName('score-badge');
             for (i = 0; i < z.length; i++) {
                 changeScore(z[i]);
+            }
+
+            for (i = 0; i < document.getElementsByClassName('details').length; i++) {
+                document.getElementsByClassName('details')[i].classList.add('d-none');
             }
         })
     </script>
