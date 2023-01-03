@@ -75,6 +75,12 @@ html {
 
 @media screen and (min-width: 992px) {
 
+    .chibi-img {
+        object-fit: cover;
+        object-position: 0 -0.7em;
+        height: 5rem;
+        width: 6rem;
+    }
 
     .score-box {
         width: 3.5em;
@@ -220,8 +226,11 @@ html {
     }
 
     .chibi-img {
-        height: 2rem !important;
+        object-fit: cover;
+        height: 3rem !important;
         width: 3rem !important;
+        object-position: 0 0.3em;
+        margin: auto;
     }
 
     .r-overflow-x {
@@ -322,7 +331,7 @@ html {
 
     .score {
         font-family: AltonaSans !important;
-        font-size: 1.2rem !important;
+        font-size: 1.0rem !important;
     }
 
     .details-table,
@@ -515,15 +524,7 @@ body {
     clip-path: polygon(0 0, 0 90%, 10% 100%, 100% 100%, 100% 10%, 90% 0);
 }
 
-.chibi-img {
-    object-fit: cover;
-    object-position: 0 -0.7em;
-    height: 5rem;
-    width: 6rem;
-}
-
 .position-row-img {
-
     height: 3rem;
 }
 
