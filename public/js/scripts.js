@@ -8,6 +8,13 @@ window.addEventListener('load', function () {
     }
 })
 
+const dropdown = (event) => {
+    console.log(event);
+    tempid = event.getAttribute('data-id');
+    tmp = document.getElementById(tempid).classList;
+    tmp.toggle('d-none');
+}
+
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;
 

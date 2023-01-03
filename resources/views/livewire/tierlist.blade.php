@@ -287,13 +287,11 @@
                         </td>
                         <td class="bg-gray1 ">
                             <div class="row">
-                                <div class="col-2">
-                                    <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
-                                        alt="">
-                                </div>
-                                <div class="col-8">
+                                <div class="col-10">
                                     <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
                                         <span class="r-hide">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
                                             {{ $s->name }}
                                         </span>
                                         <span class="r-show">
@@ -304,39 +302,33 @@
                                 <div class="col">
                                     <div class="r-show btn btn-outline-light altona-sans-10 justify-content-end"
                                         id="button-{{ $s->id }}" data-id="{{ $s->name . '-' . $s->id }}"
-                                        style="font-size: 0.6rem; padding:0.1em">
+                                        style="font-size: 0.6rem; padding:0.1em" onclick="dropdown(this)">
                                         +
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                kapalId = {!! json_encode($s->id) !!};
-                                btn = document.getElementById('button-' + kapalId);
-                                btn.addEventListener('click', (event) => {
-                                    tempid = event.target.getAttribute('data-id');
-                                    tmp = document.getElementById(tempid).classList;
-                                    tmp.toggle('d-none');
-                                })
-                            </script>
-                            <div class="details r-show" id="{{ $s->name . '-' . $s->id }}">
+
+                            <div class="r-show">
                                 @if ($score == 'Mob')
                                     <div class="row">
                                         <div class="col-2 d-grid">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
                                         </div>
                                         <div class="col">
-                                            <div class="d-flex p-1 gap-1">
+                                            <div class="d-flex p-1 gap-2">
                                                 <div class="d-grid">
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
                                                         9-11</div>
                                                     <div class="score-box score-badge text-white mx-auto"
                                                         data-score="{{ $s->mobScore->mob_9_11, 1 }}">
                                                         <span
-                                                            class="score ">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
+                                                            class="score">{{ number_format($s->mobScore->mob_9_11, 1) }}</span>
                                                     </div>
                                                 </div>
 
                                                 <div class="d-grid">
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
                                                         12-13
                                                     </div>
                                                     <div class="score-box score-badge text-white mx-auto"
@@ -346,7 +338,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-grid">
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W 14
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem"> 14
                                                     </div>
                                                     <div class="score-box score-badge text-white mx-auto"
                                                         data-score="{{ $s->mobScore->mob_14, 1 }}">
@@ -356,12 +348,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <img style="width:4em"
+                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                alt="position">
+                                        </div>
                                     </div>
                                 @elseif ($score == 'Boss')
                                     <div class="row">
-                                        <div class="col-2"></div>
+                                        <div class="col-2">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
+                                        </div>
                                         <div class="col">
-                                            <div class="d-flex p-1 gap-1">
+                                            <div class="d-flex p-1 gap-2">
                                                 <div class="d-grid">
                                                     <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
                                                         12-13
@@ -371,9 +371,9 @@
                                                         <span
                                                             class="score ">{{ number_format($s->bossScore->boss_9_11, 1) }}</span>
                                                     </div>
-                                                </div class="d-grid">
-                                                <div>
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
                                                         12-13
                                                     </div>
                                                     <div class="score-box score-badge text-white"
@@ -383,7 +383,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-grid">
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
                                                         12-13
                                                     </div>
                                                     <div class="score-box score-badge text-white"
@@ -394,12 +394,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <img style="width:4em"
+                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                alt="position">
+                                        </div>
                                     </div>
                                 @elseif ($score == 'W 9-11')
                                     <div class="row">
-                                        <div class="col-2"></div>
+                                        <div class="col-2">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
+                                        </div>
                                         <div class="col">
-                                            <div class="d-flex p-1 gap-1">
+                                            <div class="d-flex p-1 gap-2">
                                                 <div class="d-grid">
                                                     <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
                                                     </div>
@@ -420,12 +428,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <img style="width:4em"
+                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                alt="position">
+                                        </div>
                                     </div>
                                 @elseif ($score == 'W 12-13')
                                     <div class="row">
-                                        <div class="col-2"></div>
+                                        <div class="col-2">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
+                                        </div>
                                         <div class="col">
-                                            <div class="d-flex p-1 gap-1 ">
+                                            <div class="d-flex p-1 gap-2 ">
                                                 <div class="d-grid">
                                                     <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
                                                     </div>
@@ -446,12 +462,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <img style="width:4em"
+                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                alt="position">
+                                        </div>
                                     </div>
                                 @elseif ($score == 'W 14')
                                     <div class="row">
-                                        <div class="col-2"></div>
+                                        <div class="col-2">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
+                                        </div>
                                         <div class="col">
-                                            <div class="d-flex p-1 gap-1">
+                                            <div class="d-flex p-1 gap-2">
                                                 <div class="d-grid">
                                                     <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
                                                     </div>
@@ -472,10 +496,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col">
+                                            <img style="width:4em"
+                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                alt="position">
+                                        </div>
                                     </div>
                                 @endif
 
                             </div>
+                            <div class="details mt-2 pt-2" id="{{ $s->name . '-' . $s->id }}">
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                    Archetypes :
+                                    @foreach ($s->archetypes as $a)
+                                        {{ $a->archetype_name }},
+                                    @endforeach
+                                </div>
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                    Roles :
+                                    @foreach ($s->roles as $a)
+                                        {{ $a->role_name }},
+                                    @endforeach
+                                </div>
+                                <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                    Position :
+                                    {{ $s->positions->position_name }}
+                                </div>
+                            </div>
+
                         </td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                             @foreach ($s->archetypes as $a)
