@@ -1,6 +1,18 @@
 @extends('layouts.layout')
 @section('title', $post->title)
 @section('contents')
+
+    <style>
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        table {
+            color: white;
+            border: 2px solid white;
+        }
+    </style>
     <section class="hero">
         <div class="container bg-overlay text-white shadow">
             {{-- title --}}
@@ -59,4 +71,6 @@
 
         </div>
     </section>
+
+    <script></script>
 @endsection

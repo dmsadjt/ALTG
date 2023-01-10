@@ -16,13 +16,17 @@ class Post extends Model implements HasMedia
     protected $fillable = [
         'title',
         'body',
-        'table_caption',
-        'table',
+        'thumbnail'
     ];
 
 
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(PostImage::class);
     }
 }

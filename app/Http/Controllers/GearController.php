@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Rarity;
 use App\Models\Gear;
 use App\Models\GearCategory;
+use Illuminate\Support\Facades\Storage;
 
 class GearController extends Controller
 {
@@ -81,6 +82,10 @@ class GearController extends Controller
     {
         $gear = Gear::where('id', $id)->first();
         $gear->templates()->detach();
+        if ($gear->gear_img && $gear->gear_img != 'gear/img/no-pictures.png') {
+            Storage::delete($gear->gear_img);
+        }
+
         $gear->delete();
 
         return redirect('admin/gears');

@@ -184,8 +184,9 @@
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
             <thead class="bg-gray1 text-white altona-sans-12">
-                <th>#</th>
-                <th><button class="btn text-white" style="font-weight:600;" wire:click="sort('name','simple')">Ship
+                <th style="border-radius: 0.175em 0 0 0.175em"></th>
+                <th class="r-round-right"><button class="btn text-white" style="font-weight:600;"
+                        wire:click="sort('name','simple')">Ship
                         Name</button>
                     @if ($sortBy == 'name')
                         <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
@@ -213,8 +214,8 @@
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_14','complex')">14</button>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('mob_14','complex')">14</button>
                         @if ($sortBy == 'mob_14')
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
@@ -232,8 +233,8 @@
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('boss_14','complex')">14</button>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('boss_14','complex')">14</button>
                         @if ($sortBy == 'boss_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
@@ -245,8 +246,8 @@
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('boss_9_11','complex')">Boss</button>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('boss_9_11','complex')">Boss</button>
                         @if ($sortBy == 'boss_9_11')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
@@ -258,8 +259,8 @@
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('mob_12_13','complex')">Boss</button>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('mob_12_13','complex')">Boss</button>
                         @if ($sortBy == 'boss_12_13')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
@@ -271,8 +272,8 @@
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
-                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
-                            wire:click="sort('boss_14','complex')">Boss</button>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('boss_14','complex')">Boss</button>
                         @if ($sortBy == 'boss_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif

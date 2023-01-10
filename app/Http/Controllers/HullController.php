@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Hull;
+use Illuminate\Support\Facades\Storage;
 
 class HullController extends Controller
 {
@@ -80,7 +81,13 @@ class HullController extends Controller
             ]);
         }
 
+        if ($hull->hull_img) {
+            Storage::delete($hull->hull_img);
+        }
+
         $hull->delete();
+
+
 
         return redirect('admin/hulls');
     }

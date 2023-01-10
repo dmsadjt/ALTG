@@ -225,6 +225,10 @@ html {
         transition: 0.4s
     }
 
+    .r-round-right {
+        border-radius: 0 0.175em 0.175em 0 !important;
+    }
+
     .chibi-img {
         object-fit: cover;
         height: 3rem !important;
@@ -602,6 +606,8 @@ body {
     font-size: 1.2rem;
 }
 
+
+
 h1,
 h2,
 h3,
@@ -619,14 +625,17 @@ a {
 }
 
 
+
 .ship-table {
     border-collapse: separate;
     border-spacing: 0 1em;
+    border: none !important;
 }
 
 .ship-table th {
     vertical-align: middle;
     text-align: center;
+
 
 }
 

@@ -14,9 +14,9 @@
         @endif
 
         <h1 class="mx-5 my-2">Edit Post</h1>
-        <form action="/admin/blogs/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
-            @csrf
-            @foreach ($post as $p)
+        @foreach ($post as $p)
+            <form action="/admin/blogs/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
+                @csrf
                 <input type="hidden" name="id" value="{{ $p->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Title</label>
@@ -25,7 +25,9 @@
 
                 <label class="form-label altona-sans-12 mt-2" for="body">Body</label>
                 <div class="bg-white text-black border rounded p-2">
+
                     <textarea id="editor" name="body">{{ $p->body }}</textarea>
+
                     <script>
                         class MyUploadAdapter {
 
@@ -61,7 +63,7 @@
                                 // a POST request with JSON as a data structure but your configuration
                                 // could be different.
                                 xhr.open('POST', '/admin/posts/image/post', true);
-                                xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}')
+                                xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
                                 xhr.responseType = 'json';
                             }
 
@@ -145,7 +147,7 @@
                                     'undo', 'redo',
                                     'fontSize', '|',
                                     'alignment', '|',
-                                    'link', 'insertImage', 'blockQuote', 'insertTable'
+                                    'link', 'insertImage', 'insertTable'
                                 ],
                                 shouldNotGroupWhenFull: true
                             },
@@ -312,18 +314,6 @@
                     </script>
                 </div>
 
-                @if ($p->images)
-                    <input type="hidden" name="thumbnail-id" value={{ $i->id }}>
-                @endif
-                <div>
-                    <label class="form-label altona-sans-12" for="thumbnail-image">Thumbnail Image</label>
-                    @if ($p->images)
-                        <img src="{{ asset('storage/' . $i->image) }}" alt="{{ $i->image }}"
-                            class="medium-img d-block my-2 border shadow">
-                    @endif
-                    <input class="form-control" type="file" name="thumbnail-image" id="thumbnail-image">
-                </div>
-
                 <div class="columns-five my-3">
                     @for ($i = 1; $i < 6; $i++)
                         <div>
@@ -342,12 +332,22 @@
                     @endfor
                 </div>
 
+                <div>
+                    <div class="altona-sans-12">Current image</div>
+                    <img src="{{ asset('storage/' . $p->thumbnail) }}" class="medium-img d-block shadow" alt="">
+                    <label class="form-label altona-sans-12" for="thumbnail-image">Thumbnail Image</label>
+                    <input class="form-control" type="file" name="thumbnail-image" id="thumbnail-image">
+                </div>
 
+                <hr>
 
                 <div class="d-grid">
                     <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Edit Post">
                 </div>
-        </form>
+            </form>
+
+        @endforeach
+
     </div>
 
 @endsection

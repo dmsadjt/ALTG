@@ -18,56 +18,48 @@ class HullSeeder extends Seeder
         DB::table('hulls')->insert([
             'hull_name' => 'Default',
             'hull_slug' => 'default',
-            'hull_tag' => 'De',
             'hull_img' => 'hulls/img/no-pictures.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Battleship',
             'hull_slug' => 'battleship',
-            'hull_tag' => 'BB',
             'hull_img' => 'hulls/img/battleship.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Aircraft Carrier',
             'hull_slug' => 'aircraft-carrier',
-            'hull_tag' => 'CV',
             'hull_img' => 'hulls/img/aircraft_carrier.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Heavy Cruiser',
             'hull_slug' => 'heavy-cruiser',
-            'hull_tag' => 'CA',
             'hull_img' => 'hulls/img/heavy_cruiser.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Light Cruiser',
             'hull_slug' => 'light-cruiser',
-            'hull_tag' => 'CL',
             'hull_img' => 'hulls/img/light_cruiser.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Destroyer',
             'hull_slug' => 'destroyer',
-            'hull_tag' => 'DD',
             'hull_img' => 'hulls/img/destroyer.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Submarine',
             'hull_slug' => 'submarine',
-            'hull_tag' => 'SS',
             'hull_img' => 'hulls/img/submarine.png',
         ]);
 
         DB::table('hulls')->insert([
             'hull_name' => 'Other',
             'hull_slug' => 'other',
-            'hull_tag' => 'O',
             'hull_img' => 'hulls/img/munition_ship.png',
         ]);
 

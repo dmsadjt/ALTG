@@ -9,6 +9,7 @@ use App\Models\Siren;
 use App\Models\Hull;
 use App\Models\Normal;
 use App\Models\Hard;
+use Illuminate\Support\Facades\Storage;
 
 class SirenController extends Controller
 {
@@ -31,11 +32,16 @@ class SirenController extends Controller
 
     public function delete($id)
     {
-        $boss = Siren::where('id', $id);
+        $boss = Siren::where('id', $id)->first();
         Normal::where('siren_id', $id)->delete();
         Hard::where('siren_id', $id)->delete();
         FullNormal::where('siren_id', $id)->delete();
         FullHard::where('siren_id', $id)->delete();
+
+        if ($boss->img) {
+            Storage::delete($boss->img);
+        }
+
         $boss->delete();
 
         return redirect('admin/sirens');

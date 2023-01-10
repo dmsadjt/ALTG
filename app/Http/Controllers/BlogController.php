@@ -7,10 +7,13 @@ use App\Models\Post;
 use App\Models\PostImage;
 use App\Models\PostThumbnail;
 use App\Models\Tag;
+use App\Models\TemporaryImageUpload;
+use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class BlogController extends Controller
 {
+
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->with('tags')->paginate(5);
@@ -65,6 +68,17 @@ class BlogController extends Controller
         }
         $post->tags()->sync($temp);
 
+        $postImage = TemporaryImageUpload::all();
+
+        foreach ($postImage as $p) {
+            PostImage::create([
+                'post_id' => $post->id,
+                'image' => $p->image,
+            ]);
+        }
+
+        TemporaryImageUpload::truncate();
+
         return redirect('admin/blogs');
     }
 
@@ -73,6 +87,9 @@ class BlogController extends Controller
         $tags = Tag::all();
         $post = Post::where('id', $id)->get();
         $post1 = Post::where('id', $id)->first();
+        if (!$post || !$post1) {
+            return view('dump');
+        }
         for ($i = 1; $i < 6; $i++) {
             $selected['tag-' . $i] = '';
         }
@@ -114,6 +131,17 @@ class BlogController extends Controller
         }
         $post->tags()->sync($temp);
 
+        $postImage = TemporaryImageUpload::all();
+
+        foreach ($postImage as $p) {
+            PostImage::create([
+                'post_id' => $post->id,
+                'image' => $p->image,
+            ]);
+        }
+
+        TemporaryImageUpload::truncate();
+
         return redirect('admin/blogs');
     }
 
@@ -121,6 +149,16 @@ class BlogController extends Controller
     {
         $post = Post::where('id', $id)->first();
         $post->tags()->detach();
+
+        $postImage = PostImage::where('post_id', $id)->get();
+
+        foreach ($postImage as $pp) {
+            Storage::delete($pp->image);
+        }
+
+        if ($post->thumbnail) {
+            Storage::delete($post->thumbnail);
+        }
 
         $post->delete();
 

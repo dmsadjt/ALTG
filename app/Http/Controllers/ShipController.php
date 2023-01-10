@@ -17,6 +17,7 @@ use App\Models\Skill;
 use App\Models\MobScore;
 use App\Models\BossScore;
 use App\Models\Template;
+use Illuminate\Support\Facades\Storage;
 
 class ShipController extends Controller
 {
@@ -509,8 +510,24 @@ class ShipController extends Controller
         $ship->archetypes()->detach();
         $ship->roles()->detach();
 
+        if ($ship->sprite) {
+            Storage::delete($ship->sprite);
+        }
+
+        if ($ship->chibi_sprite) {
+            Storage::delete($ship->chibi_sprite);
+        }
+
         Ship::where('id', '=', $id)->delete();
-        Skill::where('ship_id', '=', $id)->delete();
+        $skil = Skill::where('ship_id', '=', $id)->get();
+
+        foreach ($skil as $s) {
+            if ($s->skill_img) {
+                Storage::delete($s->skill_img);
+            }
+            $s->delete();
+        }
+
         MobScore::where('ship_id', '=', $id)->delete();
         BossScore::where('ship_id', '=', $id)->delete();
 

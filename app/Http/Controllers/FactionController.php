@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faction;
+use Illuminate\Support\Facades\Storage;
 
 class FactionController extends Controller
 {
@@ -71,6 +72,10 @@ class FactionController extends Controller
             $s->update([
                 'faction_id' => '1',
             ]);
+        }
+
+        if ($faction->faction_img) {
+            Storage::delete($faction->faction_img);
         }
 
         $faction->delete();

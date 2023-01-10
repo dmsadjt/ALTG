@@ -6,6 +6,8 @@ window.addEventListener('load', function () {
     for (i = 0; i < this.document.getElementsByClassName('details').length; i++) {
         this.document.getElementsByClassName('details')[i].classList.add('d-none');
     }
+
+
 })
 
 const dropdown = (event) => {

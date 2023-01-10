@@ -61,7 +61,7 @@
                             // a POST request with JSON as a data structure but your configuration
                             // could be different.
                             xhr.open('POST', '/admin/posts/image/post', true);
-                            xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}')
+                            xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
                             xhr.responseType = 'json';
                         }
 
@@ -145,7 +145,7 @@
                                 'undo', 'redo',
                                 'fontSize', '|',
                                 'alignment', '|',
-                                'link', 'insertImage', 'blockQuote', 'insertTable'
+                                'link', 'insertImage', 'insertTable'
                             ],
                             shouldNotGroupWhenFull: true
                         },
