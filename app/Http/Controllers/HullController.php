@@ -47,7 +47,7 @@ class HullController extends Controller
             'img' => '',
         ]);
 
-        $hull = Hull::where('id', $data['id']);
+        $hull = Hull::where('id', $data['id'])->first();
 
         $hull->update([
             'hull_name' => $data['name'],
@@ -55,6 +55,7 @@ class HullController extends Controller
         ]);
 
         if (array_key_exists('img', $data)) {
+            Storage::delete($hull->hull_img);
             $img = $request->file('img')->store('hulls/img');
             $hull->update([
                 'hull_img' => $img,

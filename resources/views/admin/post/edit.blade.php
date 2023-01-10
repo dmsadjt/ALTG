@@ -18,6 +18,7 @@
             <form action="/admin/blogs/update" class="mx-5 p-1 d-grid gap-1" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $p->id }}">
+                <input type="hidden" name="oldImage" value="{{ $p->thumbnail }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Title</label>
                     <input class="form-control" type="text" name="title" id="title" value="{{ $p->title }}">

@@ -20,14 +20,14 @@
                 <input type="hidden" name="id" value={{ $item->id }}>
                 <div>
                     <label class="form-label altona-sans-12" for="name">Hull Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value={{ $item->hull_name }}>
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $item->hull_name }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="slug">
                         <div>Hull Slug</div>
                         <div class="altona-sans-10 ms-auto mt-0">example : 'something-cool'</div>
                     </label>
-                    <input class="form-control" type="text" name="slug" id="slug" value={{ $item->hull_slug }}>
+                    <input class="form-control" type="text" name="slug" id="slug" value="{{ $item->hull_slug }}">
                 </div>
                 <div class="my-2">
                     <img src="{{ asset('storage/' . $item->hull_img) }}" class="medium-img d-block shadow" alt="">

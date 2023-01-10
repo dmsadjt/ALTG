@@ -262,6 +262,9 @@ class SirenController extends Controller
         ]);
 
         if (array_key_exists('img', $data)) {
+            if ($siren->img != 'siren/img/no-pictures.png') {
+                Storage::delete($siren->img);
+            }
             $siren->update([
                 'img' => $request->file('img')->store('siren/img'),
             ]);

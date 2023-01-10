@@ -409,9 +409,15 @@ class ShipController extends Controller
         $ship = Ship::where('id', $data['id'])->first();
 
         if (isset($data['sprite'])) {
+            if ($ship->sprite != 'ships/img/sprite/no-sprite.png') {
+                Storage::delete($ship->sprite);
+            }
             $ship['sprite'] = $request->file('sprite')->store('ships/img/sprite');
         }
         if (isset($data['chibi_sprite'])) {
+            if ($ship->chibi_sprite != 'ships/img/chibi/no-sprite.png') {
+                Storage::delete($ship->chibi_sprite);
+            }
             $ship['chibi_sprite'] = $request->file('chibi_sprite')->store('ships/img/chibi');
         }
         $ship->update([
@@ -447,6 +453,9 @@ class ShipController extends Controller
                         'skill_priority' => $data['skillpriority-' . ($i + 1)],
                     ]);
                     if ((isset($data['skillimg-' . ($i  + 1)]))) {
+                        if ($ship->skill[$i]->skill_img != 'ships/img/sprite/no-sprite.png') {
+                            Storage::delete($ship->skill[$i]->skill_img);
+                        }
                         $ship->skill[$i]->update([
                             'skill_img' => $request->file('skillimg-' . ($i + 1))->store('skill/img'),
                         ]);

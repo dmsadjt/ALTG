@@ -51,7 +51,12 @@ class FactionController extends Controller
         ]);
 
         $faction = Faction::where('id', '=', $data['id'])->first();
-        $img = array_key_exists('img', $data) ? $request->file('img')->store('factions/img') : $faction->faction_img;
+        $img = $faction->faction_img;
+
+        if ($request->file('img')) {
+            Storage::delete($faction->faction_img);
+            $img = $request->file('img')->store('factions/img');
+        }
 
         $faction->update([
             'faction_name' => $data['name'],

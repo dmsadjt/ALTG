@@ -105,6 +105,7 @@ class BlogController extends Controller
     {
         $data = $request->validate([
             'id' => 'required',
+            'oldImage' => '',
             'title' => 'required',
             'body' => '',
             'thumbnail-image' => 'image',
@@ -117,10 +118,18 @@ class BlogController extends Controller
 
         $post = Post::where('id', $data['id'])->first();
 
+
+        if ($request->file('thumbnail-image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $data['thumbnail-image'] = $request->file('thumbnail-image')->store('posts/thumbnail');
+        }
+
         $post->update([
             'title' => $data['title'],
             'body' => $data['body'],
-            'thumbnail' => array_key_exists('thumbnail-image', $data) ? $request->file('thumbnail-image')->store('posts/thumbnail') : $post->thumbnail,
+            'thumbnail' => $request->file('thumbnail-image') ? $data['thumbnail-image'] : $post->thumbnail
         ]);
 
         $temp = array();
