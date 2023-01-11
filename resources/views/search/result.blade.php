@@ -21,51 +21,94 @@
                     <thead class="bg-gray1 text-white altona-sans-12">
                         <th>&nbsp;</th>
                         <th>@sortablelink('name')</th>
-                        <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                        <th><a href="#" class="altona-sans-12 link-none">Role</a></th>
-                        <th><span>@sortablelink('positions.position_name', 'Position')</span></th>
+                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
+                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Role</a></th>
+                        <th class="r-hide"><span>@sortablelink('positions.position_name', 'Position')</span></th>
                     </thead>
                     <tbody>
                         @foreach ($ships as $s)
                             <tr class="text-white shadow">
-                                <td class="rarity-tag" id={{ $s->rarity->rarity_tag }}>
+                                <td class="rarity-tag" data-rarity="{{ $s->rarity->rarity_tag }}">
                                     <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                                 </td>
-                                <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
-                                        src="{{ asset('storage/' . $s->chibi_sprite) }}" alt=""> <a
-                                        href="/ships/{{ $s->id }}" class="ms-1 link-none font-inherit">
-                                        {{ $s->name }}
-                                    </a></td>
-                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                <td class="bg-gray1 ">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                                <span class="r-hide">
+                                                    <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                        alt="">
+                                                    {{ $s->name }}
+                                                </span>
+                                                <span class="r-show">
+                                                    <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                        alt="">
+                                                    {{ Str::limit($s->name, 13) }}
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <div class="r-show btn btn-outline-light altona-sans-10 justify-content-end"
+                                                id="button-{{ $s->id }}" data-id="{{ $s->name . '-' . $s->id }}"
+                                                style="font-size: 0.6rem; padding:0.1em" onclick="dropdown(this)">
+                                                +
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="details mt-2 pt-2" id="{{ $s->name . '-' . $s->id }}">
+                                        <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                            Archetypes :
+                                            @foreach ($s->archetypes as $a)
+                                                {{ $a->archetype_name }},
+                                            @endforeach
+                                        </div>
+                                        <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                            Roles :
+                                            @foreach ($s->roles as $a)
+                                                {{ $a->role_name }},
+                                            @endforeach
+                                        </div>
+                                        <div class="altona-sans-10 ms-1" style="font-size: 0.8rem">
+                                            Position :
+                                            {{ $s->positions->position_name }}
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                     @foreach ($s->archetypes as $a)
                                         <div>{{ $a->archetype_name }}</div>
                                     @endforeach
                                 </td>
-                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                     @foreach ($s->roles as $a)
                                         <div>{{ $a->role_name }}</div>
                                     @endforeach
                                 </td>
-                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">
+                                <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
                                     <div>
                                         {{ $s->positions->position_name }}
                                     </div>
                                     <div class="mx-auto">
                                         <img class="position-row-img"
-                                            src="{{ asset('storage/' . $s->positions->position_image) }}" alt="position">
+                                            src=" {{ asset('storage/' . $s->positions->position_image) }}" alt="position">
                                     </div>
                                 </td>
-                                <script>
-                                    idTag = document.getElementsByClassName('rarity-tag')[0].id;
-                                    changeLabel(idTag);
-                                </script>
+
                             </tr>
                         @endforeach
                     </tbody>
 
                 </table>
 
-
+                <script>
+                    x = document.getElementsByClassName('rarity-tag');
+                    for (i = 0; i < x.length; i++) {
+                        changeTag(x[i]);
+                    }
+                </script>
 
             </div>
             <div class="ships">
