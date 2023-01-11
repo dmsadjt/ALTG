@@ -18,7 +18,7 @@
             @csrf
             <div class="mt-2">
                 <label class="form-label altona-sans-12" for="label">Tag Label</label>
-                <input class="form-control" type="text" name="label" id="label">
+                <input class="form-control" type="text" name="label" id="label" required>
             </div>
             <div class="d-grid">
                 <input type="submit" class="btn btn-success mx-auto my-3 btn-lg" value="Add Tag">

@@ -21,7 +21,8 @@
                 <input type="hidden" name="id" value="{{ $f->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Role Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->role_name }}">
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->role_name }}"
+                        required>
                 </div>
 
                 @for ($i = 1; $i < 4; $i++)

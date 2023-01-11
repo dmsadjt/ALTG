@@ -19,7 +19,7 @@
             @csrf
             <div>
                 <label class="form-label altona-sans-12" for="name">Role Name</label>
-                <input class="form-control" type="text" name="name" id="name">
+                <input class="form-control" type="text" name="name" id="name" required>
             </div>
 
             <div>

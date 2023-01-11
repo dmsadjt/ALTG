@@ -80,11 +80,11 @@
 
             <div>
                 <label class="form-label" for="sprite">Upload Sprite</label>
-                <input class="form-control" type="file" name="sprite" id="sprite">
+                <input class="form-control" type="file" name="sprite" id="sprite" required>
             </div>
             <div>
                 <label class="form-label" for="chibi_sprite">Upload Chibi Sprite</label>
-                <input class="form-control" type="file" name="chibi_sprite" id="chibi_sprite">
+                <input class="form-control" type="file" name="chibi_sprite" id="chibi_sprite" required>
             </div>
 
             <div>
@@ -249,15 +249,15 @@
             <div class="columns-three">
                 <div>
                     <label class="form-label" for="mob1">9-11</label>
-                    <input class="form-control" type="number" name="mob1" id="mob1">
+                    <input class="form-control" type="number" name="mob1" id="mob1" required>
                 </div>
                 <div>
                     <label class="form-label" for="mob1">12-13</label>
-                    <input class="form-control" type="number" name="mob2" id="mob2">
+                    <input class="form-control" type="number" name="mob2" id="mob2" required>
                 </div>
                 <div>
                     <label class="form-label" for="mob1">14</label>
-                    <input class="form-control" type="number" name="mob3" id="mob3">
+                    <input class="form-control" type="number" name="mob3" id="mob3" required>
                 </div>
             </div>
 
@@ -265,15 +265,15 @@
             <div class="columns-three">
                 <div>
                     <label class="form-label" for="boss1">9-11</label>
-                    <input class="form-control" type="number" name="boss1" id="boss1">
+                    <input class="form-control" type="number" name="boss1" id="boss1" required>
                 </div>
                 <div>
                     <label class="form-label" for="boss2">12-13</label>
-                    <input class="form-control" type="number" name="boss2" id="boss2">
+                    <input class="form-control" type="number" name="boss2" id="boss2" required>
                 </div>
                 <div>
                     <label class="form-label" for="boss3">14</label>
-                    <input class="form-control" type="number" name="boss3" id="boss3">
+                    <input class="form-control" type="number" name="boss3" id="boss3" required>
                 </div>
             </div>
 
@@ -283,7 +283,7 @@
                 <h2 class="mt-3">Gears</h2>
                 <div id="general">
                     <label class="altona-sans-12 my-2" for="template-general">Template (General)</label>
-                    <select class="form-select" name="template-general" id="template-general">
+                    <select class="form-select" name="template-general" id="template-general" required>
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'General')
@@ -295,7 +295,7 @@
                 </div>
                 <div id="light">
                     <label class="altona-sans-12 my-2" for="template-light">Template (Light)</label>
-                    <select class="form-select" name="template-light" id="template-light">
+                    <select class="form-select" name="template-light" id="template-light" required>
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Light')
@@ -306,7 +306,7 @@
                 </div>
                 <div id="medium">
                     <label class="altona-sans-12 my-2" for="template-medium">Template (Medium)</label>
-                    <select class="form-select" name="template-medium" id="template-medium">
+                    <select class="form-select" name="template-medium" id="template-medium" required>
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Medium')
@@ -317,7 +317,7 @@
                 </div>
                 <div id="heavy">
                     <label class="altona-sans-12 my-2" for="template-heavy">Template (Heavy)</label>
-                    <select class="form-select" name="template-heavy" id="template-heavy">
+                    <select class="form-select" name="template-heavy" id="template-heavy" required>
                         <option value="">Select Template</option>
                         @foreach ($templates as $t)
                             @if ($t->build == 'Heavy')

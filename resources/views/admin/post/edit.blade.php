@@ -21,7 +21,8 @@
                 <input type="hidden" name="oldImage" value="{{ $p->thumbnail }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Title</label>
-                    <input class="form-control" type="text" name="title" id="title" value="{{ $p->title }}">
+                    <input class="form-control" type="text" name="title" id="title" value="{{ $p->title }}"
+                        required>
                 </div>
 
                 <label class="form-label altona-sans-12 mt-2" for="body">Body</label>

@@ -39,7 +39,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->normal->hull->hull_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
@@ -131,7 +131,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->fullNormal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->fullNormal->hull->hull_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
@@ -235,7 +235,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->normal->hull->hull_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
@@ -327,7 +327,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td>Hull</td>
-                                                                <td>{{ $s->fullNormal->hull->hull_tag }}</td>
+                                                                <td>{{ $s->fullNormal->hull->hull_name }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Level</td>
@@ -441,7 +441,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                            <td>{{ $s->normal->hull->hull_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -517,7 +517,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->hard->hull->hull_tag }}</td>
+                                                            <td>{{ $s->hard->hull->hull_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -618,7 +618,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->fullNormal->hull->hull_tag }}</td>
+                                                            <td>{{ $s->fullNormal->hull->hull_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -694,7 +694,7 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>Hull</td>
-                                                            <td>{{ $s->fullHard->hull->hull_tag }}</td>
+                                                            <td>{{ $s->fullHard->hull->hull_name }}</td>
                                                         </tr>
                                                         <tr>
                                                             <td>Level</td>
@@ -785,7 +785,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Hull</td>
-                                                        <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                        <td>{{ $s->normal->hull->hull_name }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Level</td>
@@ -878,7 +878,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>Hull</td>
-                                                        <td>{{ $s->normal->hull->hull_tag }}</td>
+                                                        <td>{{ $s->normal->hull->hull_name }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Level</td>

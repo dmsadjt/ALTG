@@ -104,7 +104,7 @@
                                             <label class="filter-label altona-sans-10 m-1 rounded px-2"
                                                 for="{{ $r->faction_tag }}"><img
                                                     src="{{ asset('storage/' . $r->faction_img) }}" class="small-img"
-                                                    alt="">
+                                                    alt="{{ $r->faction_tag }}">
                                             </label>
                                         </li>
                                     @endforeach
@@ -131,7 +131,7 @@
         <div class="ms-2">
             <h2 class="swiss-font-24">View Scores by</h2>
             <hr>
-            <h3 class="swiss-font-12">Mob/Boss</h2>
+            <h3 class="swiss-font-12 text-center">Mob/Boss</h2>
                 <div class="d-flex justify-content-center gap-2 mb-2 mob-boss">
 
                     <div class="d-grid score-type">
@@ -154,7 +154,7 @@
                         </label>
                     </div>
                 </div>
-                <h3 class="swiss-font-12">Chapters</h2>
+                <h3 class="swiss-font-12 text-center">Chapters</h2>
                     <div class="d-flex justify-content-center">
                         <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 9-11" id="911"
