@@ -26,7 +26,103 @@
                         <div class="stronghold" id="stronghold-none" style="display:none;">
                             @foreach ($sirens as $s)
                                 @if ($s->boss_type == 'stronghold')
-                                    <div>
+                                    <div class="r-show card">
+                                        <div class="card-body bg-gray1">
+                                            <img src="{{ asset('storage/' . $s->img) }}" class="siren-img mb-2 rounded"
+                                                alt="siren-img">
+                                            <h3>{{ $s->name }}</h3>
+                                            <hr>
+                                            <div class="row altona-sans-10">
+                                                <div class="col-4">
+                                                    Hull
+                                                </div>
+                                                <div class="col-6">
+                                                    {{ $s->normal->hull->hull_name }}
+                                                </div>
+                                                <div class="col-4">
+                                                    Level
+                                                </div>
+                                                <div class="col-6">
+                                                    {{ $s->normal->level }}
+                                                </div>
+                                                <div class="col-4">
+                                                    Armor
+                                                </div>
+                                                <div class="col-6">
+                                                    {{ $s->normal->armor }}
+                                                </div>
+
+                                                <div class="d-flex justify-content-end mt-3">
+                                                    <button class="btn btn-sm btn-outline-light altona-sans-10 "
+                                                        id="button-{{ $s->id }}" data-id="{{ $s->normal->id }}"
+                                                        onclick="dropdown(this)">
+                                                        More details
+                                                    </button>
+                                                </div>
+
+
+                                                <div class="d-none row mt-1 altona-sans-10" id="{{ $s->normal->id }}">
+                                                    <div class="col-4">
+                                                        FP
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->fp }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        HP
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->hp }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        TRP
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->trp }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        AA
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->aa }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        AVI
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->avi }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        ACC
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->acc }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        EVA
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->eva }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        LCK
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->lck }}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        SPD
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->normal->spd }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="r-hide">
                                         <h3 class="mt-3">{{ $s->name }}</h3>
                                         <div class="columns-two__1-5 bg-nav">
                                             <div>
@@ -407,9 +503,11 @@
                             <h2>Arbiter Boss</h2>
                             <div class="tab r-grid gap-3">
                                 <div class="my-auto">Adaptability</div>
-                                <button onclick="openTab(event, 'arbiter-none',  'arbiter', 'tab__links--3 border', 'grid')"
+                                <button
+                                    onclick="openTab(event, 'arbiter-none',  'arbiter', 'tab__links--3 border', 'grid')"
                                     class="tab__links--3 altona-sans-12 border active">None</button>
-                                <button onclick="openTab(event, 'arbiter-full',  'arbiter', 'tab__links--3 border', 'grid')"
+                                <button
+                                    onclick="openTab(event, 'arbiter-full',  'arbiter', 'tab__links--3 border', 'grid')"
                                     class="tab__links--3 altona-sans-12 border">Full</button>
                             </div>
                         </div>

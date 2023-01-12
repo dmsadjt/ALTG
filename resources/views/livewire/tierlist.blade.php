@@ -179,7 +179,92 @@
         </div>
     </div>
 
-    <div wire:loading class="d-grid"><span wire:loading class="mx-auto altona-sans-18">Loading...</span></div>
+
+    <div class="r-show bg-gray1 rounded">
+        <div class="m-1 p-1">
+            <div>Sort by</div>
+            <button class="btn btn-outline-light btn-sm" wire:click="sort('name','simple')">Name
+                @if ($sortBy == 'name')
+                    <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                @endif
+            </button>
+            <button class="btn btn-outline-light btn-sm" wire:click="sort('position_id','simple')">
+                Position
+                @if ($sortBy == 'position_id')
+                    <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                @endif
+            </button>
+            @if ($score == 'Mob')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_9_11','complex')">9-11
+                    @if ($sortBy == 'mob_9_11')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_12_13','complex')">12-13
+                    @if ($sortBy == 'mob_12_13')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_14','complex')">14
+                    @if ($sortBy == 'mob_14')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+            @elseif ($score == 'Boss')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_9_11','complex')">9-11
+                    @if ($sortBy == 'boss_9_11')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_12_13','complex')">12-13
+                    @if ($sortBy == 'boss_12_13')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_14','complex')">14
+                    @if ($sortBy == 'mob_14')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+            @elseif ($score == 'W 9-11')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_9_11','complex')">Mob
+                    @if ($sortBy == 'mob_9_11')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_9_11','complex')">Boss
+                    @if ($sortBy == 'boss_9_11')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+            @elseif ($score == 'W 12-13')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_12_13','complex')">Mob
+                    @if ($sortBy == 'mob_12_13')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_12_13','complex')">Boss
+                    @if ($sortBy == 'boss_12_13')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+            @elseif ($score == 'W 14')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_14','complex')">Mob
+                    @if ($sortBy == 'mob_14')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_14','complex')">Boss
+                    @if ($sortBy == 'boss_14')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+            @endif
+        </div>
+
+    </div>
+
+    <div wire:loading class="d-grid "><span wire:loading class="mx-auto altona-sans-18 ">Loading...</span></div>
     <div class="ships w-80" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
@@ -296,7 +381,7 @@
                                             {{ $s->name }}
                                         </span>
                                         <span class="r-show">
-                                            {{ Str::limit($s->name, 13) }}
+                                            {{ Str::limit($s->name, 15) }}
                                         </span>
                                     </a>
                                 </div>
@@ -350,9 +435,14 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <img style="width:4em"
-                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
-                                                alt="position">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'Boss')
@@ -396,9 +486,14 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <img style="width:4em"
-                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
-                                                alt="position">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 9-11')
@@ -430,9 +525,14 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <img style="width:4em"
-                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
-                                                alt="position">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 12-13')
@@ -464,9 +564,14 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <img style="width:4em"
-                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
-                                                alt="position">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
                                         </div>
                                     </div>
                                 @elseif ($score == 'W 14')
@@ -498,9 +603,14 @@
                                             </div>
                                         </div>
                                         <div class="col">
-                                            <img style="width:4em"
-                                                src=" {{ asset('storage/' . $s->positions->position_image) }}"
-                                                alt="position">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
