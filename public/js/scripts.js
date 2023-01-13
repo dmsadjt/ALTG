@@ -11,7 +11,6 @@ window.addEventListener('load', function () {
 })
 
 const dropdown = (event) => {
-    console.log(event);
     tempid = event.getAttribute('data-id');
     tmp = document.getElementById(tempid).classList;
     tmp.toggle('d-none');

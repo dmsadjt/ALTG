@@ -566,6 +566,11 @@ body {
 }
 
 
+.swiss-font-10 {
+    font-family: swiss721;
+    font-size: 1rem;
+}
+
 .swiss-font-12 {
     font-family: swiss721;
     font-size: 1.2rem;
