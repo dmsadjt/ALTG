@@ -454,8 +454,7 @@
                                         <div class="col">
                                             <div class="d-flex p-1 gap-2">
                                                 <div class="d-grid">
-                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">W
-                                                        12-13
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">9-11
                                                     </div>
                                                     <div class="score-box score-badge text-white"
                                                         data-score="{{ $s->bossScore->boss_9_11, 1 }}">
@@ -475,7 +474,7 @@
                                                 </div>
                                                 <div class="d-grid">
                                                     <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
-                                                        12-13
+                                                        14
                                                     </div>
                                                     <div class="score-box score-badge text-white"
                                                         data-score="{{ $s->bossScore->boss_14, 1 }}">

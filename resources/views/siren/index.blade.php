@@ -32,7 +32,7 @@
                             @foreach ($sirens as $s)
                                 @if ($s->boss_type == 'stronghold')
                                     {{-- mobile --}}
-                                    <div class="r-show card">
+                                    <div class="r-show card my-2 my-2">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
                                                 <div>
@@ -126,6 +126,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->normal->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,7 +232,7 @@
                             @foreach ($sirens as $s)
                                 @if ($s->boss_type == 'stronghold')
                                     {{-- mobile --}}
-                                    <div class="r-show card">
+                                    <div class="r-show card my-2">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
                                                 <div>
@@ -320,6 +326,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->fullNormal->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -435,7 +447,7 @@
                             @foreach ($sirens as $s)
                                 @if ($s->boss_type == 'abyssal')
                                     {{-- mobile --}}
-                                    <div class="r-show card">
+                                    <div class="r-show card my-2">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
                                                 <div>
@@ -529,6 +541,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->normal->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -629,7 +647,7 @@
                             @foreach ($sirens as $s)
                                 @if ($s->boss_type == 'abyssal')
                                     {{-- mobile --}}
-                                    <div class="r-show card">
+                                    <div class="r-show card my-2">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
                                                 <div>
@@ -724,6 +742,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->fullNormal->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -864,7 +888,7 @@
                                     </div>
 
                                     {{-- mobile --}}
-                                    <div class="r-show card arbiter-d-{{ $key }}"
+                                    <div class="r-show card my-2 arbiter-d-{{ $key }}"
                                         id="arbiter-none-normal-{{ $key }}">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
@@ -960,13 +984,19 @@
                                                     <div class="col-6">
                                                         {{ $s->normal->spd }}
                                                     </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
+                                                    </div>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div>
 
-                                    <div class="r-show card arbiter-d-{{ $key }}"
+                                    <div class="r-show card my-2 arbiter-d-{{ $key }}"
                                         id="arbiter-none-hard-{{ $key }}">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
@@ -1061,6 +1091,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->hard->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -1257,7 +1293,7 @@
 
                                     </div>
                                     {{-- mobile --}}
-                                    <div class="r-show card arbiter-d-full-{{ $key }}"
+                                    <div class="r-show card my-2 arbiter-d-full-{{ $key }}"
                                         id="arbiter-full-normal-{{ $key }}">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
@@ -1354,13 +1390,19 @@
                                                     <div class="col-6">
                                                         {{ $s->fullNormal->spd }}
                                                     </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
+                                                    </div>
                                                 </div>
                                             </div>
 
                                         </div>
                                     </div>
 
-                                    <div class="r-show card arbiter-d-full-{{ $key }}"
+                                    <div class="r-show card my-2 arbiter-d-full-{{ $key }}"
                                         id="arbiter-full-hard-{{ $key }}">
                                         <div class="card-body bg-gray1">
                                             <div class="d-flex gap-1 align-items-center">
@@ -1456,6 +1498,12 @@
                                                     </div>
                                                     <div class="col-6">
                                                         {{ $s->fullHard->spd }}
+                                                    </div>
+                                                    <div class="col-4 swiss-font-10">
+                                                        Weak
+                                                    </div>
+                                                    <div class="col-6">
+                                                        {{ $s->weakness }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -1633,7 +1681,7 @@
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'guild')
                                 {{-- mobile --}}
-                                <div class="r-show card my-2">
+                                <div class="r-show card my-2 my-2">
                                     <div class="card-body bg-gray1">
                                         <div class="d-flex gap-1 align-items-center">
                                             <div>
@@ -1726,6 +1774,12 @@
                                                 </div>
                                                 <div class="col-6">
                                                     {{ $s->normal->spd }}
+                                                </div>
+                                                <div class="col-4 swiss-font-10">
+                                                    Weak
+                                                </div>
+                                                <div class="col-6">
+                                                    {{ $s->weakness }}
                                                 </div>
                                             </div>
                                         </div>
@@ -1825,7 +1879,7 @@
                         @foreach ($sirens as $s)
                             @if ($s->boss_type == 'meta')
                                 {{-- mobile --}}
-                                <div class="r-show card my-2">
+                                <div class="r-show card my-2 my-2">
                                     <div class="card-body bg-gray1">
                                         <div class="d-flex gap-1 align-items-center">
                                             <div>
@@ -1918,6 +1972,12 @@
                                                 </div>
                                                 <div class="col-6">
                                                     {{ $s->normal->spd }}
+                                                </div>
+                                                <div class="col-4 swiss-font-10">
+                                                    Weak
+                                                </div>
+                                                <div class="col-6">
+                                                    {{ $s->weakness }}
                                                 </div>
                                             </div>
                                         </div>
