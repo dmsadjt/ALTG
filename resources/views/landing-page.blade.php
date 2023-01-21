@@ -41,20 +41,26 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
+                            <a href="/blogs/view/{{ $posts[0]->id }}">
+                                <img src="{{ asset('storage/' . $posts[0]->thumbnail) }}" class="d-block" alt="post-img">
+                            </a>
 
-                            <img src="{{ asset('storage/' . $posts[0]->thumbnail) }}" class="d-block" alt="post-img">
 
-                            <div class="carousel-caption  d-none d-md-block">
-                                <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
+                            <div class="carousel-caption d-md-block">
+                                <a href="/blogs/view/{{ $posts[0]->id }}"
+                                    class="altona-sans-10 link-none">{{ $posts[0]->title }}</a>
                                 <p class="short-text altona-sans-10">{{ strip_tags($posts[0]->body) }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                <img src="{{ asset('storage/' . $posts[$i]->thumbnail) }}" class="d-block" alt="post-img">
+                                <a href="/blogs/view/{{ $posts[$i]->id }}"><img
+                                        src="{{ asset('storage/' . $posts[$i]->thumbnail) }}" class="d-block"
+                                        alt="post-img"></a>
 
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
+                                <div class="carousel-caption d-md-block">
+                                    <a href="/blogs/view/{{ $posts[$i]->id }}"
+                                        class="altona-sans-10 link-none">{{ $posts[$i]->title }}</a>
                                     <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
                                 </div>
                             </div>

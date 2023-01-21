@@ -381,7 +381,7 @@
                                             {{ $s->name }}
                                         </span>
                                         <span class="r-show">
-                                            {{ Str::limit($s->name, 15) }}
+                                            {{ Str::limit($s->name, 20) }}
                                         </span>
                                     </a>
                                 </div>
