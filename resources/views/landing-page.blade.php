@@ -39,6 +39,15 @@
                             aria-label="Slide 5"></button>
                     </div>
 
+                    <button class="carousel-control-prev" type="button" data-bs-target="#latestPost" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#latestPost" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="/blogs/view/{{ $posts[0]->id }}">
@@ -101,7 +110,7 @@
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"
                             alt="">
                     </div>
-                    <div class="grid-col-span-2">
+                    <div class="grid-col-span-2 mt-auto">
                         <h1 style="font-size:2.5rem;color: white;">{{ $ships[$i]->name }}</h1>
                     </div>
                 </div>

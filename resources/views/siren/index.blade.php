@@ -635,7 +635,12 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                            <div></div>
+                                            <div class="ms-2">
+                                                Weakness : {{ $s->weakness }}
+                                            </div>
                                         </div>
+
                                     </div>
                                 @endif
                             @endforeach
@@ -836,6 +841,10 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                            <div></div>
+                                            <div class="ms-2">
+                                                Weakness : {{ $s->weakness }}
+                                            </div>
                                         </div>
                                     </div>
                                 @endif
@@ -995,6 +1004,9 @@
 
                                         </div>
                                     </div>
+
+
+
 
                                     <div class="r-show card my-2 arbiter-d-{{ $key }}"
                                         id="arbiter-none-hard-{{ $key }}">
@@ -1185,6 +1197,7 @@
                                                     </table>
                                                 </div>
                                             </div>
+
                                             <div class="columns-four gap-0 arbiter-dd-{{ $key }}"
                                                 id="arbiter-none-hardd-{{ $key }}">
                                                 <div>

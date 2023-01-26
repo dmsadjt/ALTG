@@ -306,6 +306,11 @@ html {
         overflow-x: auto;
     }
 
+    .table {
+        max-width: 10em;
+        overflow-x: scroll;
+    }
+
     .ship-table th a {
         font-size: 0.8rem !important;
         font-weight: 100;
@@ -551,7 +556,8 @@ body {
 }
 
 .img-4em {
-    width: 4em;
+    max-width: 4em;
+    max-height: 4em;
 }
 
 .hull-type-img {

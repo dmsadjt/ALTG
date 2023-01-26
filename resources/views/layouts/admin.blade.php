@@ -17,6 +17,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/js/scripts.js" type="text/javascript"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/altona-sans" rel="stylesheet">
+
     @livewireStyles
 
 </head>

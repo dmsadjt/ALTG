@@ -6,11 +6,18 @@
         img {
             max-width: 100%;
             max-height: 100%;
+            min-width: 3em;
         }
 
         table {
             color: white;
             border: 2px solid white;
+            overflow-x: scroll;
+        }
+
+        figure {
+            width: 20%;
+            overflow-x: scroll;
         }
     </style>
     <section class="hero">
