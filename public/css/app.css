@@ -897,7 +897,7 @@ td {
 }
 
 .hero {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #293849 90%), url('../img/web-assets/bg_gradient.png');
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #293849 90%), url('../img/web-assets/bg_gradient.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
 }
