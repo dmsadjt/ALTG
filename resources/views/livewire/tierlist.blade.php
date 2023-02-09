@@ -29,7 +29,8 @@
                     <label for="role">
                         <h3 class="swiss-font-12">Role Tags</h3>
                     </label>
-                    <input wire:model.lazy="byRole" type="text" name="role" id="role" class="text-form">
+                    <input wire:model.lazy="byRoleArchetype" type="text" name="role" id="role"
+                        class="text-form">
                 </div>
                 <script>
                     $(function() {
@@ -636,13 +637,13 @@
 
                         </td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
-                            @foreach ($s->archetypes as $a)
-                                <div>{{ $a->archetype_name }}</div>
+                            @foreach ($s->roles as $a)
+                                <div>{{ $a->role_name }}</div>
                             @endforeach
                         </td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
-                            @foreach ($s->roles as $a)
-                                <div>{{ $a->role_name }}</div>
+                            @foreach ($s->archetypes as $a)
+                                <div>{{ $a->archetype_name }}</div>
                             @endforeach
                         </td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center r-hide">
