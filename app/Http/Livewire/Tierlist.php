@@ -69,18 +69,20 @@ class Tierlist extends Component
             array_push($role_archetype, $a->archetype_name);
         }
 
+        if ($this->byRoleArchetype != '') {
+            $ship->with(['roles', 'archetypes'])->where(function ($query) use ($roles_exploded) {
+                $query->whereHas('roles', function ($q) use ($roles_exploded) {
+                    $q->whereIn('role_name', $roles_exploded);
+                })->orWhereHas('archetypes', function ($q) use ($roles_exploded) {
+                    $q->whereIn('archetype_name', $roles_exploded);
+                });
+            });
+        }
+
         if ($this->byHull != '') {
             $ship->where('hull_id', $this->byHull);
         } else {
             $ship->where('hull_id', 2);
-        }
-
-        if ($this->byRoleArchetype != '') {
-            $ship->with(['roles', 'archetypes'])->orWhereHas('roles', function ($q) use ($roles_exploded) {
-                $q->whereIn('role_name', $roles_exploded);
-            })->orWhereHas('archetypes', function ($q) use ($roles_exploded) {
-                $q->whereIn('archetype_name', $roles_exploded);
-            });
         }
 
         if ($this->position) {
@@ -142,9 +144,6 @@ class Tierlist extends Component
         }
 
         // dd($ships);
-
-
-
         return view(
             'livewire.tierlist',
             [
@@ -152,7 +151,7 @@ class Tierlist extends Component
                 'hulls' => $hulls,
                 'factions' => $factions,
                 'rarity' => $rarity,
-                'roles' => $roles,
+                'roles' => $role_archetype,
                 'positions' => $positions,
                 'byHull' => $this->byHull,
                 'shipImage' => $shipImage,
