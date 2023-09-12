@@ -12,7 +12,7 @@ class LandingController extends Controller
     public function index()
     {
         $ships = Ship::orderBy('id', 'desc')->with(['archetypes', 'roles', 'positions', 'mobScore', 'bossScore'])->get();
-        $posts = Post::orderBy('id', 'desc')->with('images')->get();
+        $posts = Post::orderBy('id', 'desc')->get();
 
         return view('landing-page', compact('ships', 'posts'));
     }

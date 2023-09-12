@@ -20,9 +20,8 @@
                             <th scope="col">Title</th>
                             <th scope="col" style="width:40%">Body</th>
                             <th scope="col">Tags</th>
-                            <th scope="col">Images</th>
-                            <th scope="col">Table</th>
-                            <th scope="col">Table Caption</th>
+                            <th scope="col">Thumbnail</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -53,20 +52,10 @@
                                 </td>
                                 <td>
                                     <ul style="list-style: none; padding:0">
-                                        @foreach ($s->images as $i)
-                                            <li><a class="altona-sans-10"
-                                                    href="{{ asset('storage/' . $i->image) }}">Image</a>
-                                            </li>
-                                        @endforeach
+                                        <li><a class="altona-sans-10"
+                                                href="{{ asset('storage/' . $s->thumbnail) }}">Image</a>
+                                        </li>
                                     </ul>
-                                </td>
-                                <td>
-                                    @if ($s->table != null)
-                                        <a href="{{ asset('storage/' . $s->table) }}" class="altona-sans-10">Table</a>
-                                    @endif
-                                </td>
-                                <td class="altona-sans-10">
-                                    {{ $s->table_caption }}
                                 </td>
                             </tr>
                         @endforeach

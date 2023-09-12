@@ -20,11 +20,13 @@
                 <input type="hidden" name="id" value="{{ $f->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Faction Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->faction_name }}">
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->faction_name }}"
+                        required>
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="tag">Faction Tag</label>
-                    <input class="form-control" type="text" name="tag" id="tag" value="{{ $f->faction_tag }}">
+                    <input class="form-control" type="text" name="tag" id="tag" value="{{ $f->faction_tag }}"
+                        required>
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="slug">

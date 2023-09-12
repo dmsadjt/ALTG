@@ -20,7 +20,8 @@
                 <input type="hidden" name="id" value="{{ $f->id }}">
                 <div>
                     <label class="form-label altona-sans-12" for="name">Gear Name</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->gear_name }}">
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $f->gear_name }}"
+                        required>
                 </div>
                 <div>
                     <label class="form-label" for="type">Gear Type</label>

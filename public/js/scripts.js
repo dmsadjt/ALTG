@@ -2,7 +2,20 @@ window.addEventListener('load', function () {
     this.document.querySelectorAll('.active').forEach(e =>
         e.click()
     )
+
+    for (i = 0; i < this.document.getElementsByClassName('details').length; i++) {
+        this.document.getElementsByClassName('details')[i].classList.add('d-none');
+    }
+
+
+
 })
+
+const dropdown = (event) => {
+    tempid = event.getAttribute('data-id');
+    tmp = document.getElementById(tempid).classList;
+    tmp.toggle('d-none');
+}
 
 function openTab(evt, tabStatus, content, links, style) {
     var i, tab__content, tab__links;

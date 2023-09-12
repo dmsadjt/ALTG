@@ -4,17 +4,24 @@
     <section class="hero">
         <div class="container">
             <div class="d-grid mx-auto mt-4">
+<<<<<<< HEAD
                 <button class="text-white orange-button shadow d-grid">
                     <a href="/ships" class="link-none my-auto">
                         <h1 class="p-3 my-auto">GO TO TIERLIST</h1>
+=======
+
+                <button class="text-white orange-button shadow ">
+                    <a href="/ships" class="link-none d-grid ">
+                        <h1 class="p-3 m-auto">GO TO TIERLIST</h1>
+>>>>>>> a1a0d9fd319908b6be6d1000b287c964613d7c75
                     </a>
                 </button>
 
             </div>
+
             <div class="d-grid mx-auto">
                 <a class="text-white text-center" href="/blogs/view/1"><b>Read our tiering guidelines here</b></a>
             </div>
-
 
             <div class="columns-two text-center mx-auto">
 
@@ -38,31 +45,37 @@
                             aria-label="Slide 5"></button>
                     </div>
 
+                    <button class="carousel-control-prev" type="button" data-bs-target="#latestPost" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#latestPost" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            @if (isset($posts[0]->images[0]))
-                                <img src="{{ asset('storage/' . $posts[0]->images[0]->image) }}" class="d-block"
-                                    alt="post-img">
-                            @else
-                                <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block" alt="post-img">
-                            @endif
+                            <a href="/blogs/view/{{ $posts[0]->id }}">
+                                <img src="{{ asset('storage/' . $posts[0]->thumbnail) }}" class="d-block" alt="post-img">
+                            </a>
 
-                            <div class="carousel-caption  d-none d-md-block">
-                                <h5 class="swiss-font-12">{{ $posts[0]->title }}</h5>
+
+                            <div class="carousel-caption d-md-block">
+                                <a href="/blogs/view/{{ $posts[0]->id }}"
+                                    class="altona-sans-10 link-none">{{ $posts[0]->title }}</a>
                                 <p class="short-text altona-sans-10">{{ strip_tags($posts[0]->body) }}</p>
                             </div>
                         </div>
                         @for ($i = 1; $i < 5; $i++)
                             <div class="carousel-item">
-                                @if (isset($posts[$i]->images[0]))
-                                    <img src="{{ asset('storage/' . $posts[$i]->images[0]->image) }}" class="d-block"
-                                        alt="post-img">
-                                @else
-                                    <img src="{{ asset('storage/posts/img/no-pictures.png') }}" class="d-block"
-                                        alt="post-img">
-                                @endif
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="swiss-font-12">{{ $posts[$i]->title }}</h5>
+                                <a href="/blogs/view/{{ $posts[$i]->id }}"><img
+                                        src="{{ asset('storage/' . $posts[$i]->thumbnail) }}" class="d-block"
+                                        alt="post-img"></a>
+
+                                <div class="carousel-caption d-md-block">
+                                    <a href="/blogs/view/{{ $posts[$i]->id }}"
+                                        class="altona-sans-10 link-none">{{ $posts[$i]->title }}</a>
                                     <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
                                 </div>
                             </div>
@@ -103,8 +116,8 @@
                         <img class="relative-2 img-4em" src="/img/rarity/tag/{{ $ships[$i]->rarity->rarity_image }}"
                             alt="">
                     </div>
-                    <div class="grid-col-span-2">
-                        <h1 style="font-size:3.5rem;color: white;">{{ $ships[$i]->name }}</h1>
+                    <div class="grid-col-span-2 mt-auto">
+                        <h1 style="font-size:2.5rem;color: white;">{{ $ships[$i]->name }}</h1>
                     </div>
                 </div>
 
@@ -183,9 +196,9 @@
                                     <td>Mob</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
+                                            id="{{ $score = number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
                                             <span class="score swiss-font-18">
-                                                {{ number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}
+                                                {{ intval($score) == $score ? intval($score) : $score }}
                                             </span>
                                         </div>
 

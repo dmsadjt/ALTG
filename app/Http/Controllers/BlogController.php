@@ -5,11 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostImage;
+use App\Models\PostThumbnail;
 use App\Models\Tag;
+use App\Models\TemporaryImageUpload;
+use Illuminate\Support\Facades\Storage;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class BlogController extends Controller
 {
+
     public function index()
     {
         $posts = Post::orderBy('id', 'desc')->with('tags')->paginate(5);
@@ -22,29 +26,11 @@ class BlogController extends Controller
         if (Post::where('id', $id)->first() == null) {
             return view('dump');
         }
-        $post = Post::where('id', $id)->with(['tags', 'images'])->first();
-        $table = array();
-        if ($post->table != null) {
-            $file_dir = 'storage/' . $post->table;
-            $spreadsheet = IOFactory::load($file_dir);
-            $column = $spreadsheet->getActiveSheet()->getColumnDimensions();
-            $rowSize = $spreadsheet->getActiveSheet()->getHighestRow();
-            $i = 1;
-            for ($j = 1; $j <= $rowSize; $j++) {
-                foreach ($column as $key => $c) {
-                    $table[$j][$i] = $spreadsheet->getActiveSheet()->getCell($key . $j)->getValue();
-                    $i++;
-                }
-                $i = 1;
-            }
-        } else $table = ['null'];
-
-        // dd($table);
-
+        $post = Post::where('id', $id)->with(['tags'])->first();
         $previous = Post::where('id', '<', $post->id)->max('id');
         $next = Post::where('id', '>', $post->id)->min('id');
 
-        return view('blog.view', compact(['post', 'previous', 'next', 'table']));
+        return view('blog.view', compact(['post', 'previous', 'next']));
     }
 
     public function add()
@@ -58,18 +44,7 @@ class BlogController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'body' => '',
-            'table' => 'file',
-            'table_caption' => '',
-            'image-1' => 'image',
-            'caption-1' => '',
-            'image-2' => 'image',
-            'caption-2' => '',
-            'image-3' => 'image',
-            'caption-3' => '',
-            'image-4' => 'image',
-            'caption-4' => '',
-            'image-5' => 'image',
-            'caption-5' => '',
+            'thumbnail-image' => 'image',
             'tag-1' => '',
             'tag-2' => '',
             'tag-3' => '',
@@ -80,20 +55,11 @@ class BlogController extends Controller
         $post = new Post;
         $post['title'] = $data['title'];
         $post['body'] = $data['body'];
-        $post['table_caption'] = $data['table_caption'] ?? null;
-        $post['table'] = isset($data['table']) ? $request->file('table')->store('posts/table') : null;
+        if (array_key_exists('thumbnail-image', $data)) {
+            $post['thumbnail'] = $request->file('thumbnail-image')->store('posts/thumbnail');
+        }
         $post->save();
 
-
-        for ($i = 1; $i < 6; $i++) {
-            if (array_key_exists('image-' . $i, $data)) {
-                ${'image-' . $i} = new PostImage;
-                ${'image-' . $i}['post_id'] = $post->id;
-                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts/img');
-                ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
-                ${'image-' . $i}->save();
-            }
-        }
         $temp = array();
         for ($i = 1; $i < 6; $i++) {
             if ($data['tag-' . $i] != null) {
@@ -101,6 +67,17 @@ class BlogController extends Controller
             }
         }
         $post->tags()->sync($temp);
+
+        $postImage = TemporaryImageUpload::all();
+
+        foreach ($postImage as $p) {
+            PostImage::create([
+                'post_id' => $post->id,
+                'image' => $p->image,
+            ]);
+        }
+
+        TemporaryImageUpload::truncate();
 
         return redirect('admin/blogs');
     }
@@ -110,6 +87,9 @@ class BlogController extends Controller
         $tags = Tag::all();
         $post = Post::where('id', $id)->get();
         $post1 = Post::where('id', $id)->first();
+        if (!$post || !$post1) {
+            return view('dump');
+        }
         for ($i = 1; $i < 6; $i++) {
             $selected['tag-' . $i] = '';
         }
@@ -125,25 +105,10 @@ class BlogController extends Controller
     {
         $data = $request->validate([
             'id' => 'required',
+            'oldImage' => '',
             'title' => 'required',
             'body' => '',
-            'table' => 'file',
-            'table_caption' => '',
-            'image-id-1' => '',
-            'image-1' => 'image',
-            'caption-1' => '',
-            'image-id-2' => '',
-            'image-2' => 'image',
-            'caption-2' => '',
-            'image-id-3' => '',
-            'image-3' => 'image',
-            'caption-3' => '',
-            'image-id-4' => '',
-            'image-4' => 'image',
-            'caption-4' => '',
-            'image-id-5' => '',
-            'image-5' => 'image',
-            'caption-5' => '',
+            'thumbnail-image' => 'image',
             'tag-1' => '',
             'tag-2' => '',
             'tag-3' => '',
@@ -151,41 +116,21 @@ class BlogController extends Controller
             'tag-5' => '',
         ]);
 
-        // dd($data['table_caption']);
-
         $post = Post::where('id', $data['id'])->first();
-        // dd($post->table_caption);
 
+
+        if ($request->file('thumbnail-image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $data['thumbnail-image'] = $request->file('thumbnail-image')->store('posts/thumbnail');
+        }
 
         $post->update([
             'title' => $data['title'],
             'body' => $data['body'],
-            'table_caption' => $data['table_caption'],
+            'thumbnail' => $request->file('thumbnail-image') ? $data['thumbnail-image'] : $post->thumbnail
         ]);
-
-
-        if (isset($data['table'])) {
-            $post['table'] = $request->file('table')->store('posts/table');
-            $post->save();
-        }
-
-
-        for ($i = 1; $i < 6; $i++) {
-            if (array_key_exists('image-id-' . $i, $data)) {
-                ${'image-' . $i} = PostImage::where('id', $data['image-id-' . $i]);
-                $img = array_key_exists('image-' . $i, $data) ? $request->file('image-' . $i)->store('posts/img') : $post->images[$i - 1]->image;
-                ${'image-' . $i}->update([
-                    'image' => $img,
-                    'caption' => $data['caption-' . $i],
-                ]);
-            } elseif (array_key_exists('image-' . $i, $data)) {
-                ${'image-' . $i} = new PostImage;
-                ${'image-' . $i}['post_id'] = $post->id;
-                ${'image-' . $i}['image'] = $request->file('image-' . $i)->store('posts/img');
-                ${'image-' . $i}['caption'] = array_key_exists('caption-' . $i, $data) ? $data['caption-' . $i] : 'No captions';
-                ${'image-' . $i}->save();
-            }
-        }
 
         $temp = array();
         for ($i = 1; $i < 6; $i++) {
@@ -195,6 +140,17 @@ class BlogController extends Controller
         }
         $post->tags()->sync($temp);
 
+        $postImage = TemporaryImageUpload::all();
+
+        foreach ($postImage as $p) {
+            PostImage::create([
+                'post_id' => $post->id,
+                'image' => $p->image,
+            ]);
+        }
+
+        TemporaryImageUpload::truncate();
+
         return redirect('admin/blogs');
     }
 
@@ -203,8 +159,14 @@ class BlogController extends Controller
         $post = Post::where('id', $id)->first();
         $post->tags()->detach();
 
-        foreach ($post->images as $i) {
-            $i->delete();
+        $postImage = PostImage::where('post_id', $id)->get();
+
+        foreach ($postImage as $pp) {
+            Storage::delete($pp->image);
+        }
+
+        if ($post->thumbnail) {
+            Storage::delete($post->thumbnail);
         }
 
         $post->delete();

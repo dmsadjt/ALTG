@@ -4,37 +4,43 @@
     <section class="hero">
         <div class="container text-white">
             <div class="bg-overlay">
-                <h1>Recent Posts</h1>
-                <p class="altona-sans-12">See the recent news!</p>
+                <h1 class="mx-2">Recent Posts</h1>
+                <p class="altona-sans-12 mx-2">See the recent news!</p>
 
-                <div class="post-row shadow">
+                <div class="post-row gap-2 d-grid my-1 m-1">
                     @foreach ($posts as $p)
-                        <div class="columns-two__5-1 pill-dark p-3 mb-2">
+                        <div class="post bg-dark rounded shadow p-1 gap-2">
+                            <div class="d-grid">
+                                <img src="{{ asset('storage/' . $p->thumbnail) }}" style="object-fit:cover"
+                                    class="d-block p-1 img-fluid m-auto rounded shadow" alt="post-img">
+                            </div>
                             <div>
-                                <h3>{{ $p->title }}</h3>
-                                <p class="altona-sans-10">{{ $p->created_at }}</p>
-                                <p class="altona-sans-12 medium-text">
-                                    {{ Str::limit(strip_tags($p->body), 200) }}
-                                    <a class="altona-sans-12" href="/blogs/view/{{ $p->id }}">See more</a>
-                                </p>
+                                <div class="swiss-font-12 r-show">{{ $p->title }}</div>
+                                <div class="swiss-font-18 r-hide">{{ $p->title }}</div>
+                                <div class="altona-sans-10 medium-text">
+                                    <div class="r-show">{{ Str::limit(strip_tags($p->body), 60) }}</div>
+                                    <div class="r-hide">{{ Str::limit(strip_tags($p->body), 300) }}</div>
+                                    <a class="altona-sans-10" href="/blogs/view/{{ $p->id }}">See more</a>
+                                </div>
+                            </div>
+                            <div class="altona-sans-10 mx-auto mt-auto" style="font-size: 0.7rem;">
+                                {{ date('d/m/Y', strtotime($p->created_at)) }}
+                            </div>
 
+                            <div>
                                 <div>
-                                    <span class="altona-sans-10">Tags :</span>
-                                </div>
-                                <div class="d-flex">
 
-                                    @foreach ($p->tags as $t)
-                                        <div class="bg-white text-black rounded p-1 w-auto mx-1 altona-sans-10">
-                                            {{ $t->tag_label }}
-                                        </div>
-                                    @endforeach
+                                    <div class="d-flex flex-wrap">
+                                        <span class="altona-sans-10">Tags :</span>
+                                        @foreach ($p->tags as $t)
+                                            <span class="bg-white text-black badge altona-sans-10 m-1 post-tags">
+                                                {{ $t->tag_label }}
+                                            </span>
+                                        @endforeach
+                                    </div>
                                 </div>
+                            </div>
 
-                            </div>
-                            <div class="d-flex justify-content-end ">
-                                <img src="{{ url('/img/web-assets/azur-logo.webp') }}" class="medium-img opacity-1 r-hide"
-                                    alt="">
-                            </div>
                         </div>
                     @endforeach
 

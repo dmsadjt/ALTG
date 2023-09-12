@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Archetype;
 use App\Models\Faction;
 use App\Models\Hull;
 use App\Models\Position;
@@ -19,10 +20,10 @@ class Tierlist extends Component
 
     public $byHull;
     public $position;
-    public $byRole;
+    public $byRoleArchetype;
     public $rarities = [];
     public $byFactions = [];
-    public $score = "Mob";
+    public $score = "W 14";
     public $sortBy = 'name';
     public $sortDirection = 'asc';
     public $sortType = 'simple';
@@ -51,15 +52,31 @@ class Tierlist extends Component
         $roles = Roles::all();
         $positions = Position::all();
         $role = Roles::all(); //role buat autofill
-        $roles = array(); //array buat store role
-        $roles_exploded = explode(',', $this->byRole);
+        $archetype = Archetype::all(); // archetype buat autofill
+        $role_archetype = array(); //array buat store role
+        $roles_exploded = explode(',', $this->byRoleArchetype);
         $raritys = $this->rarities;
         $factionsy = $this->byFactions;
         $shipImage = Hull::where('id', $this->byHull ?? 2)->first();
 
-        //masukin array
+        //masukin array role
         foreach ($role as $r) {
-            array_push($roles, $r->role_name);
+            array_push($role_archetype, $r->role_name);
+        }
+
+        //insert the archetype to array
+        foreach ($archetype as $a) {
+            array_push($role_archetype, $a->archetype_name);
+        }
+
+        if ($this->byRoleArchetype != '') {
+            $ship->with(['roles', 'archetypes'])->where(function ($query) use ($roles_exploded) {
+                $query->whereHas('roles', function ($q) use ($roles_exploded) {
+                    $q->whereIn('role_name', $roles_exploded);
+                })->orWhereHas('archetypes', function ($q) use ($roles_exploded) {
+                    $q->whereIn('archetype_name', $roles_exploded);
+                });
+            });
         }
 
         if ($this->byHull != '') {
@@ -68,14 +85,7 @@ class Tierlist extends Component
             $ship->where('hull_id', 2);
         }
 
-        if ($this->byRole != '') {
-            $ship->with(['roles'])->whereHas('roles', function ($q) use ($roles_exploded) {
-                $q->whereIn('role_name', $roles_exploded);
-            });
-        }
-
         if ($this->position) {
-
             if ($this->position == 'tank')
                 $ship->with(['positions'])->whereHas('positions', function ($q) {
                     $q->where('position_slug', 'vanguard-tank')->orWhere('position_slug', 'vanguard-tank-mid')->orWhere('position_slug', 'vanguard-tank-off_tank');
@@ -134,9 +144,6 @@ class Tierlist extends Component
         }
 
         // dd($ships);
-
-
-
         return view(
             'livewire.tierlist',
             [
@@ -144,7 +151,7 @@ class Tierlist extends Component
                 'hulls' => $hulls,
                 'factions' => $factions,
                 'rarity' => $rarity,
-                'roles' => $roles,
+                'roles' => $role_archetype,
                 'positions' => $positions,
                 'byHull' => $this->byHull,
                 'shipImage' => $shipImage,

@@ -3,7 +3,7 @@
 @section('contents')
     <section class="hero">
         <div class="container">
-            <div class="bg-overlay">
+            <div class="bg-overlay p-2">
 
                 {{-- ship name --}}
                 <div class="columns-five">
@@ -260,9 +260,18 @@
                     </div>
                 </div>
 
+
                 {{-- gears --}}
                 <div class="text-white">
+                    <div class="explanation mt-5">
 
+                        <h2 class="altona-sans-18">Explanation</h2>
+
+                        <p class="altona-sans-12">
+                            {{ $ship->notes }}
+                        </p>
+                    </div>
+                    <hr>
                     <div class="gears mt-2">
 
                         <h2 class="altona-sans-18">Gear Reccomendations</h2>
@@ -457,15 +466,7 @@
                         </div>
 
                     </div>
-                    <hr>
-                    <div class="explanation mt-5">
 
-                        <h2 class="altona-sans-18">Explanation</h2>
-
-                        <p class="altona-sans-12">
-                            {{ $ship->notes }}
-                        </p>
-                    </div>
 
                 </div>
             </div>

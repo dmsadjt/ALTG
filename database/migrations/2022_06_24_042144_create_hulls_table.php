@@ -19,7 +19,6 @@ class CreateHullsTable extends Migration
 
             $table->string('hull_name');
             $table->string('hull_slug');
-            $table->string('hull_tag');
             $table->string('hull_img');
         });
     }

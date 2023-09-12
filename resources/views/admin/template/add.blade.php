@@ -18,7 +18,7 @@
             @csrf
             <div class="mt-2">
                 <label class="form-label altona-sans-12" for="name">Template name</label>
-                <input class="form-control" type="text" name="name" id="name">
+                <input class="form-control" type="text" name="name" id="name" required>
             </div>
 
             <div class="mt-2">

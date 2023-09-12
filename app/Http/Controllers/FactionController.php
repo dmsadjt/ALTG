@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Faction;
+use Illuminate\Support\Facades\Storage;
 
 class FactionController extends Controller
 {
@@ -50,7 +51,12 @@ class FactionController extends Controller
         ]);
 
         $faction = Faction::where('id', '=', $data['id'])->first();
-        $img = array_key_exists('img', $data) ? $request->file('img')->store('factions/img') : $faction->faction_img;
+        $img = $faction->faction_img;
+
+        if ($request->file('img')) {
+            Storage::delete($faction->faction_img);
+            $img = $request->file('img')->store('factions/img');
+        }
 
         $faction->update([
             'faction_name' => $data['name'],
@@ -71,6 +77,10 @@ class FactionController extends Controller
             $s->update([
                 'faction_id' => '1',
             ]);
+        }
+
+        if ($faction->faction_img) {
+            Storage::delete($faction->faction_img);
         }
 
         $faction->delete();

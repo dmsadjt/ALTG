@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 use App\Models\Hull;
+use Illuminate\Support\Facades\Storage;
 
 class HullController extends Controller
 {
@@ -46,7 +47,7 @@ class HullController extends Controller
             'img' => '',
         ]);
 
-        $hull = Hull::where('id', $data['id']);
+        $hull = Hull::where('id', $data['id'])->first();
 
         $hull->update([
             'hull_name' => $data['name'],
@@ -54,6 +55,7 @@ class HullController extends Controller
         ]);
 
         if (array_key_exists('img', $data)) {
+            Storage::delete($hull->hull_img);
             $img = $request->file('img')->store('hulls/img');
             $hull->update([
                 'hull_img' => $img,
@@ -80,7 +82,13 @@ class HullController extends Controller
             ]);
         }
 
+        if ($hull->hull_img) {
+            Storage::delete($hull->hull_img);
+        }
+
         $hull->delete();
+
+
 
         return redirect('admin/hulls');
     }

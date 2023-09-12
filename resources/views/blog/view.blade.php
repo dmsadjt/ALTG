@@ -1,6 +1,25 @@
 @extends('layouts.layout')
 @section('title', $post->title)
 @section('contents')
+
+    <style>
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            min-width: 3em;
+        }
+
+        table {
+            color: white;
+            border: 2px solid white;
+            overflow-x: scroll;
+        }
+
+        figure {
+            width: 20%;
+            overflow-x: scroll;
+        }
+    </style>
     <section class="hero">
         <div class="container bg-overlay text-white shadow">
             {{-- title --}}
@@ -12,87 +31,10 @@
             </div>
 
             {{-- picture carousel --}}
-            @if ($post->images()->exists())
-                <div id="postImageIndicator" class="carousel slide mx-5 shadow" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                        @foreach ($post->images as $key => $p)
-                            @if ($key == 0)
-                                <button type="button" data-bs-target="#postImageIndicator"
-                                    data-bs-slide-to="{{ $key }}" class="active" aria-current="true"
-                                    aria-label="Slide {{ $key + 1 }}"></button>
-                            @else
-                                <button type="button" data-bs-target="#postImageIndicator"
-                                    data-bs-slide-to="{{ $key }}" aria-label="Slide {{ $key + 1 }}"></button>
-                            @endif
-                        @endforeach
-                    </div>
-                    <div class="carousel-inner">
-
-                        @foreach ($post->images as $key => $p)
-                            @if ($key == 0)
-                                <div class="carousel-item active">
-                                    <img src="{{ asset('storage/' . $p->image) }}" class="d-block w-100"
-                                        alt="{{ $p->image }}">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <p>{{ $p->caption }}</p>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="carousel-item">
-                                    <img src="{{ asset('storage/' . $p->image) }}" class="d-block w-100"
-                                        alt="{{ $p->image }}">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <p>{{ $p->caption }}</p>
-                                    </div>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#postImageIndicator"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#postImageIndicator"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            @endif
+            <img src="{{ asset('storage/' . $post->thumbnail) }}" class="d-block w-75 mx-auto rounded shadow"
+                alt="post-thumbnail">
 
 
-            @if ($post->table != null)
-                <div class="w-80 mt-2">
-                    <div class="r-overflow-x mx-5">
-                        <table class="bg-gray1">
-                            @foreach ($table as $key => $c)
-                                @if ($key == 1)
-                                    <thead>
-                                        @foreach ($c as $r)
-                                            <th class="altona-sans-12 border-bottom p-2">{{ $r }}</th>
-                                        @endforeach
-                                    </thead>
-                                    @continue
-                                @endif
-                                <tbody>
-                                    <tr>
-                                        @foreach ($c as $r)
-                                            <td class="altona-sans-12 p-2">{{ $r }}</td>
-                                        @endforeach
-                                    </tr>
-                                </tbody>
-                            @endforeach
-                        </table>
-                        <div class="d-grid">
-                            <i class="altona-sans-10 mx-auto mt-1">{{ $post->table_caption ?? '' }}</i>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            @endif
 
             {{-- body --}}
             <div class="mx-5 mt-5">
@@ -101,9 +43,7 @@
                 <hr>
                 <p class=" altona-sans-12 text-justify">
                     {!! $post->body !!}
-
                 </p>
-
             </div>
 
 
@@ -138,4 +78,6 @@
 
         </div>
     </section>
+
+    <script></script>
 @endsection
