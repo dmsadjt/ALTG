@@ -4,10 +4,9 @@
     <section class="hero">
         <div class="container">
             <div class="d-grid mx-auto mt-4">
-
-                <button class="text-white orange-button shadow ">
-                    <a href="/ships" class="link-none d-grid ">
-                        <h1 class="p-3 m-auto">GO TO TIERLIST</h1>
+                <button class="text-white orange-button shadow d-grid">
+                    <a href="/ships" class="link-none my-auto">
+                        <h1 class="p-3 my-auto">GO TO TIERLIST</h1>
                     </a>
                 </button>
 
