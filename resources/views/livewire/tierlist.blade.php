@@ -265,7 +265,14 @@
 
     </div>
 
-    <div wire:loading class="d-grid "><span wire:loading class="mx-auto altona-sans-18 ">Loading...</span></div>
+    <div wire:loading class="ships w-80 ">
+        <span wire:loading class="mx-auto altona-sans-18 ">
+            <h1 class="placeholder-glow">
+                <span class="placeholder">Score</span>
+            </h1>
+            <table class="ship-table"></table>
+        </span>
+    </div>
     <div class="ships w-80" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
@@ -660,25 +667,25 @@
                         @if ($score == 'Mob')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                    data-score="{{ $mob1 = number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                        {{ intval($mob1) == $mob1 ? intval($mob1) : $mob1 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                    data-score="{{ $mob2 = number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        {{ intval($mob2) == $mob2 ? intval($mob2) : $mob2 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                    data-score="{{ $mob3 = number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_14, 1) }}
+                                        {{ intval($mob3) == $mob3 ? intval($mob3) : $mob3 }}
                                     </div>
                                 </div>
                             </td>
@@ -687,25 +694,25 @@
                         @elseif ($score == 'Boss')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                    data-score="{{ $boss1 = number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        {{ intval($boss1) == $boss1 ? intval($boss1) : $boss1 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                    data-score="{{ $boss2 = number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        {{ intval($boss2) == $boss2 ? intval($boss2) : $boss2 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                    data-score="{{ $boss3 = number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_14, 1) }}
+                                        {{ intval($boss3) == $boss3 ? intval($boss3) : $boss3 }}
                                     </div>
                                 </div>
                             </td>
@@ -714,17 +721,17 @@
                         @elseif ($score = 'W 9-11')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                    data-score="{{ $nine = number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                        {{ intval($nine) == $nine ? intval($nine) : $nine }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                    data-score="{{ $nineb = number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        {{ intval($nineb) == $nineb ? intval($nineb) : $nineb }}
                                     </div>
                                 </div>
                             </td>
@@ -733,17 +740,17 @@
                         @elseif ($score = 'W 12-13')
                             <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                    data-score="{{ $elv = number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        {{ intval($elv) == $elv ? intval($elv) : $elv }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                    data-score="{{ $elvb = number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        {{ intval($elvb) == $elvb ? intval($elvb) : $elvb }}
                                     </div>
                                 </div>
                             </td>
@@ -751,17 +758,17 @@
                         @elseif ($score = 'W 14')
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                    data-score="{{ $tw = number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_14, 1) }}
+                                        {{ intval($tw) == $tw ? intval($tw) : $tw }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                    data-score="{{ $twb = number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_14, 1) }}
+                                        {{ intval($twb) == $twb ? intval($twb) : $twb }}
                                     </div>
                                 </div>
                             </td>

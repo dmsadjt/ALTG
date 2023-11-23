@@ -203,9 +203,9 @@
                                     <td>Boss</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
+                                            id="{{ $score1 = number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
                                             <span class=" score swiss-font-18">
-                                                {{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}
+                                                {{ intval($score1) == $score1 ? intval($score) : $score1 }}
                                             </span>
                                         </div>
                                     </td>
