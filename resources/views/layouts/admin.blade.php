@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/trix.css">
     <script type="text/javascript" src="/js/trix.js"></script>
     <link rel="stylesheet" href="/css/app.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
@@ -45,6 +46,61 @@
                 <span class="swiss-font-24 my-auto">ALTG</span>
             </a>
 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav text-white gap-2">
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/ships') ? 'selected' : '' }}"
+                            href="/admin/ships">Ships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/sirens') ? 'selected' : '' }}"
+                            href="/admin/sirens">Sirens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/blogs') ? 'selected' : '' }}"
+                            href="/admin/blogs">Posts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/tags') ? 'selected' : '' }}"
+                            href="/admin/tags">Post tags</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/factions') ? 'selected' : '' }}"
+                            href="/admin/factions">Factions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/archetypes') ? 'selected' : '' }}"
+                            href="/admin/archetypes">Archetypes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/roles') ? 'selected' : '' }}"
+                            href="/admin/roles">Roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/positions') ? 'selected' : '' }}"
+                            href="/admin/positions">Positions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/gears') ? 'selected' : '' }}"
+                            href="/admin/gears">Gears</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/hulls') ? 'selected' : '' }}"
+                            href="/admin/hulls">Hulls</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-none altona-sans-12 {{ request()->is('admin/templates') ? 'selected' : '' }}"
+                            href="/admin/templates">Gear Templates</a>
+                    </li>
+                </ul>
+            </div>
+
+
             <div class="collapse navbar-collapse content" id="navbarSupportedContent">
                 <form action="/logout" method="POST">
                     @csrf
@@ -56,61 +112,9 @@
 
     <main>
         <section class="_100vh">
-            <div class="columns-two__1-5 _100vh">
-                <div class="bg-nav d-grid">
-                    <ul class="nav-style-none ul-h-3">
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/ships"><button
-                                    class="btn-none text-white w-100 text-start">Ships</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/sirens"><button
-                                    class="btn-none text-white w-100 text-start">Sirens</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/blogs"><button
-                                    class="btn-none text-white w-100 text-start">Posts</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/tags"><button
-                                    class="btn-none text-white w-100 text-start">Post tags</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/factions"><button
-                                    class="btn-none text-white w-100 text-start">Factions</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/archetypes"><button
-                                    class="btn-none text-white w-100 text-start">Archetypes</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/roles"><button
-                                    class="btn-none text-white w-100 text-start">Roles</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/positions"><button
-                                    class="btn-none text-white w-100 text-start">Positions</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/gears"><button
-                                    class="btn-none text-white w-100 text-start">Gears</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/hulls"><button
-                                    class="btn-none text-white w-100 text-start">Hulls</button></a>
-                        </li>
-                        <li>
-                            <a class="link-none swiss-font-12" href="/admin/templates"><button
-                                    class="btn-none text-white w-100 text-start">Gear Templates</button></a>
-                        </li>
-                    </ul>
-
-                </div>
-                <div class="text-white">
-                    @yield('contents')
-                </div>
+            <div class="text-white">
+                @yield('contents')
             </div>
-
         </section>
     </main>
     @livewireScripts

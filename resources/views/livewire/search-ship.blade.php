@@ -9,8 +9,8 @@
             <thead class="bg-gray1 text-white altona-sans-12">
                 <th>&nbsp;</th>
                 <th>@sortablelink('name')</th>
-                <th><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                <th><a href="#" class="altona-sans-12 link-none">Role</a></th>
+                <th><a href="#" class="altona-sans-12 link-none text-white">Archetype</a></th>
+                <th><a href="#" class="altona-sans-12 link-none text-white">Role</a></th>
                 <th><span>@sortablelink('positions.position_name', 'Position')</span></th>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                         </td>
                         <td class="bg-gray1 swiss-font-18"><img class="chibi-img r-hide"
                                 src="/img/ships/chibi/{{ $s->chibi_sprite }}" alt=""> <a
-                                href="/ships/{{ $s->id }}" class="ms-1 link-none font-inherit">
+                                href="/ships/{{ $s->id }}" class="ms-1 link-none text-white font-inherit">
                                 {{ $s->name }}
                             </a></td>
                         <td class="bg-gray1 altona-sans-10 border-left-white text-align-center">

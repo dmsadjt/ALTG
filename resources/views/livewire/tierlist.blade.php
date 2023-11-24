@@ -382,7 +382,8 @@
                         <td class="bg-gray1 ">
                             <div class="row">
                                 <div class="col-10">
-                                    <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                    <a href="/ships/{{ $s->id }}"
+                                        class="swiss-font-12 ms-1 link-none text-white">
                                         <span class="r-hide">
                                             <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
                                                 alt="">

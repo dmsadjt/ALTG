@@ -6,14 +6,14 @@
             <div class="d-grid mx-auto mt-4">
 
                 <button class="text-white orange-button shadow ">
-                    <a href="/ships" class="link-none d-grid ">
+                    <a href="/ships" class="link-none text-white d-grid ">
                         <h1 class="p-3 m-auto">GO TO TIERLIST</h1>
                     </a>
                 </button>
 
             </div>
 
-            <div class="d-grid mx-auto">
+            <div class="d-grid mx-auto mt-1">
                 <a class="text-white text-center" href="/blogs/view/1"><b>Read our tiering guidelines here</b></a>
             </div>
 
@@ -57,7 +57,7 @@
 
                             <div class="carousel-caption d-md-block">
                                 <a href="/blogs/view/{{ $posts[0]->id }}"
-                                    class="altona-sans-10 link-none">{{ $posts[0]->title }}</a>
+                                    class="altona-sans-10 link-none text-white">{{ $posts[0]->title }}</a>
                                 <p class="short-text altona-sans-10">{{ strip_tags($posts[0]->body) }}</p>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
 
                                 <div class="carousel-caption d-md-block">
                                     <a href="/blogs/view/{{ $posts[$i]->id }}"
-                                        class="altona-sans-10 link-none">{{ $posts[$i]->title }}</a>
+                                        class="altona-sans-10 link-none text-white">{{ $posts[$i]->title }}</a>
                                     <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
 
             </div>
 
-            <div class="row mt-5 text-center text-white">
+            <div class="row mt-3 text-center text-white">
                 <h1>CHECK OUT THE LATEST SHIPS</h1>
                 <div class="text-center mt-1">
                     <img src="/img/web-assets/downarrow.svg" class="downarrow" alt="">
@@ -98,7 +98,7 @@
 
         <div class="container">
 
-            <div class="row mt-5 text-center text-white">
+            <div class="row mt-3 text-center text-white">
                 <div class="altona-sans-12">Click on <span class="orange-btn ">Read more details >></span> to learn about
                     individual world score, gear guides and more</div>
             </div>
@@ -229,7 +229,7 @@
                     <div class="grid-col-span-2"></div>
                     <div>
 
-                        <a href="/ships/{{ $ships[$i]->id }}" class="link-none">
+                        <a href="/ships/{{ $ships[$i]->id }}" class="link-none text-white">
                             <button class="mt-5 orange-btn swiss-font-12 text-white">
                                 Read more details>>
                             </button>
