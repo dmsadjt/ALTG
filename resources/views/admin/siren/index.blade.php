@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 @section('title', 'Siren Bosses')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 d-grid gap-1">
         <div>
             <h1>Siren Bosses</h1>
             <p class="altona-sans-12">Manage the bosses</p>
         </div>
-        <div class="mt-auto ms-auto">
+        <div>
             <a href="/admin/sirens/add">
                 <button class="btn btn-primary"><span class="altona-sans-12">Add boss</span></button></a>
 
         </div>
 
     </div>
-    <div class="m-3">
+    <div class="m-3" style="width: 90vw">
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
