@@ -9,9 +9,7 @@
         <div>
             <a href="/admin/sirens/add">
                 <button class="btn btn-primary"><span class="altona-sans-12">Add boss</span></button></a>
-
         </div>
-
     </div>
     <div class="m-3" style="width: 90vw">
         <div class="card">
@@ -48,7 +46,6 @@
                                             href="/admin/sirens/edit/{{ $s->id }}"><button
                                                 class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
-
                                     <div>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/sirens/delete/{{ $s->id }}"><button

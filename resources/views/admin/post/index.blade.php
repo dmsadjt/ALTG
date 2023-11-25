@@ -10,7 +10,7 @@
             <a href="/admin/blogs/add"><button class="btn btn-primary">Add Posts</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x">
+    <div class="m-3 overflow-x" style="width: 90vw">
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Edit Post')
 @section('contents')
-    <div class="d-grid pill-dark p-2 m-3">
+    <div class="d-grid pill-dark p-2 m-2">
 
         @if ($errors->any())
             <div class="alert alert-danger">
