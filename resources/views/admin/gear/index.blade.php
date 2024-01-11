@@ -11,6 +11,7 @@
         </div>
     </div>
     <div class="m-3 overflow-x">
+        {{ $gears->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -47,7 +48,6 @@
                         @endforeach
 
                     </tbody>
-                    {{ $gears->links() }}
                 </table>
             </div>
         </div>

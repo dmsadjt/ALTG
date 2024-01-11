@@ -8,7 +8,7 @@
             <a href="ships/add"><button class="btn btn-primary">Add ships</button></a>
         </div>
         <div>
-            <input class="form-control altona-sans-12" style="width: 50%" type="text" id="searchTerm"
+            <input class="form-control altona-sans-12" style="width: 100%" type="text" id="searchTerm"
                 wire:model="searchTerm" placeholder="Search by name..">
         </div>
     </div>

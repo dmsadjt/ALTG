@@ -11,7 +11,9 @@
                 <button class="btn btn-primary"><span class="altona-sans-12">Add boss</span></button></a>
         </div>
     </div>
-    <div class="m-3" style="width: 90vw">
+
+    <div class="m-3 overflow-x" style="width: 90vw">
+        {{ $siren->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -168,7 +170,7 @@
 
                 </table>
             </div>
-            {{ $siren->links() }}
+
         </div>
     </div>
 

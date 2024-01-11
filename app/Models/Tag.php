@@ -17,6 +17,11 @@ class Tag extends Model
         'tag_slug',
     ];
 
+    protected $sortable = [
+        'tag_label',
+        'tag_slug',
+    ];
+
     public function sluggable(): array
     {
         return [

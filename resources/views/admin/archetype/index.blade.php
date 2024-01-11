@@ -1,16 +1,17 @@
 @extends('layouts.admin')
 @section('title', 'Archetypes')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 d-grid gap-1">
         <div>
             <h1>Archetypes</h1>
             <p class="altona-sans-12">Manage Archetypes</p>
         </div>
-        <div class="ms-auto mt-auto">
+        <div>
             <a href="/admin/archetypes/add"><button class="btn btn-primary">Add archetypes</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x">
+    <div class="m-3 overflow-x" style="width: 90vw">
+        {{ $archetypes->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -43,7 +44,7 @@
                         @endforeach
 
                     </tbody>
-                    {{ $archetypes->links() }}
+
                 </table>
             </div>
         </div>

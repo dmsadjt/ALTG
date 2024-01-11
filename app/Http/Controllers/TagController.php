@@ -46,13 +46,14 @@ class TagController extends Controller
             'slug' => 'required',
         ]);
 
-        $tag = Tag::where('id', $data['id']);
+
+        $tag = Tag::where('id', '=', $data['id'])->first();
         $tag->tag_slug = null;
         $tag->update([
             'tag_label' => $data['label'],
         ]);
 
-        return redirect('admin/tags');
+        return redirect('admin/archetypes');
     }
 
     public function delete($id)
