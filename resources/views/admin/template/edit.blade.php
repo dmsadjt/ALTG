@@ -102,9 +102,9 @@
 
             </div>
 
-            <div class="columns-two">
-                <input type="submit" class="btn btn-success mx-auto my-3 me-0" name="submit" value="Edit Template">
-                <input type="submit" class="btn btn-success mx-auto my-3 ms-0" name="submit" value="Save as new Template">
+            <div class="d-grid gap-1 my-2">
+                <input type="submit" class="btn btn-success mx-auto" name="submit" value="Edit Template">
+                <input type="submit" class="btn btn-success mx-auto" name="submit" value="Save as new Template">
 
             </div>
         </form>
