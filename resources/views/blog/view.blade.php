@@ -3,11 +3,11 @@
 @section('contents')
 
     <style>
-        img {
-            max-width: 100%;
-            max-height: 100%;
-            min-width: 3em;
-        }
+        /* img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    min-width: 3em;
+                } */
 
         table {
             color: white;

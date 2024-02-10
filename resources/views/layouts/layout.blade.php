@@ -68,7 +68,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><img class="navbar-image"
+                        <a class="nav-link" href="#"><img style="object-fit: contain;" class="navbar-image"
                                 src="{{ url('/img/web-assets/discord-logo.png') }}" alt=""></a>
                     </li>
                 </ul>
