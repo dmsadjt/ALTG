@@ -1265,9 +1265,7 @@ td {
     border: none;
 }
 
-.score-type:hover {
-    border: 0.1em solid white;
-}
+.score-type:hover {}
 
 .ship-row {
     background-color: var(--gray1);

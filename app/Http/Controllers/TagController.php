@@ -53,7 +53,7 @@ class TagController extends Controller
             'tag_label' => $data['label'],
         ]);
 
-        return redirect('admin/archetypes');
+        return redirect('admin/tags');
     }
 
     public function delete($id)

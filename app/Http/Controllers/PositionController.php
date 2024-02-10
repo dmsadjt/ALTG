@@ -18,7 +18,9 @@ class PositionController extends Controller
     {
         $data = $request->validate([
             'id' => 'required',
+            'name' => 'required',
             'explanation' => '',
+            'slug' => 'required',
         ]);
 
         Position::where('id', $data['id'])->update([
