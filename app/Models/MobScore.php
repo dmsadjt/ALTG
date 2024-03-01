@@ -16,15 +16,18 @@ class MobScore extends Model
         'mob_9_11',
         'mob_12_13',
         'mob_14',
+        'mob_15',
     ];
 
     protected $sortable = [
         'mob_9_11',
         'mob_12_13',
         'mob_14',
+        'mob_15',
     ];
 
-    public function ship(){
+    public function ship()
+    {
         return $this->belongsTo(Ship::class);
     }
 }

@@ -80,7 +80,8 @@
 
                 {{-- brand image --}}
                 <div class="brand">
-                    <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image-page" alt="">
+                    <img loading="lazy" src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image-page"
+                        alt="">
                 </div>
 
             </div>
@@ -190,7 +191,7 @@
                                     <td>Mob</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ $score = number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
+                                            id="{{ $score = number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14 + $ships[$i]->bossScore->boss_15) / 4, 1) }}">
                                             <span class="score swiss-font-18">
                                                 {{ intval($score) == $score ? intval($score) : $score }}
                                             </span>
@@ -203,7 +204,7 @@
                                     <td>Boss</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ $score1 = number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
+                                            id="{{ $score1 = number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14 + $ships[$i]->mobScore->mob_15) / 4, 1) }}">
                                             <span class=" score swiss-font-18">
                                                 {{ intval($score1) == $score1 ? intval($score) : $score1 }}
                                             </span>

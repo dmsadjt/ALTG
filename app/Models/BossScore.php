@@ -13,9 +13,11 @@ class BossScore extends Model
         'boss_9_11',
         'boss_12_13',
         'boss_14',
+        'boss_15',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(Ship::class);
     }
 }

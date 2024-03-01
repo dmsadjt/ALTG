@@ -21,6 +21,7 @@ class CreateMobScoresTable extends Migration
             $table->integer('mob_9_11')->nullable();
             $table->integer('mob_12_13')->nullable();
             $table->integer('mob_14')->nullable();
+            $table->integer('mob_15')->nullable();
 
             $table->index('ship_id');
         });
