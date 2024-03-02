@@ -68,8 +68,8 @@
                             });
                     });
                 </script>
-                <div class="columns-two__4-2 mt-2">
-                    <div class="me-2">
+                <div class="columns-two__5-1 mt-2">
+                    <div class="me-2 d-grid">
                         <div>
                             <div class="swiss-font-12">
                                 Rarity
@@ -89,12 +89,12 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class=" align-bottom">
                             <div class="swiss-font-12">
                                 Faction
                             </div>
                             <div>
-                                <ul class="filter-list bg-gray1 rounded d-flex flex-wrap fit-content">
+                                <ul class="filter-list bg-gray1 rounded">
                                     @foreach ($factions as $key => $r)
                                         @if ($key == 0)
                                             @continue
@@ -113,9 +113,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex mt-2">
+                    <div class="d-grid mt-2 align-content-end">
                         <select wire:model="position" name="position" id="position"
-                            class="pill-dark altona-sans-12 text-center button-square">
+                            class="pill-dark altona-sans-12 text-center align-bottom align-end button-square">
                             <option value="">None</option>
                             <option value="tank">Tank</option>
                             <option value="offtank">Offtank</option>
@@ -409,12 +409,12 @@
             </thead>
             <tbody>
                 @foreach ($ships as $s)
-                    <tr class="text-white shadow">
+                    <tr class="text-white shadow ">
                         <td class="rarity-tag" data-rarity="{{ $s->rarity->rarity_tag }}">
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 ">
-                            <div class="row">
+                            <div class="row">x
                                 <div class="col-10">
                                     <a href="/ships/{{ $s->id }}"
                                         class="swiss-font-12 ms-1 link-none text-white">
