@@ -18,29 +18,24 @@
                                 <div class="swiss-font-12 r-show">{{ $p->title }}</div>
                                 <div class="swiss-font-18 r-hide">{{ $p->title }}</div>
                                 <div class="altona-sans-10 medium-text">
-                                    <div class="r-show">{{ Str::limit(strip_tags($p->body), 60) }}</div>
-                                    <div class="r-hide">{{ Str::limit(strip_tags($p->body), 300) }}</div>
+                                    <div class="r-show">{{ date('d/m/Y', strtotime($p->created_at)) }} - {{ Str::limit(strip_tags($p->body), 60) }}</div>
+                                    <div class="r-hide">{{ date('d/m/Y', strtotime($p->created_at)) }} - {{ Str::limit(strip_tags($p->body), 300) }}</div>
                                     <a class="altona-sans-10" href="/blogs/view/{{ $p->id }}">See more</a>
                                 </div>
-                            </div>
-                            <div class="altona-sans-10 mx-auto mt-auto" style="font-size: 0.7rem;">
-                                {{ date('d/m/Y', strtotime($p->created_at)) }}
-                            </div>
-
-                            <div>
                                 <div>
+                                    <div>
 
-                                    <div class="d-flex flex-wrap">
-                                        <span class="altona-sans-10">Tags :</span>
-                                        @foreach ($p->tags as $t)
-                                            <span class="bg-white text-black badge altona-sans-10 m-1 post-tags">
-                                                {{ $t->tag_label }}
-                                            </span>
-                                        @endforeach
+                                        <div class="d-flex flex-wrap">
+                                            <span class="altona-sans-10">Tags :</span>
+                                            @foreach ($p->tags as $t)
+                                                <span class="bg-white text-black badge altona-sans-10 m-1 post-tags">
+                                                    {{ $t->tag_label }}
+                                                </span>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     @endforeach
 
