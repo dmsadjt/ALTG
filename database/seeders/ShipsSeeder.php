@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\DB;
 
 class ShipsSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
      * @return void
      */
+
     public function run()
     {
         DB::table('ships')->insert([
