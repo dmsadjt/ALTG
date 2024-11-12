@@ -21,22 +21,22 @@
                 <div>
                     <label class="form-label altona-sans-12" for="name">Position Name</label>
                     <input class="form-control altona-sans-12" type="text" name="name" id="name"
-                        value="{{ $f->position_name }}" disabled>
+                        value="{{ $f->position_name }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="slug">Position Slug</label>
                     <input class="form-control altona-sans-12" type="text" name="slug" id="slug"
-                        value="{{ $f->position_slug }}" disabled>
+                        value="{{ $f->position_slug }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="category">Position Category</label>
                     <input class="form-control altona-sans-12" type="text" name="category" id="category"
-                        value="{{ $f->position_category }}" disabled>
+                        value="{{ $f->position_category }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="type">Position Type</label>
                     <input class="form-control altona-sans-12" type="text" name="type" id="type"
-                        value="{{ $f->position_type }}" disabled>
+                        value="{{ $f->position_type }}">
                 </div>
                 <div>
                     <label class="form-label altona-sans-12" for="explanation">Position explanation</label>

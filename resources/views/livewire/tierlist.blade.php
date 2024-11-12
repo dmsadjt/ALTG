@@ -323,7 +323,7 @@
                         @endif
                     </th>
                     <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
-                        style="font-weight:600;" wire:click="sort('mob_15','complex')">15</button>
+                            style="font-weight:600;" wire:click="sort('mob_15','complex')">15</button>
                         @if ($sortBy == 'mob_15')
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
@@ -348,7 +348,7 @@
                         @endif
                     </th>
                     <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
-                        style="font-weight:600;" wire:click="sort('boss_15','complex')">15</button>
+                            style="font-weight:600;" wire:click="sort('boss_15','complex')">15</button>
                         @if ($sortBy == 'boss_15')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
@@ -388,7 +388,7 @@
                     </th>
                     <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
                             style="font-weight:600;" wire:click="sort('boss_15','complex')">Boss</button>
-                        @if ($sortBy == 'boss_15')
+                        @if ($sortBy == 'boss_14')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
@@ -414,7 +414,7 @@
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 ">
-                            <div class="row">x
+                            <div class="row">
                                 <div class="col-10">
                                     <a href="/ships/{{ $s->id }}"
                                         class="swiss-font-12 ms-1 link-none text-white">

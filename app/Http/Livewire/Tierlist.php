@@ -17,7 +17,6 @@ class Tierlist extends Component
 {
     use WithPagination;
     use Sortable;
-
     public $byHull;
     public $position;
     public $byRoleArchetype;
@@ -136,7 +135,7 @@ class Tierlist extends Component
         }
 
         if ($this->sortType == 'complex') {
-            if ($this->sortBy == 'mob_9_11' || $this->sortBy == 'mob_12_13' || $this->sortBy == 'mob_14') {
+            if ($this->sortBy == 'mob_9_11' || $this->sortBy == 'mob_12_13' || $this->sortBy == 'mob_14' || $this->sortBy == 'mob_15') {
                 $ships = $ship->join('mob_scores', 'ships.id', '=', 'mob_scores.ship_id')->orderBy('mob_scores.' . $this->sortBy, $this->sortDirection)->paginate(10);
             } else {
                 $ships = $ship->join('boss_scores', 'ships.id', '=', 'boss_scores.ship_id')->orderBy('boss_scores.' . $this->sortBy, $this->sortDirection)->paginate(10);

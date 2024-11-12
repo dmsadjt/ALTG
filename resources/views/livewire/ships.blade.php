@@ -163,10 +163,12 @@
                                         <li>9-11 : {{ $s->mobScore->mob_9_11 }}</li>
                                         <li>12-13 :{{ $s->mobScore->mob_12_13 }}</li>
                                         <li>14 : {{ $s->mobScore->mob_14 }}</li>
+                                        <li>15 : {{ $s->mobScore->mob_15 }}</li>
                                         <li>Boss</li>
                                         <li>9-11 : {{ $s->bossScore->boss_9_11 }}</li>
                                         <li>12-13 :{{ $s->bossScore->boss_12_13 }}</li>
                                         <li>14 : {{ $s->bossScore->boss_14 }}</li>
+                                        <li>15 : {{ $s->bossScore->boss_15 }}</li>
                                     </ul>
                                 </td>
                             </tr>
