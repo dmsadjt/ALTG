@@ -18,7 +18,7 @@
             @csrf
             @foreach ($tag as $t)
                 <input type="hidden" name="id" value={{ $t->id }}>
-
+                <input type="hidden" name="slug" value={{ $t->tag_slug }}>
                 <div class="mt-2">
                     <label class="form-label altona-sans-12" for="label">Tag Label</label>
                     <input class="form-control" type="text" name="label" id="label" value="{{ $t->tag_label }}"

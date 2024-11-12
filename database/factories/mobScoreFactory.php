@@ -14,16 +14,17 @@ class mobScoreFactory extends Factory
      * @return array
      */
 
-     protected $model = MobScore::class;
+    protected $model = MobScore::class;
     public function definition()
     {
         $faker = Faker::create();
 
 
         return [
-            'mob_9_11'=>$faker->randomDigit(),
-            'mob_12_13'=>$faker->randomDigit(),
-            'mob_14'=>$faker->randomDigit(),
+            'mob_9_11' => $faker->randomDigit(),
+            'mob_12_13' => $faker->randomDigit(),
+            'mob_14' => $faker->randomDigit(),
+            'mob_15' => $faker->randomDigit(),
         ];
     }
 }

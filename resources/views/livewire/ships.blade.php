@@ -1,20 +1,19 @@
-<div>
-    <div class="m-3 columns-two">
+<div class="mx-auto">
+    <div class="m-3 d-grid gap-2">
         <div>
             <h1>Ships</h1>
-            <p class="altona-sans-12">Manage the ships</p>
+            <div class="altona-sans-12">Manage the ships</div>
         </div>
-        <div class="ms-auto mt-auto">
+        <div>
             <a href="ships/add"><button class="btn btn-primary">Add ships</button></a>
         </div>
-
         <div>
-            <label class="form-label altona-sans-12" for="searchTerm">Search by name</label>
-
-            <input class="form-control altona-sans-12" type="text" id="searchTerm" wire:model="searchTerm">
+            <input class="form-control altona-sans-12" style="width: 100%" type="text" id="searchTerm"
+                wire:model="searchTerm" placeholder="Search by name..">
         </div>
     </div>
-    <div class="m-3 overflow-x">
+    <div class="m-3 overflow-x" style="width: 90vw;">
+        {{ $ships->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -164,20 +163,22 @@
                                         <li>9-11 : {{ $s->mobScore->mob_9_11 }}</li>
                                         <li>12-13 :{{ $s->mobScore->mob_12_13 }}</li>
                                         <li>14 : {{ $s->mobScore->mob_14 }}</li>
+                                        <li>15 : {{ $s->mobScore->mob_15 }}</li>
                                         <li>Boss</li>
                                         <li>9-11 : {{ $s->bossScore->boss_9_11 }}</li>
                                         <li>12-13 :{{ $s->bossScore->boss_12_13 }}</li>
                                         <li>14 : {{ $s->bossScore->boss_14 }}</li>
+                                        <li>15 : {{ $s->bossScore->boss_15 }}</li>
                                     </ul>
                                 </td>
                             </tr>
                         @endforeach
 
                     </tbody>
-                    {{ $ships->links() }}
                 </table>
             </div>
         </div>
+
     </div>
 
 </div>

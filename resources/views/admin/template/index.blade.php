@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 @section('title', 'Gear Templates')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 gap-1 d-grid">
         <div>
             <h1>Templates</h1>
             <p class="altona-sans-12">Manage Templates</p>
             <a href="/admin/templates/add"><button class="btn btn-primary">Add Templates</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x ">
+    <div class="m-3 overflow-x " style="width: 90vw">
         <div class="card">
             <div class="card body">
                 <table class="table table-bordered">

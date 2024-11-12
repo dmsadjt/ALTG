@@ -1,16 +1,17 @@
 @extends('layouts.admin')
 @section('title', 'Factions')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 d-grid gap-1">
         <div>
             <h1>Factions</h1>
             <p class="altona-sans-12">Manage Factions</p>
         </div>
-        <div class="ms-auto mt-auto">
+        <div>
             <a href="/admin/factions/add"><button class="btn btn-primary">Add factions</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x">
+    <div class="m-3 overflow-x" style="width: 90vw">
+        {{ $factions->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -51,7 +52,7 @@
                         @endforeach
 
                     </tbody>
-                    {{ $factions->links() }}
+
                 </table>
             </div>
         </div>

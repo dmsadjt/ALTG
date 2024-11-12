@@ -14,15 +14,16 @@ class bossScoreFactory extends Factory
      * @return array
      */
 
-     protected $model = BossScore::class;
+    protected $model = BossScore::class;
     public function definition()
     {
-        $faker=Faker::create();
+        $faker = Faker::create();
 
         return [
-            'boss_9_11'=>$faker->randomDigit(),
-            'boss_12_13'=>$faker->randomDigit(),
-            'boss_14'=>$faker->randomDigit(),
+            'boss_9_11' => $faker->randomDigit(),
+            'boss_12_13' => $faker->randomDigit(),
+            'boss_14' => $faker->randomDigit(),
+            'boss_15' => $faker->randomDigit(),
         ];
     }
 }

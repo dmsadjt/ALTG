@@ -4,15 +4,15 @@
     <section class="hero">
         <div class="container">
             <div class="d-grid mx-auto mt-4">
-                <button class="text-white orange-button shadow d-grid">
-                    <a href="/ships" class="link-none my-auto">
-                        <h1 class="p-3 my-auto">GO TO TIERLIST</h1>
+                <button class="text-white orange-button shadow ">
+                    <a href="/ships" class="link-none text-white d-grid ">
+                        <h1 class="p-3 m-auto">GO TO TIERLIST</h1>
                     </a>
                 </button>
 
             </div>
 
-            <div class="d-grid mx-auto">
+            <div class="d-grid mx-auto mt-1">
                 <a class="text-white text-center" href="/blogs/view/1"><b>Read our tiering guidelines here</b></a>
             </div>
 
@@ -56,7 +56,7 @@
 
                             <div class="carousel-caption d-md-block">
                                 <a href="/blogs/view/{{ $posts[0]->id }}"
-                                    class="altona-sans-10 link-none">{{ $posts[0]->title }}</a>
+                                    class="altona-sans-10 link-none text-white">{{ $posts[0]->title }}</a>
                                 <p class="short-text altona-sans-10">{{ strip_tags($posts[0]->body) }}</p>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
 
                                 <div class="carousel-caption d-md-block">
                                     <a href="/blogs/view/{{ $posts[$i]->id }}"
-                                        class="altona-sans-10 link-none">{{ $posts[$i]->title }}</a>
+                                        class="altona-sans-10 link-none text-white">{{ $posts[$i]->title }}</a>
                                     <p class="short-text altona-sans-10 ">{{ strip_tags($posts[$i]->body) }}</p>
                                 </div>
                             </div>
@@ -79,12 +79,13 @@
 
                 {{-- brand image --}}
                 <div class="brand">
-                    <img src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image-page" alt="">
+                    <img loading="lazy" src="{{ url('/img/web-assets/altg-logo.png') }}" class="brand-image-page"
+                        alt="">
                 </div>
 
             </div>
 
-            <div class="row mt-5 text-center text-white">
+            <div class="row mt-3 text-center text-white">
                 <h1>CHECK OUT THE LATEST SHIPS</h1>
                 <div class="text-center mt-1">
                     <img src="/img/web-assets/downarrow.svg" class="downarrow" alt="">
@@ -97,7 +98,7 @@
 
         <div class="container">
 
-            <div class="row mt-5 text-center text-white">
+            <div class="row mt-3 text-center text-white">
                 <div class="altona-sans-12">Click on <span class="orange-btn ">Read more details >></span> to learn about
                     individual world score, gear guides and more</div>
             </div>
@@ -189,7 +190,7 @@
                                     <td>Mob</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ $score = number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14) / 3, 1) }}">
+                                            id="{{ $score = number_format(($ships[$i]->bossScore->boss_9_11 + $ships[$i]->bossScore->boss_12_13 + $ships[$i]->bossScore->boss_14 + $ships[$i]->bossScore->boss_15) / 4, 1) }}">
                                             <span class="score swiss-font-18">
                                                 {{ intval($score) == $score ? intval($score) : $score }}
                                             </span>
@@ -202,9 +203,9 @@
                                     <td>Boss</td>
                                     <td>
                                         <div class="score-box sac"
-                                            id="{{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}">
+                                            id="{{ $score1 = number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14 + $ships[$i]->mobScore->mob_15) / 4, 1) }}">
                                             <span class=" score swiss-font-18">
-                                                {{ number_format(($ships[$i]->mobScore->mob_9_11 + $ships[$i]->mobScore->mob_12_13 + $ships[$i]->mobScore->mob_14) / 3, 1) }}
+                                                {{ intval($score1) == $score1 ? intval($score) : $score1 }}
                                             </span>
                                         </div>
                                     </td>
@@ -228,7 +229,7 @@
                     <div class="grid-col-span-2"></div>
                     <div>
 
-                        <a href="/ships/{{ $ships[$i]->id }}" class="link-none">
+                        <a href="/ships/{{ $ships[$i]->id }}" class="link-none text-white">
                             <button class="mt-5 orange-btn swiss-font-12 text-white">
                                 Read more details>>
                             </button>

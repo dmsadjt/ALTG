@@ -1,14 +1,15 @@
 @extends('layouts.admin')
 @section('title', 'Post Tags')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 d-grid gap-1">
         <div>
             <h1>Post Tags</h1>
             <p class="altona-sans-12">Manage Post Tags</p>
             <a href="/admin/tags/add"><button class="btn btn-primary">Add Post Tags</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x w-50">
+    <div class="m-3 overflow-x">
+        {{ $tags->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table table-bordered">
@@ -39,7 +40,7 @@
                         @endforeach
 
                     </tbody>
-                    {{ $tags->links() }}
+
                 </table>
             </div>
         </div>

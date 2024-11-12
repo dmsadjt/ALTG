@@ -68,8 +68,8 @@
                             });
                     });
                 </script>
-                <div class="columns-two__4-2 mt-2">
-                    <div class="me-2">
+                <div class="columns-two__5-1 mt-2">
+                    <div class="me-2 d-grid">
                         <div>
                             <div class="swiss-font-12">
                                 Rarity
@@ -89,12 +89,12 @@
                             </div>
                         </div>
 
-                        <div>
+                        <div class=" align-bottom">
                             <div class="swiss-font-12">
                                 Faction
                             </div>
                             <div>
-                                <ul class="filter-list bg-gray1 rounded d-flex flex-wrap fit-content">
+                                <ul class="filter-list bg-gray1 rounded">
                                     @foreach ($factions as $key => $r)
                                         @if ($key == 0)
                                             @continue
@@ -113,9 +113,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex mt-2">
+                    <div class="d-grid mt-2 align-content-end">
                         <select wire:model="position" name="position" id="position"
-                            class="pill-dark altona-sans-12 text-center button-square">
+                            class="pill-dark altona-sans-12 text-center align-bottom align-end button-square">
                             <option value="">None</option>
                             <option value="tank">Tank</option>
                             <option value="offtank">Offtank</option>
@@ -160,20 +160,22 @@
                         <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 9-11" id="911"
                                 class="filter-option d-none">
-                            <label for="911" class="filter-label p-2">W 9-11</label>
-
+                            <label for="911" class="filter-label p-2">9-11</label>
                         </div>
                         <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 12-13" id="1213"
                                 class="filter-option d-none">
-                            <label for="1213" class="filter-label p-2">W 12-13</label>
-
+                            <label for="1213" class="filter-label p-2">12-13</label>
                         </div>
                         <div class="nav-link altona-sans-12 p-1">
                             <input type="radio" wire:model="score" value="W 14" id="14"
                                 class="filter-option d-none">
-                            <label for="14" class="filter-label p-2">W 14</label>
-
+                            <label for="14" class="filter-label p-2">14</label>
+                        </div>
+                        <div class="nav-link altona-sans-12 p-1">
+                            <input type="radio" wire:model="score" value="W 15" id="15"
+                                class="filter-option d-none">
+                            <label for="15" class="filter-label p-2">15</label>
                         </div>
                     </div>
                     <hr>
@@ -260,12 +262,26 @@
                         <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                     @endif
                 </button>
+            @elseif ($score == 'W 15')
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('mob_15','complex')">Mob
+                    @if ($sortBy == 'mob_15')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
+                <button class="btn btn-outline-light btn-sm" wire:click="sort('boss_15','complex')">Boss
+                    @if ($sortBy == 'boss_15')
+                        <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                    @endif
+                </button>
             @endif
         </div>
 
     </div>
 
-    <div wire:loading class="d-grid "><span wire:loading class="mx-auto altona-sans-18 ">Loading...</span></div>
+    <div wire:loading.grid wire:loading.delay.longest class="ships w-80 align-content-center justify-content-center">
+        <img class="m-3  background-primary rounded" src="{{ url('/img/web-assets/gif/loading-2.gif') }}"
+            alt="">
+    </div>
     <div class="ships w-80" wire:loading.remove>
         <h1>{{ $shipImage->hull_name }} {{ $score }} Score</h1>
         <table class="ship-table">
@@ -306,6 +322,12 @@
                             <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('mob_15','complex')">15</button>
+                        @if ($sortBy == 'mob_15')
+                            <u class="altona-sans-10 p-1">{{ $sortDirection }}</u>
+                        @endif
+                    </th>
                 @elseif ($score == 'Boss')
                     <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
                             wire:click="sort('boss_9_11','complex')">9-11</button>
@@ -322,6 +344,12 @@
                     <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
                             style="font-weight:600;" wire:click="sort('boss_14','complex')">14</button>
                         @if ($sortBy == 'boss_14')
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
+                        @endif
+                    </th>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('boss_15','complex')">15</button>
+                        @if ($sortBy == 'boss_15')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
@@ -359,8 +387,21 @@
                         @endif
                     </th>
                     <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
-                            style="font-weight:600;" wire:click="sort('boss_14','complex')">Boss</button>
+                            style="font-weight:600;" wire:click="sort('boss_15','complex')">Boss</button>
                         @if ($sortBy == 'boss_14')
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
+                        @endif
+                    </th>
+                @elseif ($score == 'W 15')
+                    <th class="r-hide"><button class="btn text-white" style="font-weight:600;"
+                            wire:click="sort('mob_15','complex')">Mob</button>
+                        @if ($sortBy == 'mob_15')
+                            <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
+                        @endif
+                    </th>
+                    <th class="r-hide" style="border-radius: 0 0.175em 0.175em 0"><button class="btn text-white"
+                            style="font-weight:600;" wire:click="sort('boss_15','complex')">Boss</button>
+                        @if ($sortBy == 'boss_15')
                             <u class="altona-sans-10 shadow p-1">{{ $sortDirection }}</u>
                         @endif
                     </th>
@@ -368,14 +409,15 @@
             </thead>
             <tbody>
                 @foreach ($ships as $s)
-                    <tr class="text-white shadow">
+                    <tr class="text-white shadow ">
                         <td class="rarity-tag" data-rarity="{{ $s->rarity->rarity_tag }}">
                             <span class="rotate--90 justify-content-center">{{ $s->rarity->rarity_tag }}</span>
                         </td>
                         <td class="bg-gray1 ">
                             <div class="row">
                                 <div class="col-10">
-                                    <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                    <a href="/ships/{{ $s->id }}"
+                                        class="swiss-font-12 ms-1 link-none text-white">
                                         <span class="r-hide">
                                             <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
                                                 alt="">
@@ -433,6 +475,15 @@
                                                             class="score ">{{ number_format($s->mobScore->mob_14, 1) }}</span>
                                                     </div>
                                                 </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem"> 15
+                                                    </div>
+                                                    <div class="score-box score-badge text-white mx-auto"
+                                                        data-score="{{ $s->mobScore->mob_15, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->mobScore->mob_15, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -483,6 +534,16 @@
                                                             class="score ">{{ number_format($s->bossScore->boss_14, 1) }}</span>
                                                     </div>
                                                 </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                        15
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_15, 1 }}">
+                                                        <span
+                                                            class="score ">{{ number_format($s->bossScore->boss_15, 1) }}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -496,7 +557,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif ($score == 'W 9-11')
+                                @elseif ($score == '9-11')
                                     <div class="row">
                                         <div class="col-2">
                                             <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
@@ -535,7 +596,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif ($score == 'W 12-13')
+                                @elseif ($score == '12-13')
                                     <div class="row">
                                         <div class="col-2">
                                             <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
@@ -574,7 +635,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @elseif ($score == 'W 14')
+                                @elseif ($score == '14')
                                     <div class="row">
                                         <div class="col-2">
                                             <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
@@ -598,6 +659,45 @@
                                                         data-score="{{ $s->bossScore->boss_14, 1 }}">
                                                         <span
                                                             class="score">{{ number_format($s->bossScore->boss_14, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-grid">
+                                                <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">
+                                                    {{ $s->positions->position_name }}
+                                                </div>
+                                                <img class="mx-auto" style="width:4em"
+                                                    src=" {{ asset('storage/' . $s->positions->position_image) }}"
+                                                    alt="position">
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif ($score == '15')
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
+                                                alt="">
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex p-1 gap-2">
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Mob
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->mobScore->mob_15, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->mobScore->mob_15, 1) }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="d-grid">
+                                                    <div class="altona-sans-10 mx-auto" style="font-size: 0.6rem">Boss
+                                                    </div>
+                                                    <div class="score-box score-badge text-white"
+                                                        data-score="{{ $s->bossScore->boss_15, 1 }}">
+                                                        <span
+                                                            class="score">{{ number_format($s->bossScore->boss_15, 1) }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -660,25 +760,33 @@
                         @if ($score == 'Mob')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                    data-score="{{ $mob1 = number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                        {{ intval($mob1) == $mob1 ? intval($mob1) : $mob1 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                    data-score="{{ $mob2 = number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        {{ intval($mob2) == $mob2 ? intval($mob2) : $mob2 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                    data-score="{{ $mob3 = number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_14, 1) }}
+                                        {{ intval($mob3) == $mob3 ? intval($mob3) : $mob3 }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="bg-gray1 r-hide">
+                                <div class="score-box mx-auto"
+                                    data-score="{{ $mob4 = number_format($s->mobScore->mob_15, 1) }}">
+                                    <div class="score swiss-font-18">
+                                        {{ intval($mob4) == $mob4 ? intval($mob4) : $mob4 }}
                                     </div>
                                 </div>
                             </td>
@@ -687,81 +795,106 @@
                         @elseif ($score == 'Boss')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                    data-score="{{ $boss1 = number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        {{ intval($boss1) == $boss1 ? intval($boss1) : $boss1 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                    data-score="{{ $boss2 = number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        {{ intval($boss2) == $boss2 ? intval($boss2) : $boss2 }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                    data-score="{{ $boss3 = number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_14, 1) }}
+                                        {{ intval($boss3) == $boss3 ? intval($boss3) : $boss3 }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="bg-gray1 r-hide">
+                                <div class="score-box mx-auto"
+                                    data-score="{{ $boss4 = number_format($s->bossScore->boss_15, 1) }}">
+                                    <div class="score swiss-font-18">
+                                        {{ intval($boss4) == $boss4 ? intval($boss4) : $boss4 }}
                                     </div>
                                 </div>
                             </td>
 
                             {{-- 9-11 Score --}}
-                        @elseif ($score = 'W 9-11')
+                        @elseif ($score = '9-11')
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_9_11, 1) }}">
+                                    data-score="{{ $nine = number_format($s->mobScore->mob_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_9_11, 1) }}
+                                        {{ intval($nine) == $nine ? intval($nine) : $nine }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 border-left-white r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_9_11, 1) }}">
+                                    data-score="{{ $nineb = number_format($s->bossScore->boss_9_11, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_9_11, 1) }}
+                                        {{ intval($nineb) == $nineb ? intval($nineb) : $nineb }}
                                     </div>
                                 </div>
                             </td>
 
                             {{-- 12-13 Score --}}
-                        @elseif ($score = 'W 12-13')
+                        @elseif ($score = '12-13')
                             <td class="bg-gray1  r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_12_13, 1) }}">
+                                    data-score="{{ $elv = number_format($s->mobScore->mob_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_12_13, 1) }}
+                                        {{ intval($elv) == $elv ? intval($elv) : $elv }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide ">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_12_13, 1) }}">
+                                    data-score="{{ $elvb = number_format($s->bossScore->boss_12_13, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_12_13, 1) }}
+                                        {{ intval($elvb) == $elvb ? intval($elvb) : $elvb }}
                                     </div>
                                 </div>
                             </td>
                             {{-- 14 Score --}}
-                        @elseif ($score = 'W 14')
+                        @elseif ($score = '14')
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->mobScore->mob_14, 1) }}">
+                                    data-score="{{ $tw = number_format($s->mobScore->mob_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->mobScore->mob_14, 1) }}
+                                        {{ intval($tw) == $tw ? intval($tw) : $tw }}
                                     </div>
                                 </div>
                             </td>
                             <td class="bg-gray1 r-hide">
                                 <div class="score-box mx-auto"
-                                    data-score="{{ number_format($s->bossScore->boss_14, 1) }}">
+                                    data-score="{{ $twb = number_format($s->bossScore->boss_14, 1) }}">
                                     <div class="score swiss-font-18">
-                                        {{ number_format($s->bossScore->boss_14, 1) }}
+                                        {{ intval($twb) == $twb ? intval($twb) : $twb }}
+                                    </div>
+                                </div>
+                            </td>
+                        @elseif ($score = '15')
+                            <td class="bg-gray1 r-hide">
+                                <div class="score-box mx-auto"
+                                    data-score="{{ $tw = number_format($s->mobScore->mob_15, 1) }}">
+                                    <div class="score swiss-font-18">
+                                        {{ intval($tw) == $tw ? intval($tw) : $tw }}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="bg-gray1 r-hide">
+                                <div class="score-box mx-auto"
+                                    data-score="{{ $twb = number_format($s->bossScore->boss_15, 1) }}">
+                                    <div class="score swiss-font-18">
+                                        {{ intval($twb) == $twb ? intval($twb) : $twb }}
                                     </div>
                                 </div>
                             </td>
@@ -790,7 +923,7 @@
             for (i = 0; i < z.length; i++) {
                 changeScore(z[i]);
             }
-
+            document.getElementById("15").click()
         })
 
         document.addEventListener('test', function() {
@@ -815,6 +948,6 @@
         })
     </script>
 
-    <div class="r-overflow-x">{{ $ships->links() }}</div>
+    <div wire:loading.remove class="r-overflow-x">{{ $ships->links() }}</div>
 
 </div>

@@ -1,19 +1,19 @@
 @extends('layouts.admin')
 @section('title', 'Siren Bosses')
 @section('contents')
-    <div class="m-3 columns-two">
+    <div class="m-3 d-grid gap-1">
         <div>
             <h1>Siren Bosses</h1>
             <p class="altona-sans-12">Manage the bosses</p>
         </div>
-        <div class="mt-auto ms-auto">
+        <div>
             <a href="/admin/sirens/add">
                 <button class="btn btn-primary"><span class="altona-sans-12">Add boss</span></button></a>
-
         </div>
-
     </div>
-    <div class="m-3">
+
+    <div class="m-3 overflow-x" style="width: 90vw">
+        {{ $siren->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -48,7 +48,6 @@
                                             href="/admin/sirens/edit/{{ $s->id }}"><button
                                                 class="btn btn-outline-primary btn-sm">Edit</button></a>
                                     </div>
-
                                     <div>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/sirens/delete/{{ $s->id }}"><button
@@ -171,7 +170,7 @@
 
                 </table>
             </div>
-            {{ $siren->links() }}
+
         </div>
     </div>
 

@@ -7,7 +7,8 @@
             <p class="altona-sans-12">Manage Positions</p>
         </div>
     </div>
-    <div class="m-3 overflow-x">
+    <div class="m-3 overflow-x" style="width: 90vw">
+        {{ $positions->links() }}
         <div class="card">
             <div class="card body">
                 <table class="table w-100 table-bordered">
@@ -53,7 +54,6 @@
                         @endforeach
 
                     </tbody>
-                    {{ $positions->links() }}
                 </table>
             </div>
         </div>

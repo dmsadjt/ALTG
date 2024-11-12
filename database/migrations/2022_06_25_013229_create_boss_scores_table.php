@@ -21,6 +21,7 @@ class CreateBossScoresTable extends Migration
             $table->integer('boss_9_11')->nullable();
             $table->integer('boss_12_13')->nullable();
             $table->integer('boss_14')->nullable();
+            $table->integer('boss_15')->nullable();
 
 
             $table->index('ship_id');

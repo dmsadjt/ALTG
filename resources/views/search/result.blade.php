@@ -10,7 +10,7 @@
                         <input type="text" name="ship" id="ship" class="form-control my-3 shadow"
                             value="{{ $result }}">
                     </div>
-                    <div><input type="submit" value="Search" class="pill altona-sans-12 text-center"></div>
+                    <div><input type="submit" value="Search" class="pill altona-sans-12 py-1 px-3 text-center"></div>
                 </form>
             </div>
 
@@ -21,8 +21,8 @@
                     <thead class="bg-gray1 text-white altona-sans-12">
                         <th>&nbsp;</th>
                         <th>@sortablelink('name')</th>
-                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Archetype</a></th>
-                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none">Role</a></th>
+                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none text-white">Archetype</a></th>
+                        <th class="r-hide"><a href="#" class="altona-sans-12 link-none text-white">Role</a></th>
                         <th class="r-hide"><span>@sortablelink('positions.position_name', 'Position')</span></th>
                     </thead>
                     <tbody>
@@ -34,7 +34,8 @@
                                 <td class="bg-gray1 ">
                                     <div class="row">
                                         <div class="col-10">
-                                            <a href="/ships/{{ $s->id }}" class="swiss-font-12 ms-1 link-none">
+                                            <a href="/ships/{{ $s->id }}"
+                                                class="swiss-font-12 ms-1 link-none text-white">
                                                 <span class="r-hide">
                                                     <img class="chibi-img" src="{{ asset('storage/' . $s->chibi_sprite) }}"
                                                         alt="">
