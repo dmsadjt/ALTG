@@ -4,7 +4,6 @@
     <section class="hero">
         <div class="container">
             <div class="d-grid mx-auto mt-4">
-
                 <button class="text-white orange-button shadow ">
                     <a href="/ships" class="link-none text-white d-grid ">
                         <h1 class="p-3 m-auto">GO TO TIERLIST</h1>
