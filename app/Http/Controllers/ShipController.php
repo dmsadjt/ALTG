@@ -148,6 +148,7 @@ class ShipController extends Controller
 
     public function postShip(Request $request)
     {
+        // dd($request);
         $cate = GearCategory::all();
         $rules = ([
             'name' => 'required',
@@ -180,16 +181,22 @@ class ShipController extends Controller
             'mob1' => 'integer|between:0,11',
             'mob2' => 'integer|between:0,11',
             'mob3' => 'integer|between:0,11',
+            'mob4' => 'integer|between:0,11',
             'boss1' => 'integer|between:0,11',
             'boss2' => 'integer|between:0,11',
             'boss3' => 'integer|between:0,11',
+            'boss4' => 'integer|between:0,11',
             'template-general' => '',
             'template-light' => '',
             'template-heavy' => '',
             'template-medium' => '',
         ]);
 
-        $shipdata = $request->validate($rules);
+        try {
+            $shipdata = $request->validate($rules);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            dd($e->errors()); // This will display the validation errors in detail
+        }
 
         $ship = new Ship;
         $ship->name = $shipdata['name'];
@@ -250,6 +257,7 @@ class ShipController extends Controller
         $mob->mob_9_11 = $shipdata['mob1'];
         $mob->mob_12_13 = $shipdata['mob2'];
         $mob->mob_14 = $shipdata['mob3'];
+        $mob->mob_15 = $shipdata['mob4'];
         $mob->save();
 
         $boss = new BossScore;
@@ -257,6 +265,7 @@ class ShipController extends Controller
         $boss->boss_9_11 = $shipdata['boss1'];
         $boss->boss_12_13 = $shipdata['boss2'];
         $boss->boss_14 = $shipdata['boss3'];
+        $boss->boss_15 = $shipdata['boss4'];
         $boss->save();
 
         $skill = new Skill;
@@ -453,7 +462,7 @@ class ShipController extends Controller
                         'skill_priority' => $data['skillpriority-' . ($i + 1)],
                     ]);
                     if ((isset($data['skillimg-' . ($i  + 1)]))) {
-                        if ($ship->skill[$i]->skill_img != 'ships/img/sprite/no-sprite.png') {
+                        if ($ship->skill[$i]->skill_img != 'skill/img/no-skill-pictures.png') {
                             Storage::delete($ship->skill[$i]->skill_img);
                         }
                         $ship->skill[$i]->update([

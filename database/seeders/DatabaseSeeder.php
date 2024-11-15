@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillSeeder::class);
 
 
-        Ship::factory()->has(Skill::factory()->count(3), 'skill')->has(MobScore::factory(), 'mobScore')->has(BossScore::factory(), 'bossScore')->count(400)->create();
+        // Ship::factory()->has(Skill::factory()->count(3), 'skill')->has(MobScore::factory(), 'mobScore')->has(BossScore::factory(), 'bossScore')->count(400)->create();
         // \App\Models\User::factory(10)->create();
         Gear::factory()->count(4)->create();
 
