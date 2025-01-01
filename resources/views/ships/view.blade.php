@@ -84,8 +84,8 @@
                     </script>
                     {{-- faction img and chibis --}}
                     <div class="faction-content">
-                        <div class="faction" id="{{ $ship->faction->faction_slug }}">
-                            <img src="{{ asset('storage/' . $ship->chibi_sprite) }}" alt="chibi">
+                        <div class="faction img-invert" id="{{ $ship->faction->faction_slug }}">
+                            <img src="{{ asset('storage/' . $ship->chibi_sprite) }}" class="img-invert" alt="chibi">
                         </div>
                     </div>
 
