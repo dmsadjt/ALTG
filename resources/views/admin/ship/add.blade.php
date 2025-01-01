@@ -246,23 +246,27 @@
             {{-- scores --}}
             <h2 class="my-2">Scores</h2>
             <h3>Mob</h3>
-            <div class="columns-three">
+            <div class="columns-four">
                 <div>
                     <label class="form-label" for="mob1">9-11</label>
                     <input class="form-control" type="number" name="mob1" id="mob1" required>
                 </div>
                 <div>
-                    <label class="form-label" for="mob1">12-13</label>
+                    <label class="form-label" for="mob2">12-13</label>
                     <input class="form-control" type="number" name="mob2" id="mob2" required>
                 </div>
                 <div>
-                    <label class="form-label" for="mob1">14</label>
+                    <label class="form-label" for="mob3">14</label>
                     <input class="form-control" type="number" name="mob3" id="mob3" required>
+                </div>
+                <div>
+                    <label class="form-label" for="mob4">15</label>
+                    <input class="form-control" type="number" name="mob4" id="mob4" required>
                 </div>
             </div>
 
             <h3 class="mt-3">Boss</h3>
-            <div class="columns-three">
+            <div class="columns-four">
                 <div>
                     <label class="form-label" for="boss1">9-11</label>
                     <input class="form-control" type="number" name="boss1" id="boss1" required>
@@ -274,6 +278,10 @@
                 <div>
                     <label class="form-label" for="boss3">14</label>
                     <input class="form-control" type="number" name="boss3" id="boss3" required>
+                </div>
+                <div>
+                    <label class="form-label" for="boss4">15</label>
+                    <input class="form-control" type="number" name="boss4" id="boss4" required>
                 </div>
             </div>
 

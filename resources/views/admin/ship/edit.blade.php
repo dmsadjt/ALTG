@@ -82,7 +82,6 @@
                 {{-- Skills --}}
                 <h2 class="my-3">Skill</h2>
                 <div>
-
                     @if ($s->skill->count() == 3)
                         @for ($i = 0; $i < 3; $i++)
                             <div class="columns-three">
@@ -228,6 +227,35 @@
                             </div>
                         @endforeach
                         @for ($i = 1; $i < 3; $i++)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillname-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $i + 1 }}"
+                                        id="skillname-{{ $i + 1 }}"
+                                        onchange="addRequired('skillname-{{ $i + 1 }}','skillpriority-{{ $i + 1 }}')">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillpriority-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $i + 1 }}"
+                                        id="skillpriority-{{ $i + 1 }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillimg-{{ $i + 1 }}">Skill
+                                        {{ $i + 1 }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $i + 1 }}"
+                                        id="skillimg-{{ $i + 1 }}">
+                                </div>
+                            </div>
+                        @endfor
+                    @elseif($s->skill->count() == 0)
+                        @for ($i = 0; $i < 3; $i++)
                             <div class="columns-three">
                                 <div class="mb-2">
                                     <label class="form-label altona-sans-12 my-1"
