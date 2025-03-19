@@ -32,7 +32,8 @@
                                     <span>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/positions/edit/{{ $s->id }}"><button
-                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                                class="btn btn-outline-primary btn-sm"><i
+                                                    class="bi bi-pencil-fill"></i></button></a>
                                     </span>
                                 </td>
                                 <td class="altona-sans-10">{{ $s->position_name }}</td>

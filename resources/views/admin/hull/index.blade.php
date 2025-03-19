@@ -32,13 +32,15 @@
                                     <span>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/hulls/edit/{{ $s->id }}"><button
-                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                                class="btn btn-outline-primary btn-sm"><i
+                                                    class="bi bi-pencil-fill"></i></button></a>
                                     </span>
                                     @if ($s->id != 1)
                                         <span>
                                             <a class="link-none altona-sans-10"
                                                 href="/admin/hulls/delete/{{ $s->id }}"><button
-                                                    class="btn btn-outline-danger btn-sm">Delete</button></a>
+                                                    class="btn btn-outline-danger btn-sm"><i
+                                                        class="bi bi-trash3-fill"></i></button></a>
                                         </span>
                                     @endif
                                 </td>

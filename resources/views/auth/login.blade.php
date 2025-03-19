@@ -22,10 +22,27 @@
             <div class="columns-two__4-2">
                 <div class="bg-enterprise"></div>
                 <div class=" d-grid">
-                    <div class="m-auto">
+                    <div class="my-auto mx-5">
                         <h1 class="text-white text-center">ALTG Website</h1>
                         <div class="card shadow">
                             <div class="card-body">
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul class="mb-0">
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+
                                 <div class="card-title swiss-font-12">
                                     Administrator Login
                                 </div>

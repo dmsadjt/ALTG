@@ -266,6 +266,10 @@ html {
 
     .card {
         overflow-x: scroll;
+        scrollbar-width: none;
+        /* For Firefox */
+        -ms-overflow-style: none;
+        /* For IE & Edge */
     }
 
     .iron-blood {
@@ -317,12 +321,11 @@ html {
     }
 
     .ships {
-
         overflow-x: auto;
     }
 
     .table {
-        max-width: 10em;
+        /* max-width: 10em; */
         overflow-x: scroll;
     }
 
@@ -514,6 +517,13 @@ section {
 
 body {
     background-color: var(--primary) !important;
+}
+
+.body-admin {
+    background: linear-gradient(135deg, #293849, #2c7a7b);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
 

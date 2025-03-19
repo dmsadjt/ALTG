@@ -255,6 +255,35 @@
                                 </div>
                             </div>
                         @endfor
+                    @else
+                        @for ($i = 1; $i <= 3; $i++)
+                            <div class="columns-three">
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillname-{{ $i }}">Skill
+                                        {{ $i }}
+                                        name</label>
+                                    <input class="form-control" type="text" name="skillname-{{ $i }}"
+                                        id="skillname-{{ $i }}"
+                                        onchange="addRequired('skillname-{{ $i }}','skillpriority-{{ $i }}')">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillpriority-{{ $i }}">Skill
+                                        {{ $i }} priority</label>
+                                    <input class="form-control" type="number" name="skillpriority-{{ $i }}"
+                                        id="skillpriority-{{ $i }}">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label altona-sans-12 my-1"
+                                        for="skillimg-{{ $i }}">Skill
+                                        {{ $i }}
+                                        image</label>
+                                    <input class="form-control" type="file" name="skillimg-{{ $i }}"
+                                        id="skillimg-{{ $i }}">
+                                </div>
+                            </div>
+                        @endfor
                     @endif
                 </div>
 

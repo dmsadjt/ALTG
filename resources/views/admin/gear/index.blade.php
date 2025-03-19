@@ -10,7 +10,7 @@
             <a href="/admin/gears/add"><button class="btn btn-primary">Add gears</button></a>
         </div>
     </div>
-    <div class="m-3 overflow-x" style="width: 90vw">
+    <div class="m-3" style="width: 90vw">
         {{ $gears->links() }}
         <div class="card">
             <div class="card body">
@@ -32,12 +32,14 @@
                                     <span>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/gears/edit/{{ $s->id }}"><button
-                                                class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                                class="btn btn-outline-primary btn-sm"><i
+                                                    class="bi bi-pencil-fill"></i></button></a>
                                     </span>
                                     <span>
                                         <a class="link-none altona-sans-10"
                                             href="/admin/gears/delete/{{ $s->id }}"><button
-                                                class="btn btn-outline-danger btn-sm">Delete</button></a>
+                                                class="btn btn-outline-danger btn-sm"><i
+                                                    class="bi bi-trash3-fill"></i></button></a>
                                     </span>
                                 </td>
                                 <td class="altona-sans-10">{{ $s->gear_name }}</td>
