@@ -2,7 +2,7 @@
 
 Website dikembangkan dengan Laravel 8, Livewire, dan MySQL
 
-# ALTG User Documentation v1.1
+# ALTG User Documentation v1.0.0
 
 Selamat datang di Azur Lane Tier List Guide!
 
