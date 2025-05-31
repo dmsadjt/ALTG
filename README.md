@@ -69,7 +69,7 @@ Menampilkan daftar postingan blog:
 
 Versi
 
-1.1
+1.0.0
 
 Website
 
